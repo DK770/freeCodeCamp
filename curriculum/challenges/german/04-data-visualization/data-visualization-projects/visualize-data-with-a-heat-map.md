@@ -8,11 +8,11 @@ dashedName: visualize-data-with-a-heat-map
 
 # --description--
 
-**Objective:** Build an app that is functionally similar to this: <a href="https://heat-map.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://heat-map.freecodecamp.rocks</a>.
+**Aufgabe:** Erstelle eine Anwendung, die eine ähnliche Funktionalität wie <a href="https://heat-map.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://heat-map.freecodecamp.rocks</a> aufweist.
 
 Erfülle die folgenden User Stories und bestehe alle Tests. Verwende Bibliotheken und APIs deiner Wahl. Gib dem Ganzen deinen persönlichen Stil.
 
-Du kannst HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Erforderliche (nicht-virtuelle) DOM-Elemente werden zum Zeitpunkt jeden Tests abgefragt. Wenn du ein Frontend-Framework verwendest (z. B. Vue), sind die Testergebnisse für dynamische Inhalte möglicherweise ungenau. Wir hoffen, dass wir diese irgendwann berücksichtigen können, aber derzeit werden diese Frameworks nicht für D3-Projekte unterstützt.
+Du kannst HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Erforderliche DOM-Elemente werden zum Zeitpunkt eines jeden Tests abgefragt. Wenn du ein Frontend-Framework verwendest (z. B. Vue), sind die Testergebnisse für dynamische Inhalte möglicherweise ungenau. Wir hoffen, dass wir diese irgendwann berücksichtigen können, aber derzeit werden diese Frameworks nicht für D3-Projekte unterstützt.
 
 **User Story #1:** Meine Heatmap sollte einen entsprechenden Titel mit einer entsprechenden `id="title"` haben.
 

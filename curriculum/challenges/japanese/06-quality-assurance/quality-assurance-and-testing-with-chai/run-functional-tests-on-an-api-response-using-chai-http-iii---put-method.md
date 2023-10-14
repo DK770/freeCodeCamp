@@ -17,6 +17,7 @@ dashedName: run-functional-tests-on-an-api-response-using-chai-http-iii---put-me
 ```js
 chai
   .request(server)
+  .keepOpen()
   .put('/travellers')
   .send({
     "surname": [last name of a traveller of the past]
@@ -59,7 +60,7 @@ PUT リクエストで、次の JSON オブジェクトを送信してくださ�
 
 # --hints--
 
-すべてのテストに合格する必要があります。
+すべてのテストが成功する必要があります。
 
 ```js
 (getUserInput) =>

@@ -9,7 +9,7 @@ dashedName: access-multi-dimensional-arrays-with-indexes
 
 # --description--
 
-Man kann sich ein <dfn>mehrdimensionales</dfn> Array als ein *Array von Arrays* vorstellen. Wenn du Klammern verwendest, um auf dein Array zuzugreifen, bezieht sich der erste Klammersatz auf die Einträge im äußersten (die erste Ebene) Array, und jedes weitere Klammerpaar bezieht sich auf die nächste Ebene von Einträgen darin.
+Man kann sich ein <dfn>mehrdimensionales</dfn> Array als ein *Array von Arrays* vorstellen. Wenn du Klammern benutzt, um auf deinen Array zuzugreifen, bezieht sich das erste Klammerpaar auf Einträge im obersten Array (der ersten Ebene) und jedes weitere Paar auf die nächste Eintrag-Ebene.
 
 **Beispiel**
 

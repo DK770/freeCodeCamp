@@ -1,4 +1,4 @@
-import envData from '../../../config/env.json';
+import envData from '../../config/env.json';
 
 const { clientLocale } = envData as {
   clientLocale: keyof typeof algoliaIndices;
@@ -15,11 +15,11 @@ const algoliaIndices = {
   },
   chinese: {
     name: 'news-zh',
-    searchPage: 'https://chinese.freecodecamp.org/news/search/'
+    searchPage: 'https://www.freecodecamp.org/chinese/news/search/'
   },
   'chinese-traditional': {
     name: 'news-zh',
-    searchPage: 'https://chinese.freecodecamp.org/news/search'
+    searchPage: 'https://www.freecodecamp.org/chinese/news/search/'
   },
   italian: {
     name: 'news-it',
@@ -42,6 +42,14 @@ const algoliaIndices = {
   german: {
     name: 'news',
     searchPage: 'https://www.freecodecamp.org/news/search/'
+  },
+  arabic: {
+    name: 'news-ar',
+    searchPage: 'https://www.freecodecamp.org/arabic/news/search/'
+  },
+  swahili: {
+    name: 'news-sw',
+    searchPage: 'https://www.freecodecamp.org/swahili/news/search/'
   }
 };
 

@@ -12,7 +12,7 @@ Para aprender como escrever testes Cypress ou 'specs', por favor confira a [docu
 
 ## Como executar testes
 
-> [!NOTE] Se estiver usando GitPod, por favor veja essa [configuração sobre Cypress-GitPod](how-to-add-cypress-tests.md#cypress-gitpod-setup)
+> [!NOTE] Se estiver usando Gitpod, veja essa [configuração sobre Cypress-Gitpod](how-to-add-cypress-tests.md#cypress-gitpod-setup)
 
 ### 1. Veja se as aplicações de cliente e MongoDB estão executando
 
@@ -27,49 +27,56 @@ Para executar testes usando compilações de produção, substitua `dev` por `pr
 - Para executar todos os testes no diretório `./cypress`:
 
   ```console
-  npm run cypress:dev:run
+  pnpm run cypress:dev:run
   ```
 
 - Para executar um único teste:
 
   ```console
-  npm run cypress:dev:run -- --spec=cypress/pathToYourSpec/youSpecFileName.js
+  pnpm run cypress run --spec=cypress/<caminho_para_o_arquivo_de_teste>
+  ```
+
+  Por exemplo:
+
+  ```console
+  pnpm run cypress run --spec=cypress/e2e/default/landing.ts
   ```
 
 - Para criar uma versão de compilação, inicie o servidor de desenvolvimento e execute todos os testes cypress contínuos e funcionais existentes:
 
   ```console
-  npm run e2e:dev:run
+  pnpm run e2e:dev:run
   ```
 
-## Configuração do Cypress-GitPod
+## Configuração do Cypress-Gitpod
 
 ### 1. Certifique-se que o ambiente de desenvolvimento está em execução
 
-Se o ambiente GitPod não foi criado automaticamente:
+Se o ambiente Gitpod não foi criado automaticamente:
 
-- Inicie a base de dados
+- Siga o [guia de instalação do MongoDB](https://www.mongodb.com/basics/get-started).
+- Crie um arquivo de configuração.
 
 ```console
-mongod
+pnpm run create:shared
 ```
 
 - Crie a base de dados
 
 ```console
-npm run seed
+pnpm run seed
 ```
 
 - Desenvolva o servidor e o client
 
 ```console
-npm run develop
+pnpm run develop
 ```
 
 ### 2. Instale as ferramentas de compilação do Cypress
 
 ```console
-npm run cypress:install-build-tools
+pnpm run cypress:install-build-tools
 ```
 
 - Quando solicitado no terminal, selecione o layout do seu teclado por idioma/área

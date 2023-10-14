@@ -14,28 +14,36 @@ dashedName: metric-imperial-converter
 - <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-metricimpconverter" target="_blank" rel="noopener noreferrer nofollow">Replit スタータープロジェクト</a>を使用して、プロジェクトを完了させる。
 - 使い慣れたサイトビルダーを使用してプロジェクトを完了させる。 必ず GitHub リポジトリのすべてのファイルを取り込む。
 
-完了したら、プロジェクトの動作デモをどこか公開の場にホストしてください。 そして、`Solution Link` フィールドでデモへの URL を送信してください。 必要に応じて、`GitHub Link` フィールドでプロジェクトのソースコードへのリンクを送信してください。
+Replit を使用する場合は、下記の手順でプロジェクトをセットアップしてください。
+
+-   まず、Replit でプロジェクトをインポートします。
+-   すると、`.replit` ファイルのウィンドウが表示されます。
+-   `Use run command` を選択して `Done` ボタンをクリックします。
+
+完了したら、プロジェクトの動作デモをどこか公開の場にホストしてください。 そして「回答のリンク」欄に、デモの URL を提出してください。 必要に応じて、プロジェクトのソースコードへのリンクも「GitHub のリンク」欄に提出してください。
+
+**Note:** This project's tests do not work when using `glitch.com`.
 
 # --instructions--
 
 - `/controllers/convertHandler.js` で、必要な変換ロジックを完成させてください。
 - `/routes/api.js` で、必要なルートを完成させてください。
-- `sample.env` ファイルを `.env` にコピーし、変数を適切に設定してください。
+- `sample.env` ファイルを `.env` ファイルにコピーし、変数を適切に設定してください。
 - テストを実行するには、`.env` ファイルの `NODE_ENV=test` をコメント解除してください。
 - コンソールでテストを実行するには、コマンド `npm run test` を使用してください。 Replit コンソールを開くには、Ctrl+Shift+P (Macの場合はCmd) を押して「open shell」と入力してください。
 
-`tests/1_unit-tests.js` に以下のテストを記述してください。
+Write the following tests in `tests/1_unit-tests.js`:
 
-- `convertHandler` は、整数入力を正しく読み取る必要があります。
-- `convertHandler` は、小数入力を正しく読み取る必要があります。
-- `convertHandler` は、分数入力を正しく読み取る必要があります。
-- `convertHandler` は、小数による分数入力を正しく読み取る必要があります。
+- `convertHandler` は、整数の入力を正しく読み取る必要があります。
+- `convertHandler` は、小数の入力を正しく読み取る必要があります。
+- `convertHandler` は、分数の入力を正しく読み取る必要があります。
+- `convertHandler` は、小数を使用した分数の入力を正しく読み取る必要があります。
 - `convertHandler` は、二重分数 (`3/2/3` など) の場合にエラーを正しく返す必要があります。
-- 数字が入力されていない場合、`convertHandler` は、デフォルトで数字 `1` を正しく入力する必要があります。
+- 数値が入力されていない場合、`convertHandler` は、デフォルトで数値 `1` を正しく入力する必要があります。
 - `convertHandler` は、それぞれの有効な入力単位を正しく読み取る必要があります。
 - `convertHandler` は、無効な入力単位の場合にエラーを正しく返す必要があります。
-- `convertHandler` は、有効な入力単位ごとに正しい戻り値単位を返す必要があります。
-- `convertHandler` は、有効な入力単位ごとに文字列単位を略さずに正しく返す必要があります。
+- `convertHandler` は、有効な入力単位ごとに正しい戻り値の単位を返す必要があります。
+- `convertHandler` は、有効な入力単位ごとに説明の文字列を正しく返す必要があります。
 - `convertHandler` は、`gal` を `L` に正しく変換する必要があります。
 - `convertHandler` は、`L` を `gal` に正しく変換する必要があります。
 - `convertHandler` は、`mi` を `km` に正しく変換する必要があります。
@@ -43,17 +51,17 @@ dashedName: metric-imperial-converter
 - `convertHandler` は、`lbs` を `kg` に正しく変換する必要があります。
 - `convertHandler` は、`kg` を `lbs` に正しく変換する必要があります。
 
-`tests/2_functional-tests.js` に以下のテストを記述してください。
+Write the following tests in `tests/2_functional-tests.js`:
 
-- `10L` などの有効な入力を変換してください: `/api/convert` への `GET` リクエスト
-- `32g` などの無効な入力を変換してください: `/api/convert` への`GET` リクエスト
-- `3/7.2/4kg` などの無効な数字を変換してください: `/api/convert` への `GET` リクエスト
-- `3/7.2/4kilomegagram` などの無効な数字かつ単位を変換してください: `/api/convert` への `GET` リクエスト
-- `kg` などの数字のない入力を変換してください: `/api/convert` への `GET` リクエスト
+- `10L` など、有効な入力を変換する: `/api/convert` への `GET` リクエスト
+- `32g` など、無効な入力を変換する: `/api/convert` への`GET` リクエスト
+- `3/7.2/4kg` など、無効な数値を変換する: `/api/convert` への `GET` リクエスト
+- `3/7.2/4kilomegagram` など、数値も単位も無効な入力を変換する: `/api/convert` への `GET` リクエスト
+- `kg` など、数値のない入力を変換する: `/api/convert` への `GET` リクエスト
 
 # --hints--
 
-サンプルの URL ではなく、自分で作成したプロジェクトを提供することができます。
+You can provide your own project, not the example URL.
 
 ```js
 getUserInput => {
@@ -65,13 +73,13 @@ getUserInput => {
 };
 ```
 
-受け取った数字と単位を含む単一のパラメータを設定して `/api/convert` への `GET` を実行し、変換を実行することができます。 (ヒント: 単位の始まりを示す最初の文字のインデックスを探して入力を分割してください)
+You can `GET` `/api/convert` with a single parameter containing an accepted number and unit and have it converted. (Hint: Split the input by looking for the index of the first character which will mark the start of the unit)
 
 ```js
 
 ```
 
-`'gal'` を `'L'` に変換できます。その逆も可能です。 (1 gal を 3.78541 L へ)
+You can convert `'gal'` to `'L'` and vice versa. (1 gal to 3.78541 L)
 
 ```js
 async getUserInput => {
@@ -94,7 +102,7 @@ async getUserInput => {
 };
 ```
 
-`'lbs'` を `'kg'` に変換できます。その逆も可能です。 (1 lbs を 0.453592 kg へ)
+You can convert `'lbs'` to `'kg'` and vice versa. (1 lbs to 0.453592 kg)
 
 ```js
 async getUserInput => {
@@ -117,7 +125,7 @@ async getUserInput => {
 };
 ```
 
-`'mi'` を `'km'` に変換できます。その逆も可能です。 (1 mi を 1.60934 km へ)
+You can convert `'mi'` to `'km'` and vice versa. (1 mi to 1.60934 km)
 
 ```js
 async getUserInput => {
@@ -140,7 +148,7 @@ async getUserInput => {
 };
 ```
 
-すべての入力単位は大文字と小文字の両方で受け入れられるようにする必要がありますが、小文字の `initUnit` と `returnUnit` で返す必要があります。ただし、liter のみは例外で、大文字の `'L'` で表示する必要があります。
+All incoming units should be accepted in both upper and lower case, but should be returned in both the `initUnit` and `returnUnit` in lower case, except for liter, which should be represented as an uppercase `'L'`.
 
 ```js
 async getUserInput => {
@@ -163,7 +171,7 @@ async getUserInput => {
 };
 ```
 
-尺度の単位が無効の場合は、`'invalid unit'` を返します。
+If the unit of measurement is invalid, returned will be `'invalid unit'`.
 
 ```js
 async getUserInput => {
@@ -176,7 +184,7 @@ async getUserInput => {
 };
 ```
 
-数値が無効の場合は、`'invalid number'` を返します。
+If the number is invalid, returned will be `'invalid number'`.
 
 ```js
 async getUserInput => {
@@ -191,7 +199,7 @@ async getUserInput => {
 };
 ```
 
-単位と数値の両方が無効な場合は、`'invalid number and unit'` を返します。
+If both the unit and number are invalid, returned will be `'invalid number and unit'`.
 
 ```js
 async getUserInput => {
@@ -209,7 +217,7 @@ async getUserInput => {
 };
 ```
 
-パラメーターでは分数、小数または両方を使用できますが (5、1/2、2.5/6 など)、何も指定されていない場合はデフォルトで 1 になります。
+You can use fractions, decimals or both in the parameter (ie. 5, 1/2, 2.5/6), but if nothing is provided it will default to 1.
 
 ```js
 async getUserInput => {
@@ -240,7 +248,7 @@ async getUserInput => {
 };
 ```
 
-`initNum`、`initUnit`、`returnNum`、`returnUnit` および `string` を返し、単位は `'{initNum} {initUnitString} converts to {returnNum} {returnUnitString}'` という形式でスペルアウトし、結果を小数点 5 桁に丸めます。
+Your return will consist of the `initNum`, `initUnit`, `returnNum`, `returnUnit`, and `string` spelling out units in the format `'{initNum} {initUnitString} converts to {returnNum} {returnUnitString}'` with the result rounded to 5 decimals.
 
 ```js
 async getUserInput => {
@@ -257,7 +265,7 @@ async getUserInput => {
 };
 ```
 
-16 種類のテストがすべて完了し、合格しています。
+All 16 unit tests are complete and passing.
 
 ```js
 async getUserInput => {
@@ -282,7 +290,7 @@ async getUserInput => {
 };
 ```
 
-5 種類の機能テストがすべて完了し、合格しています。
+All 5 functional tests are complete and passing.
 
 ```js
 async getUserInput => {

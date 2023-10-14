@@ -12,7 +12,7 @@ import './video-modal.css';
 
 interface VideoModalProps {
   closeVideoModal: () => void;
-  executeGA: (attributes: { type: string; data: string }) => void;
+  executeGA: (attributes: { event: string; pagePath: string }) => void;
   isOpen?: boolean;
   t: (attribute: string) => string;
   videoUrl?: string;
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     dispatch
   );
 
-export function VideoModal({
+function VideoModal({
   closeVideoModal,
   executeGA,
   isOpen,
@@ -36,17 +36,21 @@ export function VideoModal({
   videoUrl
 }: VideoModalProps): JSX.Element {
   if (isOpen) {
-    executeGA({ type: 'modal', data: '/completion-modal' });
+    executeGA({ event: 'pageview', pagePath: '/completion-modal' });
   }
   return (
     <Modal dialogClassName='video-modal' onHide={closeVideoModal} show={isOpen}>
       <Modal.Header className='video-modal-header fcc-modal' closeButton={true}>
-        <Modal.Title className='text-center'>
+        <Modal.Title
+          className='text-center'
+          data-playwright-test-label='video-modal-title'
+        >
           {t('buttons.watch-video')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='video-modal-body'>
         <iframe
+          data-playwright-test-label='video-modal-video-player-iframe'
           frameBorder='0'
           src={videoUrl}
           title={t('buttons.watch-video')}

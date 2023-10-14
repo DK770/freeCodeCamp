@@ -8,7 +8,7 @@ dashedName: add-a-tooltip-to-a-d3-element
 
 # --description--
 
-Ein Tooltip zeigt mehr Informationen über ein Element auf einer Seite an, wenn der User über das Element fährt. Es gibt mehrere Wege, um einen Tooltip zu einer Visualisierung hinzuzufügen. Diese Aufgabe verwendet das SVG `title`-Element.
+Ein Tooltip zeigt mehr Informationen über ein Element auf einer Seite an, wenn der User über das Element fährt. Es gibt mehrere Möglichkeiten einer Visualisierung einen Tooltip hinzuzufügen. Diese Aufgabe verwendet das SVG `title`-Element.
 
 `title` wird mit der `text()`-Methode gekoppelt, um dynamisch Daten zu den Balken hinzuzufügen.
 

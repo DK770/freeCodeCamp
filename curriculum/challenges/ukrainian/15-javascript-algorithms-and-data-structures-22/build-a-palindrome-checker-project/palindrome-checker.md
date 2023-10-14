@@ -8,91 +8,91 @@ dashedName: build-a-palindrome-checker
 
 # --description--
 
-Повернути `true`, якщо заданий рядок є паліндромом. В іншому випадку, повернути `false`.
+Поверніть `true`, якщо заданий рядок є паліндромом. В іншому випадку, поверніть `false`.
 
-<dfn>Паліндром</dfn> – це слово чи речення, що однаково пишеться в обох напрямках (зліва направо та справа наліво), незважаючи на розділові знаки, велику/малу літеру чи пробіли.
+<dfn>Паліндром</dfn> — це слово чи речення, що однаково пишеться в обох напрямках (зліва направо та справа наліво), незважаючи на розділові знаки, велику/малу літеру чи пробіли.
 
 **Примітка:** вам потрібно прибрати **всі неалфавітні символи** (розділові знаки, пробіли та символи) і написати весь текст одинаково (великими або малими літерами) для перевірки паліндромів.
 
-Ми будемо пропускати рядки з різними форматами, наприклад `racecar`, `RaceCar` та `race CAR` серед інших.
+Ми будемо передавати рядки з різними форматами, наприклад `racecar`, `RaceCar` та `race CAR` серед інших.
 
-Ми також будемо пропускати рядки з спеціальними символами, наприклад `2A3*3a2`, `2A3 3a2` та `2_A3*3#A2`.
+Ми також будемо передавати рядки з спеціальними символами, наприклад `2A3*3a2`, `2A3 3a2` та `2_A3*3#A2`.
 
 # --hints--
 
-`palindrome("eye")` повинен повертати булеве значення.
+`palindrome("eye")` має повертати булеве значення.
 
 ```js
 assert(typeof palindrome('eye') === 'boolean');
 ```
 
-`palindrome("eye")` повинен повертати `true`.
+`palindrome("eye")` має повертати `true`.
 
 ```js
 assert(palindrome('eye') === true);
 ```
 
-`palindrome("_eye")` повинен повертати `true`.
+`palindrome("_eye")` має повертати `true`.
 
 ```js
 assert(palindrome('_eye') === true);
 ```
 
-`palindrome("race car")` повинен повертати `true`.
+`palindrome("race car")` має повертати `true`.
 
 ```js
 assert(palindrome('race car') === true);
 ```
 
-`palindrome("not a palindrome")` повинен повертати `false`.
+`palindrome("not a palindrome")` має повертати `false`.
 
 ```js
 assert(palindrome('not a palindrome') === false);
 ```
 
-`palindrome("A man, a plan, a canal. Panama")` повинен повертати `true`.
+`palindrome("A man, a plan, a canal. Panama")` має повертати `true`.
 
 ```js
 assert(palindrome('A man, a plan, a canal. Panama') === true);
 ```
 
-`palindrome("never odd or even")` повинен повертати `true`.
+`palindrome("never odd or even")` має повертати `true`.
 
 ```js
 assert(palindrome('never odd or even') === true);
 ```
 
-`palindrome("nope")` повинен повертати `false`.
+`palindrome("nope")` має повертати `false`.
 
 ```js
 assert(palindrome('nope') === false);
 ```
 
-`palindrome("almostomla")` повинен повертати `false`.
+`palindrome("almostomla")` має повертати `false`.
 
 ```js
 assert(palindrome('almostomla') === false);
 ```
 
-`palindrome("My age is 0, 0 si ega ym.")` повинен повертати `true`.
+`palindrome("My age is 0, 0 si ega ym.")` має повертати `true`.
 
 ```js
 assert(palindrome('My age is 0, 0 si ega ym.') === true);
 ```
 
-`palindrome("1 eye for of 1 eye.")` повинен повертати `false`.
+`palindrome("1 eye for of 1 eye.")` має повертати `false`.
 
 ```js
 assert(palindrome('1 eye for of 1 eye.') === false);
 ```
 
-`palindrome("0_0 (: /-\ :) 0-0")` повинен повертати `true`.
+`palindrome("0_0 (: /-\ :) 0-0")` має повертати `true`.
 
 ```js
 assert(palindrome('0_0 (: /- :) 0-0') === true);
 ```
 
-`palindrome("five|\_/|four")` повинен повертати `false`.
+`palindrome("five|\_/|four")` має повертати `false`.
 
 ```js
 assert(palindrome('five|_/|four') === false);

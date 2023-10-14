@@ -7,10 +7,26 @@ import { config } from 'dotenv';
 const envPath = resolve(__dirname, '../../.env');
 config({ path: envPath });
 
-import { availableLangs, auditedCerts } from '../../config/i18n/all-langs';
-import { getChallengesForLang } from '../../curriculum/getChallenges';
-import { SuperBlocks } from '../../config/certification-settings';
-import { ChallengeNode } from '../../client/src/redux/prop-types';
+import { availableLangs } from '../../shared/config/i18n';
+import { getChallengesForLang } from '../../curriculum/get-challenges';
+import {
+  SuperBlocks,
+  getAuditedSuperBlocks
+} from '../../shared/config/superblocks';
+
+// TODO: re-organise the types to a common 'types' folder that can be shared
+// between the workspaces so we don't have to declare ChallengeNode here and in
+// the client.
+
+// This cannot be imported from the client, without causing tsc to attempt to
+// compile the client (something it cannot do)
+type ChallengeNode = {
+  block: string;
+  dashedName: string;
+  superBlock: SuperBlocks;
+  id: string;
+  challengeType: number;
+};
 
 const superBlockFolderMap = {
   'responsive-web-design': '01-responsive-web-design',
@@ -28,7 +44,14 @@ const superBlockFolderMap = {
   'relational-database': '13-relational-database',
   '2022/responsive-web-design': '14-responsive-web-design-22',
   '2022/javascript-algorithms-and-data-structures':
-    '15-javascript-algorithms-and-data-structures-22'
+    '15-javascript-algorithms-and-data-structures-22',
+  'the-odin-project': '16-the-odin-project',
+  'college-algebra-with-python': '17-college-algebra-with-python',
+  'project-euler': '18-project-euler',
+  'foundational-c-sharp-with-microsoft':
+    '19-foundational-c-sharp-with-microsoft',
+  'upcoming-python': '20-upcoming-python',
+  'example-certification': '99-example-certification'
 };
 
 // These blocks are in the incorrect superblock. They should be moved but, for
@@ -51,7 +74,7 @@ const getChallenges = async (lang: string) => {
         key => superBlock[key].challenges
       );
       return [...challengeArray, ...flatten(challengesForBlock)];
-    }, []) as unknown as ChallengeNode['challenge'][];
+    }, []) as unknown as ChallengeNode[];
 };
 
 /* eslint-enable @typescript-eslint/no-unsafe-return */
@@ -89,7 +112,11 @@ void (async () => {
   );
   for (const lang of langsToCheck) {
     console.log(`\n=== ${lang} ===`);
-    const certs = auditedCerts[lang as keyof typeof auditedCerts];
+    const certs = getAuditedSuperBlocks({
+      language: lang,
+      showNewCurriculum: process.env.SHOW_NEW_CURRICULUM === 'true',
+      showUpcomingChanges: process.env.SHOW_UPCOMING_CHANGES === 'true'
+    });
     const langCurriculumDirectory = join(
       process.cwd(),
       'curriculum',

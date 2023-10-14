@@ -1,31 +1,31 @@
 ---
 id: 60fad6dfcc0d930a59becf12
-title: Step 41
+title: Step 43
 challengeType: 0
-dashedName: step-41
+dashedName: step-43
 ---
 
 # --description--
 
-The HTML for the registration form is finished. Now, you can spruce it up a bit.
+Der HTML-Code für das Anmeldeformular ist abgeschlossen. Jetzt kannst du es ein bisschen verschönern.
 
-Start by changing the font to `Tahoma`, and the font size to `16px` in the `body`.
+Beginne, indem du im `body` die Schriftart auf `Tahoma` und die Schriftgröße auf `16px` änderst.
 
 # --hints--
 
-You should use the `font-family` property to change the font.
+Du solltest die `font-family`-Eigenschaft verwenden, um die Schriftart zu ändern.
 
 ```js
 assert.isNotEmpty(new __helpers.CSSHelp(document).getStyle('body')?.fontFamily);
 ```
 
-You should set the `font-family` property to `Tahoma`.
+Du solltest die `font-family`-Eigenschaft auf `Tahoma` setzen.
 
 ```js
 assert.equal(new __helpers.CSSHelp(document).getStyle('body')?.fontFamily, 'Tahoma');
 ```
 
-You should set the `font-size` property to `16px`.
+Du solltest die `font-size`-Eigenschaft auf `16px` setzen.
 
 ```js
 assert.equal(new __helpers.CSSHelp(document).getStyle('body')?.fontSize, '16px');
@@ -46,7 +46,7 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('body')?.fontSize, '16px')
   <body>
     <h1>Registration Form</h1>
     <p>Please fill out this form with the required information</p>
-    <form action='https://register-demo.freecodecamp.org'>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
       <fieldset>
         <label for="first-name">Enter Your First Name: <input id="first-name" name="first-name" type="text" required /></label>
         <label for="last-name">Enter Your Last Name: <input id="last-name" name="last-name" type="text" required /></label>
@@ -54,11 +54,9 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('body')?.fontSize, '16px')
         <label for="new-password">Create a New Password: <input id="new-password" name="new-password" type="password" pattern="[a-z0-5]{8,}" required /></label>
       </fieldset>
       <fieldset>
-        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" /> Personal Account</label>
-        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business Account</label>
-        <label for="terms-and-conditions" name="terms-and-conditions">
-          <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
-        </label>
+        <legend>Account type (required)</legend>
+        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" checked /> Personal</label>
+        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business</label>
       </fieldset>
       <fieldset>
         <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="file" /></label>
@@ -76,6 +74,9 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('body')?.fontSize, '16px')
           <textarea id="bio" name="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea>
         </label>
       </fieldset>
+      <label for="terms-and-conditions">
+        <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
+      </label>
       <input type="submit" value="Submit" />
     </form>
   </body>

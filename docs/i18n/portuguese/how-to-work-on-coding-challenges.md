@@ -309,7 +309,7 @@ Aqui vemos diretrizes de formatação específicas para o código seed do desafi
 
 ### Comentários do código seed
 
-Temos um [comment dictionary](/curriculum/dictionaries/english/comments.js) que contém os únicos comentários que podem ser usados no código seed. O espaçamento e as letras maiúsculas e minúsculas do dicionário de comentário devem ser usadas exatamente como são. O dicionário de comentário não deve ser expandido sem uma discussão prévia com o time de desenvolvimento (dev-team).
+Temos um [dicionário de comentários](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) que contém os únicos comentários que podem ser usados no código seed. O espaçamento e as letras maiúsculas e minúsculas do dicionário de comentário devem ser usadas exatamente como são. O dicionário de comentário não deve ser expandido sem uma discussão prévia com o time de desenvolvimento (dev-team).
 
 Os comentários usados devem ter um espaço entre os caracteres do comentário e o comentário em si. Geralmente, os comentários devem ser usados com moderação. Sempre considere reescrever a descrição de um desafio ou instrução se for possível evitar usar um comentário de código fornecido.
 
@@ -371,7 +371,7 @@ class MyComponent extends React.Component {
 
 ### Tradução de comentários de código seed
 
-Existem dicionários de comentários separados para cada linguagem. A [versão em inglês do dicionário de comentários](/curriculum/dictionaries/english/comments.js) é a base para as traduções encontradas nas versões correspondentes dos arquivos em outros idiomas. A versão não inglesa do dicionário de comentário chinesa pode ser encontrada em `/curriculum/dictionaries/chinese/comments.js`. Cada dicionário consiste em um array de objetos com uma propriedade de `id` única e uma propriedade de `text`. Somente a propriedade `text` deve ser modificada para englobar a tradução do comentário correspondente em inglês.
+Existem dicionários de comentários separados para cada linguagem. A [versão em inglês do dicionário de comentários](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) é a base para as traduções encontradas nas versões correspondentes dos arquivos em outros idiomas. A versão do dicionário de comentários em chinês (não a versão em inglês) pode ser encontrada em `/curriculum/dictionaries/chinese/comments.json`. Cada dicionário consiste em um array de objetos com uma propriedade de `id` única e uma propriedade de `text`. Somente a propriedade `text` deve ser modificada para englobar a tradução do comentário correspondente em inglês.
 
 Alguns comentários podem conter uma palavra/frase que não deve ser traduzida. Por exemplo, nomes de variáveis, ou nomes próprios de bibliotecas como "React" não devem ser traduzidas. Veja o comentário abaixo como um exemplo. A palavra `myGlobal` não deve ser traduzida.
 
@@ -460,17 +460,17 @@ Antes de [criar um pull request](how-to-open-a-pull-request.md) para suas modifi
 1. Para testar todos os desafios, execute o comando abaixo a partir do diretório raiz
 
 ````
-npm run test:curriculum
+pnpm run test:curriculum
 ```
 
 2. Você também pode testar um bloco ou superbloco de desafios com esses comandos
 
 ```
-npm run test:curriculum --block='Basic HTML and HTML5'
+FCC_BLOCK='Basic HTML and HTML5' pnpm run test:curriculum
 ```
 
 ```
-npm run test:curriculum --superblock=responsive-web-design
+FCC_SUPERBLOCK='responsive-web-design' pnpm run test:curriculum
 ```
 
 Você também é capaz de testar um desafio individualmente seguindo as seguintes etapas:
@@ -484,18 +484,104 @@ Você também é capaz de testar um desafio individualmente seguindo as seguinte
 2. Execute o comando a seguir para cada arquivo de desafio no qual você fez alteraçõess (substituindo `challenge-title-goes-here` com o título completo do desafio):
 
    ```
-   npm run test -- -g challenge-title-goes-here ```
+   pnpm run test -- -g titulo-do-desafio-aqui
+   ```
 
-Quando você verificar que cada desafio modificado passou nos testes, [crie um pull request](how-to-open-a-pull-request.md).
+> [!TIP]
+> Você pode definir a váriavel de ambiente `LOCALE` no arquivo `.env` para o idioma do(s) desafio(s) que você precisa testar.
+>
+> Os valores aceitos de momento são `english` e `chinese`, com `english` sendo o valor padrão.
 
-> [!TIP] Você pode definir a variável de ambiente `LOCALE` no `.env` no idioma do(s) desafio(s) que precisa testar.
-> 
-> Os valores atualmente aceitos são `english` e `chinese`, com `english` sendo o padrão.
+## Propondo um Pull Request (PR)
 
-### Links úteis
+Depois de fazer o commit de suas alterações, confira aqui [como abrir um Pull Request](how-to-open-a-pull-request.md).
+
+## Links úteis
 
 Criação e edição de desafios:
 
 1. [Tipos de desafio](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.js#L1-L13) - o que significam os valores do tipo de desafio numérico (enum).
 
-2. [Contribuindo para o FreeCodeCamp - Escrevendo testes de desafio ES6](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - um vídeo com [Ethan Arrowood](https://twitter.com/ArrowoodTech) contribuindo para a versão antiga do currículo.
+2. [Contribuindo para o FreeCodeCamp - Escrevendo testes para desafios de ES6](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - um vídeo que acompanha [Ethan Arrowood](https://twitter.com/ArrowoodTech) durante sua contribuição para a versão antiga do currículo.
+
+## Scripts auxiliares
+
+> [!NOTE]
+> Se estiver trabalhando com os desafios baseados em passos, consulte a seção [Trabalho com projetos práticos](how-to-work-on-practice-projects.md).
+
+Existem alguns scripts auxiliares que podem ser usados para gerenciar os desafios em um bloco. Observe que todos esses comandos devem ser executados no diretório do bloco. Por exemplo:
+
+```bash
+cd curriculum/challenges/english/02-javascript-algorithms-and-data-structures/basic-algorithm-scripting
+```
+
+### Adicionar um novo desafio
+
+Para adicionar um novo desafio no final de um bloco, chame o script:
+
+```bash
+pnpm run create-next-challenge
+```
+
+Ele solicitará a informação do desafio e criará o arquivo de desafio, atualizando o arquivo `meta.json` com as novas informações de desafio.
+
+### Excluir um desafio
+
+Para excluir um desafio, chame o script:
+
+```bash
+pnpm run delete-challenge
+```
+
+Ele solicitará que você selecione qual desafio deve ser excluído. Em seguida, excluirá o arquivo e atualizará o arquivo `meta.json` para remover o desafio da ordem.
+
+### Inserir um desafio
+
+Para inserir um desafio antes de um desafio existente, chame o script:
+
+```bash
+pnpm run insert-challenge
+```
+
+Ele solicitará a informação do desafio e, em seguida, o desafio será inserido antes do desafio informado. Por exemplo, se suas escolhas forem:
+
+```bash
+a
+b
+c
+```
+
+E se você escolher `b`, a nova ordem será:
+
+```bash
+a
+novo desafio
+b
+c
+```
+
+### Atualizar a ordem dos desafios
+
+Se você precisar reordenar manualmente os desafios, chame o script:
+
+```bash
+pnpm run update-challenge-order
+```
+
+Ele vai orientá-lo através de um processo interativo para selecionar a ordem dos desafios.
+
+## Solução de problemas
+
+### Loop infinito detectado
+
+Se você ver o seguinte erro no console ao pré-visualizar um desafio:
+
+```text
+Potential infinite loop detected on line <number>...
+```
+
+Isso significa que o plug-in de proteção de loops encontrou um loop de longa duração ou uma função recursiva. Se o desafio precisar fazer isso (por exemplo, contém um loop de eventos que deve ser executado indefinidamente), então você pode impedir que o plug-in seja usado na visualização. Para fazer isso, adicione `disableLoopProtectPreview: true` ao arquivo `meta.json` do bloco.
+
+Se os testes demandam muitos cálculos, você poderá ver esse erro quando eles forem executados. Se isso acontecer, adicione `disableLoopProtectPreview: true` ao arquivo `meta.json` do bloco.
+
+Normalmente, não é necessário ter os dois definidos como true, Defina-os, apenas, conforme necessário.

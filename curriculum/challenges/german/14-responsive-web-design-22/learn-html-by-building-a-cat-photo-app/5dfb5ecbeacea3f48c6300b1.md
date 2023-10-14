@@ -1,13 +1,13 @@
 ---
 id: 5dfb5ecbeacea3f48c6300b1
-title: Step 21
+title: Schritt 21
 challengeType: 0
 dashedName: step-21
 ---
 
 # --description--
 
-Use list item (`li`) elements to create items in a list. Here is an example of list items in an unordered list:
+Verwende (`li`)-Listen-Elemente, um Elemente in einer Liste zu erstellen. Hier ist ein Beispiel für Listen-Elemente in einer unsortierten Liste:
 
 ```html
 <ul>
@@ -16,19 +16,19 @@ Use list item (`li`) elements to create items in a list. Here is an example of l
 </ul>
 ```
 
-Within the `ul` element nest three list items to display three things cats love:
+Bette innerhalb des `ul`-Elements drei Listen-Elemente ein, um drei Dinge anzuzeigen, die Katzen lieben:
 
 `cat nip` `laser pointers` `lasagna`
 
 # --hints--
 
-You should have three `li` elements. Each `li` element should have its own opening and closing tag.
+Du solltest drei `li`-Elemente haben. Jedes `li`-Element sollte ein eigenes öffnendes und schließendes Tag besitzen.
 
 ```js
 assert($('li').length === 3 && code.match(/<\/li\>/g).length === 3);
 ```
 
-You should have three `li` elements with the text `cat nip`, `laser pointers` and `lasagna` in any order. You have either omitted some text or have a typo.
+Du solltest drei `li`-Elemente mit dem Text `cat nip`, `laser pointers` und `lasagna` in beliebiger Reihenfolge haben. Du hast entweder etwas Text weggelassen oder einen Tippfehler gemacht.
 
 ```js
 assert.deepStrictEqual(
@@ -39,7 +39,7 @@ assert.deepStrictEqual(
 );
 ```
 
-The three `li` elements should be located between the `ul` element's opening and closing tags.
+Die drei `li`-Elemente sollten sich zwischen dem öffnenden und schließenden Tag des `ul`-Elements befinden.
 
 ```js
 assert(
@@ -61,7 +61,7 @@ assert(
       <section>
         <h2>Cat Photos</h2>
         <!-- TODO: Add link to cat photos -->
-        <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
+        <p>See more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a> in our gallery.</p>
         <a href="https://freecatphotoapp.com"><img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
       </section>
       <section>
@@ -69,6 +69,7 @@ assert(
         <h3>Things cats love:</h3>
 --fcc-editable-region--
         <ul>
+
         </ul>
 --fcc-editable-region--
       </section>

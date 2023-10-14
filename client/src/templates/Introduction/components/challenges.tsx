@@ -8,8 +8,7 @@ import type { Dispatch } from 'redux';
 import GreenNotCompleted from '../../../assets/icons/green-not-completed';
 import GreenPass from '../../../assets/icons/green-pass';
 import { executeGA } from '../../../redux/actions';
-import { SuperBlocks } from '../../../../../config/certification-settings';
-import { ExecuteGaArg } from '../../../pages/donate';
+import { SuperBlocks } from '../../../../../shared/config/superblocks';
 import { ChallengeWithCompletedNode } from '../../../redux/prop-types';
 import { isNewJsCert, isNewRespCert } from '../../../utils/is-a-cert';
 
@@ -18,37 +17,21 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 
 interface Challenges {
   challengesWithCompleted: ChallengeWithCompletedNode[];
-  executeGA: (payload: ExecuteGaArg) => void;
   isProjectBlock: boolean;
   superBlock: SuperBlocks;
   blockTitle?: string | null;
 }
 
-const mapIconStyle = { height: '15px', marginRight: '10px', width: '15px' };
+const CheckMark = ({ isCompleted }: { isCompleted: boolean }) =>
+  isCompleted ? <GreenPass /> : <GreenNotCompleted />;
 
 function Challenges({
   challengesWithCompleted,
-  executeGA,
   isProjectBlock,
   superBlock,
   blockTitle
 }: Challenges): JSX.Element {
   const { t } = useTranslation();
-  const handleChallengeClick = (slug: string) =>
-    executeGA({
-      type: 'event',
-      data: {
-        category: 'Map Challenge Click',
-        action: slug
-      }
-    });
-
-  const renderCheckMark = (isCompleted: boolean) =>
-    isCompleted ? (
-      <GreenPass style={mapIconStyle} />
-    ) : (
-      <GreenNotCompleted style={mapIconStyle} />
-    );
 
   const isGridMap = isNewRespCert(superBlock) || isNewJsCert(superBlock);
 
@@ -66,9 +49,6 @@ function Challenges({
         <div className='challenge-jump-link'>
           <Link
             className='btn btn-primary'
-            onClick={() =>
-              handleChallengeClick(firstIncompleteChallenge.fields.slug)
-            }
             to={firstIncompleteChallenge.fields.slug}
           >
             {!isChallengeStarted
@@ -94,7 +74,6 @@ function Challenges({
             >
               {!isProjectBlock ? (
                 <Link
-                  onClick={() => handleChallengeClick(challenge.fields.slug)}
                   to={challenge.fields.slug}
                   className={`map-grid-item ${
                     +challenge.isCompleted ? 'challenge-completed' : ''
@@ -109,13 +88,10 @@ function Challenges({
                   </span>
                 </Link>
               ) : (
-                <Link
-                  onClick={() => handleChallengeClick(challenge.fields.slug)}
-                  to={challenge.fields.slug}
-                >
+                <Link to={challenge.fields.slug}>
                   {challenge.title}
                   <span className=' badge map-badge map-project-checkmark'>
-                    {renderCheckMark(challenge.isCompleted)}
+                    <CheckMark isCompleted={challenge.isCompleted} />
                   </span>
                 </Link>
               )}
@@ -135,23 +111,17 @@ function Challenges({
           key={'map-challenge' + challenge.fields.slug}
         >
           {!isProjectBlock ? (
-            <Link
-              onClick={() => handleChallengeClick(challenge.fields.slug)}
-              to={challenge.fields.slug}
-            >
+            <Link to={challenge.fields.slug}>
               <span className='badge map-badge'>
-                {renderCheckMark(challenge.isCompleted)}
+                <CheckMark isCompleted={challenge.isCompleted} />
               </span>
               {challenge.title}
             </Link>
           ) : (
-            <Link
-              onClick={() => handleChallengeClick(challenge.fields.slug)}
-              to={challenge.fields.slug}
-            >
+            <Link to={challenge.fields.slug}>
               {challenge.title}
               <span className='badge map-badge map-project-checkmark'>
-                {renderCheckMark(challenge.isCompleted)}
+                <CheckMark isCompleted={challenge.isCompleted} />
               </span>
             </Link>
           )}

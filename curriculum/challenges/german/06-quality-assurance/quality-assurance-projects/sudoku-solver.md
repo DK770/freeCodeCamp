@@ -1,6 +1,6 @@
 ---
 id: 5e601bf95ac9d0ecd8b94afd
-title: Sudoku Solver
+title: Sudoku-Löser
 challengeType: 4
 forumTopicId: 462357
 dashedName: sudoku-solver
@@ -12,9 +12,15 @@ Build a full stack JavaScript app that is functionally similar to this: <a href=
 
 -   Clone <a href="https://github.com/freecodecamp/boilerplate-project-sudoku-solver" target="_blank" rel="noopener noreferrer nofollow">this GitHub repo</a> and complete your project locally.
 -   Use <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-sudoku-solver" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete your project.
--   Use a site builder of your choice to complete the project. Be sure to incorporate all the files from our GitHub repo.
+-   Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
 
-Wenn du fertig bist, stelle sicher, dass dein Projekt öffentlich zugänglich gehostet ist. Gib dann die URL in das `Solution Link`-Feld ein. Füge optional einen Link zum Quellcode deines Projekts in das `GitHub Link`-Feld ein.
+If you use Replit, follow these steps to set up the project:
+
+-   Start by importing the project on Replit.
+-   Daraufhin wird ein `.replit`-Fenster angezeigt.
+-   Wähle `Use run command` aus und klicke auf die `Done`-Schaltfläche.
+
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
 
 # --instructions--
 
@@ -70,7 +76,7 @@ You should provide your own project, not the example URL.
 };
 ```
 
-You can `POST` `/api/solve` with form data containing `puzzle` which will be a string containing a combination of numbers (1-9) and periods `.` to represent empty spaces. The returned object will contain a `solution` property with the solved puzzle.
+You can `POST` `/api/solve` with form data containing `puzzle` which will be a string containing a combination of numbers (1-9) and periods `.` to represent empty spaces. Das zurückgegebene Objekt enthält eine `solution`-Eigenschaft mit dem gelösten Rätsel.
 
 ```js
 async (getUserInput) => {
@@ -346,7 +352,7 @@ async (getUserInput) => {
 };
 ```
 
-All 12 unit tests are complete and passing. See `/tests/1_unit-tests.js` for the expected behavior you should write tests for.
+All 12 unit tests are complete and passing.
 
 ```js
 async (getUserInput) => {
@@ -371,7 +377,7 @@ async (getUserInput) => {
 };
 ```
 
-All 14 functional tests are complete and passing. See `/tests/2_functional-tests.js` for the expected functionality you should write tests for.
+All 14 functional tests are complete and passing.
 
 ```js
 async (getUserInput) => {

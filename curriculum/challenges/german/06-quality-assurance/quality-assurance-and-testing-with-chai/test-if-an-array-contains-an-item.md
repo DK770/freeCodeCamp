@@ -1,6 +1,6 @@
 ---
 id: 587d824d367417b2b2512c51
-title: Test if an Array Contains an Item
+title: Teste, ob ein Array ein Element enthält
 challengeType: 2
 forumTopicId: 301603
 dashedName: test-if-an-array-contains-an-item
@@ -30,7 +30,7 @@ All tests should pass.
   );
 ```
 
-You should choose the correct method for the first assertion - `include` vs. `notInclude`.
+Du solltest die richtige Methode für die erste Behauptung wählen - `include` vs. `notInclude`.
 
 ```js
 (getUserInput) =>
@@ -48,7 +48,7 @@ You should choose the correct method for the first assertion - `include` vs. `no
   );
 ```
 
-You should choose the correct method for the second assertion - `include` vs. `notInclude`.
+Du solltest die richtige Methode für die zweite Behauptung auswählen - `include` vs. `notInclude`.
 
 ```js
 (getUserInput) =>

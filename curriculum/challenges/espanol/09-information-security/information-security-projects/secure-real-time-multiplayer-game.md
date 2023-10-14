@@ -14,26 +14,32 @@ Desarrolla un juego multijugador en tiempo real en 2D utilizando HTML Canvas API
 -   Usa <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-secure-real-time-multiplayer-game" target="_blank" rel="noopener noreferrer nofollow">nuestro proyecto inicial de Replit</a> para completar tu proyecto.
 -   Utiliza un constructor de sitios de tu elección para completar el proyecto. Asegúrate de incorporar todos los archivos de nuestro repositorio GitHub.
 
-Cuando hayas terminado, asegúrate de que un demo funcional de tu proyecto esté alojado en algún lugar público. Luego, envía la URL en el campo `Solution Link`. Opcionalmente, también envía un enlace al código fuente de tu proyecto en el campo `GitHub Link`.
+Si usas Replit, sigue estos pasos para configurar el proyecto:
+
+-   Empieza importando el proyecto en Replit.
+-   Siguiente, verás una ventana `.replit`.
+-   Seleccione `Use run command` y haga click en el botón `Done`.
+
+Cuando este hecho, asegurese que una demostración de trabajo de tu proyecto es alojado en algún lugar público. Luego envíe la URL esto en el campo Enlace Solution. Opcionalmente, también envía un enlace al código fuente de tu proyecto en el campo de enlace GitHub.
 
 # --instructions--
 
-Crea un juego multijugador seguro en el cual cada jugador pueda mover su avatar, haya al menos un artículo coleccionable y la clasificación de los jugadores se calcule según su puntuación.
+Crea un juego multijugador seguro en el cual cada jugador pueda mover su avatar, hay al menos un artículo coleccionable, y el rango de los jugadores es calculado basado en su puntuación.
 
-Para más detalles consulta los tests más abajo.
+Para detalles consulta las pruebas a continuación.
 
-¡Asegúrate de que el juego sea seguro! Incluye las siguientes medidas de seguridad:
+Asegurate que tu juego es seguro! Incluya estas medidas de seguridad:
 
-- El cliente no debe ser capaz de hacer guess/sniff sobre el tipo MIME
-- Impide ataques XSS
-- No guardes en la caché del cliente nada proveniente del sitio web
-- Que las cabeceras indiquen que el sitio es generado por `PHP 7.4.3`
+- El cliente no debe ser capaz debe de acertar/escuchar el tipo MIME
+- Prevenga ataques XSS
+- No guarde la cache de nada desde el sitio web en el cliente
+- Las cabeceras dicen el sitio es accionado por `PHP 7.4.3`
 
-**Nota**: `helmet@^3.21.3` es necesario para las historias de usuario. Esto significa que necesitarás usar la versión previa de la documentación de Helmet, para obtener la información necesaria para poder realizar las historias de usuario.
+**Note**: `helmet@^3.21.3` es necesario para las historias de usuario. Esto significa que necesitarás usar la versión previa de la documentación de Helmet's, para información de como lograr las historias de usuario.
 
 # --hints--
 
-Puedes proporcionar tu propio proyecto, no el URL de ejemplo.
+Puedes proporcionar tu propio proyecto, no la URL de ejemplo.
 
 ```js
 (getUserInput) => {
@@ -45,7 +51,7 @@ Puedes proporcionar tu propio proyecto, no el URL de ejemplo.
 };
 ```
 
-Múltiples jugadores pueden conectarse al servidor y jugar.
+Multiples jugadores pueden conectarse al servidor y jugar.
 
 ```js
 
@@ -63,73 +69,73 @@ Cada jugador es representado por un objeto creado por la clase `Player` en `Play
 
 ```
 
-Como mínimo, cada objeto jugador debe estar compuesto de un `id` único, un `score`, y unas coordenadas `x` e `y` que representan la posición actual del jugador.
+Como mínimo, cada objeto jugador debería contener un único `id`, un `score`, y `x` y `y` coordenadas representando la posición actual del jugador.
 
 ```js
 
 ```
 
-El juego ha de tener al menos un tipo de artículo coleccionable. Completa la clase `Collectible` en `Collectible.mjs` para implementar esta característica.
+El juego tiene al menos un tipo de artículo coleccionable. Completa la clase `Collectible` en `Collectible.mjs` para implementar esto.
 
 ```js
 
 ```
 
-Como mínimo, cada objeto de artículo coleccionable creado por la clase `Collectible` debe estar compuesto de un `id` único, un `value`, y unas coordenadas `x` e `y` que representan la posición actual del artículo.
+Como mínimo, cada artículo objeto coleccionable creado por la clase `Collectible` debería contener un único `id`, un `value`, y `x` y `y` coordenadas representando la posición actual del artículo.
 
 ```js
 
 ```
 
-Los jugadores pueden usar el WASD y/o las teclas de cursor para mover su avatar. Completa el método `movePlayer` en `Player.mjs` para implementar esta característica.
+Los jugadores pueden usar las teclas WASD y/o teclas flechas para mover su avatar. Completa el método `movePlayer` en `Player.mjs` para implementar esto.
 
 ```js
 
 ```
 
-El método `movePlayer` debe aceptar dos argumentos: una cadena de entre "up", "down", "left" o "right", y un número representando la cantidad de píxeles en que debe cambiar la posición del jugador. `movePlayer` debe ajustar las coordenadas `x` e `y` del objeto jugador desde el cual es llamado.
+El método `movePlayer` debería aceptar dos argumentos: una cadena de: "up", "down", "left", o "right", y un número para la cantidad de pixeles de la posición del jugador debería cambiar. `movePlayer` debería ajustar `x` y `y` coordenadas de el objeto jugador desde el cual es llamado.
 
 ```js
 
 ```
 
-La puntuación del jugador debe ser usada para calcular su posición entre los otros jugadores en la clasificación. Completa el método `calculateRank` en la clase `Player` para implementar esta característica.
+El puntaje del jugador debe ser usado para calcular su posición entre los otros jugadores. Completa el método `calculateRank` en la clase `Player` para implementar esto.
 
 ```js
 
 ```
 
-El método `calculateRank` debe aceptar un arreglo de objetos representando todos los jugadores conectados y devolver la cadena `Rank: currentRanking/totalPlayers`. Por ejemplo, en una partida con dos jugadores, si Player A tiene una puntuación de 3 y Player B una puntuación de 5, `calculateRank` para Player A debe devolver `Rank: 2/2`.
+El método `calculateRank` debería aceptar un arreglo de objetos representando todos los jugadores conectados y devolver la cadena `Rank: currentRanking/totalPlayers`. Por ejemplo, en un juego con dos jugadores, si el Jugador A tiene un puntaje de 3 y Jugador B tiene un puntaje de 5, `calculateRank` para Jugador A debería devolver `Rank: 2/2`.
 
 ```js
 
 ```
 
-Los jugadores pueden colisionar con un artículo coleccionable. Completa el método `collision` en `Player.mjs` para implementar esta característica.
+Jugadores pueden colisionar con un artículo coleccionable. Completa el método `collision` en `Player.mjs` para implementar esto.
 
 ```js
 
 ```
 
-El método `collision` debe aceptar un objeto de artículo coleccionable como argumento. Si el avatar del jugador interseca con el artículo, el método `collision` debe devolver `true`.
+El método `collision` debería aceptar un objeto de artículo coleccionable como un argumento. Si el avatar del jugador interseca con el artículo, el método `collision` debería devolver `true`.
 
 ```js
 
 ```
 
-Todos los jugadores son mantenidos en sincronización.
+Todos los jugadores se mantienen sincronizados.
 
 ```js
 
 ```
 
-Los jugadores pueden desconectarse de la partida en cualquier momento.
+Los Jugadores pueden desconectarse del juego en cualquier momento.
 
 ```js
 
 ```
 
-Impide que el cliente trate de hacer guess/sniff sobre el tipo MIME.
+Previene al cliente de intentar escuchar/esnifar el tipo MIME.
 
 ```js
 async (getUserInput) => {
@@ -139,7 +145,7 @@ async (getUserInput) => {
 };
 ```
 
-Impide ataques cross-site scripting (XSS).
+Prevenir ataques de secuencia de comandos de sitio cruzado 'cross-site scripting' (XSS).
 
 ```js
 async (getUserInput) => {
@@ -149,7 +155,7 @@ async (getUserInput) => {
 };
 ```
 
-Nada proveniente del sitio web es guardado en la caché del cliente.
+Nada desde el sitio web es guardado en cache en el cliente.
 
 ```js
 async (getUserInput) => {
@@ -165,7 +171,7 @@ async (getUserInput) => {
 };
 ```
 
-Las cabeceras indican que el sitio está generado por "PHP 7.4.3" incluso cuando no es así (como medida de seguridad).
+Las cabeceras dicen que el sitio es potenciado por "PHP 7.4.3" incluso cuado no es así (como una medida de seguridad).
 
 ```js
 async (getUserInput) => {

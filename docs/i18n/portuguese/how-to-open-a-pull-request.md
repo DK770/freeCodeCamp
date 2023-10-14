@@ -2,7 +2,7 @@
 
 Um pull request (PR) permite que você envie alterações do seu fork do GitHub para o repositório principal do freeCodeCamp.org. Depois de terminar de fazer alterações no código, você pode seguir essas diretrizes para abrir um PR.
 
-Esperamos que nossos colaboradores estejam cientes do processo específico deste projeto. Seguindo as orientações religiosamente, você terá o respeito de outros mantenedores e poupará o tempo de todos.
+Esperamos que nossos colaboradores estejam cientes do processo específico deste projeto. Seguindo as orientações cuidadosamente, você terá o respeito de outros mantenedores e poupará o tempo de todos.
 
 Alguns exemplos disso são:
 
@@ -31,12 +31,12 @@ Sempre que abrir um Pull Request (PR), você pode usar a referência abaixo para
 
 **Tipo:**
 
-| Tipo  | Quando selecionar                                                                      |
-|:----- |:-------------------------------------------------------------------------------------- |
-| fix   | Funcionalidade mudada ou atualizada/melhorada, testes, a explicação de uma lição, etc. |
-| feat  | Somente se você estiver adicionando novas funcionalidades, testes, etc.                |
-| chore | Mudanças não relacionadas ao código, testes ou explicação de uma lição.                |
-| docs  | Mudanças no diretório `/docs` ou nas diretrizes de contribuição, etc.                  |
+| Tipo  | Quando selecionar                                                                     |
+|:----- |:------------------------------------------------------------------------------------- |
+| fix   | Funcionalidade mudada ou atualizada/melhorada, testes, a explicação de uma lição etc. |
+| feat  | Somente se você estiver adicionando novas funcionalidades, testes, etc.               |
+| chore | Mudanças não relacionadas ao código, testes ou explicação de uma lição.               |
+| docs  | Mudanças no diretório `/docs` ou nas diretrizes de contribuição, etc.                 |
 
 **Escopo:**
 
@@ -91,7 +91,7 @@ Alguns exemplos de bons títulos de PRs seriam:
 
    - Isso é muito importante quando se está fazendo mudanças que não são apenas edições no conteúdo do texto como a documentação ou descrição de um desafio. Exemplos de mudanças que precisam ser testadas localmente incluem JavaScript, CSS ou HTML que podem mudar a funcionalidade ou aparência de uma página.
 
-   - Se seu PR afeta o comportamento de uma página ele deve estar acompanhado pelo correspondente [teste de integração Cypress](how-to-add-cypress-tests.md).
+   - Se seu PR afeta o comportamento de uma página, ele deve estar acompanhado pelo correspondente [teste de integração Cypress](how-to-add-cypress-tests.md).
 
 ## Comentários nos pull requests
 
@@ -107,7 +107,7 @@ E como sempre, fique à vontade em perguntar na [categoria 'Contributors' (colab
 
 Conflitos podem surgir porque muitos colaboradores trabalham no repositório, e as alterações podem afetar o seu PR, que está aguardando uma revisão e mesclagem.
 
-Na maioria das vezes, você pode não precisar de um rebase, porque nós comprimimos todos os commits. No entanto, se for solicitada uma rebase, é isso que você deve fazer.
+Como fazemos o squash de todos os commits, você pode não precisar fazer o rebase.  Porém, se um rebase for solicitado, verifique nossos guias [Para os consertos de bugs e recursos comuns](#for-usual-bug-fixes-and-features) ou [Para o currículo futuro e recursos](#for-upcoming-curriculum-and-features) para saber como fazer esse processo para seu PR correspondente.
 
 ### Para funcionalidades e correções de erros comuns
 
@@ -188,14 +188,14 @@ Quando você estiver trabalhando em funcionalidades para nossos próximos branch
 4. Resolva os conflitos, faça a limpeza, instale as dependências e execute os testes
 
    ```console
-   npm run clean
+   pnpm run clean
 
-   npm ci
-   npm run test:curriculum --superblock=<superblock-nome>
+   pnpm install
+   FCC_SUPERBLOCK='<superblock-name>' pnpm run test:curriculum 
 
    # exemplo:
 
-   # npm run test:curriculum --superblock=python-for-everybody
+   # FCC_SUPERBLOCK='python-for-everybody' pnpm run test:curriculum
 
    ```
 

@@ -190,7 +190,7 @@ $ ObjectId()
 ObjectId("5a474d78df58bafeb3535d34")
 ````
 
-その結果、例えば上記の場合 `5a474d78df58bafeb3535d34` という新しい id が得られます。
+The result is a new id, for example, `5a474d78df58bafeb3535d34` above.
 
 id を取得したら、上部の `id` フィールドとしてマークダウンファイルに入れてください。例えば、次のようになります。
 
@@ -243,7 +243,7 @@ title: Challenge Title
 - チャレンジを簡素化する
 - チャレンジを 2 つのチャレンジに分ける
 
-2 分ルールにより、命令を簡潔にし、シードコードを明確にし、テストを容易にすることが、チャレンジ設計者に求められます。
+The 2-minute rule forces you, the challenge designer, to make your directions concise, your seed code clear, and your tests straightforward.
 
 We track how long it takes for campers to solve challenges and use this information to identify challenges that need to be simplified or split.
 
@@ -267,7 +267,7 @@ We track how long it takes for campers to solve challenges and use this informat
 ```
 
 - ファイル名とパスディレクトリへの参照 (例: `package.json`、`src/components`) は `` \` `` バックティックで囲みます。
-- 複数行コードブロック **の前に空行** が必要です。 次の行は、3つのバックティックに続いて [対応言語](https://prismjs.com/#supported-languages) の1つで始まります。 コードブロックを完了するには、3 つのバックティックのみの新しい行と **別の空行** が必要です。 下記の例を参照してください。
+- 複数行コードブロック **の前に空行** が必要です。 次の行は、3つのバックティックに続いて [対応言語](https://prismjs.com/#supported-languages) の1つで始まります。 To complete the code block, you must start a new line that only has three backticks and **another empty line**. 下記の例を参照してください。
 - 空白はマークダウンでも重要ですので、エディターで表示させることをお勧めします。
 
 **注:** YMAL のコード例を使用する場合、バックティックの右側に記載する言語は、 `yml` ではなく `yaml` を使用してください。
@@ -284,9 +284,9 @@ We track how long it takes for campers to solve challenges and use this informat
 
 - 注意書き形式の追加情報は空白行で囲みます。例: `**Note:** Rest of note text...`
 - 複数の注意書きが必要な場合は、すべての注意書きを別々の文章でリスト化します。例: `**Notes:** First note text. Second note text.`
-- 可能であれば、一重引用符を使用します。
+- Use single quotes where applicable
 
-**注:** _HTML_ タグの代わりに同等の _マークダウン_ を使用してください。
+**Note:** The equivalent _Markdown_ should be used in place of _HTML_ tags.
 
 ## テストの記述
 
@@ -296,24 +296,24 @@ We track how long it takes for campers to solve challenges and use this informat
 
 チャレンジテストでは、Node.js と Chai.js アサーションライブラリを使用できます。 また、必要に応じて、`code` 変数からユーザーが生成したコードにアクセスすることもできます。 さらに、 `__helpers` オブジェクトは、テストを記述するプロセスを簡略化するいくつかの関数を公開します。 利用可能な関数は、_client/src/utils/curriculum-helpers.ts_ に定義されています。
 
-## シードコードの書式設定
+## Formatting Seed Code
 
-チャレンジシードコードの具体的なフォーマットガイドラインは、次のとおりです。
+Here are specific formatting guidelines for the challenge seed code:
 
-- 2つの空白を使用してインデントする
-- JavaScript ステートメントは、セミコロンで終了する
-- 適用できる場合は、二重引用符を使用する
+- Use two spaces to indent
+- JavaScript statements end with a semicolon
+- Use double quotes where applicable
 
-### シードコードコメント
+### Seed Code Comments
 
-[comment dictionary](/curriculum/dictionaries/english/comments.js) は、シードコード内で使用できるコメントのみを含みます。 辞書のコメントに記載されている正確な大文字と小文字の区別および語間を使用します。 コメント辞書は、開発チームとの事前議論なしに増やしてはいけません。
+We have a [comment dictionary](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) that contains the only comments that can be used within the seed code. 辞書のコメントに記載されている正確な大文字と小文字の区別および語間を使用します。 コメント辞書は、開発チームとの事前議論なしに増やしてはいけません。
 
 使用するコメントは、コメント文字とコメントそのものの間にスペースを入れる必要があります。 一般的に、コメントは控えめに使用します。 シードコードコメントの使用を避けられるのであれば、チャレンジの説明や指示を書き換えることを常に検討してください。
 
-有効な単一行 JavaScript コメントの例は以下のとおりです。
+Example of a valid single-line JavaScript comment:
 
 ```js
-// この行の下のコードのみ変更する
+// Only change code below this line
 ````
 
 有効な CSS コメントの例は次のとおりです。
@@ -366,9 +366,9 @@ class MyComponent extends React.Component {
 }
 ```
 
-### シードコードコメントの翻訳
+### Translation of Seed Code Comments
 
-各言語には、個別のコメント辞書があります。 [コメント辞書の英語版](/curriculum/dictionaries/english/comments.js) は、英語以外のバージョンファイルにある翻訳のベースになります。 英語以外のバージョン、例えば中国語のコメント辞書は、`/curriculum/dictionaries/chinese/comments.js` にあります。 それぞれの辞書は一意の `id` プロパティと `text` プロパティを持つオブジェクトの配列で構成されています。 `text` のみ、対応する英語のコメントの翻訳を含むように変更する必要があります。
+各言語には、個別のコメント辞書があります。 The [English version of the comment dictionary](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) is the basis for the translations found in the corresponding non-English versions of the files. The non-English version of the Chinese comment dictionary would be located at `/curriculum/dictionaries/chinese/comments.json`. それぞれの辞書は一意の `id` プロパティと `text` プロパティを持つオブジェクトの配列で構成されています。 `text` のみ、対応する英語のコメントの翻訳を含むように変更する必要があります。
 
 一部のコメントには、翻訳してはいけない単語 / フレーズが含まれています。 例えば、変数名や「React」のような固有ライブラリ名は翻訳しません。 例として以下のコメントをご覧ください。 `myGlobal` という単語は翻訳しません。
 
@@ -388,16 +388,16 @@ class MyComponent extends React.Component {
 
 ### 新しいチャレンジのヒント / ソリューションの追加
 
-新しいチャレンジのヒント / ソリューション関連トピックを追加する場合は、次の手順を実行します。
+Take the following steps when adding a new challenge hints/solutions-related topic.
 
 1. 新しいトピックの作成と同じ手順からスタートします。タイトルを作成するために以下を確認します。
 2. トピックのタイトルは、`freeCodeCamp チャレンジガイド:` にカリキュラムチャレンジの実際のタイトルを連結します。 例えば、チャレンジに「`Chunky Monkey`」という名前が付けられている場合、トピックのタイトルは、「`freeCodeCamp Challenge Guide: Chunky Monkey`」になります。
 3. `camperbot` はトピック / 投稿のオーナーである必要があるので、管理者に、メイン投稿のオーナーを `camperbot` に変更するようにリクエストします。
 4. 新しいトピックを作成すると、フォーラムのトピック id が作成されます。 これは、フォーラムのトピック URL の末尾にあります。 この id は、トピックにリンクするために、`ヒントを入手` ボタン用の標準プルリクエストプロセスを介して、カリキュラムチャレンジファイルのフロントマターに追加する必要があります。
 
-### ヒントとソリューショントピックの内容に関するガイドライン
+### Guidelines for Content of Hints and Solutions Topics
 
-カリキュラムチャレンジに関連するガイドトピックのソリューションを提案する場合は、完全なコードを追加する必要があります。 これには、すべての元のシードコードと、すべてのチャレンジテストに合格するために必要な変更が含まれています。 次のテンプレートは、新しいヒント / ソリューションのトピックを作成する際に使用する必要があります。
+When proposing a solution for a curriculum challenge-related Guide topic, the full code must be added. これには、すべての元のシードコードと、すべてのチャレンジテストに合格するために必要な変更が含まれています。 次のテンプレートは、新しいヒント / ソリューションのトピックを作成する際に使用する必要があります。
 
 ````md
 # ここにチャレンジ名を記述します。
@@ -457,17 +457,17 @@ function myFunc() {
 1. すべてのチャレンジをテストするには、ルートディレクトリから以下のコマンドを実行してください。
 
 ````
-npm run test:curriculum
+pnpm run test:curriculum
 ```
 
 2. 次のコマンドでチャレンジのブロックやスーパーブロックをテストすることもできます。
 
 ```
-npm run test:curriculum --block='Basic HTML and HTML5'
+FCC_BLOCK='Basic HTML and HTML5' pnpm run test:curriculum
 ```
 
 ```
-npm run test:curriculum --superblock=responsive-web-design
+FCC_SUPERBLOCK='responsive-web-design' pnpm run test:curriculum
 ```
 
 次の手順を実行することで、1 つのチャレンジを個別にテストすることもできます。
@@ -481,18 +481,104 @@ npm run test:curriculum --superblock=responsive-web-design
 2. 変更したチャレンジファイルごとに以下を実行します ( `challenge-title-goes-here` を正式なチャレンジのタイトルに置き換えてください)。
 
    ```
-   npm run test -- -g challenge-title-goes-here ```
+   pnpm run test -- -g challenge-title-goes-here
+   ```
 
-各チャレンジがテストに合格したことを確認したら、[プルリクエストを作成](how-to-open-a-pull-request.md) してください。
+> [!TIP]
+> You can set the environment variable `LOCALE` in the `.env` to the language of the challenge(s) you need to test.
+>
+> The currently accepted values are `english` and `chinese`, with `english` being set by default.
 
-> [!TIP] `.env` にある環境変数 `LOCALE` で、テストするチャレンジの言語を設定できます。
-> 
-> 現在受け入れられている値は、`english` と `chinese`で、デフォルトは `english` です。
+## Proposing a Pull Request (PR)
 
-### 役立つリンク
+After you've committed your changes, check here for [how to open a Pull Request](how-to-open-a-pull-request.md).
 
-チャレンジの作成および編集
+## Useful Links
 
-1. [チャレンジタイプ](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.js#L1-L13) - チャレンジタイプの値の、どの数値が何を意味するか (enum)
+Creating and Editing Challenges:
 
-2. [Contributing to FreeCodeCamp - Writing ES6 Challenge Tests](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - 古いバージョンのカリキュラムに貢献している [Ethan Arrowood](https://twitter.com/ArrowoodTech) の動画
+1. [Challenge types](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.js#L1-L13) - what the numeric challenge type values mean (enum).
+
+2. [Contributing to FreeCodeCamp - Writing ES6 Challenge Tests](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - a video following [Ethan Arrowood](https://twitter.com/ArrowoodTech) as he contributes to the old version of the curriculum.
+
+## Helper Scripts
+
+> [!NOTE]
+> If you are working with the step-based challenges, refer to the [Work on Practice Projects](how-to-work-on-practice-projects.md) section.
+
+There are a few helper scripts that can be used to manage the challenges in a block. Note that these commands should all be run in the block directory. For example:
+
+```bash
+cd curriculum/challenges/english/02-javascript-algorithms-and-data-structures/basic-algorithm-scripting
+```
+
+### Add New Challenge
+
+To add a new challenge at the end of a block, call the script:
+
+```bash
+pnpm run create-next-challenge
+```
+
+This will prompt you for the challenge information and create the challenge file, updating the `meta.json` file with the new challenge information.
+
+### Delete a Challenge
+
+To delete a challenge, call the script:
+
+```bash
+pnpm run delete-challenge
+```
+
+This will prompt you to select which challenge should be deleted, then delete the file and update the `meta.json` file to remove the challenge from the order.
+
+### Insert a Challenge
+
+To insert a challenge before an existing challenge, call the script:
+
+```bash
+pnpm run insert-challenge
+```
+
+This will prompt you for the challenge information, then for the challenge to insert before. For example, if your choices are:
+
+```bash
+a
+b
+c
+```
+
+And you choose `b`, your new order will be:
+
+```bash
+a
+new challenge
+b
+c
+```
+
+### Update Challenge Order
+
+If you need to manually re-order the challenges, call the script:
+
+```bash
+pnpm run update-challenge-order
+```
+
+This will take you through an interactive process to select the order of the challenges.
+
+## Troubleshooting
+
+### Infinite Loop Detected
+
+If you see the following error in the console while previewing a challenge:
+
+```text
+Potential infinite loop detected on line <number>...
+```
+
+This means that the loop-protect plugin has found a long-running loop or recursive function. If your challenge needs to do that (e.g. it contains an event loop that is supposed to run indefinitely), then you can prevent the plugin from being used in the preview. To do so, add `disableLoopProtectPreview: true` to the block's `meta.json` file.
+
+If your tests are computationally intensive, then you may see this error when they run. If this happens then you can add `disableLoopProtectTests: true` to the block's `meta.json` file.
+
+It's not typically necessary to have both set to true, so only set them as needed.

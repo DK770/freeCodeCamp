@@ -8,15 +8,31 @@ import {
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { isSignedInSelector, userSelector } from '../../redux/selectors';
-import envData from '../../../../config/env.json';
+import envData from '../../../config/env.json';
 import { User } from '../../redux/prop-types';
+import GrowthBookReduxConnector from './growth-book-redux-connector';
 
 const { clientLocale, growthbookUri } = envData as {
   clientLocale: string;
   growthbookUri: string | null;
 };
 
-const growthbook = new GrowthBook();
+declare global {
+  interface Window {
+    dataLayer: [Record<string, number | string>];
+  }
+}
+
+const growthbook = new GrowthBook({
+  trackingCallback: (experiment, result) => {
+    window?.dataLayer.push({
+      event: 'experiment_viewed',
+      event_category: 'experiment',
+      experiment_id: experiment.key,
+      variation_id: result.variationId
+    });
+  }
+});
 
 const mapStateToProps = createSelector(
   isSignedInSelector,
@@ -69,7 +85,9 @@ const GrowthBookWrapper = ({
   }, [isSignedIn, user.email, user.joinDate, user.completedChallenges]);
 
   return (
-    <GrowthBookProvider growthbook={growthbook}>{children}</GrowthBookProvider>
+    <GrowthBookProvider growthbook={growthbook}>
+      <GrowthBookReduxConnector>{children}</GrowthBookReduxConnector>
+    </GrowthBookProvider>
   );
 };
 

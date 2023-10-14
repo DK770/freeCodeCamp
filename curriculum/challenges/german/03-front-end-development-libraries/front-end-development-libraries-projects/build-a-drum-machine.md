@@ -1,32 +1,33 @@
 ---
 id: 587d7dbc367417b2b2512bae
-title: Baue eine Dum Machine
+title: Baue eine Schlagzeugmaschine
 challengeType: 3
 forumTopicId: 301370
 dashedName: build-a-drum-machine
 ---
 
 # --description--
+**Note:** **React 18 has known incompatibilities with the tests for this project (see [issue](https://github.com/freeCodeCamp/freeCodeCamp/issues/45922))**
 
 **Objective:** Build an app that is functionally similar to this: <a href="https://drum-machine.freecodecamp.rocks/" target="_blank" rel="noopener noreferrer nofollow">https://drum-machine.freecodecamp.rocks/</a>.
 
-Erfülle die folgenden User Stories und bestehe alle Tests. Verwende Bibliotheken und APIs deiner Wahl. Gib dem Ganzen deinen persönlichen Stil.
+Fulfill the below user stories and get all of the tests to pass. Use whichever libraries or APIs you need. Give it your own personal style.
 
-Du kannst eine beliebige Mischung aus HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux und jQuery verwenden, um dieses Projekt fertigzustellen. Du solltest ein Frontend Framework (wie zum Beispiel React) verwenden, da es in diesem Abschnitt um das Lernen von Frontend Frameworks geht. Zusätzliche Technologien, die oben nicht aufgeführt sind, werden nicht empfohlen und ihre Verwendung erfolgt auf eigene Gefahr. Wir prüfen die Unterstützung anderer Frontend-Frameworks wie Angular und Vue, aber sie werden derzeit nicht unterstützt. Wir werden alle Fehlerberichte akzeptieren und versuchen, sie zu beheben, die den vorgeschlagenen Technologie-Stack für dieses Projekt verwenden. Viel Spaß beim Programmieren!
+You can use any mix of HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux, and jQuery to complete this project. You should use a frontend framework (like React for example) because this section is about learning frontend frameworks. Additional technologies not listed above are not recommended and using them is at your own risk. We are looking at supporting other frontend frameworks like Angular and Vue, but they are not currently supported. We will accept and try to fix all issue reports that use the suggested technology stack for this project. Happy coding!
 
-**User Story #1:** Ich sollte einen äußeren Container mit einer zugehörigen `id="drum-machine"` sehen, der alle anderen Elemente enthält.
+**User Story #1:** I should be able to see an outer container with a corresponding `id="drum-machine"` that contains all other elements.
 
-**User Story #2:** Innerhalb `#drum-machine` kann ich ein Element mit der entsprechenden `id="display"` sehen.
+**User Story #2:** Within `#drum-machine` I can see an element with a corresponding `id="display"`.
 
-**User Story #3:** Innerhalb von `#drum-machine` sehe ich 9 klickbare Drum-Pad-Elemente, jedes mit einem Klassennamen `drum-pad`, einer eindeutigen ID, die den Audioclip beschreibt, den das Drum-Pad auslösen soll, und einem inneren Text, der einer der folgenden Tasten auf der Tastatur entspricht: `Q`, `W`, `E`, `A`, `S`, `D`, `Z`, `X`, `C`. Die Drum Pads MÜSSEN in dieser Reihenfolge angeordnet sein.
+**User Story #3:** Within `#drum-machine` I can see 9 clickable drum pad elements, each with a class name of `drum-pad`, a unique id that describes the audio clip the drum pad will be set up to trigger, and an inner text that corresponds to one of the following keys on the keyboard: `Q`, `W`, `E`, `A`, `S`, `D`, `Z`, `X`, `C`. The drum pads MUST be in this order.
 
-**User Story #4:** Innerhalb von jedem `.drum-pad`, sollte es ein HTML5 `audio`-Element geben, das ein `src`-Attribute hat, das auf einen Audio Clip hinweist, mit dem Klassenname `clip`, und einer ID, die dem inneren Text seines übergeordneten Elements `.drum-pad` entspricht (e.g. `id="Q"`, `id="W"`, `id="E"` etc.).
+**User Story #4:** Within each `.drum-pad`, there should be an HTML5 `audio` element which has a `src` attribute pointing to an audio clip, a class name of `clip`, and an id corresponding to the inner text of its parent `.drum-pad` (e.g. `id="Q"`, `id="W"`, `id="E"` etc.).
 
-**User Story#5:** Wenn ich auf ein `.drum-pad`-Element klicke, sollte der Audioclip, der in seinem untergeordneten `audio`-Element enthalten ist, ausgelöst werden.
+**User Story #5:** When I click on a `.drum-pad` element, the audio clip contained in its child `audio` element should be triggered.
 
-**User Story #6:** Wenn ich die Trigger-Taste drücke, die mit jedem `.drum-pad` verbunden ist, sollte der Audio-Clip, der in seinem untergeordneten `audio`-Element enthalten ist, ausgelöst werden (z.B. sollte das Drücken der `Q`-Taste das Drum-Pad auslösen, das den String `Q` enthält, das Drücken der `W`-Taste sollte das Drum-Pad auslösen, das den String `W` enthält, usw.).
+**User Story #6:** When I press the trigger key associated with each `.drum-pad`, the audio clip contained in its child `audio` element should be triggered (e.g. pressing the `Q` key should trigger the drum pad which contains the string `Q`, pressing the `W` key should trigger the drum pad which contains the string `W`, etc.).
 
-**User Story #7:** Wenn ein `.drum-pad` ausgelöst wird, wird ein String, der den zugehörigen Audioclip beschreibt, als innerer Text des `#display`-Elements angezeigt (jede Zeichenfolge muss eindeutig sein).
+**User Story #7:** When a `.drum-pad` is triggered, a string describing the associated audio clip is displayed as the inner text of the `#display` element (each string must be unique).
 
 Here are some audio samples you can use for your drum machine:
 

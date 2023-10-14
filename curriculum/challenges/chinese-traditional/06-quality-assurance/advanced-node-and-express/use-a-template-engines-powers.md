@@ -12,58 +12,63 @@ dashedName: use-a-template-engines-powers
 
 在 Pug 文件中，你可以用變量名來調用變量，比如寫成 `#{variable_name}` 來實現行內調用，或像 `p=variable_name` 把元素與變量直接寫在一起，這表示 p 元素的內容等價於這個變量。
 
- Pug is all about using whitespace and tabs to show nested elements and cutting down on the amount of code needed to make a beautiful site. Read the Pug documentation for more information on usage and syntax.
+Pug 是關於使用空白和製表符來顯示嵌套元素，並減少製作一個漂亮網站所需的代碼量。
 
- Here is an example:
+以下面的 Pug 代碼爲例：
 
- ```html
- <!--Typing this using Pug-->
- head
-    script(type='text/javascript').
-      if (foo) bar(1 + 5);
-  body
-    if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
+```pug
+head
+  script(type='text/javascript').
+    if (foo) bar(1 + 5);
+body
+  if youAreUsingPug
+      p You are amazing
+    else
+      p Get on it!
+```
 
-<!--will lead to creating this code-->
-  <head>
-    <script type="text/javascript">
-      if (foo) bar(1 + 5);
-    </script>
-  </head>
-  <body>
-    <p>You are amazing</p>
-  </body>
-  ```
+以上代碼生成以下 HTML：
 
-Looking at our pug file `index.pug` included in your project, we used the variables `title` and `message`.
+```html
+<head>
+  <script type="text/javascript">
+    if (foo) bar(1 + 5);
+  </script>
+</head>
+<body>
+  <p>You are amazing</p>
+</body>
+```
 
-To pass those along from our server, you will need to add an object as a second argument to your `res.render` with the variables and their values. For example, pass this object along setting the variables for your index view: `{title: 'Hello', message: 'Please login'}`
+你的項目中的 `index.pug` 文件使用了變量 `title` 和 `message`。
 
-It should look like: `res.render(process.cwd() + '/views/pug/index', {title: 'Hello', message: 'Please login'});` Now refresh your page and you should see those values rendered in your view in the correct spot as laid out in your `index.pug` file!
+爲了從服務器傳遞這些信息到 Pug 文件，你需要給 `res.render` 調用添加一個對象作爲第二個參數，其中包含變量和對應的值。 給 `title` 一個值爲 `Hello`，給 `message` 一個值爲 `Please log in`。
 
-Submit your page when you think you've got it right. If you're running into errors, you can check out the <a href="https://gist.github.com/camperbot/4af125119ed36e6e6a8bb920db0c0871" target="_blank" rel="noopener noreferrer nofollow">project completed up to this point</a>.
+就像這樣：
+
+```javascript
+res.render('index', { title: 'Hello', message: 'Please log in' });
+```
+
+現在刷新你的頁面， 你應該看到這些值呈現在你的視圖中正確位置，即 `index.pug` 文件中！
+
+完成上述要求後，請提交你的頁面鏈接。 如果你在運行時遇到錯誤，你可以<a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#use-a-template-engines-power-2" target="_blank" rel="noopener noreferrer nofollow">查看已完成的項目</a>。
 
 # --hints--
 
-Pug should correctly render variables.
+Pug 應正確地展示變量。
 
 ```js
-(getUserInput) =>
-  $.get(getUserInput('url') + '/').then(
-    (data) => {
-      assert.match(
-        data,
-        /pug-variable("|')>Please login/gi,
-        'Your projects home page should now be rendered by pug with the projects .pug file unaltered'
-      );
-    },
-    (xhr) => {
-      throw new Error(xhr.statusText);
-    }
+async (getUserInput) => {
+  const url = new URL("/", getUserInput("url"));
+  const res = await fetch(url);
+  const data = await res.text();
+  assert.match(
+    data,
+    /pug-variable("|')>Please log in/gi,
+    'Your projects home page should now be rendered by pug with the projects .pug file unaltered'
   );
+}
 ```
 
 # --solutions--

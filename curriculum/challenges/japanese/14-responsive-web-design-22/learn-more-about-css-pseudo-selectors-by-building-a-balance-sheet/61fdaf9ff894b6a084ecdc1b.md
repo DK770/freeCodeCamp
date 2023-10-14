@@ -7,17 +7,17 @@ dashedName: step-33
 
 # --description--
 
-To prevent the text content from overflowing, give your `span[class~="sr-only"]` selector an `overflow` property set to `hidden` and a `white-space` property set to `nowrap`.
+テキストコンテンツがはみ出すことを防ぐため、`span[class~="sr-only"]` セレクターの `overflow` プロパティを `hidden` に、`white-space` プロパティを `nowrap` に設定してください。
 
 # --hints--
 
-Your `span[class~="sr-only"]` selector should have an `overflow` property set to `hidden`.
+`span[class~="sr-only"]` セレクターの `overflow` プロパティを `hidden` に設定する必要があります。
 
 ```js
 assert(new __helpers.CSSHelp(document).getStyle('span[class~="sr-only"]')?.getPropertyValue('overflow') === 'hidden');
 ```
 
-Your `span[class~="sr-only"]` selector should have a `white-space` property set to `nowrap`.
+`span[class~="sr-only"]` セレクターの `white-space` プロパティを `nowrap` に設定する必要があります。
 
 ```js
 assert(new __helpers.CSSHelp(document).getStyle('span[class~="sr-only"]')?.getPropertyValue('white-space') === 'nowrap');
@@ -157,7 +157,6 @@ span[class~="sr-only"] {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
-  -webkit-clip-path: inset(50%);
   height: 1px;
   width: 1px;
 

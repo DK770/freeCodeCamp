@@ -1,6 +1,6 @@
 ---
 id: 587d7fb3367417b2b2512bfb
-title: 'How to Use package.json, the Core of Any Node.js Project or npm Package'
+title: 'Wie man package.json, den Kern eines jeden Node.js-Projekts oder npm-Pakets, verwendet'
 challengeType: 2
 forumTopicId: 301528
 dashedName: how-to-use-package-json-the-core-of-any-node-js-project-or-npm-package
@@ -8,19 +8,25 @@ dashedName: how-to-use-package-json-the-core-of-any-node-js-project-or-npm-packa
 
 # --description--
 
-Working on these challenges will involve you writing your code using one of the following methods:
+Bei der Arbeit an diesen Aufgaben wirst du deinen Code mithilfe folgender Methoden schreiben:
 
-- Clone <a href="https://github.com/freeCodeCamp/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow">this GitHub repo</a> and complete these challenges locally.
-- Use <a href="https://replit.com/github/freeCodeCamp/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete these challenges.
-- Verwende einen Site-Builder deiner Wahl, um das Projekt fertigzustellen. Achte darauf, alle Dateien aus unserem GitHub Repo zu integrieren.
+- Klone <a href="https://github.com/freeCodeCamp/boilerplate-npm/" target="_blank" rel="noopener noreferrer nofollow">diese GitHub-Repo</a> und schließe dein Projekt lokal ab.
+- Benutze <a href="https://replit.com/github/freeCodeCamp/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">unser Replit-Starterprojekt</a>, um diese Aufgabe fertigzustellen.
+- Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
 
-Wenn du fertig bist, stelle sicher, dass dein Projekt öffentlich zugänglich gehostet ist. Gib dann die URL in das `Solution Link`-Feld ein.
+Wenn du Replit verwendest, folge diesen Schritten, um das Projekt einzurichten:
 
-The `package.json` file is the center of any Node.js project or npm package. Es speichert Informationen über dein Projekt, ähnlich wie der Abschnitt &lt;head> eines HTML-Dokuments den Inhalt einer Webseite beschreibt. Es besteht aus einem einzigen JSON-Objekt, in dem Informationen in Schlüssel-Wert-Paaren gespeichert sind. There are only two required fields; "name" and "version", but it’s good practice to provide additional information about your project that could be useful to future users or maintainers.
+-   Beginne, indem du das Projekt in Replit importierst.
+-   Als nächstes wird ein `.replit`-Fenster angezeigt.
+-   Wähle `Use run command` aus und klicke die `Done`-Schaltfläche.
 
-If you look at the file tree of your project, you will find the package.json file on the top level of the tree. This is the file that you will be improving in the next couple of challenges.
+Wenn du fertig bist, stelle sicher, dass eine funktionierende Demo deines Projekts irgendwo öffentlich gehostet wird. Gib anschließend die URL in das Solution Link-Feld ein.
 
-One of the most common pieces of information in this file is the `author` field. It specifies who created the project, and can consist of a string or an object with contact or other details. An object is recommended for bigger projects, but a simple string like the following example will do for this project.
+Die `package.json`-Datei stellt das Zentrum eines Node.js-Projekts oder npm-Pakets dar. Es speichert Informationen über dein Projekt, ähnlich wie der `head`-Abschnitt eines HTML-Dokuments den Inhalt einer Webseite beschreibt. Es besteht aus einem einzigen JSON-Objekt, in dem Informationen in Schlüssel-Wert-Paaren gespeichert sind. Es gibt dort nur zwei Pflichtfelder: `name` und `version`. Es ist jedoch empfehlenswert, zusätzliche Informationen über dein Projekt anzugeben, die für zukünfige Benutzer oder Maintainer nützlich sein könnten.
+
+Wenn du dir den Dateibaum deines Projekts ansiehst, wirst du die `package.json`-Datei auf der obersten Ebene des Baums finden. Das ist die Datei, die du in den nächsten paar Aufgaben verbessern wirst.
+
+Eine der häufigsten Angaben in dieser Datei stellt das `author`-Feld dar. Es gibt an, wer das Projekt erstellt hat, und kann aus einer Zeichenfolge oder einem Objekt mit Kontaktdaten oder anderen Informationen bestehen. Für größere Projekte wird ein Objekt empfohlen, aber eine einfache Zeichenfolge wie das folgende Beispiel ist für dieses Projekt ausreichend.
 
 ```json
 "author": "Jane Doe",
@@ -28,13 +34,13 @@ One of the most common pieces of information in this file is the `author` field.
 
 # --instructions--
 
-Add your name as the `author` of the project in the package.json file.
+Trage in der `package.json`-Datei deinen Namen als `author` des Projekts ein.
 
-**Note:** Remember that you’re writing JSON, so all field names must use double-quotes (") and be separated with a comma (,).
+**Hinweis:** Denk daran, dass du JSON schreibst, daher müssen alle Feldnamen in doppelten Anführungszeichen (") gesetzt und durch ein Komma (,) getrennt werden.
 
 # --hints--
 
-package.json should have a valid "author" key
+`package.json` sollte über einen gültigen "Autor"-Schlüssel verfügen
 
 ```js
 (getUserInput) =>

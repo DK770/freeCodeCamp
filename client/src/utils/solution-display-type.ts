@@ -1,13 +1,23 @@
 import type { CompletedChallenge } from '../redux/prop-types';
-import { challengeTypes } from '../../utils/challenge-types';
+import { challengeTypes } from '../../../shared/config/challenge-types';
 import { maybeUrlRE } from '.';
+
+type DisplayType =
+  | 'none'
+  | 'showMultifileProjectSolution'
+  | 'showUserCode'
+  | 'showProjectAndGithubLinks'
+  | 'showProjectLink'
+  | 'showExamResults';
 
 export const getSolutionDisplayType = ({
   solution,
   githubLink,
   challengeFiles,
-  challengeType
-}: CompletedChallenge) => {
+  challengeType,
+  examResults
+}: CompletedChallenge): DisplayType => {
+  if (examResults) return 'showExamResults';
   if (challengeFiles?.length)
     return challengeType === challengeTypes.multifileCertProject
       ? 'showMultifileProjectSolution'

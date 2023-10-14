@@ -9,12 +9,26 @@ const blockSchema = Joi.object({}).keys({
     hasEditableBoundaries: Joi.bool().optional(),
     isBeta: Joi.bool().optional(),
     dashedName: Joi.string(),
+    helpCategory: Joi.valid(
+      'JavaScript',
+      'HTML-CSS',
+      'Python',
+      'Backend Development',
+      'C-Sharp'
+    ),
     order: Joi.number(),
     time: Joi.string().allow(''),
     template: Joi.string().allow(''),
     required: Joi.array(),
     superBlock: Joi.string(),
-    challengeOrder: Joi.array().items(Joi.array().min(1))
+    challengeOrder: Joi.array().items(
+      Joi.object({}).keys({
+        id: Joi.string(),
+        title: Joi.string()
+      })
+    ),
+    disableLoopProtectTests: Joi.boolean(),
+    disableLoopProtectPreview: Joi.boolean()
   })
 });
 

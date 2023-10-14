@@ -36,7 +36,7 @@ Write a program which outputs all valid combinations as an array.
 
 # --hints--
 
-`combinations` should be a function.
+`combinations` sollte eine Funktion sein.
 
 ```js
 assert(typeof combinations === 'function');
@@ -101,7 +101,7 @@ function combinations(possibleNumbers, total) {
 function combinations(possibleNumbers, total) {
   let firstNumber;
   let secondNumber;
-  let thridNumber;
+  let thirdNumber;
   const allCombinations = [];
 
   for (let i = 0; i < possibleNumbers.length; i += 1) {
@@ -112,10 +112,10 @@ function combinations(possibleNumbers, total) {
         secondNumber = possibleNumbers[j];
 
         if (j !== i && firstNumber + secondNumber <= total) {
-          thridNumber = total - firstNumber - secondNumber;
+          thirdNumber = total - firstNumber - secondNumber;
 
-          if (thridNumber !== firstNumber && thridNumber !== secondNumber && possibleNumbers.includes(thridNumber)) {
-            allCombinations.push([firstNumber, secondNumber, thridNumber]);
+          if (thirdNumber !== firstNumber && thirdNumber !== secondNumber && possibleNumbers.includes(thirdNumber)) {
+            allCombinations.push([firstNumber, secondNumber, thirdNumber]);
           }
         }
       }

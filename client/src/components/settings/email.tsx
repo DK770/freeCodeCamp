@@ -1,14 +1,15 @@
 import {
   HelpBlock,
-  Alert,
   FormGroup,
   ControlLabel,
   FormControl,
   Button
 } from '@freecodecamp/react-bootstrap';
+import { Alert } from '@freecodecamp/ui';
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
-import { TFunction, Trans, withTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
+import { Trans, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
@@ -21,7 +22,7 @@ import BlockSaveButton from '../helpers/form/block-save-button';
 import FullWidthRow from '../helpers/full-width-row';
 import Spacer from '../helpers/spacer';
 import SectionHeader from './section-header';
-import ToggleSetting from './toggle-setting';
+import ToggleButtonSetting from './toggle-button-setting';
 
 const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch: Dispatch) =>
@@ -132,7 +133,10 @@ function EmailSettings({
     state: confirmEmailValidation,
     message: confirmEmailValidationMessage
   } = getValidationForConfirmEmail();
-
+  const isDisabled =
+    newEmailValidation !== 'success' ||
+    confirmEmailValidation !== 'success' ||
+    isPristine;
   if (!currentEmail) {
     return (
       <div>
@@ -151,76 +155,97 @@ function EmailSettings({
   }
   return (
     <div className='email-settings'>
-      <SectionHeader>{t('settings.email.heading')}</SectionHeader>
+      <SectionHeader dataPlaywrightTestLabel='email-settings-header'>
+        {t('settings.email.heading')}
+      </SectionHeader>
       {isEmailVerified ? null : (
         <FullWidthRow>
           <HelpBlock>
             <Alert
-              bsStyle='info'
+              variant='info'
               className='text-center'
-              closeLabel={t('buttons.close')}
+              data-playwright-test-label='email-verification-alert'
             >
               {t('settings.email.not-verified')}
               <br />
               <Trans i18nKey='settings.email.check'>
-                <Link to='/update-email' />
+                <Link
+                  data-playwright-test-label='email-verification-link'
+                  to='/update-email'
+                />
               </Trans>
             </Alert>
           </HelpBlock>
         </FullWidthRow>
       )}
       <FullWidthRow>
-        <form id='form-update-email' onSubmit={handleSubmit}>
+        <form
+          id='form-update-email'
+          {...(!isDisabled
+            ? { onSubmit: handleSubmit }
+            : { onSubmit: e => e.preventDefault() })}
+        >
           <FormGroup controlId='current-email'>
             <ControlLabel>{t('settings.email.current')}</ControlLabel>
-            <FormControl.Static>{currentEmail}</FormControl.Static>
+            <FormControl.Static data-playwright-test-label='current-email'>
+              {currentEmail}
+            </FormControl.Static>
           </FormGroup>
-          <FormGroup controlId='new-email' validationState={newEmailValidation}>
-            <ControlLabel>{t('settings.email.new')}</ControlLabel>
-            <FormControl
-              onChange={createHandleEmailFormChange('newEmail')}
-              type='email'
-              value={newEmail}
-            />
-            {newEmailValidationMessage ? (
-              <HelpBlock>{newEmailValidationMessage}</HelpBlock>
-            ) : null}
-          </FormGroup>
-          <FormGroup
-            controlId='confirm-email'
-            validationState={confirmEmailValidation}
-          >
-            <ControlLabel>{t('settings.email.confirm')}</ControlLabel>
-            <FormControl
-              onChange={createHandleEmailFormChange('confirmNewEmail')}
-              type='email'
-              value={confirmNewEmail}
-            />
-            {confirmEmailValidationMessage ? (
-              <HelpBlock>{confirmEmailValidationMessage}</HelpBlock>
-            ) : null}
-          </FormGroup>
+          <div role='group' aria-label={t('settings.email.heading')}>
+            <FormGroup
+              controlId='new-email'
+              validationState={newEmailValidation}
+            >
+              <ControlLabel>{t('settings.email.new')}</ControlLabel>
+              <FormControl
+                data-playwright-test-label='new-email-input'
+                onChange={createHandleEmailFormChange('newEmail')}
+                type='email'
+                value={newEmail}
+              />
+              {newEmailValidationMessage ? (
+                <HelpBlock>{newEmailValidationMessage}</HelpBlock>
+              ) : null}
+            </FormGroup>
+            <FormGroup
+              controlId='confirm-email'
+              validationState={confirmEmailValidation}
+            >
+              <ControlLabel>{t('settings.email.confirm')}</ControlLabel>
+              <FormControl
+                data-playwright-test-label='confirm-email-input'
+                onChange={createHandleEmailFormChange('confirmNewEmail')}
+                type='email'
+                value={confirmNewEmail}
+              />
+              {confirmEmailValidationMessage ? (
+                <HelpBlock>{confirmEmailValidationMessage}</HelpBlock>
+              ) : null}
+            </FormGroup>
+          </div>
           <BlockSaveButton
-            disabled={
-              newEmailValidation !== 'success' ||
-              confirmEmailValidation !== 'success' ||
-              isPristine
-            }
-          />
+            data-playwright-test-label='save-email-button'
+            aria-disabled={isDisabled}
+            bgSize='lg'
+            {...(isDisabled && { tabIndex: -1 })}
+          >
+            {t('buttons.save')}{' '}
+            <span className='sr-only'>{t('settings.email.heading')}</span>
+          </BlockSaveButton>
         </form>
       </FullWidthRow>
-      <Spacer />
+      <Spacer size='medium' />
       <FullWidthRow>
-        <form id='form-quincy-email' onSubmit={handleSubmit}>
-          <ToggleSetting
-            action={t('settings.email.weekly')}
-            flag={sendQuincyEmail}
-            flagName='sendQuincyEmail'
-            offLabel={t('buttons.no-thanks')}
-            onLabel={t('buttons.yes-please')}
-            toggleFlag={() => updateQuincyEmail(!sendQuincyEmail)}
-          />
-        </form>
+        <ToggleButtonSetting
+          action={t('settings.email.weekly')}
+          flag={sendQuincyEmail}
+          flagName='sendQuincyEmail'
+          offLabel={t('buttons.no-thanks')}
+          dataPlaywrightTestOffLabel='no-thanks-button'
+          onLabel={t('buttons.yes-please')}
+          dataPlaywrightTestOnLabel='yes-please-button'
+          toggleFlag={() => updateQuincyEmail(!sendQuincyEmail)}
+        />
       </FullWidthRow>
     </div>
   );

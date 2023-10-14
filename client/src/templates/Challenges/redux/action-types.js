@@ -1,4 +1,4 @@
-import { createTypes } from '../../../utils/create-types';
+import { createAsyncTypes, createTypes } from '../../../utils/create-types';
 
 export const CURRENT_CHALLENGE_KEY = 'currentChallengeId';
 
@@ -14,7 +14,6 @@ export const actionTypes = createTypes(
     'updateConsole',
     'updateChallengeMeta',
     'updateFile',
-    'updateJSEnabled',
     'updateSolutionFormValues',
     'updateSuccessMessage',
     'updateTests',
@@ -23,30 +22,31 @@ export const actionTypes = createTypes(
 
     'logsToConsole',
 
-    'lockCode',
-    'unlockCode',
     'disableBuildOnError',
     'storedCodeFound',
     'noStoredCodeFound',
     'saveEditorContent',
-
+    'setShowPreviewPane',
+    'setShowPreviewPortal',
     'closeModal',
     'openModal',
-
+    'setIsAdvancing',
+    'setChapterSlug',
+    'setUserCompletedExam',
     'previewMounted',
     'projectPreviewMounted',
-    'storePortalDocument',
-    'removePortalDocument',
+    'storePortalWindow',
+    'removePortalWindow',
     'challengeMounted',
+    'sendRenderTime',
     'checkChallenge',
-    'executeChallenge',
     'resetChallenge',
     'stopResetting',
-    'submitChallenge',
     'resetAttempts',
-
     'setEditorFocusability',
-    'toggleVisibleEditor'
+    'toggleVisibleEditor',
+    ...createAsyncTypes('submitChallenge'),
+    ...createAsyncTypes('executeChallenge')
   ],
   ns
 );

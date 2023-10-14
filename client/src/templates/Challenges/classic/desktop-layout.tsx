@@ -1,13 +1,26 @@
 import { first } from 'lodash-es';
-import React, { useState, ReactElement } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
-import { sortChallengeFiles } from '../../../../../utils/sort-challengefiles';
-import { challengeTypes } from '../../../../utils/challenge-types';
+import { createSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { sortChallengeFiles } from '../../../../utils/sort-challengefiles';
+import { challengeTypes } from '../../../../../shared/config/challenge-types';
 import {
   ChallengeFile,
   ChallengeFiles,
   ResizeProps
 } from '../../../redux/prop-types';
+import {
+  removePortalWindow,
+  setShowPreviewPortal,
+  setShowPreviewPane
+} from '../redux/actions';
+import {
+  portalWindowSelector,
+  showPreviewPortalSelector,
+  showPreviewPaneSelector,
+  isAdvancingToChallengeSelector
+} from '../redux/selectors';
 import PreviewPortal from '../components/preview-portal';
 import ActionRow from './action-row';
 
@@ -21,6 +34,8 @@ interface DesktopLayoutProps {
   hasNotes: boolean;
   hasPreview: boolean;
   instructions: ReactElement;
+  isAdvancing: boolean;
+  isFirstStep: boolean;
   layoutState: {
     codePane: Pane;
     editorPane: Pane;
@@ -34,44 +49,86 @@ interface DesktopLayoutProps {
   resizeProps: ResizeProps;
   testOutput: ReactElement;
   windowTitle: string;
+  showPreviewPortal: boolean;
+  showPreviewPane: boolean;
+  removePortalWindow: () => void;
+  setShowPreviewPortal: (arg: boolean) => void;
+  setShowPreviewPane: (arg: boolean) => void;
+  portalWindow: null | Window;
 }
 
 const reflexProps = {
   propagateDimensions: true
 };
 
+const mapDispatchToProps = {
+  removePortalWindow,
+  setShowPreviewPortal,
+  setShowPreviewPane
+};
+
+const mapStateToProps = createSelector(
+  isAdvancingToChallengeSelector,
+  showPreviewPortalSelector,
+  showPreviewPaneSelector,
+  portalWindowSelector,
+
+  (
+    isAdvancing: boolean,
+    showPreviewPortal: boolean,
+    showPreviewPane: boolean,
+    portalWindow: null | Window
+  ) => ({
+    isAdvancing,
+    showPreviewPortal,
+    showPreviewPane,
+    portalWindow
+  })
+);
+
 const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
+  const {
+    showPreviewPane,
+    showPreviewPortal,
+    removePortalWindow,
+    setShowPreviewPane,
+    setShowPreviewPortal,
+    portalWindow
+  } = props;
+
   const [showNotes, setShowNotes] = useState(false);
-  const [showPreviewPane, setShowPreviewPane] = useState(true);
-  const [showPreviewPortal, setShowPreviewPortal] = useState(false);
   const [showConsole, setShowConsole] = useState(false);
-  const [showInstructions, setShowInstuctions] = useState(true);
+  const [showInstructions, setShowInstructions] = useState(true);
 
   const togglePane = (pane: string): void => {
-    switch (pane) {
-      case 'showPreviewPane':
-        if (!showPreviewPane && showPreviewPortal) setShowPreviewPortal(false);
-        setShowPreviewPane(!showPreviewPane);
-        break;
-      case 'showPreviewPortal':
-        if (!showPreviewPortal && showPreviewPane) setShowPreviewPane(false);
-        setShowPreviewPortal(!showPreviewPortal);
-        break;
-      case 'showConsole':
-        setShowConsole(!showConsole);
-        break;
-      case 'showNotes':
-        setShowNotes(!showNotes);
-        break;
-      case 'showInstructions':
-        setShowInstuctions(!showInstructions);
-        break;
-      default:
-        setShowInstuctions(true);
-        setShowConsole(false);
-        setShowPreviewPane(true);
+    if (pane === 'showPreviewPane') {
+      if (!showPreviewPane && showPreviewPortal) {
         setShowPreviewPortal(false);
-        setShowNotes(false);
+      }
+      setShowPreviewPane(!showPreviewPane);
+      portalWindow?.close();
+      removePortalWindow();
+    } else if (pane === 'showPreviewPortal') {
+      if (!showPreviewPortal && showPreviewPane) {
+        setShowPreviewPane(false);
+      }
+      setShowPreviewPortal(!showPreviewPortal);
+      if (showPreviewPortal) {
+        portalWindow?.close();
+        removePortalWindow();
+      }
+    } else if (pane === 'showConsole') {
+      setShowConsole(!showConsole);
+    } else if (pane === 'showNotes') {
+      setShowNotes(!showNotes);
+    } else if (pane === 'showInstructions') {
+      setShowInstructions(!showInstructions);
+    } else {
+      setShowInstructions(true);
+      setShowConsole(false);
+      setShowPreviewPane(true);
+      setShowPreviewPortal(false);
+      setShowNotes(false);
     }
   };
 
@@ -88,12 +145,24 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
     testOutput,
     hasNotes,
     hasPreview,
+    isAdvancing,
+    isFirstStep,
     layoutState,
     notes,
     preview,
     hasEditableBoundaries,
     windowTitle
   } = props;
+
+  // on mount
+  useEffect(() => {
+    if (isFirstStep && !showPreviewPortal) {
+      setShowPreviewPane(true);
+    } else if (!isAdvancing && !showPreviewPane && !showPreviewPortal) {
+      togglePane('showPreviewPane');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const challengeFile = getChallengeFile();
   const projectBasedChallenge = hasEditableBoundaries;
@@ -102,8 +171,13 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
   const displayPreviewPane = hasPreview && showPreviewPane;
   const displayPreviewPortal = hasPreview && showPreviewPortal;
   const displayNotes = projectBasedChallenge ? showNotes && hasNotes : false;
-  const displayConsole =
-    projectBasedChallenge || isMultifileCertProject ? showConsole : true;
+  const displayEditorConsole = !(
+    projectBasedChallenge || isMultifileCertProject
+  )
+    ? true
+    : false;
+  const displayPreviewConsole =
+    (projectBasedChallenge || isMultifileCertProject) && showConsole;
   const {
     codePane,
     editorPane,
@@ -150,10 +224,10 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
               >
                 {editor}
               </ReflexElement>
-              {displayConsole && (
+              {displayEditorConsole && (
                 <ReflexSplitter propagate={true} {...resizeProps} />
               )}
-              {displayConsole && (
+              {displayEditorConsole && (
                 <ReflexElement
                   flex={testsPane.flex}
                   {...reflexProps}
@@ -172,19 +246,30 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
           </ReflexElement>
         )}
 
-        {displayPreviewPane && (
+        {(displayPreviewPane || displayPreviewConsole) && (
           <ReflexSplitter propagate={true} {...resizeProps} />
         )}
-        {displayPreviewPane && (
+        {(displayPreviewPane || displayPreviewConsole) && (
           <ReflexElement flex={previewPane.flex} {...resizeProps}>
-            {preview}
+            <ReflexContainer orientation='horizontal'>
+              {displayPreviewPane && <ReflexElement>{preview}</ReflexElement>}
+              {displayPreviewPane && displayPreviewConsole && (
+                <ReflexSplitter propagate={true} {...resizeProps} />
+              )}
+              {displayPreviewConsole && (
+                <ReflexElement
+                  {...(displayPreviewPane && { flex: testsPane.flex })}
+                  {...resizeProps}
+                >
+                  {testOutput}
+                </ReflexElement>
+              )}
+            </ReflexContainer>
           </ReflexElement>
         )}
       </ReflexContainer>
       {displayPreviewPortal && (
-        <PreviewPortal togglePane={togglePane} windowTitle={windowTitle}>
-          {preview}
-        </PreviewPortal>
+        <PreviewPortal windowTitle={windowTitle}>{preview}</PreviewPortal>
       )}
     </div>
   );
@@ -192,4 +277,4 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
 
 DesktopLayout.displayName = 'DesktopLayout';
 
-export default DesktopLayout;
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopLayout);

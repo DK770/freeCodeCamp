@@ -10,7 +10,7 @@ Essas instruções informarão como usar a nossa ferramenta de edição de desaf
 
 ### Iniciando o editor
 
-Para iniciar o editor, certifique-se de estar no diretório raiz do freecodecamp. Em seguida, execute `npm run challenge-editor` para iniciar tanto o client quanto a API que alimenta o editor.
+Para iniciar o editor, certifique-se de estar no diretório raiz do freecodecamp. Em seguida, execute `pnpm run challenge-editor` para iniciar tanto o client quanto a API que alimenta o editor.
 
 O client será executado na porta `3300`, então você pode acessá-la em `http://localhost:3300`. A API é executada na porta `3200`, para evitar conflitos com o client de aprendizagem e com o servidor. Isso permitirá que você execute o aplicativo do freeCodeCamp ao mesmo tempo que o editor, para poder testar as alterações localmente.
 
@@ -60,7 +60,7 @@ A pasta `tools/challenge-helper-scripts` contém ferramentas para ajudar a facil
 
 ### Criando um projeto
 
-Execute `npm run create-project` no diretório raiz. Esse comando abrirá uma interface de linha de comando que vai guiar você através do processo. Uma vez que tiver terminado, deverá aparecer um novo desafio no currículo em inglês que você pode usar para começar o projeto. Por exemplo, se você tiver criado um projeto chamado `test-project` na certificação de Design responsivo para a web, ele estará em `curriculum/challenges/english/01-responsive-web-design/test-project`.
+Mude o diretório para `tools/challenge-helper-scripts` e execute `pnpm run create-project`. Esse comando abrirá uma interface de linha de comando que vai guiar você através do processo. Uma vez que tiver terminado, deverá aparecer um novo desafio no currículo em inglês que você pode usar para começar o projeto. Por exemplo, se você tiver criado um projeto chamado `test-project` na certificação de Design responsivo para a web, ele estará em `curriculum/challenges/english/01-responsive-web-design/test-project`.
 
 Se você quer criar outros passos, as ferramentas a seguir vão simplificar o processo.
 
@@ -68,13 +68,13 @@ Se você quer criar outros passos, as ferramentas a seguir vão simplificar o pr
 
 Um script único que adicionará automaticamente o próximo passo com base no último passo do projeto. O código seed do desafio usará o código do desafio do passo anterior.
 
-#### Como executar esse script:
+#### Como executar o script
 
 1. Mude para o diretório do projeto.
-2. Execute o comando npm a seguir:
+2. Execute o comando a seguir:
 
 ```bash
-npm run create-next-step
+pnpm run create-next-step
 ```
 
 ### create-empty-steps
@@ -83,13 +83,13 @@ Um script único que adiciona automaticamente um número específico de passos. 
 
 **Observação:** esse script também executa [update-step-titles](#update-step-titles).
 
-#### Como executar esse script:
+#### Como executar o script
 
 1. Mude para o diretório do projeto.
-2. Execute o comando npm a seguir:
+2. Execute o comando a seguir:
 
 ```bash
-npm run create-empty-steps X #, onde X é o número de etapas a serem criadas.
+pnpm run create-empty-steps X #, onde X é o número de etapas a serem criadas.
 ```
 
 ### insert-step
@@ -98,13 +98,13 @@ Um script único que adiciona automaticamente um novo passo em uma posição esp
 
 **Observação:** esse script também executa [update-step-titles](#update-step-titles).
 
-#### Como executar esse script:
+#### Como executar o script
 
 1. Mude para o diretório do projeto.
-2. Execute o comando npm a seguir:
+2. Execute o comando a seguir:
 
 ```bash
-npm run insert-step X #, onde X é a posição para inserir a nova etapa.
+pnpm run insert-step X #, onde X é a posição para inserir a nova etapa.
 ```
 
 ### delete-step
@@ -113,24 +113,40 @@ Um script único que exclui um passo existente e decrementa todos os passos post
 
 **Observação:** esse script também executa [update-step-titles](#update-step-titles).
 
-#### Como executar esse script
+#### Como executar o script
 
 1. Mude para o diretório do projeto.
-2. Execute o comando npm a seguir:
+2. Execute o comando a seguir:
 
 ```bash
-npm run delete-step X #, onde X é o número do passo a ser excluído.
+pnpm run delete-step X #, onde X é o número do passo a ser excluído.
 ```
 
 ### update-step-titles
 
 Um script único que atualiza automaticamente a frontmatter nos arquivos markdown de um projeto para que eles sejam consistentes com o meta.json do projeto. Garante que o título de cada passo (e seu dashedName) correspondam ao challengeOrder do arquivo meta.
 
-#### Como executar esse script
+#### Como executar o script
 
 1. Mude para o diretório do projeto.
-2. Execute o comando npm a seguir:
+2. Execute o comando a seguir:
 
 ```bash
-npm run update-step-titles
+pnpm run update-step-titles
 ```
+
+### repair-meta
+
+Um script único para analisar os nomes dos passos do projeto e atualizar a ordem de meta.json para refletir esses passos. Útil se você perdeu acidentalmente as alterações para o arquivo meta.json ao adicionar/remover passos.
+
+#### Como executar o script
+
+1. Mude para o diretório do projeto.
+2. Execute o comando a seguir:
+
+```bash
+pnpm run repair-meta
+```
+## Propondo um Pull Request (PR)
+
+Após ter feito as alterações, veja [como abrir um Pull Request](how-to-open-a-pull-request.md).

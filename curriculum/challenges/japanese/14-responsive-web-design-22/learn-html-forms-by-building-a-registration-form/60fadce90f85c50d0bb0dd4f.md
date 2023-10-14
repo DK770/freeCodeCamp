@@ -1,8 +1,8 @@
 ---
 id: 60fadce90f85c50d0bb0dd4f
-title: ステップ 45
+title: Step 47
 challengeType: 0
-dashedName: step-45
+dashedName: step-47
 ---
 
 # --description--
@@ -32,7 +32,7 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('fieldset')?.borderBottom,
   <body>
     <h1>Registration Form</h1>
     <p>Please fill out this form with the required information</p>
-    <form action='https://register-demo.freecodecamp.org'>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
       <fieldset>
         <label for="first-name">Enter Your First Name: <input id="first-name" name="first-name" type="text" required /></label>
         <label for="last-name">Enter Your Last Name: <input id="last-name" name="last-name" type="text" required /></label>
@@ -40,11 +40,9 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('fieldset')?.borderBottom,
         <label for="new-password">Create a New Password: <input id="new-password" name="new-password" type="password" pattern="[a-z0-5]{8,}" required /></label>
       </fieldset>
       <fieldset>
-        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" /> Personal Account</label>
-        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business Account</label>
-        <label for="terms-and-conditions" name="terms-and-conditions">
-          <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
-        </label>
+        <legend>Account type (required)</legend>
+        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" checked /> Personal</label>
+        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business</label>
       </fieldset>
       <fieldset>
         <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="file" /></label>
@@ -62,6 +60,9 @@ assert.equal(new __helpers.CSSHelp(document).getStyle('fieldset')?.borderBottom,
           <textarea id="bio" name="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea>
         </label>
       </fieldset>
+      <label for="terms-and-conditions">
+        <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
+      </label>
       <input type="submit" value="Submit" />
     </form>
   </body>

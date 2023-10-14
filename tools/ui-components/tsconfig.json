@@ -8,9 +8,13 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
-    "noEmit": true,
-    "typeRoots": ["../../node_modules/@types"]
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "types",
+    // can be removed, when we move the components into its own repo.
+    "declarationMap": true
   },
+  "exclude": ["node_modules", "dist", "types"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"

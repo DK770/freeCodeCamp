@@ -1,17 +1,13 @@
 import { toString, flow } from 'lodash-es';
-import i18next, { i18n } from 'i18next';
+import i18next, { type i18n } from 'i18next';
+
 import { format } from '../../../utils/format';
+import type {
+  FrameDocument,
+  PythonDocument
+} from '../../../../../tools/client-plugins/browser-scripts';
 
 const utilsFormat: <T>(x: T) => string = format;
-
-declare global {
-  interface Window {
-    console: {
-      log: () => void;
-    };
-    i18nContent: i18n;
-  }
-}
 
 export interface Source {
   index: string;
@@ -21,12 +17,14 @@ export interface Source {
 }
 
 export interface Context {
-  window: Window;
-  document: Document;
+  window?: Window &
+    typeof globalThis & { i18nContent?: i18n; __pyodide: unknown };
+  document?: FrameDocument | PythonDocument;
   element: HTMLIFrameElement;
   build: string;
   sources: Source;
   loadEnzyme?: () => void;
+  transformedPython?: string;
 }
 
 export interface TestRunnerConfig {
@@ -40,6 +38,35 @@ type InitFrame = (
   frameInitiateDocument?: () => unknown,
   frameConsoleLogger?: ProxyLogger
 ) => (frameContext: Context) => Context;
+
+class ScrollManager {
+  #previewScrollPosition = 0;
+
+  getPreviewScrollPosition = () => {
+    return this.#previewScrollPosition;
+  };
+
+  setPreviewScrollPosition = (position: number) => {
+    this.#previewScrollPosition = position;
+  };
+
+  registerScrollEventListener = (iframe: HTMLIFrameElement) => {
+    iframe.contentDocument?.addEventListener('scroll', event => {
+      const currentTarget = event.currentTarget as Document | null;
+      if (currentTarget?.body.scrollTop) {
+        this.setPreviewScrollPosition(currentTarget?.body.scrollTop);
+      }
+    });
+  };
+
+  restorePreviewScrollPosition = (iframe: HTMLIFrameElement) => {
+    if (iframe.contentDocument?.body) {
+      iframe.contentDocument.body.scrollTop = this.#previewScrollPosition;
+    }
+  };
+}
+
+export const scrollManager = new ScrollManager();
 
 // we use two different frames to make them all essentially pure functions
 // main iframe is responsible rendering the preview and is where we proxy the
@@ -103,22 +130,46 @@ const createHeader = (id = mainPreviewId) => `
   </script>
 `;
 
+type TestResult =
+  | { pass: boolean }
+  | { err: { message: string; stack?: string } };
+
+function getContentDocument<T extends Document = FrameDocument>(
+  document: Document,
+  id: string
+) {
+  const frame = document.getElementById(id);
+  if (!frame) return null;
+  const frameDocument = (frame as HTMLIFrameElement).contentDocument;
+  return frameDocument as T;
+}
+
 export const runTestInTestFrame = async function (
   document: Document,
   test: string,
   timeout: number
-) {
-  const { contentDocument: frame } = document.getElementById(
-    testId
-  ) as HTMLIFrameElement;
-  if (frame !== null) {
+): Promise<TestResult | undefined> {
+  const contentDocument = getContentDocument(document, testId);
+  if (contentDocument) {
     return await Promise.race([
       new Promise<
         { pass: boolean } | { err: { message: string; stack?: string } }
       >((_, reject) => setTimeout(() => reject('timeout'), timeout)),
-      frame.__runTest(test)
+      contentDocument.__runTest(test)
     ]);
   }
+};
+
+export const runPythonInFrame = function (
+  document: Document,
+  code: string,
+  previewId: string
+): void {
+  const contentDocument = getContentDocument<PythonDocument>(
+    document,
+    previewId
+  );
+  void contentDocument?.__runPython(code);
 };
 
 const createFrame =
@@ -166,11 +217,40 @@ const updateProxyConsole =
       const oldLog = frameContext.window.console.log.bind(
         frameContext.window.console
       );
+      const oldInfo = frameContext.window.console.info.bind(
+        frameContext.window.console
+      );
+
+      const oldWarn = frameContext.window.console.warn.bind(
+        frameContext.window.console
+      );
+
+      const oldError = frameContext.window.console.error.bind(
+        frameContext.window.console
+      );
+
       frameContext.window.console.log = function proxyConsole(
         ...args: string[]
       ) {
         proxyLogger(args.map((arg: string) => utilsFormat(arg)).join(' '));
         return oldLog(...(args as []));
+      };
+
+      frameContext.window.console.info = function proxyInfo(...args: string[]) {
+        proxyLogger(args.map((arg: string) => utilsFormat(arg)).join(' '));
+        return oldInfo(...(args as []));
+      };
+
+      frameContext.window.console.warn = function proxyWarn(...args: string[]) {
+        proxyLogger(args.map((arg: string) => utilsFormat(arg)).join(' '));
+        return oldWarn(...(args as []));
+      };
+
+      frameContext.window.console.error = function proxyWarn(
+        ...args: string[]
+      ) {
+        proxyLogger(args.map((arg: string) => utilsFormat(arg)).join(' '));
+        return oldError(...(args as []));
       };
     }
 
@@ -188,45 +268,56 @@ const updateWindowI18next = () => (frameContext: Context) => {
 const initTestFrame = (frameReady?: () => void) => (frameContext: Context) => {
   waitForFrame(frameContext)
     .then(async () => {
-      const { sources, loadEnzyme } = frameContext;
+      const { sources, loadEnzyme, transformedPython } = frameContext;
       // provide the file name and get the original source
       const getUserInput = (fileName: string) =>
         toString(sources[fileName as keyof typeof sources]);
-      await frameContext.document.__initTestFrame({
+      await frameContext.document?.__initTestFrame({
         code: sources,
         getUserInput,
-        loadEnzyme
+        loadEnzyme,
+        transformedPython
       });
-      if (frameReady) {
-        frameReady();
-      }
+
+      if (frameReady) frameReady();
     })
     .catch(handleDocumentNotFound);
   return frameContext;
 };
 
 const initMainFrame =
-  (_: unknown, proxyLogger?: ProxyLogger) => (frameContext: Context) => {
+  (frameReady?: () => void, proxyLogger?: ProxyLogger) =>
+  (frameContext: Context) => {
     waitForFrame(frameContext)
-      .then(() => {
+      .then(async () => {
         // Overwriting the onerror added by createHeader to catch any errors thrown
         // after the frame is ready. It has to be overwritten, as proxyLogger cannot
         // be added as part of createHeader.
 
-        frameContext.window.onerror = function (msg) {
-          if (typeof msg === 'string') {
-            const string = msg.toLowerCase();
-            if (string.includes('script error')) {
-              msg = 'Error, open your browser console to learn more.';
+        if (frameContext.window) {
+          frameContext.window.onerror = function (msg) {
+            if (typeof msg === 'string') {
+              const string = msg.toLowerCase();
+              if (string.includes('script error')) {
+                msg = 'Error, open your browser console to learn more.';
+              }
+              if (proxyLogger) {
+                proxyLogger(msg);
+              }
             }
-            if (proxyLogger) {
-              proxyLogger(msg);
-            }
-          }
-          // let the error propagate so it appears in the browser console, otherwise
-          // an error from a cross origin script just appears as 'Script error.'
-          return false;
-        };
+            // let the error propagate so it appears in the browser console, otherwise
+            // an error from a cross origin script just appears as 'Script error.'
+            return false;
+          };
+        }
+
+        if (
+          frameContext.document &&
+          '__initPythonFrame' in frameContext.document
+        ) {
+          await frameContext.document?.__initPythonFrame();
+        }
+        if (frameReady) frameReady();
       })
       .catch(handleDocumentNotFound);
     return frameContext;
@@ -240,6 +331,21 @@ function handleDocumentNotFound(err: string) {
 
 const initPreviewFrame = () => (frameContext: Context) => frameContext;
 
+// TODO: reimplement when ready to preview python challenges
+// const initPreviewFrame = () => (frameContext: Context) => {
+//   waitForFrame(frameContext)
+//     .then(() => {
+//       if (
+//         frameContext.document &&
+//         '__initPythonFrame' in frameContext.document
+//       ) {
+//         void frameContext.document?.__initPythonFrame();
+//       }
+//     })
+//     .catch(handleDocumentNotFound);
+//   return frameContext;
+// };
+
 const waitForFrame = (frameContext: Context) => {
   return new Promise((resolve, reject) => {
     if (!frameContext.document) {
@@ -252,7 +358,7 @@ const waitForFrame = (frameContext: Context) => {
   });
 };
 
-function writeToFrame(content: string, frame: Document | null) {
+function writeToFrame(content: string, frame?: FrameDocument) {
   // it's possible, if the preview is rapidly opened and closed, for the frame
   // to be null at this point.
   if (frame) {
@@ -267,27 +373,34 @@ const writeContentToFrame = (frameContext: Context) => {
     createHeader(frameContext.element.id) + frameContext.build,
     frameContext.document
   );
+
+  scrollManager.registerScrollEventListener(frameContext.element);
+
+  if (scrollManager.getPreviewScrollPosition()) {
+    scrollManager.restorePreviewScrollPosition(frameContext.element);
+  }
   return frameContext;
 };
 
 export const createMainPreviewFramer = (
   document: Document,
   proxyLogger: ProxyLogger,
-  frameTitle: string
-) =>
+  frameTitle: string,
+  frameReady?: () => void
+): ((args: Context) => void) =>
   createFramer(
     document,
     mainPreviewId,
     initMainFrame,
     proxyLogger,
-    undefined,
+    frameReady,
     frameTitle
   );
 
 export const createProjectPreviewFramer = (
   document: Document,
   frameTitle: string
-) =>
+): ((args: Context) => void) =>
   createFramer(
     document,
     projectPreviewId,
@@ -301,7 +414,8 @@ export const createTestFramer = (
   document: Document,
   proxyLogger: ProxyLogger,
   frameReady: () => void
-) => createFramer(document, testId, initTestFrame, proxyLogger, frameReady);
+): ((args: Context) => void) =>
+  createFramer(document, testId, initTestFrame, proxyLogger, frameReady);
 
 const createFramer = (
   document: Document,

@@ -8,11 +8,11 @@ dashedName: visualize-data-with-a-scatterplot-graph
 
 # --description--
 
-**Objective:** Build an app that is functionally similar to this: <a href="https://scatterplot-graph.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://scatterplot-graph.freecodecamp.rocks</a>.
+**Aufgabe:** Erstelle eine Anwendung, die eine ähnliche Funktionalität wie <a href="https://scatterplot-graph.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://scatterplot-graph.freecodecamp.rocks</a> aufweist.
 
 Erfülle die folgenden User Stories und bestehe alle Tests. Verwende Bibliotheken und APIs deiner Wahl. Gib dem Ganzen deinen persönlichen Stil.
 
-Sie können HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Für die Tests müssen die Achsen mit Hilfe der D3-Achseneigenschaft erzeugt werden, die automatisch Markierungen entlang der Achse erzeugt. Diese Häkchen sind für das Bestehen der D3-Tests erforderlich, da ihre Position zur Bestimmung der Ausrichtung der grafisch dargestellten Elemente verwendet wird. Informationen zum Generieren von Achsen finden Sie unter <https://github.com/d3/d3/blob/master/API.md#axes-d3-axis>. Erforderliche (nicht-virtuelle) DOM-Elemente werden zum Zeitpunkt jedes Tests abgefragt. Wenn Sie ein Frontend-Framework verwenden (z. B. Vue), sind die Testergebnisse für dynamische Inhalte möglicherweise ungenau. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
+Sie können HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Für die Tests müssen die Achsen mit Hilfe der D3-Achseneigenschaft erzeugt werden, die automatisch Markierungen entlang der Achse erzeugt. Diese Häkchen sind für das Bestehen der D3-Tests erforderlich, da ihre Position zur Bestimmung der Ausrichtung der grafisch dargestellten Elemente verwendet wird. Informationen zum Generieren von Achsen finden Sie unter <https://github.com/d3/d3/blob/master/API.md#axes-d3-axis>. Erforderliche DOM-Elemente werden zum Zeitpunkt eines jeden Tests abgefragt. Wenn Sie ein Frontend-Framework verwenden (z. B. Vue), sind die Testergebnisse für dynamische Inhalte möglicherweise ungenau. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
 
 **User Story #1:** Ich kann ein Titelelement sehen, das einen entsprechenden `id="title"` hat.
 

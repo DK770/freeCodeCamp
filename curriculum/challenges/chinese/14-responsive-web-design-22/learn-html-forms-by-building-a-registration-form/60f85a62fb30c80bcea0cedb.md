@@ -1,13 +1,13 @@
 ---
 id: 60f85a62fb30c80bcea0cedb
-title: 步骤 24
+title: 步骤 25
 challengeType: 0
-dashedName: step-24
+dashedName: step-25
 ---
 
 # --description--
 
-用户可以选择 `Personal Account` 或者 `Business Account`。
+Users will be allowed to choose either a `Personal` or `Business`.
 
 在前两个 `label` 元素里，添加一个 `type="radio"` 的 `input` 元素。
 
@@ -47,7 +47,7 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
   <body>
     <h1>Registration Form</h1>
     <p>Please fill out this form with the required information</p>
-    <form action='https://register-demo.freecodecamp.org'>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
       <fieldset>
         <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
         <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
@@ -56,7 +56,6 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
       </fieldset>
 --fcc-editable-region--
       <fieldset>
-        <label></label>
         <label></label>
         <label></label>
       </fieldset>

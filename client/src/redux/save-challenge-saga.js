@@ -1,6 +1,6 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 
-import { challengeTypes } from '../../utils/challenge-types';
+import { challengeTypes } from '../../../shared/config/challenge-types';
 import { createFlashMessage } from '../components/Flash/redux';
 import { FlashMessages } from '../components/Flash/redux/flash-messages';
 import {
@@ -17,7 +17,7 @@ import {
 import { saveChallengeComplete } from './actions';
 import { savedChallengesSelector } from './selectors';
 
-export function* saveChallengeSaga() {
+function* saveChallengeSaga() {
   const { id, challengeType } = yield select(challengeMetaSelector);
   const { challengeFiles } = yield select(challengeDataSelector);
   const savedChallenges = yield select(savedChallengesSelector);

@@ -4,7 +4,6 @@ declare module '@freecodecamp/strip-comments';
 declare module '@types/react-redux';
 declare module '@types/validator';
 declare module '@types/lodash-es';
-declare module 'react-lazy-load';
 declare module '*.svg' {
   const content: string;
   export default content;
@@ -37,3 +36,5 @@ declare var MathJax: {
     Queue: (attributes: unknown[]) => void;
   };
 };
+
+declare module 'monaco-editor/esm/vs/base/common/platform.js';

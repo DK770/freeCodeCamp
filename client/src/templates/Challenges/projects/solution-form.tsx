@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import type { WithTranslation } from 'react-i18next';
 
+import { challengeTypes } from '../../../../../shared/config/challenge-types';
 import {
-  backend,
-  backEndProject,
-  codeAllyCert,
-  frontEndProject,
-  pythonProject
-} from '../../../../utils/challenge-types';
-import { Form, ValidatedValues } from '../../../components/formHelpers';
+  StrictSolutionForm,
+  ValidatedValues
+} from '../../../components/formHelpers/form';
 
 interface SubmitProps {
   showCompletionModal: boolean;
 }
 
-interface FormProps extends WithTranslation {
+interface SolutionFormProps extends WithTranslation {
   challengeType: number;
   description?: string;
   onSubmit: (arg0: SubmitProps) => void;
   updateSolutionForm: (arg0: Record<string, unknown>) => void;
 }
 
-export class SolutionForm extends Component<FormProps> {
-  constructor(props: FormProps) {
+export class SolutionForm extends Component<SolutionFormProps> {
+  constructor(props: SolutionFormProps) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -74,25 +71,26 @@ export class SolutionForm extends Component<FormProps> {
     let solutionFormID = 'front-end-form';
 
     switch (challengeType) {
-      case frontEndProject:
+      case challengeTypes.frontEndProject:
         formFields = solutionField;
         solutionLink =
           solutionLink + 'https://codepen.io/camperbot/full/oNvPqqo';
         break;
 
-      case backend:
+      case challengeTypes.backend:
         formFields = solutionField;
         options.isLocalLinkAllowed = true;
         solutionLink = solutionLink + 'https://project-name.camperbot.repl.co/';
         break;
 
-      case backEndProject:
+      case challengeTypes.backEndProject:
         formFields = backEndProjectFields;
         solutionLink = solutionLink + 'https://project-name.camperbot.repl.co/';
         solutionFormID = 'back-end-form';
         break;
 
-      case pythonProject:
+      case challengeTypes.pythonProject:
+      case challengeTypes.colab:
         formFields = solutionField;
         options.isEditorLinkAllowed = true;
         solutionLink =
@@ -102,7 +100,7 @@ export class SolutionForm extends Component<FormProps> {
             : 'https://replit.com/@camperbot/hello');
         break;
 
-      case codeAllyCert:
+      case challengeTypes.codeAllyCert:
         formFields = solutionField;
         options.isEditorLinkAllowed = true;
         solutionLink = solutionLink + 'https://your-git-repo.url/files';
@@ -115,7 +113,7 @@ export class SolutionForm extends Component<FormProps> {
     }
 
     return (
-      <Form
+      <StrictSolutionForm
         buttonText={`${buttonCopy}`}
         formFields={formFields}
         id={solutionFormID}

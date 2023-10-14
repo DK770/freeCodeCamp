@@ -1,6 +1,6 @@
 ---
 id: 587d824a367417b2b2512c46
-title: Learn How JavaScript Assertions Work
+title: Lerne, wie JavaScript Assertions funktionieren
 challengeType: 2
 forumTopicId: 301589
 dashedName: learn-how-javascript-assertions-work
@@ -8,21 +8,27 @@ dashedName: learn-how-javascript-assertions-work
 
 # --description--
 
-Bei der Bearbeitung dieser Aufgaben musst du deinen Code mit einer der folgenden Methoden schreiben:
+Bei der Arbeit an diesen Aufgaben wirst du deinen Code mithilfe folgender Methoden schreiben:
 
-- Klone <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">dieses GitHub-Repo</a> und schließe dein Projekt lokal ab.
+- Klone <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">diese GitHub-Repo</a> und schließe dein Projekt lokal ab.
 - Verwende <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">unser Replit Starterprojekt</a> um diese Aufgaben fertigzustellen.
-- Verwende einen Site-Builder deiner Wahl, um das Projekt fertigzustellen. Achte darauf, alle Dateien aus unserem GitHub Repo zu integrieren.
+- Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
 
-Wenn du fertig bist, stelle sicher, dass dein Projekt öffentlich zugänglich gehostet ist. Gib dann die URL in das `Solution Link`-Feld ein.
+Wenn du Replit verwendest, folge diesen Schritten, um das Projekt einzurichten:
+
+-   Beginne mit dem Importieren des Projekts in Replit.
+-   Daraufhin wird ein `.replit`-Fenster angezeigt.
+-   Wähle `Use run command` und klicke auf die `Done` Schaltfläche.
+
+Wenn du fertig bist, stelle sicher, dass eine funktionierende Demo deines Projekts irgendwo öffentlich gehostet wird. Gib anschließend die URL in das Solution Link-Feld ein.
 
 # --instructions--
 
-Within `tests/1_unit-tests.js` under the test labelled `#1` in the `Basic Assertions` suite, change each `assert` to either `assert.isNull` or `assert.isNotNull` to make the test pass (should evaluate to `true`). Die an die Asserts übergebenen Argumente dürfen nicht verändert werden.
+Ändere innerhalb `tests/1_unit-tests.js` unter dem Test mit dem Label `#1` in der `Basic Assertions`-Suite jeden `assert` zu entweder `assert.isNull` oder `assert.isNotNull`, um den Test zu bestehen (sollte `true` ausgeben). Die an die Asserts übergebenen Argumente dürfen nicht verändert werden.
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+Alle Tests sollten erfolgreich sein.
 
 ```js
 (getUserInput) =>
@@ -36,7 +42,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-You should choose the correct method for the first assertion - `isNull` vs. `isNotNull`.
+Du solltest die richtige Methode für die erste Behauptung wählen - `isNull` vs. `isNotNull`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +56,7 @@ You should choose the correct method for the first assertion - `isNull` vs. `isN
   );
 ```
 
-You should choose the correct method for the second assertion - `isNull` vs. `isNotNull`.
+Du solltest die richtige Methode für die zweite Behauptung wählen - `isNull` vs. `isNotNull`.
 
 ```js
 (getUserInput) =>

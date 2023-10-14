@@ -1,4 +1,4 @@
-import { Button, Form } from '@freecodecamp/react-bootstrap';
+import { Button } from '@freecodecamp/react-bootstrap';
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -9,33 +9,23 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import type {
   StripeCardNumberElementChangeEvent,
-  StripeCardExpiryElementChangeEvent,
-  PaymentIntentResult
+  StripeCardExpiryElementChangeEvent
 } from '@stripe/stripe-js';
 import React, { useState } from 'react';
 
-import envData from '../../../../config/env.json';
+import { PaymentProvider } from '../../../../shared/config/donation-settings';
+import envData from '../../../config/env.json';
 import { Themes } from '../settings/theme';
-import { AddDonationData } from './paypal-button';
-import SecurityLockIcon from './security-lock-icon';
+import { DonationApprovalData, PostPayment } from './types';
 
 const { stripePublicKey }: { stripePublicKey: string | null } = envData;
 
-export type HandleAuthentication = (
-  clientSecret: string,
-  paymentMethod: string
-) => Promise<PaymentIntentResult | { error: { type: string } }>;
-
 interface FormPropTypes {
-  onDonationStateChange: (donationState: AddDonationData) => void;
-  postStripeCardDonation: (
-    paymentMethodId: string,
-    handleAuthentication: HandleAuthentication
-  ) => void;
+  onDonationStateChange: (donationState: DonationApprovalData) => void;
+  postPayment: (arg0: PostPayment) => void;
   t: (label: string) => string;
   theme: Themes;
   processing: boolean;
-  isVariantA: boolean;
 }
 
 interface Element {
@@ -50,9 +40,8 @@ const StripeCardForm = ({
   theme,
   t,
   onDonationStateChange,
-  postStripeCardDonation,
-  processing,
-  isVariantA
+  postPayment,
+  processing
 }: FormPropTypes): JSX.Element => {
   const [isSubmissionValid, setSubmissionValidity] = useState(true);
   const [isTokenizing, setTokenizing] = useState(false);
@@ -124,7 +113,11 @@ const StripeCardForm = ({
             error: t('donate.went-wrong')
           });
         } else if (paymentMethod)
-          postStripeCardDonation(paymentMethod.id, handleAuthentication);
+          postPayment({
+            paymentProvider: PaymentProvider.StripeCard,
+            paymentMethodId: paymentMethod.id,
+            handleAuthentication
+          });
       }
     }
     return setTokenizing(false);
@@ -135,7 +128,6 @@ const StripeCardForm = ({
   ) => {
     if (stripe) {
       return stripe.confirmCardPayment(clientSecret, {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         payment_method: paymentMethod
       });
     }
@@ -143,10 +135,13 @@ const StripeCardForm = ({
   };
 
   return (
-    <Form className='donation-form' onSubmit={handleSubmit}>
+    <form
+      className='donation-form'
+      onSubmit={event => void handleSubmit(event)}
+    >
       <div
         className={`donation-elements${
-          !isSubmissionValid ? ' failed-submition' : ''
+          !isSubmissionValid ? ' failed-submission' : ''
         }`}
       >
         <CardNumberElement
@@ -170,10 +165,9 @@ const StripeCardForm = ({
         disabled={!stripe || !elements || isSubmitting}
         type='submit'
       >
-        {!isVariantA && <SecurityLockIcon />}
         {t('buttons.donate')}
       </Button>
-    </Form>
+    </form>
   );
 };
 

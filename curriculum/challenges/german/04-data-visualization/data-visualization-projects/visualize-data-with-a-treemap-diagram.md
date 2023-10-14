@@ -8,11 +8,11 @@ dashedName: visualize-data-with-a-treemap-diagram
 
 # --description--
 
-**Objective:** Build an app that is functionally similar to this: <a href="https://treemap-diagram.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://treemap-diagram.freecodecamp.rocks</a>.
+**Aufgabe:** Erstelle eine Anwendung, die eine ähnliche Funktionalität wie <a href="https://treemap-diagram.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://treemap-diagram.freecodecamp.rocks</a> aufweist.
 
 Erfülle die folgenden User Stories und bestehe alle Tests. Verwende Bibliotheken und APIs deiner Wahl. Gib dem Ganzen deinen persönlichen Stil.
 
-Du kannst HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Die Tests erfordern, dass Achsen mit der Eigenschaft der D3-Achse erzeugt werden, welche automatisch Markierungen entlang der Achse bildet. Diese Markierungen sind notwendig für die D3-Tests, da ihre Positionen zur Bestimmung der Ausrichtung von Graphen verwendet werden. Informationen zum Generieren von Achsen findest du hier <https://github.com/d3/d3/blob/master/API.md#axes-d3-axis>. Erforderliche (nicht-virtuelle) DOM-Elemente werden zum Zeitpunkt jedes Tests abgefragt. Wenn du ein Frontend-Framework (wie z. B. Vue) verwendest, können die Testergebnisse für dynamische Inhalte ungenau sein. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
+Du kannst HTML, JavaScript, CSS und die D3-svg-basierte Visualisierungsbibliothek verwenden. Die Tests erfordern, dass Achsen mit der Eigenschaft der D3-Achse erzeugt werden, welche automatisch Markierungen entlang der Achse bildet. Diese Markierungen sind notwendig für die D3-Tests, da ihre Positionen zur Bestimmung der Ausrichtung von Graphen verwendet werden. Informationen zum Generieren von Achsen findest du hier <https://github.com/d3/d3/blob/master/API.md#axes-d3-axis>. Erforderliche DOM-Elemente werden zum Zeitpunkt eines jeden Tests abgefragt. Wenn du ein Frontend-Framework (wie z. B. Vue) verwendest, können die Testergebnisse für dynamische Inhalte ungenau sein. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
 
 **User Story #1:** Meine Tree Map sollte eine Bezeichnung mit der entsprechenden `id="title"` haben.
 

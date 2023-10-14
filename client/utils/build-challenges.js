@@ -2,14 +2,14 @@ const path = require('path');
 
 const _ = require('lodash');
 
-const envData = require('../../config/env.json');
+const envData = require('../config/env.json');
 const {
   getChallengesForLang,
   generateChallengeCreator,
   CHALLENGES_DIR,
   META_DIR,
   getChallengesDirForLang
-} = require('../../curriculum/getChallenges');
+} = require('../../curriculum/get-challenges');
 
 const { curriculumLocale } = envData;
 

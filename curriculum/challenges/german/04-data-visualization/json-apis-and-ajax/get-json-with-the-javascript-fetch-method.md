@@ -38,6 +38,30 @@ Aktualisiere den Code, um eine `GET`-Anfrage an die freeCodeCamp Katzen-Foto-API
 
 # --hints--
 
+
+Dein Code sollte die abgerufenen Daten verwenden, um das innere HTML zu ersetzen
+
+```js
+const catData = "dummy data";
+const ref = fetch;
+fetch = () => Promise.resolve({ json: () => catData });
+async () => {
+  try {
+    document.getElementById("getMessage").click();
+    await new Promise((resolve, reject) => setTimeout(() => resolve(), 250));
+  } catch (error) {
+    console.log(error);
+  } finally {
+    fetch = ref;
+    assert.equal(
+      document.getElementById("message").textContent,
+      JSON.stringify(catData)
+    );
+  }
+};
+```
+
+
 Dein Code sollte eine `GET`-Anfrage mit `fetch` stellen.
 
 ```js

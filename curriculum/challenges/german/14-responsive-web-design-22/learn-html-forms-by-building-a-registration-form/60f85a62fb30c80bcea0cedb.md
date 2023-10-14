@@ -1,32 +1,32 @@
 ---
 id: 60f85a62fb30c80bcea0cedb
-title: Step 24
+title: Schritt 25
 challengeType: 0
-dashedName: step-24
+dashedName: step-25
 ---
 
 # --description--
 
-Users will be allowed to choose either a `Personal Account` or `Business Account`.
+Users will be allowed to choose either a `Personal` or `Business`.
 
-To do this, within each of the first two `label` elements, add one `input` element with `type="radio"`.
+Um dies zu tun, füge innerhalb jedes der beiden ersten `label`-Element ein `input`-Element mit `type="radio"` hinzu.
 
 # --hints--
 
-You should add two `input` elements.
+Du solltest zwei `input`-Elemente hinzufügen.
 
 ```js
 assert.equal(document.querySelectorAll('fieldset:nth-child(2) input')?.length, 2);
 ```
 
-You should add one `input` to each of the first two `label` elements.
+Du solltest zu jedem der ersten zwei `label`-Elemente ein `input` hinzufügen.
 
 ```js
 assert.exists(document.querySelector('fieldset:nth-child(2) > label:nth-child(1) > input'));
 assert.exists(document.querySelector('fieldset:nth-child(2) > label:nth-child(2) > input'));
 ```
 
-You should give both `input` elements a `type` of `radio`.
+Du solltest beiden `input`-Elementen einen `type` von `radio` zuweisen.
 
 ```js
 assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"]')?.length, 2);
@@ -47,7 +47,7 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
   <body>
     <h1>Registration Form</h1>
     <p>Please fill out this form with the required information</p>
-    <form action='https://register-demo.freecodecamp.org'>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
       <fieldset>
         <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
         <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
@@ -56,7 +56,6 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
       </fieldset>
 --fcc-editable-region--
       <fieldset>
-        <label></label>
         <label></label>
         <label></label>
       </fieldset>
