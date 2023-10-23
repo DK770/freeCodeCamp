@@ -16,13 +16,13 @@ To improve accuracy, please use partial pivoting and scaling.
 
 # --hints--
 
-`gaussianElimination` sollte eine Funktion sein.
+`gaussianElimination` should be a function.
 
 ```js
 assert(typeof gaussianElimination == 'function');
 ```
 
-`gaussianElimination([[1,1],[1,-1]], [5,1])` sollte ein Array zurückgeben.
+`gaussianElimination([[1,1],[1,-1]], [5,1])` should return an array.
 
 ```js
 assert(
@@ -38,7 +38,7 @@ assert(
 );
 ```
 
-`gaussianElimination([[1,1],[1,-1]], [5,1])` sollte `[ 3, 2 ]` zurückgeben.
+`gaussianElimination([[1,1],[1,-1]], [5,1])` should return `[ 3, 2 ]`.
 
 ```js
 assert.deepEqual(
@@ -53,7 +53,7 @@ assert.deepEqual(
 );
 ```
 
-`gaussianElimination([[2,3],[2,1]] , [8,4])` sollte `[ 1, 2 ]` zurückgeben.
+`gaussianElimination([[2,3],[2,1]] , [8,4])` should return `[ 1, 2 ]`.
 
 ```js
 assert.deepEqual(
@@ -68,7 +68,7 @@ assert.deepEqual(
 );
 ```
 
-`gaussianElimination([[1,3],[5,-2]], [14,19])` sollte `[ 5, 3 ]` zurückgeben.
+`gaussianElimination([[1,3],[5,-2]], [14,19])` should return `[ 5, 3 ]`.
 
 ```js
 assert.deepEqual(
@@ -83,7 +83,7 @@ assert.deepEqual(
 );
 ```
 
-`gaussianElimination([[1,1],[5,-1]] , [10,14])` sollte `[ 4, 6 ]` zurückgeben.
+`gaussianElimination([[1,1],[5,-1]] , [10,14])` should return `[ 4, 6 ]`.
 
 ```js
 assert.deepEqual(
@@ -98,7 +98,7 @@ assert.deepEqual(
 );
 ```
 
-`gaussianElimination([[1,2,3],[4,5,6],[7,8,8]] , [6,15,23])` sollte `[ 1, 1, 1 ]` zurückgeben.
+`gaussianElimination([[1,2,3],[4,5,6],[7,8,8]] , [6,15,23])` should return `[ 1, 1, 1 ]`.
 
 ```js
 assert.deepEqual(

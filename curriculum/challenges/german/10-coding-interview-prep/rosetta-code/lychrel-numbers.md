@@ -68,49 +68,49 @@ Write a function that takes a number as a parameter. Return true if the number i
 
 # --hints--
 
-`isLychrel` sollte eine Funktion sein.
+`isLychrel` should be a function.
 
 ```js
 assert(typeof isLychrel === 'function');
 ```
 
-`isLychrel(12)` sollte einen Boolean zurückgeben.
+`isLychrel(12)` should return a boolean.
 
 ```js
 assert(typeof isLychrel(12) === 'boolean');
 ```
 
-`isLychrel(12)` sollte `false` zurückgeben.
+`isLychrel(12)` should return `false`.
 
 ```js
 assert.equal(isLychrel(12), false);
 ```
 
-`isLychrel(55)` sollte `false` zurückgeben.
+`isLychrel(55)` should return `false`.
 
 ```js
 assert.equal(isLychrel(55), false);
 ```
 
-`isLychrel(196)` sollte `true` zurückgeben.
+`isLychrel(196)` should return `true`.
 
 ```js
 assert.equal(isLychrel(196), true);
 ```
 
-`isLychrel(879)` sollte `true` zurückgeben.
+`isLychrel(879)` should return `true`.
 
 ```js
 assert.equal(isLychrel(879), true);
 ```
 
-`isLychrel(44987)` sollte `false` zurückgeben.
+`isLychrel(44987)` should return `false`.
 
 ```js
 assert.equal(isLychrel(44987), false);
 ```
 
-`isLychrel(7059)` sollte `true` zurückgeben.
+`isLychrel(7059)` should return `true`.
 
 ```js
 assert.equal(isLychrel(7059), true);

@@ -16,13 +16,7 @@ Lavorare su questo progetto ti porterà a scrivere il tuo codice utilizzando uno
 -   Usare <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">la nostra bozza di progetto su Replit</a> per completare il tuo progetto.
 -   Usare un costruttore di siti a tua scelta per completare il progetto. Assicurati di incorporare tutti i file del nostro repository GitHub.
 
-Se utilizzi Replit, segui questi passaggi per impostare il progetto:
-
--   Inizia importando il progetto su Replit.
--   Poi vedrai una finestra `.replit`.
--   Seleziona `Use run command` e clicca sul pulsante `Done`.
-
-Quando hai finito, assicurati che una demo funzionante del tuo progetto sia ospitata in qualche percorso pubblico. Quindi invia l'URL nel campo Link alla soluzione. Facoltativamente, invia anche un link al codice sorgente del tuo progetto nel campo Link GitHub.
+Quando hai finito, assicurati che una demo funzionante del tuo progetto sia ospitata in qualche percorso pubblico. Quindi invia l'URL nel campo `Solution Link`. Facoltativamente, invia anche un link al codice sorgente del tuo progetto nel campo `GitHub Link`.
 
 # --instructions--
 
@@ -41,11 +35,11 @@ Scrivi i seguenti test in `tests/2_functional-tests.js`:
 -   Visualizzazione di un singolo thread con tutte le risposte: richiesta GET a `/api/replies/{board}`
 -   Eliminazione di una risposta con la password errata: richiesta DELETE a `/api/replies/{board}` con una `delete_password` non valida
 -   Eliminazione di una risposta con la password corretta: richiesta DELETE a `/api/replies/{board}` con una `delete_password` valida
--   Segnalazione di una risposta: richiesta PUT a `/api/replies/{board}`
+-   Segnalare una risposta: richiesta PUT a `/api/replies/{board}`
 
 # --hints--
 
-Puoi fornire il tuo progetto e non l'URL di esempio.
+È necessario fornire il proprio progetto, non l'URL di esempio.
 
 ```js
 (getUserInput) => {
@@ -319,8 +313,8 @@ async (getUserInput) => {
 
   let res = await fetch(`${url}/api/threads/fcc_test`);
   const threads = await res.json();
-  const thread_id = threads[0]._id;
-  const data = { thread_id };
+  const report_id = threads[0]._id;
+  const data = { report_id };
 
   res = await fetch(`${url}/api/threads/fcc_test`, {
     method: 'PUT',

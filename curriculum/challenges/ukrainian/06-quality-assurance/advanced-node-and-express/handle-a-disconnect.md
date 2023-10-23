@@ -1,6 +1,6 @@
 ---
 id: 589fc831f9fc0f352b528e76
-title: Обробка від’єднання
+title: Оброблення відключення
 challengeType: 2
 forumTopicId: 301552
 dashedName: handle-a-disconnect
@@ -8,9 +8,9 @@ dashedName: handle-a-disconnect
 
 # --description--
 
-Ви могли помітити, що до цього часу кількість користувачів тільки збільшувалась. Обробка від’єднання користувача така ж легка, як і обробка приєднання, окрім того, що ви повинні слухати його на кожному сокеті, а не на цілому сервері.
+Ви можете звернути увагу на те, що до цього часу Ви мали тільки збільшення кількості користувачів. Обробка відключення користувача так само легка, як і робота з початковим підключенням, окрім випадків, коли ви повинні слухати його на кожному сокеті, а не на всьому сервері.
 
-Щоб зробити це, додайте ще одного слухача всередині наявного слухача `'connect'`, який слухає `'disconnect'` на сокеті без передачі даних. Ви можете протестувати цю функціональність, просто ввівши на консолі про від’єднання користувача.
+Щоб зробити це, додайте іншого слухача всередині існуючого `'connect'` слухача, який слухає `'disconnect'` на сокеті без обробки даних. Ви можете протестувати ці функції, просто увійшовши до консолі, від якої користувач відключився.
 
 ```js
 socket.on('disconnect', () => {
@@ -18,38 +18,44 @@ socket.on('disconnect', () => {
 });
 ```
 
-Щоб переконатися, що клієнти постійно мають оновлену кількість користувачів, ви повинні зменшити `currentUsers` на 1, коли відбувається від’єднання, а потім видати подію `'user count'` з оновленою кількістю.
+Щоб переконатися, що клієнти постійно мають оновлену кількість користувачів, ви повинні зменшити поточних користувачів (currentUsers) на 1, поки відбувається від'єднання потім викликати 'user count' з оновленою кількістю!
 
-**Примітка:** як і `'disconnect'`, всі інші події, які сокет може видавати на сервер, повинні бути обробленими в під’єднаному слухачі, де визначений «сокет».
+**Примітка:** Як і `'disconnect'`, всі інші події, які сокет може передавати на сервер слід обробити в процесі підключення слухача де ми маємо 'сокет'.
 
-Відправте свою сторінку коли впевнились, що все правильно. Якщо виникають помилки, ви можете <a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#handle-a-disconnect-8" target="_blank" rel="noopener noreferrer nofollow">переглянути проєкт, виконаний до цього етапу</a>.
+Підтвердіть вашу сторінку, якщо все зрозуміло. If you're running into errors, you can <a href="https://gist.github.com/camperbot/ab1007b76069884fb45b215d3c4496fa" target="_blank" rel="noopener noreferrer nofollow">check out the project completed up to this point</a>.
 
 # --hints--
 
-Сервер повинен обробляти подію від’єднання від сокету.
+Сервер повинен обробляти подію відключення від сокету.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/server.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(data, /socket.on.*('|")disconnect('|")/s, '');
-}
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/server.js').then(
+    (data) => {
+      assert.match(data, /socket.on.*('|")disconnect('|")/gi, '');
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
+  );
 ```
 
-Ваш клієнт повинен прослухати подію `'user count'`.
+Ваш клієнт повинен слідкувати за 'user count' кодом.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/public/client.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /socket.on.*('|")user count('|")/s,
-    'Your client should be connection to server with the connection defined as socket'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/public/client.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /socket.on.*('|")user count('|")/gi,
+        'Your client should be connection to server with the connection defined as socket'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-}
 ```
 
 # --solutions--

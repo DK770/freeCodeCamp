@@ -8,6 +8,14 @@
   font-size: 0.9rem;
 }
 
-#description ol li a {
-  word-break: break-all;
+#description p,
+#instructions p,
+#notes p,
+#description ul,
+#instructions ul,
+#notes ul,
+#description ol,
+#instructions ol,
+#notes ol {
+  font-family: 'Lato', sans-serif;
 }

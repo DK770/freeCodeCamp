@@ -30,7 +30,7 @@ A positive integer is a Kaprekar number if:
 
 # --hints--
 
-`isKaprekar` має бути функцією.
+`isKaprekar` повинен бути функцією.
 
 ```js
 assert(typeof isKaprekar == 'function');

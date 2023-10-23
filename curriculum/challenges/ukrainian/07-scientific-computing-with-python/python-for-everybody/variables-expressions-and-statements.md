@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f050b6c005b0e76f056
-title: 'Змінні, вирази та інструкції'
+title: 'Змінні та вирази'
 challengeType: 11
 videoId: nELR-uyyrok
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: variables-expressions-and-statements
 
 ## --text--
 
-Який символ використовується в інструкції присвоювання?
+Який символ використовується під час визначення(змінної)?
 
 ## --answers--
 

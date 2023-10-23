@@ -8,9 +8,11 @@ dashedName: reverse-a-string
 
 # --description--
 
-Invertir la cadena proporcionada y devolver la cadena invertida.
+Invierte la cadena proporcionada.
 
-Por ejemplo, `"hello"` debe convertirse `"olleh"`.
+Es posible que necesites convertir la cadena en un arreglo antes de poder invertirla.
+
+Tu resultado debe ser una cadena.
 
 # --hints--
 

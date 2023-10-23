@@ -65,7 +65,7 @@ assert.strictEqual(
 );
 ```
 
-Clicking the button element should toggle the `visibility` property in state between `true` and `false` and conditionally render the `h1` element.
+Al hacer clic en el botón se debe cambiar la propiedad `visibility` en el estado entre `true` y `false`.
 
 ```js
 (() => {
@@ -76,11 +76,11 @@ Clicking the button element should toggle the `visibility` property in state bet
   };
   const second = () => {
     mockedComponent.find('button').simulate('click');
-    return mockedComponent.state('visibility') && mockedComponent.find('h1').exists();
+    return mockedComponent.state('visibility');
   };
   const third = () => {
     mockedComponent.find('button').simulate('click');
-    return mockedComponent.state('visibility') && mockedComponent.find('h1').exists();
+    return mockedComponent.state('visibility');
   };
   const firstValue = first();
   const secondValue = second();

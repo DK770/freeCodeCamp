@@ -16,43 +16,43 @@ Write a function that takes `width` and `height` as parameters and returns the n
 
 # --hints--
 
-`knightTour` sollte eine Funktion sein.
+`knightTour` should be a function.
 
 ```js
 assert(typeof knightTour == 'function');
 ```
 
-`knightTour(6, 6)` sollte eine Zahl zurückgeben.
+`knightTour(6, 6)` should return a number.
 
 ```js
 assert(typeof knightTour(6, 6) == 'number');
 ```
 
-`knightTour(6, 6)` sollte `36` zurückgeben.
+`knightTour(6, 6)` should return `36`.
 
 ```js
 assert.equal(knightTour(6, 6), 36);
 ```
 
-`knightTour(5, 6)` sollte `30` zurückgeben.
+`knightTour(5, 6)` should return `30`.
 
 ```js
 assert.equal(knightTour(5, 6), 30);
 ```
 
-`knightTour(4, 6)` sollte `12` zurückgeben.
+`knightTour(4, 6)` should return `12`.
 
 ```js
 assert.equal(knightTour(4, 6), 12);
 ```
 
-`knightTour(7, 3)` sollte `10` zurückgeben.
+`knightTour(7, 3)` should return `10`.
 
 ```js
 assert.equal(knightTour(7, 3), 10);
 ```
 
-`knightTour(8, 6)` sollte `48` zurückgeben.
+`knightTour(8, 6)` should return `48`.
 
 ```js
 assert.equal(knightTour(8, 6), 48);

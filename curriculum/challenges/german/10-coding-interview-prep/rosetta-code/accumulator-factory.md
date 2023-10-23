@@ -24,19 +24,19 @@ Closures save outer state.
 
 # --hints--
 
-`accumulator` sollte eine Funktion sein.
+`accumulator` should be a function.
 
 ```js
 assert(typeof accumulator === 'function');
 ```
 
-`accumulator(0)` sollte eine Funktion zurückgeben.
+`accumulator(0)` should return a function.
 
 ```js
 assert(typeof accumulator(0) === 'function');
 ```
 
-`accumulator(0)(2)` sollte eine Zahl zurückgeben.
+`accumulator(0)(2)` should return a number.
 
 ```js
 assert(typeof accumulator(0)(2) === 'number');

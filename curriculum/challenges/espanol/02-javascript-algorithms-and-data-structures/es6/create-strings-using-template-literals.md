@@ -69,13 +69,14 @@ assert(
 Las cadenas de plantillas y la interpolación de expresiones deben ser usadas.
 
 ```js
-assert.match(code, /(`.*\${.*}.*`)/);
+(getUserInput) => assert(getUserInput('index').match(/(`.*\${.*}.*`)/));
 ```
 
 Debe utilizarse un iterador.
 
 ```js
-assert(code.match(/for|map|reduce|forEach|while/));
+(getUserInput) =>
+  assert(getUserInput('index').match(/for|map|reduce|forEach|while/));
 ```
 
 # --seed--

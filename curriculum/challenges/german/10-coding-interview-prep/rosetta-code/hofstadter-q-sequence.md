@@ -20,37 +20,37 @@ Implement the Hofstadter Q Sequence equation as a function. The function should 
 
 # --hints--
 
-`hofstadterQ` sollte eine Funktion sein.
+`hofstadterQ` should be a function.
 
 ```js
 assert(typeof hofstadterQ === 'function');
 ```
 
-`hofstadterQ()` sollte `integer` zurückgeben
+`hofstadterQ()` should return `integer`
 
 ```js
 assert(Number.isInteger(hofstadterQ(1000)));
 ```
 
-`hofstadterQ(1000)` sollte `502` zurückgeben
+`hofstadterQ(1000)` should return `502`
 
 ```js
 assert.equal(hofstadterQ(testCase[0]), res[0]);
 ```
 
-`hofstadterQ(1500)` sollte `755` zurückgeben
+`hofstadterQ(1500)` should return `755`
 
 ```js
 assert.equal(hofstadterQ(testCase[1]), res[1]);
 ```
 
-`hofstadterQ(2000)` sollte `1005` zurückgeben
+`hofstadterQ(2000)` should return `1005`
 
 ```js
 assert.equal(hofstadterQ(testCase[2]), res[2]);
 ```
 
-`hofstadterQ(2500)` sollte `1261` zurückgeben
+`hofstadterQ(2500)` should return `1261`
 
 ```js
 assert.equal(hofstadterQ(testCase[3]), res[3]);

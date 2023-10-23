@@ -32,7 +32,7 @@ All tests should pass.
   );
 ```
 
-Du solltest die richtige Methode für die erste Behauptung wählen - `equal` vs. `notEqual`.
+You should choose the correct method for the first assertion - `equal` vs. `notEqual`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ Du solltest die richtige Methode für die erste Behauptung wählen - `equal` vs.
   );
 ```
 
-Du solltest die richtige Methode für die zweite Behauptung wählen - `equal` vs. `notEqual`.
+You should choose the correct method for the second assertion - `equal` vs. `notEqual`.
 
 ```js
 (getUserInput) =>
@@ -68,7 +68,7 @@ Du solltest die richtige Methode für die zweite Behauptung wählen - `equal` vs
   );
 ```
 
-Du solltest die richtige Methode für die dritte Behauptung wählen - `equal` vs. `notEqual`.
+You should choose the correct method for the third assertion - `equal` vs. `notEqual`.
 
 ```js
 (getUserInput) =>
@@ -86,7 +86,7 @@ Du solltest die richtige Methode für die dritte Behauptung wählen - `equal` vs
   );
 ```
 
-Du solltest die richtige Methode für die vierte Behauptung wählen - `equal` vs. `notEqual`.
+You should choose the correct method for the fourth assertion - `equal` vs. `notEqual`.
 
 ```js
 (getUserInput) =>

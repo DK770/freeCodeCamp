@@ -24,7 +24,8 @@ const isDev = process.env.FREECODECAMP_NODE_ENV !== 'production';
 
 export default function prodErrorHandler() {
   // error handling in production.
-  return function (err, req, res, _next) {
+  // eslint-disable-next-line no-unused-vars
+  return function (err, req, res, next) {
     // response for when req.body is bigger than body-parser's size limit
     if (err?.type === 'entity.too.large') {
       return res.status('413').send('Request payload is too large');
@@ -47,7 +48,7 @@ export default function prodErrorHandler() {
     const redirectTo = handled.redirectTo || `${origin}/`;
     const message =
       handled.message ||
-      'Oops! Something went wrong. Please try again in a moment or contact support@freecodecamp.org if the error persists.';
+      'Oops! Something went wrong. Please try again in a moment.';
 
     if (isDev) {
       console.error(errTemplate(err, req));
@@ -55,7 +56,7 @@ export default function prodErrorHandler() {
 
     if (type === 'json') {
       return res.json({
-        type: handled.type || 'danger',
+        type: handled.type || 'errors',
         message
       });
     } else {

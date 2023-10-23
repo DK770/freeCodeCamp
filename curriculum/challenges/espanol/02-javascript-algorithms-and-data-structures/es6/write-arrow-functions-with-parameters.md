@@ -41,13 +41,13 @@ Reescribe la función `myConcat` que añade el contenido de `arr2` a `arr1` para
 Debes reemplazar la palabra clave `var`.
 
 ```js
-assert.notMatch(code, /var/g);
+(getUserInput) => assert(!getUserInput('index').match(/var/g));
 ```
 
 `myConcat` debe ser una variable constante (utilizando `const`).
 
 ```js
-assert.match(code, /const\s+myConcat/g);
+(getUserInput) => assert(getUserInput('index').match(/const\s+myConcat/g));
 ```
 
 `myConcat` debe ser una función de flecha con dos parámetros
@@ -68,7 +68,7 @@ assert.deepEqual(myConcat([1, 2], [3, 4, 5]), [1, 2, 3, 4, 5]);
 La palabra clave `function` no debe ser usada.
 
 ```js
-assert.notMatch(code, /function/g);
+(getUserInput) => assert(!getUserInput('index').match(/function/g));
 ```
 
 # --seed--

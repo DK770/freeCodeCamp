@@ -16,43 +16,43 @@ Write a function that takes a string as a parameter. The function should return 
 
 # --hints--
 
-`searchCity` sollte eine Funktion sein.
+`searchCity` should be a function.
 
 ```js
 assert(typeof searchCity === 'function');
 ```
 
-`searchCity("Dar Es Salaam")` sollte eine Zahl zurückgeben.
+`searchCity("Dar Es Salaam")` should return a number.
 
 ```js
 assert(typeof searchCity('Dar Es Salaam') === 'number');
 ```
 
-`searchCity("Dar Es Salaam")` sollte `6` zurückgeben.
+`searchCity("Dar Es Salaam")` should return `6`.
 
 ```js
 assert.equal(searchCity('Dar Es Salaam'), 6);
 ```
 
-`searchCity("Casablanca")` sollte `9` zurückgeben.
+`searchCity("Casablanca")` should return `9`.
 
 ```js
 assert.equal(searchCity('Casablanca'), 9);
 ```
 
-`searchCity("Cairo")` sollte `1` zurückgeben.
+`searchCity("Cairo")` should return `1`.
 
 ```js
 assert.equal(searchCity('Cairo'), 1);
 ```
 
-`searchCity("Mogadishu")` sollte `4` zurückgeben.
+`searchCity("Mogadishu")` should return `4`.
 
 ```js
 assert.equal(searchCity('Mogadishu'), 4);
 ```
 
-`searchCity("Lagos")` sollte `0` zurückgeben.
+`searchCity("Lagos")` should return `0`.
 
 ```js
 assert.equal(searchCity('Lagos'), 0);

@@ -1,32 +1,32 @@
 # Офіційний довідник мовного керівника freeCodeCamp
 
-Цей посібник допоможе вам налаштувати та використовувати інструменти для локалізації.
+This handbook will help you set up and use the tools for your localization efforts.
 
-## Як запросити нових помічників до Ghost
+## How to invite new contributors to Ghost
 
-Ghost дозволяє налаштувати декілька рівнів користувачів.
+Ghost allows you to set contributors with different levels of authorizations.
 
-Більшість запрошень матимуть рівень «Contributor». Цей рівень дозволяє користувачеві створювати чернетки. Обирайте цю роль, коли запрошуєте нового перекладача.
+Most of your invites will be for the "Contributor" level. This level allows the user to create drafts. Select this role when inviting a new translator.
 
-Рівень «Author» дозволяє користувачу створювати чернетки та публікувати їх.
+The "Author" level allows the user to create Drafts and publish them.
 
-Рівень «Editor» дозволяє користувачу переглядати всі чернетки та публікувати їх. Обирайте цю роль, коли запрошуєте нового редактора.
+The "Editor" level allows the user to access all Drafts and publish them. Select this role when inviting a new proofreader.
 
-Рівень «Administrator» використовується для персоналу freeCodeCamp та мовних керівників.
+The "Administrator" level is reserved for freeCodeCamp staff and Language Leads.
 
-### Як побудовані статті
+### How are the articles built
 
-Ми використовуємо підхід на основі [JAMStack](https://www.google.com/search?q=what+is+jamstack), щоб імплементувати статті. Ця стратегія призводить до того, що статичний вебсайт швидко кешується та обслуговується з CDN.
+We use a [JAMStack](https://www.google.com/search?q=what+is+jamstack)-based approach to build and deploy the articles. This strategy makes for a speedy static site cached and served from a CDN.
 
-[Ghost](https://ghost.org) діє як наша платформа керування вмістом, а [11ty](https://11ty.dev) надає статтям статичних ресурсів (HTML, JavaScript та CSS). На наших серверах розгортаються тільки ці статичні ресурси.
+[Ghost](https://ghost.org) acts as our content management platform, and [11ty](https://11ty.dev) builds the articles into static assets – plain HTML, JavaScript, and CSS. Only these static assets are deployed to our servers.
 
-Цей процес автоматичний та запускається періодично. Якщо ви опублікуєте щось зараз, на сайті новин воно з’явиться через пару годин.
+This process is automated and runs periodically. If you publish something now, it will be available on the news site in a few hours.
 
-Ви можете знайти розклад збірки та статус тут: https://github.com/freeCodeCamp/news#build
+You can find the up-to-date build schedules and status here: https://github.com/freeCodeCamp/news#build
 
 ## Як вказати автора перекладеної статті
 
-Автор та оригінал статті прив’язуються автоматично, якщо цей код додано до Code Injection -> головної секції в налаштуваннях чернеток на Ghost.
+Автор та оригінал статті прив'язуються автоматично, коли цей код додано до Code Injection -> головна секція в налаштуваннях чернеток на ghost.
 
 ```html
 <script>
@@ -34,15 +34,54 @@ Ghost дозволяє налаштувати декілька рівнів ко
 </script>
 ```
 
-Де `link` — посилання на оригінал статті.
+Де `link` – посилання на оригінал статті.
 
-## Як оновити популярні статті
+## How to update trending articles
 
-> [!TIP] Змінювати статті у нижньому колонтитулі принаймні раз на місяць дозволяє покращити результати пошуку в гуглі.
+> [!TIP] Changing the articles in the footer at least once a month means giving a boost to the linked articles on google results.
 
-Щоб оновити статті у нижньому колонтитулі, вам потрібно оновити [файл yaml у репозиторії CDN](https://github.com/freeCodeCamp/cdn/tree/main/build/universal/trending) для своєї мови. Це стосується і навчальної програми, і новин.
+There are two places in which to change the trending articles.
 
-Наприклад, ось вміст файлу для перших шести статей:
+- [The curriculum repository](https://github.com/freeCodeCamp/freeCodeCamp/)
+- [The CDN repository](https://github.com/freeCodeCamp/cdn)
+
+For each article you will need to create a shorter title to use in the footer.
+
+### Change trending articles in the curriculum
+
+The trending articles in the curriculum footer can be changed by editing the file at `client/i18n/locales/<language>/trending.json`.
+
+This file is a `*.json` file that has the shape of an object with property keys in the shape `article0title` and `article0link`.
+
+Each number rapresents one of the 30 articles in the footer. Make sure to match the title and the link correctly.
+
+This is an example of how part of the `trending.json` file has to look.
+
+```json
+{
+  "article0title": "Unire CSV con Python",
+  "article0link": "https://www.freecodecamp.org/italian/news/come-combinare-file-multipli-in-formato-csv-con-8-righe-di-codice/",
+  "article1title": "Il comando Git push",
+  "article1link": "https://www.freecodecamp.org/italian/news/il-comando-git-push-spiegato/",
+  "article2title": "Centrare immagini in CSS",
+  "article2link": "https://www.freecodecamp.org/italian/news/come-centrare-un-immagine-usando/",
+  "article3title": "I codici Alt",
+  "article3link": "https://www.freecodecamp.org/italian/news/codici-alt/",
+  "article4title": "Tenere a bada il footer",
+  "article4link": "https://www.freecodecamp.org/italian/news/come-mantenere-il-footer-al-suo-posto/",
+  "article5title": "Cosa è un'API?",
+  "article5link": "https://www.freecodecamp.org/italian/news/cose-un-api-in-italiano-per-favore/",
+  ...
+}
+```
+
+You will want to [build the translated client locally](how-to-enable-new-languages.md) to see if the titles have the right length. Each title must stay on a single line and not go to a new line.
+
+### How to update the trending articles in the cdn
+
+The file in the cdn repository is the file `universal/trending/<language>.yaml`.
+
+This file is shaped differently, for example here the file content for the first 6 articles:
 
 ```yaml
 article0title: 'Unire CSV con Python'
@@ -59,109 +98,27 @@ article5title: 'Cosa è API?'
 article5link: 'https://www.freecodecamp.org/italian/news/cose-un-api-in-italiano-per-favore/'
 ```
 
-Кожне число представляє одну із 30 статей у колонтитулі. Переконайтесь, що заголовок та посилання відповідають один одному.
+You can convert from one format to the other carefully changing it manually. Or you can use [the script in this repl](https://replit.com/@Ieahleen/convert-json-to-yaml).
 
-Для кожної статті потрібно створювати коротший заголовок, який використовуватиметься у нижньому колонтитулі. Кожен заголовок повинен залишатися в одному рядку та не переходити в інший.
+> [!TIP] A new workflow is being worked on, there will be only one place to change in the future.
 
-Вам доведеться [побудувати перекладеного клієнта локально](how-to-enable-new-languages.md), щоб переконатись, що довжина заголовків правильна. Ви можете переглянути зміни, відредагувавши файл `trending.json` у своєму локальному середовищі:
+## How to translate the info boxes headers in the documentation
 
-1. Оновіть файл `.env` так, щоб він використовував вашу мову для `CLIENT_LOCALE` та `CURRICULUM_LOCALE`.
+You can find these boxes all around the documentation:
 
-2. Запустіть `pnpm run create:shared`. Це автоматично згенерує файл `trending.json` для вашої мови у каталозі `/client/i18n/locales/`.
+> [!NOTE] I am a note box
 
-3. Запустіть сервер, виконавши `pnpm run develop:server` у вікні терміналу.
+> [!TIP] I am a tip box
 
-4. Відредагуйте файл `trending.json`, щоб він містив потрібні заголовки. Можливо, знадобиться конвертувати файл `.yaml` у формат JSON.
+> [!WARNING] I am a warning box
 
-5. В іншому вікні терміналу запустіть `pnpm run clean:client`, а потім `pnpm run develop:client`
+> [!ATTENTION] I am an attention box
 
-## Як перекладати статті в нижньому колонтитулі
+By default, their headers appear in English even in the translated docs.
 
-У нижньому колонтитулі наявні певні посилання (про нас,  спільнота випускників, відкритий вихідний код тощо), деякі з яких можна перекласти так само, як і статті.
+You can have the headers translated in the docs in your language by changing the file `docs/index.html`, in this way:
 
-Статті, які можна перекладати:
-
-- Про нас
-- Допомога
-- Академічна доброчесність
-- Кодекс поведінки
-
-Статті,  які **не** потрібно перекладати:
-
-- Магазин
-- Спонсори
-- Політика конфіденційності
-- Умови надання послуг
-- Політика захисту авторських прав
-
-Наступні посилання вказують на зовнішні сайти і не можуть бути перекладені:
-
-- Спільнота випускників
-- Відкритий вихідний код
-
-### Як змінити посилання у нижньому колонтитулі новин
-
-Як тільки ви переклали та опублікували статті, позначені вище як «можна перекладати», ви можете оновити посилання у нижньому колонтитулі для `/news`, відредагувавши файл `news/config/i18n/locales/<your language>/links.json` у репозиторії [freeCodeCamp/news](https://github.com/freeCodeCamp/news).
-
-> [!NOTE] Наразі PR цього репозиторію доступні лише робочому персоналу. Якщо ви хочете оновити цей файл, попросіть персонал про допомогу.
-
-Оновіть наступну частину файлу:
-
-```json
-{
-  ...
-  "footer": {
-    "about": "https://www.freecodecamp.org/news/about/",
-    "support": "https://www.freecodecamp.org/news/support/",
-    "honesty": "https://www.freecodecamp.org/news/academic-honesty-policy/",
-    "coc": "https://www.freecodecamp.org/news/code-of-conduct/"
-  }
-}
-```
-
-### Як змінити посилання у нижньому колонтитулі навчальної програми
-
-Як тільки ви переклали та опублікували статті, позначені вище як «можна перекладати», ви можете оновити посилання у нижньому колонтитулі для`/learn`, відредагувавши файл `client/i18n/locales/<your language>/links.json` у репозиторії [freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp).
-
-> [!WARNING] Можна перекладати лише «Про нас», «Допомога», «Академічна доброчесність» та «Кодекс поведінки». Не змінюйте інших URL.
-
-Оновіть цю частину файлу:
-
-```json
-{
-  ...
-  "footer": {
-    "about-url": "https://www.freecodecamp.org/news/about/",
-    "shop-url": "https://www.freecodecamp.org/shop/",
-    "support-url": "https://www.freecodecamp.org/news/support/",
-    "sponsors-url": "https://www.freecodecamp.org/news/sponsors/",
-    "honesty-url": "https://www.freecodecamp.org/news/academic-honesty-policy/",
-    "coc-url": "https://www.freecodecamp.org/news/code-of-conduct/",
-    "privacy-url": "https://www.freecodecamp.org/news/privacy-policy/",
-    "tos-url": "https://www.freecodecamp.org/news/terms-of-service/",
-    "copyright-url": "https://www.freecodecamp.org/news/copyright-policy/"
-  },
-  ...
-}
-```
-
-## Як перекладати інформаційні коробочки документації
-
-Ви можете знайти безліч таких коробочок у документації:
-
-> [!NOTE] Я ділюсь нотатками
-
-> [!TIP] Я ділюсь порадами
-
-> [!WARNING] Я ділюсь попередженнями
-
-> [!ATTENTION] Я ділюсь важливою інформацією
-
-Заголовки за замовчуванням з’являються англійською мовою навіть у перекладених файлах.
-
-Ви можете перекласти заголовки своєю мовою, змінивши файл `docs/index.html` таким чином:
-
-Всередині елементу `script` є об’єкт, знайдіть властивість `flexibleAlerts` з такою формою:
+Inside the `script` element there is an object, find the `flexibleAlerts` property, which has this shape:
 
 ```js
 flexibleAlerts: {
@@ -188,9 +145,9 @@ flexibleAlerts: {
 }
 ```
 
-Всередині об’єкта властивості label, перед властивістю `'/'`, додайте нову властивість для своєї мови, схоже до `/i18n/<language>/`.
+Inside the object of the label property, before the `'/'` property, you would add a new property for your language, like `/i18n/<language>/`.
 
-Наприклад, це виглядатиме так, якщо додати переклади португальською:
+For example, adding the translations for Portuguese would appear like this:
 
 ```js
 flexibleAlerts: {
@@ -221,11 +178,11 @@ flexibleAlerts: {
 }
 ```
 
-## Як перекладати мотиваційні цитати
+## How to translate the motivational quotes
 
-Мотиваційні цитати можна знайти в [репозиторії навчальної програми](https://github.com/freeCodeCamp/freeCodeCamp/) у файлі `/client/i18n/locales/<language>/motivation.json`.
+The motivational quotes can be found in the [curriculum repository](https://github.com/freeCodeCamp/freeCodeCamp/) in the `/client/i18n/locales/<language>/motivation.json` file.
 
-Цей файл має загальну структуру:
+This file has a general structure of:
 
 ```json
 {
@@ -234,11 +191,11 @@ flexibleAlerts: {
 }
 ```
 
-Компліменти — це короткі фрази, які з’являються після виконання завдання.
+The compliments are the short sentences that appear at the completion of a challenge.
 
-Не потрібно перекладати речення з англійської буквально. Можна написати пару коротких речень, які доречні для завершення завдання.
+You don't need to directly translate the sentences used in English, you can write a set of short sentences that are appropriate to show at the completion of a challenge.
 
-Масив `compliments` є масивом рядків. Тому ви б писали:
+The `compliments` array is an array of strings, so for example you would write:
 
 ```json
 {
@@ -247,11 +204,11 @@ flexibleAlerts: {
 }
 ```
 
-> [!TIP] Для різноманіття вам потрібно почати з принаймні десяти компліментів.
+> [!TIP] You should start with at least a dozen compliments to have some variety when users complete challenges.
 
-Мотиваційні цитати — це цитати, які з’являються на https://freecodecamp.org/learn.
+The motivational quotes are the quotes that appear at https://freecodecamp.org/learn.
 
-Масив `motivationalQuotes` — це масив об’єктів, які повинні містити властивість `quote` та властивість `author`. Ось так:
+The `motivationalQuotes` array is an array of objects, these objects should include a `quote` property and an `author` property. like this:
 
 ```json
 {
@@ -269,82 +226,78 @@ flexibleAlerts: {
 }
 ```
 
-> [!TIP] Для різноманіття вам потрібно почати принаймні з десяти цитат. Нова цитата відображається кожного разу, коли користувач перезавантажує сторінку.
+> [!TIP] You should start with at least a dozen quotes, to have some variety. A new quote is shown every time the user reload the page.
 
-## Як оновити загальні посилання
+## How to update the common links
 
-Ми підтримуємо файл загальних посилань, які використовуються на нашому [сайті навчальної програми](https://github.com/freecodecamp/freecodecamp) у файлі `/client/i18n/locales/<language>/links.json`.
+We maintain a file of common links used throughout our [curriculum site](https://github.com/freecodecamp/freecodecamp) in the `/client/i18n/locales/<language>/links.json` file.
 
-Деякі з цих посилань не змінюються. Але вам потрібно оновлювати посилання статей `/news`, які вказуватимуть на перекладену версію цієї статті.
+Some of these links will not change - but you should update the `/news` article links to point to your language's translated version of that article when it is published.
 
-Вам також потрібно оновлювати категорії `help`, щоб вказувати на підфорум вашої мови (зазвичай `language/category`, як-от `Italiano/HTML-CSS`). Це допоможе кемперам створити «допис допомоги» у правильному місці.
+You should also update the `help` categories to point to your language's subforum (usually `language/category`, like `Italiano/HTML-CSS`). This will allow campers to create "help posts" in the correct forum location.
 
 ## Як оновити метадані сайту
 
-Метадані сайту знаходяться у файлі `/client/i18n/locales/<language>/meta-tags.json`. Цей файл має п’ять ключів: `title`, `description`, `social-description`, `keywords` та `youre-unsubscribed`.
+Метадані сайту знаходяться в файлі `/client/i18n/locales/<language>/meta-tags.json`. Цей файл має п'ять ключів: `title`, `description`, `social-description`, `keywords` та `youre-unsubscribed`.
 
-Значення `youre-unsubscribed` повинне бути перекладене дослівно. Інші значення потрібно перекладати якомога ближче, зважаючи на поширені пошукові запити вашої мови.
+Значення `youre-unsubscribed` повинне бути перекладене прямо. Інші значення потрібно перекладати якомога ближче, зважаючи на поширені пошукові запити вашої мови.
 
-Якщо вам потрібна допомога, зв’яжіться з нами у [чаті](https://discord.gg/PRyKn3Vbay)
+Якщо вам потрібна допомога, зв'яжіться з нами в [contributor chat](https://discord.gg/PRyKn3Vbay)
 
-## Попередній переклад на Crowdin
+## Pre-Translate Workflow on Crowdin
 
-Попередній переклад можна використовувати, щоб застосувати переклади з пам’яті перекладів.
+The Pre-Translate workflow can be used to apply translations from the Translation Memory to strings.
 
-> [!TIP] Особливо корисно відновлювати переклади з пам’яті перекладів, якщо оновлена велика кількість файлів.
+> [!TIP] Really useful to restore a lot of translations from the Translation Memory in bulk when a lot of files have been updated.
 
-Ви можете знайти попередній переклад у верхній частині сторінки на консолі проєкту. Якщо ви бачите кнопку «Go to console» у верхньому правому куті, натисніть на неї.
+You can find the Pre-Translation workflow at the top of the page in the console of a project. If you see "Go to console" in the upper right corner, click there first.
 
-![кнопка переходу до консолі](./images/crowdin/pre-translate2.png)
+![go to console button](./images/crowdin/pre-translate2.png)
 
-![попередній переклад](./images/crowdin/pre-translate1.png)
+![pre-translate workflow](./images/crowdin/pre-translate1.png)
 
-Ви можете обрати «From Machine Translation» або «From Translation Memory». Оберіть «Translation Memory», щоб відновити переклади з пам’яті.
+You can choose "From Machine Translation" or "From Translation Memory". Choose "Translation Memory" to recover translations from memory.
 
-Залишається виконати три кроки:
+Then there are three steps to complete:
 
-1. Files. Виберіть файли, які потрібно перекласти (ви можете обрати цілий проєкт або певну папку чи файл).
-2. Languages. Вкажіть свою мову.
-3. Existing Translations. Найкращою комбінацією є «100% match» та «Apply to untranslated strings only». Не затверджуйте їх автоматично,  оскільки завжди краще перевіряти вручну.
+1. Files. Choose which files to translate, you can do all the project, or specific folders or files.
+2. Languages. Set your language here.
+3. Existing Translations. The best combination here is "100% match" and "Apply to untranslated strings only". Do not approve automatically, as it's always best to have a human eye on things.
 
-![попередній переклад наявних перекладів](./images/crowdin/pre-translate3.png)
+![pre-translate existing translations](./images/crowdin/pre-translate3.png)
 
-Коли ви закінчите, натисніть кнопку «Pre-Translate» та зачекайте. Вас попередять, коли робота закінчиться. Час залежить від кількості неперекладених рядків у вибраних файлах.
+When you have finished setting this, press the Pre-Translate button and wait. It will alert you once it has finished. The time it takes depends on how many untranslated strings are in the chosen files.
 
-## Як оновити глосарій Crowdin
+## How to update Crowdin Glossary
 
-> [!TIP] Оновлений глосарій дозволяє дотримуватись однорідного перекладу технічних термінів.
+> [!TIP] An updated glossary helps in having an homogeneous translation of technical terms.
 
-Глосарій Crowdin зберігається у репозиторії [crowdin-glossaries](https://github.com/freeCodeCamp/crowdin-glossaries).
+The Crowdin Glossary is kept in the [crowdin-glossaries](https://github.com/freeCodeCamp/crowdin-glossaries) repository.
 
-У папці `glossaries` розміщено декілька файлів `*.csv` (значення, розділені комою), по одному для кожного проєкту на Crowdin, що мають глосарій.
+In the `glossaries` folder there are various `*.csv` (comma separated values) files, one for each of the crowdin projects that have a glossary that can be updated from this workflow.
 
-Файл `client.csv` використовується для інтерфейсу користувача, файл `curriculum.csv` — для навчальної програми, а файл `docs.csv` — для документації.
+The `client.csv` file is for the Learn User Interface project, the `curriculum.csv` file is for the Coding Curriculum project, the `docs.csv` file is for the Contributing Documentation project.
 
-Щоб оновити глосарії Crowdin, вам потрібно клонувати репозиторій локально. Відкрийте файл `.csv` за допомогою відповідної програми (наприклад, Microsoft Excel).
+To update the Crowdin Glossaries you need to clone this repo locally. Open the `.csv` file with an appropriate program, for example Microsoft Excel.
 
-У файлі `.csv` ви побачите, що перші три стовпчики написані англійською мовою: `Term:English` для терміна англійською мовою, `Description:English` для опису англійською мовою та `Part:English` для частини мови (іменник, дієслово тощо).
+In the `.csv` file you will find that the English language occupies the first three columns, `Term:English` is the column for the English term, `Description:English` is the column for the English description, and `Part:English` is for the part of speech (e.g., noun, verb etc.) of the term.
 
-Кожна цільова мова має два стовпчики. Якщо ви перекладаєте на дотракійську мову, вам потрібні стовпчики `Term:Dothraki` та `Description:Dothraki`. Стовпчик `Term:Dothraki` використовується для перекладу терміну на дотракійську мову, а `Description:Dothraki` — для опису терміну дотракійською мовою.
+Then, each target language has two columns. If you translate to Dothraki, you will be interested in the columns `Term:Dothraki` and `Description:Dothraki`. The column `Term:Dothraki` is for the translation of the term in Dothraki, and the column `Description:Dothraki` is for a description of the term in Dothraki.
 
-> [!TIP] У деяких програмах (наприклад, Microsoft Excel) можна приховати стовпчики з іншими мовами, щоб звільнити місце на екрані та бачити англомовні стовпчики поруч із потрібною мовою.
+> [!TIP] In programs like Microsoft Excel you can hide the columns of the other languages to free up screen real-estate and see the English columns and the target language columns near each other.
 
-Після того, як ви внесли зміни та зберегли файл, потрібно створити PR із запропонованими змінами. Як тільки PR буде прийнятий, вам потрібно запустити GitHub Action, щоб оновити глосарій Crowdin. Внесені зміни до глосарію не набудуть чинності одразу, а з’являться пізніше.
+After you have made the changes and saved the file, you will need to make a PR with the proposed changes. After the PR is accepted, you will need to run the GitHub Action workflow to update the Crowdin Glossary. Your glossary changes will not have immediate effects, but they will come.
 
-## Як підвищити помічника до редактора
+## How to Promote a Contributor to Proofreader
 
-Якщо ви вважаєте, що помічника можна підвищити до редактора на Crowdin, ви можете надати йому цю посаду наступним чином:
+If you consider that a contributor could become a Crowdin Proofreader, you can give the proofreader role to them in this way:
 
-Перейдіть до `User management` в меню зліва на Crowdin.
+In Crowdin, individuate the `User management` on the left hand side menu.
 
-Це відкриє панель керування, де ви побачите список всіх користувачів.
+This will open the user management tools, you will be able to see the list of all the users.
 
-Знайдіть користувача, який стане редактором. Натисніть на три крапки та оберіть «Add to team». Команди редакторів мають стандартну назву `Proof Readers (<language>)`, тому ви можете знайти команду, використавши назву мови. Як тільки ви обрали команду, використайте кнопку «ADD», щоб завершити.
+Search for the user that will become contributor. Use the three dots menu on the user row to open a menu and select "Add to team". The proofreader teams have a standard name of `Proof Readers (<language>)`, you can search the team using the language name. Once you have selected the team, use the "ADD" button at the bottom of the page to finalize the thing.
 
-Тепер користувач є редактором.
+The user is now a proofreader.
 
-> [!TIP] Новий редактор може багато чого дізнатись, прочитавши [як редагувати файли](how-to-proofread-files.md).
-
-## Як додати чи оновити мову
-
-Перейдіть до документації з [додавання нової мови](how-to-enable-new-languages.md). Якщо ви оновлюєте мову, див. розділ з [налаштування перекладених суперблоків](how-to-enable-new-languages.md#set-translated-superblocks).
+> [!TIP] The newly promoted proofreader could benefit from reading the [How to Proofread Files](how-to-proofread-files.md) documentation.

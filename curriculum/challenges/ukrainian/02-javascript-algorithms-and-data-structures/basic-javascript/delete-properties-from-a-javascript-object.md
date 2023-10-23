@@ -1,6 +1,6 @@
 ---
 id: 56bbb991ad1ed5201cd392d3
-title: Видалення властивостей з об’єкта JavaScript
+title: Видалення властивостей з об'єкту JavaScript
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cDqKdTv'
 forumTopicId: 17560
@@ -9,13 +9,13 @@ dashedName: delete-properties-from-a-javascript-object
 
 # --description--
 
-Ми також можемо видалити властивості з об’єктів, ось так:
+Ми також можемо видалити властивості з таких об'єктів, як цей:
 
 ```js
 delete ourDog.bark;
 ```
 
-Приклад:
+До прикладу:
 
 ```js
 const ourDog = {
@@ -29,7 +29,7 @@ const ourDog = {
 delete ourDog.bark;
 ```
 
-Після останнього рядка, показано вище, об’єкт `ourDog` виглядає ось так:
+Після того, як зазначено останній рядок, `ourDog` виглядає так:
 
 ```js
 {
@@ -42,11 +42,11 @@ delete ourDog.bark;
 
 # --instructions--
 
-Видаліть властивість `tails` з `myDog`. Ви можете використати точкову або дужкову нотацію.
+Видаліть властивість `tails` з `myDog`. Ви можете використовувати крапковий запис або запис квадратними дужками.
 
 # --hints--
 
-Ви повинні видалити властивість `tails` з `myDog`.
+Вам слід видалити властивість `tails` з `myDog`.
 
 ```js
 assert(typeof myDog === 'object' && myDog.tails === undefined);

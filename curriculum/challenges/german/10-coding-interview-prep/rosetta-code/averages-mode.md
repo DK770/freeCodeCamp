@@ -16,7 +16,7 @@ If it is not appropriate or possible to support a general collection, use a vect
 
 # --hints--
 
-`mode` sollte eine Funktion sein.
+`mode` should be a function.
 
 ```js
 assert(typeof mode === 'function');

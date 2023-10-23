@@ -8,9 +8,11 @@ dashedName: reverse-a-string
 
 # --description--
 
-Drehe den übergebenen String um, und gib diesen dann zurück.
+Kehre den angegebenen String um.
 
-Zum Beispiel sollte `"hello"` zu `"olleh"` werden.
+Möglicherweise musst du die Strings in ein Array umwandeln, bevor du sie umkehren kannst.
+
+Dein Ergebnis muss ein String sein.
 
 # --hints--
 
@@ -32,7 +34,7 @@ assert(reverseString('hello') === 'olleh');
 assert(reverseString('Howdy') === 'ydwoH');
 ```
 
-`reverseString("Greetings from Earth")` sollte den String `htraE morf sgniteerG` zurückgeben.
+`reverseString("Greetings from Earth")` sollten den String `htraE morf sgniteerG` zurückgeben.
 
 ```js
 assert(reverseString('Greetings from Earth') === 'htraE morf sgniteerG');

@@ -68,7 +68,7 @@ dashedName: lychrel-numbers
 
 # --hints--
 
-`isLychrel` має бути функцією.
+`isLychrel` повинен бути функцією.
 
 ```js
 assert(typeof isLychrel === 'function');

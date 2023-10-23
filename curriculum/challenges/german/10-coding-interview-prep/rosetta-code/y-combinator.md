@@ -18,37 +18,37 @@ Define the stateless Y combinator function and use it to compute the factorials.
 
 # --hints--
 
-Y sollte eine Funktion zurückgeben.
+Y should return a function.
 
 ```js
 assert.equal(typeof Y((f) => (n) => n), 'function');
 ```
 
-factorial(1) sollte 1 zurückgeben.
+factorial(1) should return 1.
 
 ```js
 assert.equal(factorial(1), 1);
 ```
 
-factorial(2) sollte 2 zurückgeben.
+factorial(2) should return 2.
 
 ```js
 assert.equal(factorial(2), 2);
 ```
 
-factorial(3) sollte 6 zurückgeben.
+factorial(3) should return 6.
 
 ```js
 assert.equal(factorial(3), 6);
 ```
 
-factorial(4) sollte 24 zurückgeben.
+factorial(4) should return 24.
 
 ```js
 assert.equal(factorial(4), 24);
 ```
 
-factorial(10) sollte 3628800 zurückgeben.
+factorial(10) should return 3628800.
 
 ```js
 assert.equal(factorial(10), 3628800);

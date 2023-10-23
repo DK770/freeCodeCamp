@@ -22,7 +22,7 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 
 Die Konsole würde die Strings `You have passed 3 arguments.` und `You have passed 4 arguments.` anzeigen.
 
-Mit dem Rest-Parameter entfällt die Notwendigkeit, das `arguments`-Objekt zu verwenden. Er erlaubt es uns, Array-Methoden beim Array der Parameter zu nutzen, die an die Funktion `howMany` übergeben wurden.
+Der Restparameter macht die Überprüfung des `args`-Arrays überflüssig und ermöglicht es uns, `map()`, `filter()` und `reduce()` auf das Parameter-Array anzuwenden.
 
 # --instructions--
 
@@ -67,11 +67,7 @@ assert(__helpers.removeWhiteSpace(code).match(/sum=\(\.\.\.args\)=>/));
 ```js
 const sum = (x, y, z) => {
   const args = [x, y, z];
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```
 
@@ -79,10 +75,6 @@ const sum = (x, y, z) => {
 
 ```js
 const sum = (...args) => {
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```

@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f0e0b6c005b0e76f07b
-title: 'Вебсервіси: XML'
+title: 'Веб-сервіси: XML'
 challengeType: 11
 videoId: _pZ0srbg7So
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: web-services-xml
 
 ## --text--
 
-Що не так з наданим XML?:
+Що не так з наступним XML?:
 
 ```xml
 <person>
@@ -27,7 +27,7 @@ dashedName: web-services-xml
 
 ## --answers--
 
-В email немає кінцевого тегу.
+Тег закриття відсутній в email.
 
 ---
 
@@ -35,7 +35,7 @@ dashedName: web-services-xml
 
 ---
 
-У phone немає кінцевого тегу.
+Тег закриття відсутній в phone.
 
 ---
 

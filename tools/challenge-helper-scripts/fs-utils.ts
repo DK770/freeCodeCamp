@@ -1,4 +1,4 @@
-import { SuperBlocks } from '../../shared/config/superblocks';
+import { SuperBlocks } from '../../config/certification-settings';
 
 export function getSuperBlockSubPath(superBlock: SuperBlocks): string {
   const pathMap = {
@@ -17,13 +17,7 @@ export function getSuperBlockSubPath(superBlock: SuperBlocks): string {
     [SuperBlocks.RelationalDb]: '13-relational-databases',
     [SuperBlocks.RespWebDesignNew]: '14-responsive-web-design-22',
     [SuperBlocks.JsAlgoDataStructNew]:
-      '15-javascript-algorithms-and-data-structures-22',
-    [SuperBlocks.TheOdinProject]: '16-the-odin-project',
-    [SuperBlocks.CollegeAlgebraPy]: '17-college-algebra-with-python',
-    [SuperBlocks.ProjectEuler]: '18-project-euler',
-    [SuperBlocks.FoundationalCSharp]: '19-foundational-c-sharp-with-microsoft',
-    [SuperBlocks.UpcomingPython]: '20-upcoming-python',
-    [SuperBlocks.ExampleCertification]: '99-example-certification'
+      '15-javascript-algorithms-and-data-structures-22'
   };
   return pathMap[superBlock];
 }

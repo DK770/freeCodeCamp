@@ -10,7 +10,7 @@ dashedName: top-rank-per-group
 
 Find the top `n` ranked data in each group, where `n` is provided as a parameter. Name of the rank and the group are also provided as parameter.
 
-Gegeben sind die folgenden Daten:
+Given the following data:
 
 ```js
 testData1 = [
@@ -80,7 +80,7 @@ Top two ranking employees in each department by salary would be:
 
 # --hints--
 
-`topRankPerGroup` sollte eine Funktion sein.
+`topRankPerGroup` should be a function.
 
 ```js
 assert(typeof topRankPerGroup === 'function');

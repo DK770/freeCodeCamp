@@ -22,7 +22,7 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 
 La console mostrerà le stringhe `You have passed 3 arguments.` e `You have passed 4 arguments.`.
 
-Il parametro resto elimina la necessità di usare l'oggetto `arguments` e consente di usare metodi di array sull'array dei parametri passati alla funzione `howMany`.
+Il parametro resto elimina la necessità di controllare l'array `args` e ci permette di applicare `map()`, `filter()` e `reduce()` all'array dei parametri.
 
 # --instructions--
 
@@ -67,11 +67,7 @@ assert(__helpers.removeWhiteSpace(code).match(/sum=\(\.\.\.args\)=>/));
 ```js
 const sum = (x, y, z) => {
   const args = [x, y, z];
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```
 
@@ -79,10 +75,6 @@ const sum = (x, y, z) => {
 
 ```js
 const sum = (...args) => {
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```

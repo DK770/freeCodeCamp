@@ -1,6 +1,6 @@
 ---
 id: 5900f4ae1000cf542c50ffc0
-title: 'Problem 321: Spielsteine vertauschen'
+title: 'Problem 321: Swapping Counters'
 challengeType: 1
 forumTopicId: 301978
 dashedName: problem-321-swapping-counters
@@ -8,25 +8,25 @@ dashedName: problem-321-swapping-counters
 
 # --description--
 
-Eine horizontale Reihe aus $2n + 1$ Quadraten hat $n$ rote Spielsteine an einem Ende und $n$ blaue Spielsteine am anderen Ende, die durch ein einziges leeres Quadrat in der Mitte getrennt sind. Zum Beispiel, wenn $n = 3$.
+A horizontal row comprising of $2n + 1$ squares has $n$ red counters placed at one end and $n$ blue counters at the other end, being separated by a single empty square in the center. For example, when $n = 3$.
 
-<img class="img-responsive center-block" alt="drei Quadrate mit roten und blauen Zählern an den gegenüberliegenden Enden der Reihe, getrennt durch ein leeres Feld" src="https://cdn.freecodecamp.org/curriculum/project-euler/swapping-counters-1.gif" style="background-color: white; padding: 10px;" />
+<img class="img-responsive center-block" alt="three squares with red and blue counters placed on opposite ends of the row, separated by one empty square" src="https://cdn.freecodecamp.org/curriculum/project-euler/swapping-counters-1.gif" style="background-color: white; padding: 10px;" />
 
-Ein Spielstein kann sich von einem Feld zum nächsten bewegen (schieben) oder über einen anderen Spielstein springen (hüpfen), solange das Feld neben diesem Spielstein unbesetzt ist.
+A counter can move from one square to the next (slide) or can jump over another counter (hop) as long as the square next to that counter is unoccupied.
 
-<img class="img-responsive center-block" alt="erlaubte Züge des Spielsteins" src="https://cdn.freecodecamp.org/curriculum/project-euler/swapping-counters-2.gif" style="background-color: white; padding: 10px;" />
+<img class="img-responsive center-block" alt="allowed moves of the counter" src="https://cdn.freecodecamp.org/curriculum/project-euler/swapping-counters-2.gif" style="background-color: white; padding: 10px;" />
 
-Lasse $M(n)$ die minimale Anzahl von Zügen/Aktionen sein, um die Positionen der farbigen Spielsteine vollständig umzukehren, d.h. alle roten Spielsteine nach rechts und alle blauen Spielsteine nach links zu bewegen.
+Let $M(n)$ represent the minimum number of moves/actions to completely reverse the positions of the colored counters; that is, move all the red counters to the right and all the blue counters to the left.
 
-Es kann nachgewiesen werden, dass $M(3) = 15$ ist, was zufällig auch eine Dreieckszahl ist.
+It can be verified $M(3) = 15$, which also happens to be a triangle number.
 
-Wenn wir eine Sequenz erstellen, die auf den Werten von n basiert, für die $M(n)$ eine Dreieckszahl ist, dann wären die ersten fünf Terme: 1, 3, 10, 22, und 63, und ihre Summe wäre 99.
+If we create a sequence based on the values of n for which $M(n)$ is a triangle number then the first five terms would be: 1, 3, 10, 22, and 63, and their sum would be 99.
 
-Finde die Summe der ersten vierzig Begriffe dieser Folge.
+Find the sum of the first forty terms of this sequence.
 
 # --hints--
 
-`swappingCounters()` sollte `2470433131948040` zurückgeben.
+`swappingCounters()` should return `2470433131948040`.
 
 ```js
 assert.strictEqual(swappingCounters(), 2470433131948040);

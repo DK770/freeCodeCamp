@@ -1,8 +1,8 @@
 Diese Seite beschreibt, wie du zu den freeCodeCamp-Tutorials und -Projekten beitragen kannst, die mit der CodeRoad VS Code-Erweiterung durchgeführt werden.
 
-## How the Tutorials Work
+## Wie die Tutorials funktionieren
 
-Each of the freeCodeCamp tutorials that use CodeRoad has its own repo under the freeCodeCamp GitHub organization. Sie beginnen alle mit `learn-`. Zum Beispiel: `https://github.com/freeCodeCamp/learn-bash-by-building-a-boilerplate/`.
+Die freeCodeCamp-Tutorials, die CodeRoad verwenden, haben jeweils ihr eigenes Repo unter der freeCodeCamp GitHub-Organisation. Sie beginnen alle mit `learn-`. Zum Beispiel: `https://github.com/freeCodeCamp/learn-bash-by-building-a-boilerplate/`.
 
 Jedes Tutorial-Repo hat einen `main`-Branch und einen „Version“-Branch, z.B. `v1.0.0`.
 
@@ -18,7 +18,7 @@ Um Änderungen an den Commits in einem Versionsbranch vorzunehmen, musst du die 
 > 
 > Nimm niemals Änderungen an einem Versionsbranch vor, der sich in einem der freeCodeCamp-Repos befindet. Erstelle immer einen Neuen.
 
-## How to Contribute
+## Wie du dich beteiligen kannst
 
 ### Voraussetzungen
 
@@ -49,7 +49,7 @@ Befolge diese Anweisungen, um einen PR zu erstellen. Beachte dabei, dass die Anw
 - Übertrage deine Änderungen mit `update json` als Nachricht
 - Erstelle einen PR
 
-### Testing Changes on `main`
+### Änderungen an `main` testen
 
 Wenn du deine Änderungen an `main` nach den obigen Anweisungen testen willst, befolge diese Anweisungen:
 
@@ -64,7 +64,7 @@ Die Datei `tutorial.json` sollte keine Änderungen an Commit-Hashes oder Step/Le
 
 Denke auch daran, dass die Anleitungen in der Regel die Lektionen um sie herum als Kontext verwenden, also achte darauf, dass sie sinnvoll sind.
 
-### Working on Version Branch
+### Arbeiten an einem Versionsbranch
 
 > [!WARNING]
 > 
@@ -91,12 +91,12 @@ Befolge diese Anweisungen, um eine neue Version zu erstellen:
 - Erstelle einen PR für `main` mit deinem neuen `feat/version-X.X.Y`-Branch. Gib ihm einen Titel wie `Version X.X.Y ready for review`. Dies wird nicht zusammengeführt (merged), sondern dient nur dazu, die Prüfer wissen zu lassen, dass eine neue Version bereitsteht
 - Danach werden deine Änderungen überprüft
 
-### Testing Changes to a Version Branch
+### Änderungen an einem Versionsbranch testen
 
 - Befolge die Anweisungen auf dem [rdb-alpha Repo](https://github.com/freeCodeCamp/rdb-alpha), um einen Container zu starten
 - Starte das Tutorial mit der Datei `tutorial.json` in dem Fork, in dem sich die Änderungen befinden. Achte darauf, dass du die Datei im `feat: Version-X.X.Y`-Branch verwendest und nicht im `main`-Branch
 
-### Pushing a New Version
+### Eine neue Version pushen
 
 Bevor du eine neue Version veröffentlichst, schau dir den neuen `feat/version-vX.X.Y`-Branch (wird mit `main` zusammengeführt) auf dem Fork des Benutzers an. Vergewissere dich, dass die Datei `CHANGELOG.md` um die neuen Änderungen ergänzt wurde und dass die Version an den beiden Stellen der `coderoad.yaml` mit dem neuen Versionsbranch übereinstimmt.
 
@@ -121,7 +121,7 @@ Wenn du Schreibzugriff auf das freeCodeCamp-Repository hast, die Dateien `CHANGE
 - Nachdem der PR zusammengeführt wurde, öffne das Tutorial, indem du den Anweisungen im [rdb-alpha repo](https://github.com/freeCodeCamp/rdb-alpha) folgst, um sicherzustellen, dass es richtig geladen wird und du einige Schritte durchlaufen kannst
 - Wenn es bereits PRs für diese Version gibt, schließe sie
 
-### How to Revert to a Previous Version
+### Wie du zu einer früheren Version zurückkehrst
 
 - Erstelle einen neuen Branch vom neuesten `main` mit `git checkout -b revert/to-version-X.X.X`
 - Mach alle Commits in diesem Branch rückgängig, bis einschließlich des Commits der Version, die auf die Version folgt, zu der du zurückkehren willst. Du könntest zum Beispiel Commits haben, die wie folgt aussehen:

@@ -2,18 +2,17 @@
 import {
   ControlLabel,
   FormControl,
+  Alert,
   FormGroup
 } from '@freecodecamp/react-bootstrap';
-import { Alert } from '@freecodecamp/ui';
 import React, { Component } from 'react';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
 import { createSelector } from 'reselect';
 
-import { isValidUsername } from '../../../../shared/utils/validate';
+import { isValidUsername } from '../../../../utils/validate';
 import { usernameValidationSelector } from '../../redux/settings/selectors';
 import {
   validateUsername,
@@ -97,6 +96,7 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
     const { username } = this.props;
     const { formValue } = this.state;
     if (prevUsername !== username && prevFormValue === formValue) {
+      // eslint-disable-next-line react/no-did-update-set-state
       return this.setState({
         isFormPristine: username === formValue,
         submitClicked: false,
@@ -153,7 +153,7 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
     if (!validating && error) {
       return (
         <FullWidthRow>
-          <Alert variant='danger'>
+          <Alert bsStyle='danger' closeLabel={t('buttons.close')}>
             {t(`settings.username.${error}`, {
               username: this.state.formValue
             })}
@@ -164,28 +164,38 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
     if (!validating && !isValidUsername) {
       return (
         <FullWidthRow>
-          <Alert variant='warning'>{t('settings.username.unavailable')}</Alert>
+          <Alert bsStyle='warning' closeLabel={t('buttons.close')}>
+            {t('settings.username.unavailable')}
+          </Alert>
         </FullWidthRow>
       );
     }
     if (validating) {
       return (
         <FullWidthRow>
-          <Alert variant='info'>{t('settings.username.validating')}</Alert>
+          <Alert bsStyle='info' closeLabel={t('buttons.close')}>
+            {t('settings.username.validating')}
+          </Alert>
         </FullWidthRow>
       );
     }
     if (!validating && isValidUsername && this.state.isUserNew) {
       return (
         <FullWidthRow>
-          <Alert variant='success'>{t('settings.username.available')}</Alert>
+          <Alert bsStyle='success' closeLabel={t('buttons.close')}>
+            {t('settings.username.available')}
+          </Alert>
         </FullWidthRow>
       );
     } else if (!validating && isValidUsername && !this.state.isUserNew) {
       return (
         <FullWidthRow>
-          <Alert variant='success'>{t('settings.username.available')}</Alert>
-          <Alert variant='info'>{t('settings.username.change')}</Alert>
+          <Alert bsStyle='success' closeLabel={t('buttons.close')}>
+            {t('settings.username.available')}
+          </Alert>
+          <Alert bsStyle='info' closeLabel={t('buttons.close')}>
+            {t('settings.username.change')}
+          </Alert>
         </FullWidthRow>
       );
     }
@@ -200,8 +210,7 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
       submitClicked
     } = this.state;
     const { isValidUsername, t, validating } = this.props;
-    const isDisabled =
-      !(isValidUsername && valid && !isFormPristine) || submitClicked;
+
     return (
       <form
         id='usernameSettings'
@@ -218,7 +227,6 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
               onChange={this.handleChange}
               value={formValue}
               data-cy='username-input'
-              id='username-settings'
             />
           </FormGroup>
         </FullWidthRow>
@@ -226,13 +234,10 @@ class UsernameSettings extends Component<UsernameProps, UsernameState> {
           this.renderAlerts(validating, error, isValidUsername)}
         <FullWidthRow>
           <BlockSaveButton
-            aria-disabled={isDisabled}
-            bgSize='lg'
-            {...(isDisabled && { tabIndex: -1 })}
-          >
-            {t('buttons.save')}{' '}
-            <span className='sr-only'>{t('settings.labels.username')}</span>
-          </BlockSaveButton>
+            disabled={
+              !(isValidUsername && valid && !isFormPristine) || submitClicked
+            }
+          />
         </FullWidthRow>
       </form>
     );

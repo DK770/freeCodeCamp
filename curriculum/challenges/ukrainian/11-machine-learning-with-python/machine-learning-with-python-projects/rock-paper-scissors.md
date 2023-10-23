@@ -8,61 +8,57 @@ dashedName: rock-paper-scissors
 
 # --description--
 
-В цьому завданні ви створите програму, щоб грати в камінь-ножиці-папір. Програма, яка обиратиме випадково, зазвичай виграватиме у 50%. Щоб виконати це завдання, ваша програма повинна зіграти матчі проти чотирьох різних ботів, вигравши принаймні 60% ігор у кожному матчі.
+For this challenge, you will create a program to play Rock, Paper, Scissors. A program that picks at random will usually win 50% of the time. To pass this challenge your program must play matches against four different bots, winning at least 60% of the games in each match.
 
 Ви будете <a href="https://replit.com/github/freeCodeCamp/boilerplate-rock-paper-scissors" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
 
--   Почніть з імпорту проєкту на Replit.
--   Потім ви побачите вікно `.replit`.
--   Оберіть `Use run command` та натисніть кнопку `Done`.
-
-Ми досі розробляємо інтерактивну складову для навчальної програми з машинного навчання. Поки вам доведеться використовувати інші ресурси, щоб виконати це завдання.
+We are still developing the interactive instructional part of the machine learning curriculum. For now, you will have to use other resources to learn how to pass this challenge.
 
 # --instructions--
 
-У файлі `RPS.py` вам надається функція під назвою `player`. Функція приймає аргумент, який є рядком, що описує останній хід суперника («R», «P» або «S»). Функція повинна повертати рядок, що представляє наступний хід для відтворення («R», «P» або «S»).
+In the file `RPS.py` you are provided with a function called `player`. The function takes an argument that is a string describing the last move of the opponent ("R", "P", or "S"). The function should return a string representing the next move for it to play ("R", "P", or "S").
 
-Функція гравця отримає порожній рядок як аргумент для першої гри в матчі, оскільки немає попередньої гри.
+A player function will receive an empty string as an argument for the first game in a match since there is no previous play.
 
-У файлі `RPS.py` показано приклад функції, яку вам потрібно оновити. Приклад функції визначається двома аргументами (`player(prev_play, opponent_history = [])`). Функція ніколи не викликається другим аргументом, тому він є абсолютно необов’язковим. Причина, чому функція з прикладу містить другий аргумент (`opponent_history = []`), полягає в тому, що це єдиний спосіб зберегти стан між послідовними викликами функції `player`. Вам потрібен лише аргумент `opponent_history`, якщо ви хочете стежити за історією ходів супротивника.
+The file `RPS.py` shows an example function that you will need to update. The example function is defined with two arguments (`player(prev_play, opponent_history = [])`). The function is never called with a second argument so that one is completely optional. The reason why the example function contains a second argument (`opponent_history = []`) is because that is the only way to save state between consecutive calls of the `player` function. You only need the `opponent_history` argument if you want to keep track of the opponent_history.
 
-*Підказка: щоб перемогти всіх чотирьох супротивників, ваша програма повинна мати багато стратегій, які змінюються залежно від гри супротивника.*
+*Hint: To defeat all four opponents, your program may need to have multiple strategies that change depending on the plays of the opponent.*
 
-## Розробка
+## Development
 
-Не змінюйте `RPS_game.py`. Запишіть весь свій код у `RPS.py`. Для розробки ви можете використати `main.py`, щоб протестувати свій код.
+Do not modify `RPS_game.py`. Write all your code in `RPS.py`. For development, you can use `main.py` to test your code.
 
-`main.py` імпортує функцію гри та ботів із `RPS_game.py`.
+`main.py` imports the game function and bots from `RPS_game.py`.
 
-Щоб перевірити свій код, пограйте в гру за допомогою функції `play`. Функція `play` приймає чотири аргументи:
+To test your code, play a game with the `play` function. The `play` function takes four arguments:
 
-- два гравці грають один проти одного (насправді гравцями є функції)
-- кількість ігор, які потрібно зіграти в матчі
-- додатковий аргумент для перегляду записів кожної гри. Встановіть його на `True`, щоб побачити ці повідомлення.
+- two players to play against each other (the players are actually functions)
+- the number of games to play in the match
+- an optional argument to see a log of each game. Set it to `True` to see these messages.
 
 ```py
 play(player1, player2, num_games[, verbose])
 ```
 
-Наприклад, ось як можна викликати функцію, якщо ви хочете, щоб `player` та `quincy` зіграли один проти одного 1000 ігор та бажаєте побачити результати кожної гри:
+For example, here is how you would call the function if you want `player` and `quincy` to play 1000 games against each other and you want to see the results of each game:
 
 ```py
 play(player, quincy, 1000, verbose=True)
 ```
 
-Натисніть кнопку «run» і `main.py` запуститься.
+Натисніть кнопку «запустити» і `main.py` запуститься.
 
-## Тестування
+## Testing
 
-Модульні тести для цього проєкту знаходяться в `test_module.py`. Ми імпортували тести з `test_module.py` до `main.py` для вашої зручності. Якщо ви видалите коментар в останньому рядку в `main.py`, тести запустяться автоматично, коли ви натиснете кнопку «run».
+The unit tests for this project are in `test_module.py`. We imported the tests from `test_module.py` to `main.py` for your convenience. Якщо ви видалите коментар в останньому рядку у `main.py`, тести запустяться автоматично, коли ви натиснете кнопку «запустити».
 
-## Надсилання
+## Submitting
 
-Скопіюйте URL-адресу свого проєкту та відправте її до freeCodeCamp.
+Copy your project's URL and submit it below.
 
 # --hints--
 
-Проєкт повинен пройти усі тести Python.
+Він повинен пройти усі тести Python.
 
 ```js
 

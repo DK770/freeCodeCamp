@@ -12,43 +12,43 @@ The objective is to write a function that finds the sum of all positive multiple
 
 # --hints--
 
-`sumMults` sollte eine Funktion sein.
+`sumMults` should be a function.
 
 ```js
 assert(typeof sumMults == 'function');
 ```
 
-`sumMults(10)` sollte eine Zahl zurückgeben.
+`sumMults(10)` should return a number.
 
 ```js
 assert(typeof sumMults(10) == 'number');
 ```
 
-`sumMults(10)` sollte `23` zurückgeben.
+`sumMults(10)` should return `23`.
 
 ```js
 assert.equal(sumMults(10), 23);
 ```
 
-`sumMults(100)` sollte `2318` zurückgeben.
+`sumMults(100)` should return `2318`.
 
 ```js
 assert.equal(sumMults(100), 2318);
 ```
 
-`sumMults(1000)` sollte `233168` zurückgeben.
+`sumMults(1000)` should return `233168`.
 
 ```js
 assert.equal(sumMults(1000), 233168);
 ```
 
-`sumMults(10000)` sollte `23331668` zurückgeben.
+`sumMults(10000)` should return `23331668`.
 
 ```js
 assert.equal(sumMults(10000), 23331668);
 ```
 
-`sumMults(100000)` sollte `2333316668` zurückgeben.
+`sumMults(100000)` should return `2333316668`.
 
 ```js
 assert.equal(sumMults(100000), 2333316668);

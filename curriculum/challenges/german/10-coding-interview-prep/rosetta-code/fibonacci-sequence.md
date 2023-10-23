@@ -20,13 +20,13 @@ Hence, the series is: 0, 1, 1, 2, 3, 5, 8, 13...
 
 # --hints--
 
-`fibonacci` sollte eine Funktion sein.
+`fibonacci` should be a function.
 
 ```js
 assert(typeof fibonacci === 'function');
 ```
 
-`fibonacci(2)` sollte eine Zahl zurückgeben.
+`fibonacci(2)` should return a number.
 
 ```js
 assert(typeof fibonacci(2) == 'number');

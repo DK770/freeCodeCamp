@@ -1,6 +1,6 @@
 ---
 id: 5e8f2f13c4cdbe86b5c72d8c
-title: 'Базові алгоритми навчання: процес тренування'
+title: 'Базові алгоритми навчання: Процес тренування'
 challengeType: 11
 videoId: _cEwvqVoBhI
 bilibiliIds:
@@ -18,7 +18,7 @@ dashedName: core-learning-algorithms-the-training-process
 
 ## --answers--
 
-Кількість разів, скільки модель буде бачити ті самі дані.
+Кількість разів, в яких модель буде бачити ті самі дані.
 
 ---
 

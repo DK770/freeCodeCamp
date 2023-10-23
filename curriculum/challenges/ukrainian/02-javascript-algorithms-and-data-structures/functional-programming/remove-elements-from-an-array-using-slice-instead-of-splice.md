@@ -1,6 +1,6 @@
 ---
 id: 9d7123c8c441eeafaeb5bdef
-title: Видалення елементів з масиву за допомогою slice замість splice
+title: Видалення елементів з масиву з використанням slice замість splice
 challengeType: 1
 forumTopicId: 301236
 dashedName: remove-elements-from-an-array-using-slice-instead-of-splice
@@ -8,47 +8,54 @@ dashedName: remove-elements-from-an-array-using-slice-instead-of-splice
 
 # --description--
 
-Часто при роботі з масивами потрібно видалити деякі елементи, а решту масиву зберегти. JavaScript пропонує метод `splice`, який приймає аргументи для індексу (де саме почати видаляти елементи), а тоді — їх кількість. Якщо другий аргумент не надано, то елементи видаляються до кінця за замовчуванням. Однак метод `splice` змінює вихідний масив, у якому викликається. Ось приклад:
+Загальним шаблоном під час роботи з масивами є те, коли ви хочете видалити елементи й зберегти решту масиву. JavaScript пропонує для цього метод « `splice`», який приймає аргументи для індексу, де саме починати видаляти елементи, а тоді — їх кількість. Якщо другий аргумент не було надано, то, за замовчуванням, елементи видаляються до кінця. Щоправда, метод «`splice`» змінює оригінальний масив, у якому викликається. Ось приклад:
 
 ```js
 const cities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 cities.splice(3, 1);
 ```
 
-Тут `splice` повертає рядок `London` і видаляє його із масиву міст. `cities` матиме значення `["Chicago", "Delhi", "Islamabad", "Berlin"]`.
+Тут `splice` повертає рядок `London` і видаляє його із масиву міст. `cities` матимуть значення `["Chicago", "Delhi", "Islamabad", "Berlin"]`.
 
-Як ми бачили у попередньому завданні, метод `slice` не змінює вихідний масив, а повертає новий, який можна зберегти як змінну. Пригадайте, що метод `slice` використовує два аргументи для того, щоб почати і закінчити слайс (кінець не включається) та повертає ці елементи у новому масиві. Використання методу `slice` замість `splice` допомагає уникнути будь-яких побічних дій.
+Як ми могли бачити у останньому завдання, метод «`slice`» не змінює вихідного масиву, але повертає новий, який може бути збережений як змінний. Пригадайте, що метод «`slice`» використовує два аргументи для того, щоб індекси почали та закінчили slice (кінець не включається); і повертає ці елементи у новий масив. Використання методу «`slice`» замість «`splice`» допомагає уникнути будь-яких побічних дій зміни масиву.
 
 # --instructions--
 
-Перепишіть функцію `nonMutatingSplice`, використовуючи `slice` замість `splice`. Він повинен обмежити наданий масив `cities` до довжини 3, і повернути новий масив лише із першими трьома елементами.
+Перепишіть функцію `nonMutatingSplice`, використовуючи `slice` замість `splice`. Він мусить обмежити наданий масив `cities` до довжини 3, і повернути новий масив лише із першими трьома елементами.
 
-Не змінюйте вихідний масив, наданий до функції.
+Не змінюйте вихідний масив, наданий функцією.
 
 # --hints--
 
-Ваш код повинен використовувати метод `slice`.
+Використовуйте метод «`slice`» у своєму коді.
 
 ```js
 assert(code.match(/\.slice/g));
 ```
 
-Ваш код не повинен використовувати метод `splice`.
+Не використовуйте метод «`splice`» у своєму коді.
 
 ```js
 assert(!code.match(/\.?[\s\S]*?splice/g));
 ```
 
-Не змінюйте початковий масив, переданий до функції.
+Масив `inputCities` не повинен змінюватись.
 
 ```js
-assert.deepEqual(_inputCities, ["Chicago", "Delhi", "Islamabad", "London", "Berlin"]);
+assert(
+  JSON.stringify(inputCities) ===
+    JSON.stringify(['Chicago', 'Delhi', 'Islamabad', 'London', 'Berlin'])
+);
 ```
 
-`nonMutatingSplice(["Chicago", "Delhi", "Islamabad", "London", "Berlin"])` має повертати `["Chicago", "Delhi", "Islamabad"]`.
+`nonMutatingSplice(["Chicago", "Delhi", "Islamabad", "London", "Berlin"])` повинен повертатися як `["Chicago", "Delhi", "Islamabad"]`.
 
 ```js
-assert.deepEqual(nonMutatingSplice(_inputCities), ["Chicago", "Delhi", "Islamabad"]);
+assert(
+  JSON.stringify(
+    nonMutatingSplice(['Chicago', 'Delhi', 'Islamabad', 'London', 'Berlin'])
+  ) === JSON.stringify(['Chicago', 'Delhi', 'Islamabad'])
+);
 ```
 
 # --seed--
@@ -57,15 +64,14 @@ assert.deepEqual(nonMutatingSplice(_inputCities), ["Chicago", "Delhi", "Islamaba
 
 ```js
 function nonMutatingSplice(cities) {
-
+  // Only change code below this line
   return cities.splice(3);
+
+  // Only change code above this line
 }
-```
 
-## --after-user-code--
-
-```js
-const _inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+nonMutatingSplice(inputCities);
 ```
 
 # --solutions--
@@ -74,4 +80,5 @@ const _inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 function nonMutatingSplice(cities) {
   return cities.slice(0,3);
 }
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 ```

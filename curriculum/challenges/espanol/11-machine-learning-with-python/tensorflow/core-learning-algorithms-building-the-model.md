@@ -1,6 +1,6 @@
 ---
 id: 5e8f2f13c4cdbe86b5c72d8e
-title: 'Algoritmos de Aprendizaje Básico: Construyendo el Modelo'
+title: 'Core Learning Algorithms: Building the Model'
 challengeType: 11
 videoId: 5wHw8BTd2ZQ
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: core-learning-algorithms-building-the-model
 
 ## --text--
 
-Qué tipo de estimador/modelo recomienda TensorFlow usar para la clasificación?
+What kind of estimator/model does TensorFlow recommend using for classification?
 
 ## --answers--
 

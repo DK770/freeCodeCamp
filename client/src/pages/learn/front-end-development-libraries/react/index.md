@@ -1,7 +1,7 @@
 ---
 title: Introduction to the React Challenges
-block: react
-superBlock: front-end-development-libraries
+block: React
+superBlock: Front End Development Libraries
 ---
 
 ## Introduction to the React Challenges

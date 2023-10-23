@@ -11,22 +11,20 @@ import {
   stubTrue
 } from 'lodash-es';
 
-import sassData from '../../../../../client/config/browser-scripts/sass-compile.json';
+import sassData from '../../../../../config/client/sass-compile.json';
 import {
   transformContents,
   transformHeadTailAndContents,
   setExt,
   compileHeadTail
-} from '../../../../../shared/utils/polyvinyl';
+} from '../../../../../utils/polyvinyl';
 import createWorker from '../utils/worker-executor';
-import { makeCancellable, makeInputAwaitable } from './transform-python';
 
 const { filename: sassCompile } = sassData;
 
 const protectTimeout = 100;
 const testProtectTimeout = 1500;
-const loopsPerTimeoutCheck = 100;
-const testLoopsPerTimeoutCheck = 2000;
+const loopsPerTimeoutCheck = 2000;
 
 function loopProtectCB(line) {
   console.log(
@@ -55,11 +53,11 @@ async function loadBabel() {
   /* eslint-enable no-inline-comments */
   Babel.registerPlugin(
     'loopProtection',
-    protect(protectTimeout, loopProtectCB, loopsPerTimeoutCheck)
+    protect(protectTimeout, loopProtectCB)
   );
   Babel.registerPlugin(
     'testLoopProtection',
-    protect(testProtectTimeout, testLoopProtectCB, testLoopsPerTimeoutCheck)
+    protect(testProtectTimeout, testLoopProtectCB, loopsPerTimeoutCheck)
   );
 }
 
@@ -100,10 +98,10 @@ const NBSPReg = new RegExp(String.fromCharCode(160), 'g');
 const testJS = matchesProperty('ext', 'js');
 const testJSX = matchesProperty('ext', 'jsx');
 const testHTML = matchesProperty('ext', 'html');
-const testPython = matchesProperty('ext', 'py');
 const testHTML$JS$JSX = overSome(testHTML, testJS, testJSX);
+export const testJS$JSX = overSome(testJS, testJSX);
 
-const replaceNBSP = cond([
+export const replaceNBSP = cond([
   [
     testHTML$JS$JSX,
     partial(transformContents, contents => contents.replace(NBSPReg, ' '))
@@ -160,18 +158,12 @@ const babelTransformer = loopProtectOptions => {
 
 function getBabelOptions(
   presets,
-  { preview, disableLoopProtectTests, disableLoopProtectPreview } = {
-    preview: false,
-    disableLoopProtectTests: false,
-    disableLoopProtectPreview: false
-  }
+  { preview, protect } = { preview: false, protect: true }
 ) {
-  // we protect the preview unless specifically disabled, since it evaluates as
-  // the user types and they may briefly have infinite looping code accidentally
-  if (preview && !disableLoopProtectPreview)
-    return { ...presets, plugins: ['loopProtection'] };
-  if (!disableLoopProtectTests)
-    return { ...presets, plugins: ['testLoopProtection'] };
+  // we always protect the preview, since it evaluates as the user types and
+  // they may briefly have infinite looping code accidentally
+  if (preview) return { ...presets, plugins: ['loopProtection'] };
+  if (protect) return { ...presets, plugins: ['testLoopProtection'] };
   return presets;
 }
 
@@ -306,26 +298,9 @@ const htmlTransformer = cond([
   [stubTrue, identity]
 ]);
 
-const transformPython = async function (file) {
-  const awaitableCode = makeInputAwaitable(file.contents);
-  const cancellableCode = makeCancellable(awaitableCode);
-  return transformContents(() => cancellableCode, file);
-};
-
-const pythonTransformer = cond([
-  [testPython, transformPython],
-  [stubTrue, identity]
-]);
-
 export const getTransformers = loopProtectOptions => [
   replaceNBSP,
   babelTransformer(loopProtectOptions),
   partial(compileHeadTail, ''),
   htmlTransformer
-];
-
-export const getPythonTransformers = () => [
-  replaceNBSP,
-  partial(compileHeadTail, ''),
-  pythonTransformer
 ];

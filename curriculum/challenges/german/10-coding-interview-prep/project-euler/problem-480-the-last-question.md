@@ -1,6 +1,6 @@
 ---
 id: 5900f54c1000cf542c51005f
-title: 'Problem 480: Die letzte Frage'
+title: 'Problem 480: The Last Question'
 challengeType: 1
 forumTopicId: 302158
 dashedName: problem-480-the-last-question
@@ -8,13 +8,13 @@ dashedName: problem-480-the-last-question
 
 # --description--
 
-Überlege dir alle Wörter, die durch die Auswahl von Buchstaben, in beliebiger Reihenfolge, aus dem Satz gebildet werden können:
+Consider all the words which can be formed by selecting letters, in any order, from the phrase:
 
 $$\mathbf{\text{thereisasyetinsufficientdataforameaningfulanswer}}$$
 
-Nehmen wir an, dass diejenigen, die 15 Buchstaben oder weniger haben, in alphabetischer Reihenfolge aufgelistet und von 1 an fortlaufend nummeriert sind.
+Suppose those with 15 letters or less are listed in alphabetical order and numbered sequentially starting at 1.
 
-Die Liste würde Folgendes umfassen:
+The list would include:
 
 $$\begin{align}   & 1: \text{a} \\\\
   & 2: \text{aa} \\\\   & 3: \text{aaa} \\\\
@@ -32,31 +32,31 @@ $$\begin{align}   & 1: \text{a} \\\\
   & ... \\\\   & 525069350231428029: \text{ywuuttttssssrrr} \\\\
 \end{align}$$
 
-Definiere $P(w)$ als die Position des Wortes $w$.
+Define $P(w)$ as the position of the word $w$.
 
-Definiere $W(p)$ als das Wort an der Position $p$.
+Define $W(p)$ as the word in position $p$.
 
-Wir können sehen, dass $P(w)$ und $W(p)$ invers sind: $P(W(p)) = p$ und $W(P(w)) = w$.
+We can see that $P(w)$ and $W(p)$ are inverses: $P(W(p)) = p$ and $W(P(w)) = w$.
 
-Beispiele:
+Examples:
 
 $$\begin{align}   & W(10) = \text{ aaaaaacdee} \\\\
   & P(\text{aaaaaacdee}) = 10 \\\\   & W(115246685191495243) = \text{ euler} \\\\
   & P(\text{euler}) = 115246685191495243 \\\\ \end{align}$$
 
-Finde $$W(P(\text{legionary}) + P(\text{calorimeters}) - P(\text{annihilate}) + P(\text{orchestrated}) - P(\text{fluttering})).$$
+Find $$W(P(\text{legionary}) + P(\text{calorimeters}) - P(\text{annihilate}) + P(\text{orchestrated}) - P(\text{fluttering})).$$
 
-Gib deine Antwort in Kleinbuchstaben (ohne Satzzeichen oder Leerzeichen).
+Give your answer using lowercase characters (no punctuation or space).
 
 # --hints--
 
-`euler480()` sollte einen String zurückgeben.
+`euler480()` should return a string.
 
 ```js
 assert(typeof euler480() === 'string');
 ```
 
-`euler480()` sollte die Zeichenfolge `turnthestarson` zurückgeben.
+`euler480()` should return the string `turnthestarson`.
 
 ```js
 assert.strictEqual(euler480(), 'turnthestarson');

@@ -8,31 +8,37 @@ import {
 import { findIndex, find, isEqual } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import React, { Component } from 'react';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import isURL from 'validator/lib/isURL';
-import { PortfolioProjectData } from '../../redux/prop-types';
 
 import { hasProtocolRE } from '../../utils';
 
-import { FullWidthRow, Spacer } from '../helpers';
+import { FullWidthRow, ButtonSpacer, Spacer } from '../helpers';
 import BlockSaveButton from '../helpers/form/block-save-button';
 import SectionHeader from './section-header';
 
+type PortfolioItem = {
+  id: string;
+  description: string;
+  image: string;
+  title: string;
+  url: string;
+};
+
 type PortfolioProps = {
   picture?: string;
-  portfolio: PortfolioProjectData[];
+  portfolio: PortfolioItem[];
   t: TFunction;
-  updatePortfolio: (obj: { portfolio: PortfolioProjectData[] }) => void;
+  updatePortfolio: (obj: { portfolio: PortfolioItem[] }) => void;
   username?: string;
 };
 
 type PortfolioState = {
-  portfolio: PortfolioProjectData[];
+  portfolio: PortfolioItem[];
   unsavedItemId: string | null;
 };
 
-function createEmptyPortfolioItem(): PortfolioProjectData {
+function createEmptyPortfolioItem(): PortfolioItem {
   return {
     id: nanoid(),
     title: '',
@@ -43,7 +49,7 @@ function createEmptyPortfolioItem(): PortfolioProjectData {
 }
 
 function createFindById(id: string) {
-  return (p: PortfolioProjectData) => p.id === id;
+  return (p: PortfolioItem) => p.id === id;
 }
 
 class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
@@ -77,6 +83,11 @@ class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
         return { portfolio: mutablePortfolio };
       });
     };
+
+  handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: string) => {
+    e.preventDefault();
+    this.updateItem(id);
+  };
 
   updateItem = (id: string) => {
     const { portfolio, unsavedItemId } = this.state;
@@ -113,6 +124,25 @@ class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
     const edited = find(portfolio, createFindById(id));
     return isEqual(original, edited);
   };
+
+  // TODO: Check if this function is required or not
+  // isFormValid = id => {
+  //   const { portfolio } = this.state;
+  //   const toValidate = find(portfolio, createFindById(id));
+  //   if (!toValidate) {
+  //     return false;
+  //   }
+  //   const { title, url, image, description } = toValidate;
+
+  //   const { state: titleState } = this.getTitleValidation(title);
+  //   const { state: urlState } = this.getUrlValidation(url);
+  //   const { state: imageState } = this.getUrlValidation(image, true);
+  //   const { state: descriptionState } =
+  //     this.getDescriptionValidation(description);
+  //   return [titleState, imageState, urlState, descriptionState]
+  //     .filter(Boolean)
+  //     .every(state => state === 'success');
+  // };
 
   getDescriptionValidation(description: string) {
     const { t } = this.props;
@@ -171,161 +201,118 @@ class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
       : { state: 'warning', message: t('validation.use-valid-url') };
   }
 
-  formCorrect(portfolio: PortfolioProjectData) {
+  renderPortfolio = (
+    portfolio: PortfolioItem,
+    index: number,
+    arr: PortfolioItem[]
+  ) => {
+    const { t } = this.props;
     const { id, title, description, url, image } = portfolio;
-
+    const pristine = this.isFormPristine(id);
     const { state: titleState, message: titleMessage } =
       this.getTitleValidation(title);
     const { state: urlState, message: urlMessage } = this.getUrlValidation(url);
-    const { state: descriptionState, message: descriptionMessage } =
-      this.getDescriptionValidation(description);
     const { state: imageState, message: imageMessage } = this.getUrlValidation(
       image,
       true
     );
-    const pristine = this.isFormPristine(id);
-
-    const urlIsValid = !isURL(url, {
-      protocols: ['http', 'https'],
-      require_tld: true,
-      require_protocol: true
-    });
-
-    const isButtonDisabled = [
-      titleState,
-      urlState,
-      descriptionState,
-      imageState,
-      urlIsValid
-    ].some(state => state === 'error' || false);
-
-    return {
-      isButtonDisabled,
-      title: {
-        titleState,
-        titleMessage
-      },
-      url: {
-        urlState,
-        urlMessage
-      },
-      image: {
-        imageState,
-        imageMessage
-      },
-      desc: {
-        descriptionState,
-        descriptionMessage
-      },
-      pristine
-    };
-  }
-
-  renderPortfolio = (
-    portfolio: PortfolioProjectData,
-    index: number,
-    arr: PortfolioProjectData[]
-  ) => {
-    const { t } = this.props;
-    const { id, title, description, url, image } = portfolio;
-    const {
-      isButtonDisabled,
-      title: { titleState, titleMessage },
-      url: { urlState, urlMessage },
-      image: { imageState, imageMessage },
-      desc: { descriptionState, descriptionMessage },
-      pristine
-    } = this.formCorrect(portfolio);
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: string) => {
-      e.preventDefault();
-      if (isButtonDisabled) return null;
-      return this.updateItem(id);
-    };
-
+    const { state: descriptionState, message: descriptionMessage } =
+      this.getDescriptionValidation(description);
     return (
-      <FullWidthRow key={id}>
-        <form onSubmit={e => handleSubmit(e, id)} id='portfolio-items'>
-          <FormGroup
-            controlId={`${id}-title`}
-            validationState={
-              pristine || (!pristine && !title) ? null : titleState
-            }
-          >
-            <ControlLabel>{t('settings.labels.title')}</ControlLabel>
-            <FormControl
-              onChange={this.createOnChangeHandler(id, 'title')}
-              required={true}
-              type='text'
-              value={title}
-            />
-            {titleMessage ? <HelpBlock>{titleMessage}</HelpBlock> : null}
-          </FormGroup>
-          <FormGroup
-            controlId={`${id}-url`}
-            validationState={pristine || (!pristine && !url) ? null : urlState}
-          >
-            <ControlLabel>{t('settings.labels.url')}</ControlLabel>
-            <FormControl
-              onChange={this.createOnChangeHandler(id, 'url')}
-              required={true}
-              type='url'
-              value={url}
-            />
-            {urlMessage ? <HelpBlock>{urlMessage}</HelpBlock> : null}
-          </FormGroup>
-          <FormGroup
-            controlId={`${id}-image`}
-            validationState={pristine ? null : imageState}
-          >
-            <ControlLabel>{t('settings.labels.image')}</ControlLabel>
-            <FormControl
-              onChange={this.createOnChangeHandler(id, 'image')}
-              type='url'
-              value={image}
-            />
-            {imageMessage ? <HelpBlock>{imageMessage}</HelpBlock> : null}
-          </FormGroup>
-          <FormGroup
-            controlId={`${id}-description`}
-            validationState={pristine ? null : descriptionState}
-          >
-            <ControlLabel>{t('settings.labels.description')}</ControlLabel>
-            <FormControl
-              componentClass='textarea'
-              onChange={this.createOnChangeHandler(id, 'description')}
-              value={description}
-            />
-            {descriptionMessage ? (
-              <HelpBlock>{descriptionMessage}</HelpBlock>
-            ) : null}
-          </FormGroup>
-          <BlockSaveButton
-            aria-disabled={isButtonDisabled}
-            bgSize='lg'
-            {...(isButtonDisabled && { tabIndex: -1 })}
-          >
-            {t('buttons.save-portfolio')}
-          </BlockSaveButton>
-          <Spacer size='small' />
-          <Button
-            block={true}
-            bsSize='lg'
-            bsStyle='danger'
-            onClick={() => this.handleRemoveItem(id)}
-            type='button'
-          >
-            {t('buttons.remove-portfolio')}
-          </Button>
-        </form>
-        {index + 1 !== arr.length && (
-          <>
-            <Spacer size='medium' />
-            <hr />
-            <Spacer size='medium' />
-          </>
-        )}
-      </FullWidthRow>
+      <div key={id}>
+        <FullWidthRow>
+          <form onSubmit={e => this.handleSubmit(e, id)}>
+            <FormGroup
+              controlId={`${id}-title`}
+              validationState={
+                pristine || (!pristine && !title) ? null : titleState
+              }
+            >
+              <ControlLabel>{t('settings.labels.title')}</ControlLabel>
+              <FormControl
+                onChange={this.createOnChangeHandler(id, 'title')}
+                required={true}
+                type='text'
+                value={title}
+              />
+              {titleMessage ? <HelpBlock>{titleMessage}</HelpBlock> : null}
+            </FormGroup>
+            <FormGroup
+              controlId={`${id}-url`}
+              validationState={
+                pristine || (!pristine && !url) ? null : urlState
+              }
+            >
+              <ControlLabel>{t('settings.labels.url')}</ControlLabel>
+              <FormControl
+                onChange={this.createOnChangeHandler(id, 'url')}
+                required={true}
+                type='url'
+                value={url}
+              />
+              {urlMessage ? <HelpBlock>{urlMessage}</HelpBlock> : null}
+            </FormGroup>
+            <FormGroup
+              controlId={`${id}-image`}
+              validationState={pristine ? null : imageState}
+            >
+              <ControlLabel>{t('settings.labels.image')}</ControlLabel>
+              <FormControl
+                onChange={this.createOnChangeHandler(id, 'image')}
+                type='url'
+                value={image}
+              />
+              {imageMessage ? <HelpBlock>{imageMessage}</HelpBlock> : null}
+            </FormGroup>
+            <FormGroup
+              controlId={`${id}-description`}
+              validationState={pristine ? null : descriptionState}
+            >
+              <ControlLabel>{t('settings.labels.description')}</ControlLabel>
+              <FormControl
+                componentClass='textarea'
+                onChange={this.createOnChangeHandler(id, 'description')}
+                value={description}
+              />
+              {descriptionMessage ? (
+                <HelpBlock>{descriptionMessage}</HelpBlock>
+              ) : null}
+            </FormGroup>
+            <BlockSaveButton
+              disabled={
+                pristine ||
+                !title ||
+                !isURL(url, {
+                  protocols: ['http', 'https'],
+                  /* eslint-disable camelcase, @typescript-eslint/naming-convention */
+                  require_tld: true,
+                  require_protocol: true
+                  /* eslint-enable camelcase, @typescript-eslint/naming-convention */
+                })
+              }
+            >
+              {t('buttons.save-portfolio')}
+            </BlockSaveButton>
+            <ButtonSpacer />
+            <Button
+              block={true}
+              bsSize='lg'
+              bsStyle='danger'
+              onClick={() => this.handleRemoveItem(id)}
+              type='button'
+            >
+              {t('buttons.remove-portfolio')}
+            </Button>
+          </form>
+          {index + 1 !== arr.length && (
+            <>
+              <Spacer />
+              <hr />
+              <Spacer />
+            </>
+          )}
+        </FullWidthRow>
+      </div>
     );
   };
 
@@ -336,8 +323,12 @@ class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
       <section id='portfolio-settings'>
         <SectionHeader>{t('settings.headings.portfolio')}</SectionHeader>
         <FullWidthRow>
-          <p>{t('settings.share-projects')}</p>
-          <Spacer size='small' />
+          <div className='portfolio-settings-intro'>
+            <p className='p-intro'>{t('settings.share-projects')}</p>
+          </div>
+        </FullWidthRow>
+        <FullWidthRow>
+          <ButtonSpacer />
           <Button
             block={true}
             bsSize='lg'
@@ -349,7 +340,7 @@ class PortfolioSettings extends Component<PortfolioProps, PortfolioState> {
             {t('buttons.add-portfolio')}
           </Button>
         </FullWidthRow>
-        <Spacer size='large' />
+        <Spacer size={2} />
         {portfolio.length ? portfolio.map(this.renderPortfolio) : null}
       </section>
     );

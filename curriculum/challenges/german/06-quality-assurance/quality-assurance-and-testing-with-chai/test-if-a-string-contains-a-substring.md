@@ -10,7 +10,7 @@ dashedName: test-if-a-string-contains-a-substring
 
 As a reminder, this project is being built upon the following starter project on <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, or cloned from <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
-`include()` und `notInclude()` funktionieren auch für Strings! `include()` asserts that the actual string contains the expected substring.
+`include()` and `notInclude()` work for strings too! `include()` asserts that the actual string contains the expected substring.
 
 # --instructions--
 
@@ -18,7 +18,7 @@ Within `tests/1_unit-tests.js` under the test labelled `#14` in the `Strings` su
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+All tests should pass.
 
 ```js
 (getUserInput) =>
@@ -32,7 +32,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-Du solltest die richtige Methode für die erste Behauptung auswählen - `include` vs. `notInclude`.
+You should choose the correct method for the first assertion - `include` vs. `notInclude`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ Du solltest die richtige Methode für die erste Behauptung auswählen - `include
   );
 ```
 
-Du solltest die richtige Methode für die zweite Behauptung auswählen - `include` vs. `notInclude`.
+You should choose the correct method for the second assertion - `include` vs. `notInclude`.
 
 ```js
 (getUserInput) =>

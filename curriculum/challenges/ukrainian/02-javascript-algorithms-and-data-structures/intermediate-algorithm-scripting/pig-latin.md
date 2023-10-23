@@ -1,6 +1,6 @@
 ---
 id: aa7697ea2477d1316795783b
-title: Поросяча латина
+title: Pig Latin
 challengeType: 1
 forumTopicId: 16039
 dashedName: pig-latin
@@ -8,55 +8,55 @@ dashedName: pig-latin
 
 # --description--
 
-Поросяча латина — це спосіб шифрування англійських слів. Правила такі:
+Pig Latin - це спосіб шифрування англійських слів. Правила такі:
 
-\- Якщо слово починається з приголосного звуку, то перший приголосний або сполучення приголосних переміщуються в кінець слова і додається `ay`.
+\- Якщо слово починається на приголосний звук, початкові приголосні переміщуються в кінець слова і додається `ay`.
 
-\- Якщо слово починається з голосного звуку, то вкінці просто додається `way`.
+\- Якщо слово починається на голосний звук, в кінці просто додається `way`.
 
 # --instructions--
 
-Перекладіть поданий рядок на поросячу латину. Відомо, що при вводі всі рядки будуть складатись з англійських слів у нижньому регістрі.
+Перекласти даний рядок на Pig Latin. Необхідно вводити лише англійські слова в нижньому регістрі.
 
 # --hints--
 
-`translatePigLatin("california")` має повертати рядок `aliforniacay`.
+`translatePigLatin("california")` повинен повертати рядок `aliforniacay`.
 
 ```js
 assert.deepEqual(translatePigLatin('california'), 'aliforniacay');
 ```
 
-`translatePigLatin("paragraphs")` має повертати рядок `aragraphspay`.
+`translatePigLatin("paragraphs")` повинен повертати рядок `aragraphspay`.
 
 ```js
 assert.deepEqual(translatePigLatin('paragraphs'), 'aragraphspay');
 ```
 
-`translatePigLatin("glove")` має повертати рядок `oveglay`.
+`translatePigLatin("glove")` повинен повертати рядок `oveglay`.
 
 ```js
 assert.deepEqual(translatePigLatin('glove'), 'oveglay');
 ```
 
-`translatePigLatin("algorithm")` має повертати рядок `algorithmway`.
+`translatePigLatin("algorithm")` повинен повертати рядок `algorithmway`.
 
 ```js
 assert.deepEqual(translatePigLatin('algorithm'), 'algorithmway');
 ```
 
-`translatePigLatin("eight")` має повертати рядок `eightway`.
+`translatePigLatin("eight")` повинен повертати рядок `eightway`.
 
 ```js
 assert.deepEqual(translatePigLatin('eight'), 'eightway');
 ```
 
-Ваша програма повинна обробляти слова, у яких перший голосний звук розташований у середині слова.  `translatePigLatin("schwartz")` має повертати рядок `artzschway`.
+Спробуйте перетворити слова, у яких перший голосний звук у середині слова.  `translatePigLatin("schwartz")` повинен повертати рядок `artzschway`.
 
 ```js
 assert.deepEqual(translatePigLatin('schwartz'), 'artzschway');
 ```
 
-Ваша програма повинна обробляти слова без голосних звуків. `translatePigLatin("rhythm")` має повертати рядок `rhythmay`.
+Спробуйте перетворити слова без голосних звуків. `translatePigLatin("rhythm")` повинен повертати рядок `rhythmay`.
 
 ```js
 assert.deepEqual(translatePigLatin('rhythm'), 'rhythmay');

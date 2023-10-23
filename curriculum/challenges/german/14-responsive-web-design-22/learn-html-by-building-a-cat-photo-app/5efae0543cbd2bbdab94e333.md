@@ -1,37 +1,37 @@
 ---
 id: 5efae0543cbd2bbdab94e333
-title: Schritt 30
+title: Step 30
 challengeType: 0
 dashedName: step-30
 ---
 
 # --description--
 
-Um die Zugänglichkeit des von dir hinzugefügten Bildes zu verbessern, fügst du ein `alt`-Attribut mit dem Text hinzu:
+To improve accessibility of the image you just added, add an `alt` attribute with the text:
 
 `Five cats looking around a field.`
 
 # --hints--
 
-Dein `figure`-Element sollte ein öffnendes Tag haben. Öffnende Tags haben diese Syntax: `<elementName>`.
+Your `figure` element should have an opening tag. Opening tags have this syntax: `<elementName>`.
 
 ```js
 assert(document.querySelectorAll('figure').length === 2);
 ```
 
-Dein `figure` sollte ein schließendes Tag haben. Schließende Tags haben ein `/` genau nach dem `<`-Zeichen.
+Your `figure` element should have a closing tag. Closing tags have a `/` just after the `<` character.
 
 ```js
 assert(code.match(/<\/figure>/g).length === 2);
 ```
 
-Genau über dem letzten schließenden Tag des `section`-Elements sollte ein `figure`-Element stehen.
+There should be a `figure` element right above the last `section` element's closing tag.
 
 ```js
 assert($('main > section')[1].lastElementChild.nodeName === 'FIGURE');
 ```
 
-Das `img`-Cats-Element sollte im `figure`-Element eingebettet sein.
+The Cats `img` element should be nested in the `figure` element.
 
 ```js
 const catsImg = document.querySelectorAll('figure > img')[1];
@@ -41,7 +41,7 @@ assert(
 );
 ```
 
-Das `img`-Cats-Element sollte ein `alt`-Attribut mit dem Wert `Five cats looking around a field.` haben
+The Cats `img` element should have an `alt` attribute with the value `Five cats looking around a field.`
 
 ```js
 const catsImg = document.querySelectorAll('figure > img')[1];
@@ -65,7 +65,7 @@ assert(
       <section>
         <h2>Cat Photos</h2>
         <!-- TODO: Add link to cat photos -->
-        <p>See more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a> in our gallery.</p>
+        <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
         <a href="https://freecatphotoapp.com"><img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
       </section>
       <section>

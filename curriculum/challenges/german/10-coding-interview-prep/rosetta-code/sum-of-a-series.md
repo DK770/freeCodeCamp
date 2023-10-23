@@ -16,43 +16,43 @@ Write a function that take $a$ and $b$ as parameters and returns the sum of $a^{
 
 # --hints--
 
-`sum` sollte eine Funktion sein.
+`sum` should be a function.
 
 ```js
 assert(typeof sum == 'function');
 ```
 
-`sum(1, 100)` sollte eine Zahl zurückgeben.
+`sum(1, 100)` should return a number.
 
 ```js
 assert(typeof sum(1, 100) == 'number');
 ```
 
-`sum(1, 100)` sollte `1.6349839001848923` zurückgeben.
+`sum(1, 100)` should return `1.6349839001848923`.
 
 ```js
 assert.equal(sum(1, 100), 1.6349839001848923);
 ```
 
-`sum(33, 46)` sollte `0.009262256361481223` zurückgeben.
+`sum(33, 46)` should return `0.009262256361481223`.
 
 ```js
 assert.equal(sum(33, 46), 0.009262256361481223);
 ```
 
-`sum(21, 213)` sollte `0.044086990748706555` zurückgeben.
+`sum(21, 213)` should return `0.044086990748706555`.
 
 ```js
 assert.equal(sum(21, 213), 0.044086990748706555);
 ```
 
-`sum(11, 111)` sollte `0.08619778593108679` zurückgeben.
+`sum(11, 111)` should return `0.08619778593108679`.
 
 ```js
 assert.equal(sum(11, 111), 0.08619778593108679);
 ```
 
-`sum(1, 10)` sollte `1.5497677311665408` zurückgeben.
+`sum(1, 10)` should return `1.5497677311665408`.
 
 ```js
 assert.equal(sum(1, 10), 1.5497677311665408);

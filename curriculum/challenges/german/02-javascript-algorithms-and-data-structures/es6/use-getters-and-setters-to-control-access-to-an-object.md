@@ -46,7 +46,7 @@ Beachte die Syntax, mit der die Getter und Setter aufgerufen werden. Sie sehen n
 
 Verwende das Schlüsselwort `class`, um eine Klasse `Thermostat` zu erstellen. Der `constructor` akzeptiert eine Fahrenheit-Temperatur.
 
-In the class, create a `getter` to obtain the temperature in Celsius and a `setter` that accepts a temperature in Celsius.
+Erstelle in der Klasse einen `getter`, um die Temperatur in Celsius zu erhalten und einen `setter`, um die Temperatur in Celsius zu setzen.
 
 Denke daran, dass `C = 5/9 * (F - 32)` und `F = C * 9.0 / 5 + 32`, wobei `F` der Wert der Temperatur in Fahrenheit und `C` der Wert der gleichen Temperatur in Celsius ist.
 
@@ -61,53 +61,80 @@ Mit anderen Worten: Du abstrahierst die Implementierungsdetails vom Benutzer.
 `Thermostat` sollte eine `class` mit einer definierten `constructor`-Methode sein.
 
 ```js
-assert.isFunction(Thermostat);
-assert.isFunction(Thermostat?.constructor);
+assert(
+  typeof Thermostat === 'function' &&
+    typeof Thermostat.constructor === 'function'
+);
 ```
 
 Das Schlüsselwort `class` sollte verwendet werden.
 
 ```js
-assert.match(code, /class/);
+assert(code.match(/class/g));
 ```
 
 `Thermostat` sollte instanziiert werden können.
 
 ```js
-const _t = new Thermostat(122);
-assert.isObject(_t);
+assert(
+  (() => {
+    const t = new Thermostat(122);
+    return typeof t === 'object';
+  })()
+);
 ```
 
 Wenn du mit einem Fahrenheit-Wert instanziiert wirst, sollte `Thermostat` die richtige Temperatur (`temperature`) einstellen.
 
 ```js
-const _t = new Thermostat(122);
-assert.strictEqual(_t?.temperature, 50);
+assert(
+  (() => {
+    const t = new Thermostat(122);
+    return t.temperature === 50;
+  })()
+);
 ```
 
 Es sollte ein `getter` definiert werden.
 
 ```js
-const _desc = Object.getOwnPropertyDescriptor(Thermostat.prototype, 'temperature');
-assert.isFunction(_desc?.get);
+assert(
+  (() => {
+    const desc = Object.getOwnPropertyDescriptor(
+      Thermostat.prototype,
+      'temperature'
+    );
+    return !!desc && typeof desc.get === 'function';
+  })()
+);
 ```
 
 Es sollte ein `setter` definiert werden.
 
 ```js
-const _desc = Object.getOwnPropertyDescriptor(Thermostat.prototype, 'temperature');
-assert.isFunction(_desc?.set);
+assert(
+  (() => {
+    const desc = Object.getOwnPropertyDescriptor(
+      Thermostat.prototype,
+      'temperature'
+    );
+    return !!desc && typeof desc.set === 'function';
+  })()
+);
 ```
 
 Der Aufruf des `setter` mit einem Celsius-Wert sollte die Temperatur (`temperature`) einstellen.
 
 ```js
-const _t = new Thermostat(32);
-_t.temperature = 26;
-const _u = new Thermostat(32);
-_u.temperature = 50;
-assert.approximately(_t.temperature, 26, 0.1);
-assert.approximately(_u.temperature, 50, 0.1);
+assert(
+  (() => {
+    const t = new Thermostat(32);
+    t.temperature = 26;
+    const u = new Thermostat(32);
+    u.temperature = 50;
+    return t.temperature === 26 && u.temperature === 50;
+  })()
+);
 ```
 
 # --seed--

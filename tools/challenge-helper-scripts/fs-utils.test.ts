@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { SuperBlocks } from '../../shared/config/superblocks';
+import { SuperBlocks } from '../../config/certification-settings';
 import { getSuperBlockSubPath } from './fs-utils';
 
 describe('getSuperBlockSubPath', () => {

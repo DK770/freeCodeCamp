@@ -1,6 +1,6 @@
 ---
 id: 5e6a54af58d3af90110a60a1
-title: 'Вступ: архітектура обладнання'
+title: 'Вступ: Архітектура обладнання'
 challengeType: 11
 videoId: H6qtjRTfSog
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: introduction-hardware-architecture
 
 ## --text--
 
-Де зберігаються програми під час виконання?
+Де програми зберігаються під час роботи?
 
 ## --answers--
 
@@ -22,7 +22,7 @@ dashedName: introduction-hardware-architecture
 
 ---
 
-Пам’ять.
+Пам'ять.
 
 ---
 

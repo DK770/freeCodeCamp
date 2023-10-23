@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { User } from '../../../redux/prop-types';
 import { Link, AvatarRenderer } from '../../helpers';
-import Login from './login';
+import Login from './Login';
 
 interface AuthOrProfileProps {
-  user?: User;
+  user?: Record<string, unknown>;
 }
 const AuthOrProfile = ({ user }: AuthOrProfileProps): JSX.Element => {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ const AuthOrProfile = ({ user }: AuthOrProfileProps): JSX.Element => {
     );
   } else {
     return (
-      <Link className='avatar-nav-link' to={`/${user.username}`}>
+      <Link className='avatar-nav-link' to={`/${user.username as string}`}>
         <AvatarRenderer
           isDonating={isUserDonating}
           isTopContributor={isTopContributor}

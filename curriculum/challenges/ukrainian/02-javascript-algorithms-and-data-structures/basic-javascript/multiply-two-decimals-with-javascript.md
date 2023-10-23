@@ -1,6 +1,6 @@
 ---
 id: bd7993c9c69feddfaeb7bdef
-title: Множення двох десяткових чисел з JavaScript
+title: Множення двох десяткових чисел за допомогою JavaScript
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/ce2GeHq'
 forumTopicId: 301173
@@ -9,7 +9,7 @@ dashedName: multiply-two-decimals-with-javascript
 
 # --description--
 
-У JavaScript ви можете здійснювати розрахунки як з цілими числами, так і десятковими.
+У JavaScript, ви можете здійснювати розрахунки як з десятковими числами, так і цілими числами.
 
 Перемножимо два десяткових числа, щоб отримати їх добуток.
 
@@ -25,7 +25,7 @@ dashedName: multiply-two-decimals-with-javascript
 assert(product === 5.0);
 ```
 
-Ви повинні використати оператор `*`
+Вам слід використовувати оператор `*`
 
 ```js
 assert(/\*/.test(code));

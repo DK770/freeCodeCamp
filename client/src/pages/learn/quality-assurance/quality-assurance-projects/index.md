@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Quality Assurance Projects
-block: quality-assurance-projects
-superBlock: quality-assurance
+block: Quality Assurance Projects
+superBlock: Quality Assurance
 ---
 
 ## Introduction to the Quality Assurance Projects

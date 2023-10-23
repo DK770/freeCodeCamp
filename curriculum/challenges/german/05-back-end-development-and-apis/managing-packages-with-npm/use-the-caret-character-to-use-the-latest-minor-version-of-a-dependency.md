@@ -1,6 +1,6 @@
 ---
 id: 587d7fb5367417b2b2512c03
-title: Benutze das Caret-Zeichen, um die neueste Nebenversion einer Abhängigkeit zu verwenden
+title: Use the Caret-Character to Use the Latest Minor Version of a Dependency
 challengeType: 2
 forumTopicId: 301531
 dashedName: use-the-caret-character-to-use-the-latest-minor-version-of-a-dependency
@@ -8,25 +8,25 @@ dashedName: use-the-caret-character-to-use-the-latest-minor-version-of-a-depende
 
 # --description--
 
-Ähnlich wie die Tilde, die wir in der letzten Aufgabe kennengelernt haben, erlaubt sie npm das aktuelle PATCH für eine Abhängigkeit zu installieren, so erlaubt das Caret (`^`) npm auch zukünftige Updates zu installieren. Der Unterschied ist, dass das Caret sowohl MINOR-Updates als auch PATCHes zulässt.
+Similar to how the tilde we learned about in the last challenge allows npm to install the latest PATCH for a dependency, the caret (`^`) allows npm to install future updates as well. Der Unterschied ist, dass das Caret sowohl MINOR-Updates als auch PATCHes zulässt.
 
-Deine aktuelle Version von `@freecodecamp/example` sollte `~1.2.13` lauten, was es npm erlaubt, auf die neueste Version `1.2.x` zu aktualisieren. Wenn du stattdessen das Zirkumflex (^) als Versionspräfix verwendest, dürfte npm auf jede Version von `1.x.x` aktualisieren.
+Your current version of `@freecodecamp/example` should be "~1.2.13" which allows npm to install to the latest 1.2.x version. If you were to use the caret (^) as a version prefix instead, npm would be allowed to update to any 1.x.x version.
 
 ```json
 "package": "^1.3.8"
 ```
 
-Dies würde Aktualisierungen auf jede `1.x.x`-Version des Pakets ermöglichen.
+Dies würde Aktualisierungen auf jede Version 1.x.x des Pakets ermöglichen.
 
 # --instructions--
 
-Verwende das Caret (`^`), um die Version von `@freecodecamp/example` in deinen Abhängigkeiten voranzustellen und erlaube npm auf jede neue MINOR-Version zu aktualisieren.
+Use the caret (`^`) to prefix the version of `@freecodecamp/example` in your dependencies and allow npm to update it to any new MINOR release.
 
 **Hinweis:** Die Versionsnummern selbst sollten nicht geändert werden.
 
 # --hints--
 
-`"dependencies"` sollten `"@freecodecamp/example"` enthalten.
+`"dependencies"` should include `"@freecodecamp/example"`.
 
 ```js
 (getUserInput) =>
@@ -45,7 +45,7 @@ Verwende das Caret (`^`), um die Version von `@freecodecamp/example` in deinen A
   );
 ```
 
-`"@freecodecamp/example"`-Version sollte `"^1.x.x"` entsprechen.
+`"@freecodecamp/example"` version should match `"^1.x.x"`.
 
 ```js
 (getUserInput) =>

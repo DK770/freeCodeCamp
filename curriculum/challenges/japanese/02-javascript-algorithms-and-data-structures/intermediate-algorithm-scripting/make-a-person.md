@@ -16,145 +16,123 @@ getLastName()
 getFullName()
 setFirstName(first)
 setLastName(last)
-setFullName(first, last)
+setFullName(firstAndLast)
 ```
 
-テストを実行して、各メソッドに対して期待される出力を確認してください。 These methods must be the only available means of interacting with the object. Each test will declare a new `Person` instance as `new Person('Bob', 'Ross')`.
+テストを実行して、各メソッドに対して期待される出力を確認してください。 引数を取るメソッドは 1 つの引数のみを受け取る必要があり、それは文字列でなければなりません。 これらのメソッドのみをオブジェクトとやり取りする手段とする必要があります。
 
 # --hints--
 
-You should not change the function signature.
+プロパティを追加しないでください。 `Object.keys(bob).length` は常に 6 を返す必要があります。
 
 ```js
-assert.match(code, /const\s+Person\s*=\s*function\s*\(\s*first\s*,\s*last\s*\)\s*{/);
+assert.strictEqual(
+  Object.keys((function () {
+    let bob = new Person('Bob Ross');
+    bob.setFirstName('Haskell');
+    bob.setLastName('Curry');
+    bob.setFullName('John Smith');
+    return bob;
+  })()).length,
+  6
+ );
 ```
 
-You should not reassign the `first` parameter.
+`bob instanceof Person` は `true` を返す必要があります。
 
 ```js
-assert.notMatch(code, /first\s*=\s*/);
+assert.deepEqual(bob instanceof Person, true);
 ```
 
-You should not reassign the `last` parameter.
+`bob.firstName` は `undefined` を返す必要があります。
 
 ```js
-assert.notMatch(code, /last\s*=\s*/);
+assert.deepEqual(bob.firstName, undefined);
 ```
 
-No properties should be added. `Object.keys(Person).length` should always return 6.
+`bob.lastName` は `undefined` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-_person.setFirstName('Haskell');
-_person.setLastName('Curry');
-_person.setFullName('John', 'Smith');
-assert.lengthOf(Object.keys(_person), 6);
+assert.deepEqual(bob.lastName, undefined);
 ```
 
-You should be able to instantiate your `Person` object.
+`bob.getFirstName()` は文字列 `Bob` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.instanceOf(_person, Person);
+assert.deepEqual(bob.getFirstName(), 'Bob');
 ```
 
-Your `Person` object should not have a `firstName` property.
+`bob.getLastName()` は文字列 `Ross` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.notProperty(_person, 'firstName');
+assert.deepEqual(bob.getLastName(), 'Ross');
 ```
 
-Your `Person` object should not have a `lastName` property.
+`bob.getFullName()` は文字列 `Bob Ross` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.notProperty(_person, 'lastName');
+assert.deepEqual(bob.getFullName(), 'Bob Ross');
 ```
 
-The `.getFirstName()` method should return the string `Bob`.
+`bob.getFullName()` は、`bob.setFirstName("Haskell")` の後に文字列 `Haskell Ross` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.strictEqual(_person.getFirstName(), 'Bob');
+assert.strictEqual(
+  (function () {
+    bob.setFirstName('Haskell');
+    return bob.getFullName();
+  })(),
+  'Haskell Ross'
+);
 ```
 
-The `.getLastName()` should return the string `Ross`.
+`bob.getFullName()` は、`bob.setLastName("Curry")` の後に文字列 `Haskell Curry` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.strictEqual(_person.getLastName(), 'Ross');
+assert.strictEqual(
+  (function () {
+    var _bob = new Person('Haskell Ross');
+    _bob.setLastName('Curry');
+    return _bob.getFullName();
+  })(),
+  'Haskell Curry'
+);
 ```
 
-The `.getFullName()` method should return the string `Bob Ross`.
+`bob.getFullName()` は、`bob.setFullName("Haskell Curry")` の後に文字列 `Haskell Curry` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-assert.strictEqual(_person.getFullName(), 'Bob Ross');
+assert.strictEqual(
+  (function () {
+    bob.setFullName('Haskell Curry');
+    return bob.getFullName();
+  })(),
+  'Haskell Curry'
+);
 ```
 
-The `.getFullName()` method should return the string `Haskell Ross` after calling `.setFirstName('Haskell')`.
+`bob.getFirstName()` は、`bob.setFullName("Haskell Curry")` の後に文字列 `Haskell` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-_person.setFirstName('Haskell');
-assert.strictEqual(_person.getFullName(), 'Haskell Ross');
+assert.strictEqual(
+  (function () {
+    bob.setFullName('Haskell Curry');
+    return bob.getFirstName();
+  })(),
+  'Haskell'
+);
 ```
 
-The `.getFullName()` method should return the string `Bob Curry` after calling `.setLastName('Curry')`.
+`bob.getLastName()` は、`bob.setFullName("Haskell Curry")` の後に文字列 `Curry` を返す必要があります。
 
 ```js
-const _person = new Person('Bob', 'Ross');
-_person.setLastName('Curry');
-assert.strictEqual(_person.getFullName(), 'Bob Curry');
-```
-
-The `.getFullName()` method should return the string `Haskell Curry` after calling `.setFullName('Haskell', 'Curry')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Haskell', 'Curry');
-assert.strictEqual(_person.getFullName(), 'Haskell Curry');
-```
-
-The `.getFirstName()` method should return the string `Haskell` after calling `.setFullName('Haskell', 'Curry')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Haskell', 'Curry');
-assert.strictEqual(_person.getFirstName(), 'Haskell');
-```
-
-The `.getLastName()` method should return the string `Curry` after calling `.setFullName('Haskell', 'Curry')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Haskell', 'Curry');
-assert.strictEqual(_person.getLastName(), 'Curry');
-```
-
-The `.getFullName()` method should return the string `Emily Martinez de la Rosa` after calling `.setFullName('Emily Martinez', 'de la Rosa')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Emily Martinez', 'de la Rosa');
-assert.strictEqual(_person.getFullName(), 'Emily Martinez de la Rosa');
-```
-
-The `.getFirstName()` property should return the string `Emily Martinez` after calling `.setFullName('Emily Martinez', 'de la Rosa')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Emily Martinez', 'de la Rosa');
-assert.strictEqual(_person.getFirstName(), 'Emily Martinez');
-```
-
-The `.getLastName()` property should return the string `de la Rosa` after calling `.setFullName('Emily Martinez', 'de la Rosa')`.
-
-```js
-const _person = new Person('Bob', 'Ross');
-_person.setFullName('Emily Martinez', 'de la Rosa');
-assert.strictEqual(_person.getLastName(), 'de la Rosa');
+assert.strictEqual(
+  (function () {
+    bob.setFullName('Haskell Curry');
+    return bob.getLastName();
+  })(),
+  'Curry'
+);
 ```
 
 # --seed--
@@ -162,20 +140,32 @@ assert.strictEqual(_person.getLastName(), 'de la Rosa');
 ## --seed-contents--
 
 ```js
-const Person = function(first, last) {
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
   this.getFullName = function() {
     return "";
   };
-  return "";
+  return firstAndLast;
 };
+
+const bob = new Person('Bob Ross');
+bob.getFullName();
 ```
 
 # --solutions--
 
 ```js
-const Person = function(first, last) {
-  let firstName = first;
-  let lastName = last;
+const Person = function(firstAndLast) {
+
+  let firstName, lastName;
+
+  function updateName(str) {
+    firstName = str.split(" ")[0];
+    lastName = str.split(" ")[1];
+  }
+
+  updateName(firstAndLast);
 
   this.getFirstName = function(){
     return firstName;
@@ -198,9 +188,11 @@ const Person = function(first, last) {
     lastName = str;
   };
 
-  this.setFullName = function(first, last){
-    firstName = first;
-    lastName = last;
+  this.setFullName = function(str){
+    updateName(str);
   };
 };
+
+const bob = new Person('Bob Ross');
+bob.getFullName();
 ```

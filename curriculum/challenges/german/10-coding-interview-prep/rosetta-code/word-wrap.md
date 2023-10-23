@@ -29,25 +29,25 @@ wrap should be a function.
 assert.equal(typeof wrap, 'function');
 ```
 
-wrap sollte einen String zurückgeben.
+wrap should return a string.
 
 ```js
 assert.equal(typeof wrap('abc', 10), 'string');
 ```
 
-wrap(80) sollte 4 Zeilen zurückgeben.
+wrap(80) should return 4 lines.
 
 ```js
 assert(wrapped80.split('\n').length === 4);
 ```
 
-Deine `wrap` Funktion sollte unseren erwarteten Text zurückgeben.
+Your `wrap` function should return our expected text.
 
 ```js
 assert.equal(wrapped80.split('\n')[0], firstRow80);
 ```
 
-wrap(42) sollte 7 Zeilen zurückgeben.
+wrap(42) should return 7 lines.
 
 ```js
 assert(wrapped42.split('\n').length === 7);

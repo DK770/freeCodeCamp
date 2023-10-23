@@ -1,6 +1,6 @@
 ---
 id: 5900f49a1000cf542c50ffac
-title: 'Problem 300: Proteinfaltung'
+title: 'Problem 300: Protein folding'
 challengeType: 1
 forumTopicId: 301954
 dashedName: problem-300-protein-folding
@@ -8,29 +8,29 @@ dashedName: problem-300-protein-folding
 
 # --description--
 
-In einer sehr vereinfachten Form können wir Proteine als Strings betrachten, die aus hydrophoben (H) und polaren (P) Elementen bestehen, z. B. HHPPHHHPHHPH.
+In a very simplified form, we can consider proteins as strings consisting of hydrophobic (H) and polar (P) elements, e.g. HHPPHHHPHHPH.
 
-Für dieses Problem ist die Orientierung eines Proteins wichtig; z. B. wird HPP als etwas anderes als PPH betrachtet. Es gibt also $2^n$ verschiedene Proteine, die aus $n$ Elementen bestehen.
+For this problem, the orientation of a protein is important; e.g. HPP is considered distinct from PPH. Thus, there are $2^n$ distinct proteins consisting of $n$ elements.
 
-Wenn man diese Fäden in der Natur antrifft, sind sie immer so gefaltet, dass die Anzahl der H-H-Kontaktpunkte so groß wie möglich ist, da dies energetisch vorteilhaft ist.
+When one encounters these strings in nature, they are always folded in such a way that the number of H-H contact points is as large as possible, since this is energetically advantageous.
 
-Infolgedessen sammeln sich die H-Elemente eher im inneren Teil an, während die P-Elemente außen liegen.
+As a result, the H-elements tend to accumulate in the inner part, with the P-elements on the outside.
 
-Natürliche Proteine werden natürlich in drei Dimensionen gefaltet, aber wir werden die Proteinfaltung nur in <u>zwei Dimensionen</u> betrachten.
+Natural proteins are folded in three dimensions of course, but we will only consider protein folding in <u>two dimensions</u>.
 
-Die folgende Abbildung zeigt zwei mögliche Wege, auf denen unser Beispielprotein gefaltet werden könnte (H-H-Kontaktpunkte sind mit roten Punkten dargestellt).
+The figure below shows two possible ways that our example protein could be folded (H-H contact points are shown with red dots).
 
-<img class="img-responsive center-block" alt="zwei mögliche Arten der Faltung des Beispielproteins" src="https://cdn.freecodecamp.org/curriculum/project-euler/protein-folding.gif" style="background-color: white; padding: 10px;" />
+<img class="img-responsive center-block" alt="two possible ways to fold example protein" src="https://cdn.freecodecamp.org/curriculum/project-euler/protein-folding.gif" style="background-color: white; padding: 10px;" />
 
-Die Faltung auf der linken Seite hat nur sechs H-H-Kontaktpunkte, sodass sie auf natürliche Weise niemals auftreten würde. Die Faltung auf der rechten Seite hat dagegen neun H-H-Kontaktpunkte, was für diese Zeichenkette optimal ist.
+The folding on the left has only six H-H contact points, thus it would never occur naturally. On the other hand, the folding on the right has nine H-H contact points, which is optimal for this string.
 
-Unter der Annahme, dass H- und P-Elemente mit gleicher Wahrscheinlichkeit an jeder Position entlang der Kette auftreten, beträgt die durchschnittliche Anzahl der H-H-Kontaktpunkte bei einer optimalen Faltung einer zufälligen Proteinkette der Länge 8 $\frac{850}{2^8} = 3,3203125$.
+Assuming that H and P elements are equally likely to occur in any position along the string, the average number of H-H contact points in an optimal folding of a random protein string of length 8 turns out to be $\frac{850}{2^8} = 3.3203125$.
 
-Wie hoch ist die durchschnittliche Anzahl der H-H-Kontaktpunkte bei einer optimalen Faltung einer zufälligen Proteinkette der Länge 15? Gib deine Antwort mit so vielen Dezimalstellen an, wie für ein genaues Ergebnis erforderlich sind.
+What is the average number of H-H contact points in an optimal folding of a random protein string of length 15? Give your answer using as many decimal places as necessary for an exact result.
 
 # --hints--
 
-`proteinFolding()` sollte `8.0540771484375` zurückgeben.
+`proteinFolding()` should return `8.0540771484375`.
 
 ```js
 assert.strictEqual(proteinFolding(), 8.0540771484375);

@@ -1,13 +1,13 @@
 ---
 id: 62aa20e9cf1be9358f5aceae
-title: Schritt 150
+title: Step 150
 challengeType: 0
 dashedName: step-150
 ---
 
 # --description--
 
-Füge eine `else`-Anweisung zur ersten `if`-Anweisung innerhalb deiner `attack()`-Funktion hinzu. In the `else` statement, use the `+=` operator to add the text `You miss.` to the end of `text.innerText`.
+Add an `else` statement to your `if` statement. In the `else` statement, use the `+=` operator to add the text `You miss.` to the end of `text.innerText`.
 
 # --hints--
 

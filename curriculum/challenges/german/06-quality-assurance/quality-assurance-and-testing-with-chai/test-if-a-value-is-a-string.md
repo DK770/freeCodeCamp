@@ -1,6 +1,6 @@
 ---
 id: 587d824d367417b2b2512c52
-title: Teste, ob ein Wert ein String ist
+title: Test if a Value is a String
 challengeType: 2
 forumTopicId: 301599
 dashedName: test-if-a-value-is-a-string
@@ -10,7 +10,7 @@ dashedName: test-if-a-value-is-a-string
 
 As a reminder, this project is being built upon the following starter project on <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a>, or cloned from <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
-`isString` oder `isNotString` gibt an, ob der eigentliche Wert ein String ist.
+`isString` or `isNotString` asserts that the actual value is a string.
 
 # --instructions--
 
@@ -18,7 +18,7 @@ Within `tests/1_unit-tests.js` under the test labelled `#13` in the `Strings` su
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+All tests should pass.
 
 ```js
 (getUserInput) =>
@@ -32,7 +32,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-Du solltest die richtige Methode für die erste Behauptung wählen - `isString` vs. `isNotString`.
+You should choose the correct method for the first assertion - `isString` vs. `isNotString`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ Du solltest die richtige Methode für die erste Behauptung wählen - `isString` 
   );
 ```
 
-Du solltest die richtige Methode für die zweite Behauptung wählen - `isString` vs. `isNotString`.
+You should choose the correct method for the second assertion - `isString` vs. `isNotString`.
 
 ```js
 (getUserInput) =>
@@ -68,7 +68,7 @@ Du solltest die richtige Methode für die zweite Behauptung wählen - `isString`
   );
 ```
 
-Du solltest die richtige Methode für die dritte Behauptung wählen - `isString` vs. `isNotString`.
+You should choose the correct method for the third assertion - `isString` vs. `isNotString`.
 
 ```js
 (getUserInput) =>

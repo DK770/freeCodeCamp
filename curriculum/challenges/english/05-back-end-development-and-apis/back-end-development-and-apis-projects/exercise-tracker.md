@@ -14,13 +14,7 @@ Build a full stack JavaScript app that is functionally similar to this: <a href=
 -   Use <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-exercisetracker" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete your project.
 -   Use a site builder of your choice to complete the project. Be sure to incorporate all the files from our GitHub repo.
 
-If you use Replit, follow these steps to set up the project:
-
--   Start by importing the project on Replit. 
--   Next, you will see a `.replit` window. 
--   Select `Use run command` and click the `Done` button. 
-
-When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the `Solution Link` field. Optionally, also submit a link to your project's source code in the `GitHub Link` field.
 
 # --instructions--
 
@@ -411,7 +405,7 @@ The `description` property of any object in the `log` array that is returned fro
 ```js
 async(getUserInput) => {
   const url = getUserInput('url');
-  const res = await fetch(url + '/api/users', {
+  const res = await fetch(url + '/api/users/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -458,7 +452,7 @@ The `duration` property of any object in the `log` array that is returned from `
 ```js
 async(getUserInput) => {
   const url = getUserInput('url');
-  const res = await fetch(url + '/api/users', {
+  const res = await fetch(url + '/api/users/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -505,7 +499,7 @@ The `date` property of any object in the `log` array that is returned from `GET 
 ```js
 async(getUserInput) => {
   const url = getUserInput('url');
-  const res = await fetch(url + '/api/users', {
+  const res = await fetch(url + '/api/users/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -519,10 +513,7 @@ async(getUserInput) => {
       description: 'test',
       duration: 60,
       _id,
-      date: new Date().toLocaleDateString("en-US", {
-        timeZone: "UTC", weekday: "short", month: "short",
-        day: "2-digit", year: "numeric"
-      }).replaceAll(',', '')
+      date: new Date().toDateString()
     };
     const addRes = await fetch(url + `/api/users/${_id}/exercises`, {
       method: 'POST',

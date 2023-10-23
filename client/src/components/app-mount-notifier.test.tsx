@@ -3,11 +3,12 @@ import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 
-import { i18nextCodes } from '../../../shared/config/i18n';
+import { i18nextCodes } from '../../../config/i18n/all-langs';
 import i18nTestConfig from '../../i18n/config-for-tests';
-import { createStore } from '../redux/create-store';
+import { createStore } from '../redux/createStore';
 import AppMountNotifier from './app-mount-notifier';
 
+jest.mock('react-ga');
 jest.unmock('react-i18next');
 
 type Language = keyof typeof i18nextCodes;
@@ -27,9 +28,7 @@ describe('AppMountNotifier', () => {
     render(
       <Provider store={store}>
         <I18nextProvider i18n={i18nTestConfig}>
-          <AppMountNotifier>
-            <p>App content</p>
-          </AppMountNotifier>
+          <AppMountNotifier render={() => <p>App content</p>} />
         </I18nextProvider>
       </Provider>
     );

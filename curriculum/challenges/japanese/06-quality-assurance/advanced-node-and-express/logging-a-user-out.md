@@ -8,9 +8,9 @@ dashedName: logging-a-user-out
 
 # --description--
 
-ログアウトロジックの作成は簡単です。 The route should just unauthenticate the user, and redirect to the home page instead of rendering any view.
+ログアウトロジックの作成は簡単です。 ルートで、ユーザーの認証を解除し、ビューをレンダーするのではなくホームページにリダイレクトするだけです。
 
-In passport, unauthenticating a user is as easy as just calling `req.logout()` before redirecting. Add this `/logout` route to do that:
+Passport では、リダイレクトする前に `req.logout();` を呼び出すだけで簡単にユーザーの認証を解除することができます。
 
 ```js
 app.route('/logout')
@@ -20,7 +20,7 @@ app.route('/logout')
 });
 ```
 
-You may have noticed that you are not handling missing pages (404). Node では通常は次のミドルウェアでこれを処理します。 他のすべてのルートの後に、これを追加してください。
+「ページが見つかりません」(404) を処理していないことにお気づきかもしれません。 Node では通常は次のミドルウェアでこれを処理します。 他のすべてのルートの後に、これを追加してください。
 
 ```js
 app.use((req, res, next) => {
@@ -30,38 +30,44 @@ app.use((req, res, next) => {
 });
 ```
 
-正しいと思ったら、ページを送信してください。 エラーが発生している場合、<a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#logging-a-user-out-10" target="_blank" rel="noopener noreferrer nofollow">この時点までの完成形のコードをこちらで確認できます</a>。
+正しいと思ったら、ページを送信してください。 エラーが発生している場合は、ここまでに完了したプロジェクトを<a href="https://gist.github.com/camperbot/c3eeb8a3ebf855e021fd0c044095a23b" target="_blank" rel="noopener noreferrer nofollow">こちら</a>で確認できます。
 
 # --hints--
 
 `req.logout()` を `/logout` ルートで呼び出す必要があります。
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/server.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /req.logout/gi,
-    'You should be calling req.logout() in your /logout route'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/server.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /req.logout/gi,
+        'You should be calling req.logout() in your /logout route'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-}
 ```
 
-`/logout` should redirect to the home page.
+ログアウトからホームページにリダイレクトする必要があります。
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/logout", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /Home page/gi,
-    'When a user logs out they should be redirected to the homepage'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/logout').then(
+    (data) => {
+      assert.match(
+        data,
+        /Home page/gi,
+        'When a user logs out they should be redirected to the homepage'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-}
 ```
 
 # --solutions--

@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f140b6c005b0e76f07d
-title: 'Вебсервіси: JSON'
+title: 'Веб-сервіси: JSON'
 challengeType: 11
 videoId: ZJE-U56BppM
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: web-services-json
 
 ## --text--
 
-Що надрукує наведений код?:
+Що буде виведено на екран після виконання приведеного нижче коду?:
 
 ```python
 import json

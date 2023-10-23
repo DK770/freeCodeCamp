@@ -7,17 +7,17 @@ dashedName: step-47
 
 # --description--
 
-Coloque los elementos `.face` de modo que estén `15%` desde la parte superior.
+Position the `.face` elements so that they are `15%` from the top.
 
 # --hints--
 
-Debe asignar a `.face` una propiedad `top`.
+You should give `.face` a `top` property.
 
 ```js
 assert.notEmpty(new __helpers.CSSHelp(document).getStyle('.face')?.top);
 ```
 
-Debe dar a `.face` un `top` de `--fcc-expected--`, pero encontró `--fcc-actual--`.
+You should give `.face` a `top` of `--fcc-expected--`, but found `--fcc-actual--`.
 
 ```js
 assert.equal(new __helpers.CSSHelp(document).getStyle('.face')?.top, '15%');
@@ -61,7 +61,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .left-mountain {

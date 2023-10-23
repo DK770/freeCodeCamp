@@ -4,31 +4,21 @@ import { Trans, useTranslation } from 'react-i18next';
 import emmaImg from '../../../assets/images/landing/Emma.png';
 import sarahImg from '../../../assets/images/landing/Sarah.png';
 import shawnImg from '../../../assets/images/landing/Shawn.png';
-import { LazyImage } from '../../helpers';
-import BigCallToAction from './big-call-to-action';
+import { ImageLoader } from '../../helpers';
 
 const Testimonials = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
     <div className='testimonials'>
-      <h2
-        className='big-heading text-center'
-        data-playwright-test-label='testimonials-section-header'
-      >
+      <h1 className='big-heading text-center'>
         {t('landing.testimonials.heading')}
-      </h2>
+      </h1>
       <div className='testimonials-row' data-test-label='testimonial-cards'>
-        <div
-          className='testimonial-card'
-          data-playwright-test-label='testimonial-card'
-        >
-          <div
-            className='testimonial-card-header'
-            data-playwright-test-label='testimonials-endorser-image-container'
-          >
-            <LazyImage
-              alt='Shawn Wang, a young-looking Asian man, smiling for a selfie with a snow-capped mountain in the background.'
+        <div className='testimonial-card'>
+          <div className='testimonial-card-header'>
+            <ImageLoader
+              alt='Shawn Wang'
               className='testimonial-image'
               src={shawnImg}
             />
@@ -36,32 +26,26 @@ const Testimonials = (): JSX.Element => {
 
           <div className='testimonials-footer'>
             <div className='testimonial-meta'>
-              <p data-playwright-test-label='testimonials-endorser-location'>
+              <p>
                 {' '}
                 <Trans>landing.testimonials.shawn.location</Trans>
               </p>
-              <p data-playwright-test-label='testimonials-endorser-occupation'>
+              <p>
                 <Trans>landing.testimonials.shawn.occupation</Trans>
               </p>
             </div>
             <div className='testimony'>
-              <p data-playwright-test-label='testimonials-endorser-testimony'>
+              <p>
                 <Trans>landing.testimonials.shawn.testimony</Trans>
               </p>
             </div>
           </div>
         </div>
 
-        <div
-          className='testimonial-card'
-          data-playwright-test-label='testimonial-card'
-        >
-          <div
-            className='testimonial-card-header'
-            data-playwright-test-label='testimonials-endorser-image-container'
-          >
-            <LazyImage
-              alt='Sarah Chima, a young-looking Black woman, smiling for the camera while sitting in a chair.'
+        <div className='testimonial-card'>
+          <div className='testimonial-card-header'>
+            <ImageLoader
+              alt='Sarah Chima'
               className='testimonial-image'
               src={sarahImg}
             />
@@ -69,32 +53,26 @@ const Testimonials = (): JSX.Element => {
 
           <div className='testimonials-footer'>
             <div className='testimonial-meta'>
-              <p data-playwright-test-label='testimonials-endorser-location'>
+              <p>
                 {' '}
                 <Trans>landing.testimonials.sarah.location</Trans>
               </p>
-              <p data-playwright-test-label='testimonials-endorser-occupation'>
+              <p>
                 <Trans>landing.testimonials.sarah.occupation</Trans>
               </p>
             </div>
             <div className='testimony'>
-              <p data-playwright-test-label='testimonials-endorser-testimony'>
+              <p>
                 <Trans>landing.testimonials.sarah.testimony</Trans>
               </p>
             </div>
           </div>
         </div>
 
-        <div
-          className='testimonial-card'
-          data-playwright-test-label='testimonial-card'
-        >
-          <div
-            className='testimonial-card-header'
-            data-playwright-test-label='testimonials-endorser-image-container'
-          >
-            <LazyImage
-              alt='Emma Bostian, a young-looking White woman, smiling for the camera in front of green foliage.'
+        <div className='testimonial-card'>
+          <div className='testimonial-card-header'>
+            <ImageLoader
+              alt='Emma Bostian'
               className='testimonial-image'
               src={emmaImg}
             />
@@ -102,23 +80,22 @@ const Testimonials = (): JSX.Element => {
 
           <div className='testimonials-footer'>
             <div className='testimonial-meta'>
-              <p data-playwright-test-label='testimonials-endorser-location'>
+              <p>
                 {' '}
                 <Trans>landing.testimonials.emma.location</Trans>
               </p>
-              <p data-playwright-test-label='testimonials-endorser-occupation'>
+              <p>
                 <Trans>landing.testimonials.emma.occupation</Trans>
               </p>
             </div>
             <div className='testimony'>
-              <p data-playwright-test-label='testimonials-endorser-testimony'>
+              <p>
                 <Trans>landing.testimonials.emma.testimony</Trans>
               </p>
             </div>
           </div>
         </div>
       </div>
-      <BigCallToAction />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+
 import { getSessionUser, getUserProfile } from '../utils/ajax';
 import {
   fetchProfileForUserComplete,
@@ -6,7 +7,7 @@ import {
   fetchUserComplete,
   fetchUserError
 } from './actions';
-import { jwt } from './cookie-values';
+import { jwt } from './cookieValues';
 
 function* fetchSessionUser() {
   if (!jwt) {
@@ -15,11 +16,12 @@ function* fetchSessionUser() {
   }
   try {
     const {
-      data: { user = {}, result = '' }
+      data: { user = {}, result = '', sessionMeta = {} }
     } = yield call(getSessionUser);
     const appUser = user[result] || {};
-
-    yield put(fetchUserComplete({ user: appUser, username: result }));
+    yield put(
+      fetchUserComplete({ user: appUser, username: result, sessionMeta })
+    );
   } catch (e) {
     console.log('failed to fetch user', e);
     yield put(fetchUserError(e));

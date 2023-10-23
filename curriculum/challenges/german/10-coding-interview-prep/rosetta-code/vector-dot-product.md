@@ -8,7 +8,7 @@ dashedName: vector-dot-product
 
 # --description--
 
-A vector can have one or more values represented by an ordered collection. Beispiele könnten (x), (x, y) oder (x, y, z) sein.
+A vector can have one or more values represented by an ordered collection. Examples could be (x), (x, y), or (x, y, z).
 
 # --instructions--
 
@@ -16,43 +16,43 @@ Write a function that takes two vectors (represented as one-dimensional arrays) 
 
 # --hints--
 
-`dotProduct` sollte eine Funktion sein.
+`dotProduct` should be a function.
 
 ```js
 assert.equal(typeof dotProduct, 'function');
 ```
 
-`dotProduct()` sollte `null` zurückgeben.
+`dotProduct()` should return `null`.
 
 ```js
 assert.equal(dotProduct(), null);
 ```
 
-`dotProduct([1], [1])` sollte `1` zurückgeben.
+`dotProduct([1], [1])` should return `1`.
 
 ```js
 assert.equal(dotProduct([1], [1]), 1);
 ```
 
-`dotProduct([1], [1, 2])` sollte `null` zurückgeben.
+`dotProduct([1], [1, 2])` should return `null`.
 
 ```js
 assert.equal(dotProduct([1], [1, 2]), null);
 ```
 
-`dotProduct([1, 3, -5], [4, -2, -1])` sollte `3` zurückgeben.
+`dotProduct([1, 3, -5], [4, -2, -1])` should return `3`.
 
 ```js
 assert.equal(dotProduct([1, 3, -5], [4, -2, -1]), 3);
 ```
 
-`dotProduct([3, 2, 1], [2, 4, 2], [5, 3, 1])` sollte `null` zurückgeben.
+`dotProduct([3, 2, 1], [2, 4, 2], [5, 3, 1])` should return `null`.
 
 ```js
 assert.equal(dotProduct([3, 2, 1], [2, 4, 2], [5, 3, 1]), null);
 ```
 
-`dotProduct([ 0, 3, 6, 9, 12 ], [ 0, 4, 8, 12, 16 ])` sollte `360` zurückgeben.
+`dotProduct([ 0, 3, 6, 9, 12 ], [ 0, 4, 8, 12, 16 ])` should return `360`.
 
 ```js
 assert.equal(dotProduct([ 0, 3, 6, 9, 12 ], [ 0, 4, 8, 12, 16 ]), 360);

@@ -8,28 +8,23 @@ dashedName: iterate-through-the-keys-of-an-object-with-a-for---in-statement
 
 # --description--
 
-En ocasiones, necesitas iterar todas las claves de un objeto. Puedes usar un bucle <dfn>for...in</dfn> para hacerlo. Un bucle <dfn>for...in</dfn> se ve así:
+A veces es necesario iterar por todas las claves de un objeto. Esto requiere una sintaxis específica en JavaScript llamada sentencia <dfn>for...in</dfn>. Para nuestro objeto `users`, esto podría verse así:
 
-```javascript
-const refrigerator = {
-  'milk': 1,
-  'eggs': 12,
-};
-
-for (const food in refrigerator) {
-  console.log(food, refrigerator[food]);
+```js
+for (let user in users) {
+  console.log(user);
 }
 ```
 
-Este código saca por consola `milk 1` y  `eggs 12`, cada par clave-valor en su propia línea.
+Esto devolvería `Alan`, `Jeff`, y `Sarah` - cada valor en su propia línea.
 
-Definimos una variable `food` en la declaración del bucle, en cada iteración el valor de esta variable toma el valor una de las claves del objeto. De esta manera cada nombre de comida se escribe en la consola.
+En esta sentencia, definimos una variable `user`, y como puedes ver, esta variable se restablece durante cada iteración a cada una de las claves del objeto a medida que la sentencia hace un bucle a través del objeto, dando como resultado que el nombre de cada usuario se imprima en la consola.
 
 **NOTA:** Los objetos no mantienen un orden para las claves almacenadas como lo hacen los arreglos; por lo tanto, la posición de una clave en un objeto, o el orden relativo en el que aparece, es irrelevante cuando se hace referencia o se accede a esa clave.
 
 # --instructions--
 
-Hemos definido una función `countOnline` que acepta un argumento, `allUsers`. Usa una sentencia <dfn>for...in</dfn> dentro de esta función para recorrer el objeto `allUsers` y devolver el número de usuarios que tienen la propiedad `online` igual a `true`. Un ejemplo del tipo de objeto que podría ser pasado a `countOnline` se muestra a continuación. Cada usuario tendrá una propiedad `online` con su valor igual a `true` o `false`.
+Hemos definido una función `countOnline` que acepta un argumento (un objeto usuario). Utiliza una sentencia <dfn>for...in</dfn> dentro de esta función para iterar sobre el objeto usuarios (users) pasado a la función y devuelve el número de usuarios cuya propiedad `online` esté establecida como `true`. A continuación se muestra un ejemplo de un objeto usuario que podría pasarse a `countOnline`. Cada usuario tendrá una propiedad `online` con un valor `true` o `false`.
 
 ```js
 {
@@ -133,7 +128,7 @@ const users = {
   }
 }
 
-function countOnline(allUsers) {
+function countOnline(usersObj) {
   // Only change code below this line
 
   // Only change code above this line
@@ -145,13 +140,13 @@ console.log(countOnline(users));
 # --solutions--
 
 ```js
-function countOnline(allUsers) {
-  let numOnline = 0;
-  for(const user in allUsers){
-    if(allUsers[user].online) {
-      numOnline++;
+function countOnline(usersObj) {
+  let online = 0;
+  for(let user in usersObj){
+    if(usersObj[user].online) {
+      online++;
     }
   }
-  return numOnline;
+  return online;
 }
 ```

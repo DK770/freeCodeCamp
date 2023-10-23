@@ -16,7 +16,7 @@ Write a function that takes `width` and `height` as parameters and returns the n
 
 # --hints--
 
-`knightTour` має бути функцією.
+`knightTour` повинен бути функцією.
 
 ```js
 assert(typeof knightTour == 'function');

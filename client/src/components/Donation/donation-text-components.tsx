@@ -18,13 +18,9 @@ export const DonationText = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
-      <p data-playwright-test-label='donate-text-1'>{t('donate.efficiency')}</p>
-      <p data-playwright-test-label='donate-text-2'>
-        {t('donate.why-donate-1')}
-      </p>
-      <p data-playwright-test-label='donate-text-3'>
-        {t('donate.why-donate-2')}
-      </p>
+      <p>{t('donate.efficiency')}</p>
+      <p>{t('donate.why-donate-1')}</p>
+      <p>{t('donate.why-donate-2')}</p>
     </>
   );
 };
@@ -51,13 +47,11 @@ const FaqItem = (
   const [isExpanded, setExpanded] = useState(false);
   return (
     <div className={`faq-item ${isExpanded ? 'open' : ''}`} key={key}>
-      <button
-        className='map-title'
-        onClick={() => setExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-      >
+      <button className='map-title' onClick={() => setExpanded(!isExpanded)}>
         <Caret />
-        <h3>{title}</h3>
+        <h4>
+          <b>{title}</b>
+        </h4>
       </button>
       {isExpanded && (
         <>

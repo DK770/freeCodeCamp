@@ -1,6 +1,6 @@
 ---
 id: 5900f42b1000cf542c50ff3e
-title: 'Problem 191: Prämien-Strings'
+title: 'Problem 191: Preis-Strings'
 challengeType: 1
 forumTopicId: 301829
 dashedName: problem-191-prize-strings
@@ -8,7 +8,7 @@ dashedName: problem-191-prize-strings
 
 # --description--
 
-Eine bestimmte Schule bietet Kindern mit guter Anwesenheit und Pünktlichkeit Geldprämien an. Sie verlieren ihre Prämie jedoch, wenn sie für drei aufeinanderfolgende Tage abwesend sind, oder sich mehr als einmal verspäten.
+Eine bestimmte Schule bietet Kindern mit guter Anwesenheit und Pünktlichkeit Geldprämien an. If they are absent for three consecutive days or late on more than one occasion then they forfeit their prize.
 
 Während eines n-tägigen Zeitraums wird ein – aus den Buchstaben L (late), O (on time) und A (abwesend) bestehender – dreigliedriger String gebildet.
 
@@ -22,7 +22,7 @@ AALO AALA ALOO ALOA ALAO ALAA LOOO LOOA LOAO LOAA
 LAOO LAOA LAAO
 ```
 
-How many "prize" strings exist over a 30-day period?
+Wie viele "Preis"-Strings würden über einen dreißigtägigen Zeitraums entstehen?
 
 # --hints--
 

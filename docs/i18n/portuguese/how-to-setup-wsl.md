@@ -1,6 +1,6 @@
 # Configure o freeCodeCamp no subsistema Windows para Linux (WSL)
 
-> [!NOTE] Antes de seguir estas instruções, verifique se o sistema atende aos requisitos.
+> [!NOTE] Antes de seguir estas instruções, verifique se o sistema atende aos requisitos
 > 
 > **WSL 2**: Windows 10 64-bit (Versão 2004, Build 19041 ou superior) - disponível para todas as distribuições, incluindo o Windows 10 Home.
 > 
@@ -18,7 +18,7 @@ Siga as instruções na [documentação oficial](https://docs.microsoft.com/en-u
 
    > [!NOTE]
    > 
-   > Embora você possa usar outras distribuições não baseadas em Debian, todas vêm com seus próprios empecilhos, que estão além do escopo deste guia.
+   > Embora você possa usar outras distribuições não baseadas em Debian, todas vêm com seus próprios empecilhos e estão além do escopo deste guia.
 
 2. Atualize as dependências para o sistema operacional
 
@@ -48,9 +48,9 @@ git version 2.25.1
 
 Essencialmente, você irá editar e armazenar seu código no Ubuntu-18.04 com o VS Code instalado no Windows.
 
-Se você usa o [IntelliJ Idea](https://www.jetbrains.com/idea/), talvez precise atualizar seu interpretador do Node e seu gerenciador de pacotes npm pelo que estiver instalado em sua distro WSL.
+Se você usa o [IntelliJ Idea](https://www.jetbrains.com/idea/), talvez precise atualizar seu interpretador do Node e seu gerenciador de pacotes NPM pelo que estiver instalado em sua distro WSL.
 
-Você pode checar essas configurações indo em Settings > Languages & Frameworks > Node.js and npm.
+Você pode checar essas configurações indo em Settings > Languages & Frameworks > Node.js and NPM.
 
 ## Instalando o Docker Desktop
 
@@ -72,7 +72,7 @@ Depois de ter configurado o Docker Desktop para trabalhar com o WSL2, siga essas
 
 1. Inicie um novo terminal Ubuntu-18.04
 
-2. Faça o pull `MongoDB 4.0.x` do Docker Hub
+2. Pull `MongoDB 4.0.x` do dockerhub
 
    ```console
    docker pull mongo:4.0
@@ -91,7 +91,7 @@ Depois de ter configurado o Docker Desktop para trabalhar com o WSL2, siga essas
 
 4. Agora você pode acessar o serviço no Windows ou Ubuntu em `mongodb://localhost:27017`.
 
-## Instalando o Node.js e o pnpm
+## Instalando Node.js e npm
 
 Recomendamos que você instale a versão LTS para Node.js com um gerenciador de versões do node - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -111,13 +111,13 @@ nvm install 14
 nvm use 12
 ```
 
-O Node.js vem com o `npm`, que você pode usar para instalar o `pnpm`:
+O Node.js vem com o `npm` embutido. Você pode atualizar para as versões mais recentes do `npm` com:
 
 ```console
-npm install -g pnpm
+npm install -g npm@latest
 ```
 
-## Configure o freeCodeCamp localmente
+## Configure localmente o freeCodeCamp
 
 Agora que você instalou os pré-requisitos, siga [nosso guia de instalação local](how-to-setup-freecodecamp-locally.md) para clonar, instalar e configurar o freeCodeCamp em sua máquina.
 

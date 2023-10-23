@@ -9,37 +9,26 @@ const fCCRegex =
 const localhostRegex = /localhost:/;
 const httpRegex = /http(?!s|([^s]+?localhost))/;
 
-function isPathRoot(urlString: string): boolean {
-  try {
-    return new URL(urlString).pathname !== '/';
-  } catch {
-    return false;
-  }
-}
-
-type Validator = (value: string) => React.ReactElement | null;
-
-export const editorValidator: Validator = value =>
+export const editorValidator = (value: string): React.ReactElement | null =>
   editorRegex.test(value) ? <Trans>validation.editor-url</Trans> : null;
 
-export const fCCValidator: Validator = value =>
+export const fCCValidator = (value: string): React.ReactElement | null =>
   fCCRegex.test(value) ? <Trans>validation.own-work-url</Trans> : null;
 
-export const localhostValidator: Validator = value =>
+export const localhostValidator = (value: string): React.ReactElement | null =>
   localhostRegex.test(value) ? (
     <Trans>validation.publicly-visible-url</Trans>
   ) : null;
 
-export const httpValidator: Validator = value =>
+export const httpValidator = (value: string): React.ReactElement | null =>
   httpRegex.test(value) ? <Trans>validation.http-url</Trans> : null;
 
-export const pathValidator: Validator = value =>
-  isPathRoot(value) ? <Trans>validation.path-url</Trans> : null;
-
-export function composeValidators(...validators: Validator[]) {
+type Validator = (value: string) => React.ReactElement | null;
+export function composeValidators(...validators: (Validator | null)[]) {
   return (value: string): ReturnType<Validator> | null =>
     validators.reduce(
-      (error: ReturnType<Validator>, validator) => error ?? validator(value),
+      (error: ReturnType<Validator>, validator) =>
+        error ?? (validator ? validator(value) : null),
       null
     );
 }

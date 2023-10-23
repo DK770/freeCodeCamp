@@ -8,19 +8,19 @@ dashedName: problem-305-reflexive-position
 
 # --description--
 
-Nennen wir $S$ einen (unendlichen) String, der durch die Verkettung aufeinanderfolgender positiver Integer (beginnend mit 1) zum Basiswert 10 entsteht.
+Let's call $S$ the (infinite) string that is made by concatenating the consecutive positive integers (starting from 1) written down in base 10.
 
-Demzufolge: $S = 1234567891011121314151617181920212223242\ldots$
+Thus, $S = 1234567891011121314151617181920212223242\ldots$
 
-Es ist leicht zu erkennen, dass jede Zahl unendlich oft in $S$ vorkommt.
+It's easy to see that any number will show up an infinite number of times in $S$.
 
-Nennen wir $f(n)$ die Anfangsposition des $n^{\text{th}}$-Vorkommens von $n$ in $S$. Zum Beispiel ist $f(1) = 1$, $f(5) = 81$, $f(12) = 271$ und $f(7780) = 111\\,111\,365$.
+Let's call $f(n)$ the starting position of the $n^{\text{th}}$ occurrence of $n$ in $S$. For example, $f(1) = 1$, $f(5) = 81$, $f(12) = 271$ and $f(7780) = 111\\,111\\,365$.
 
-Finde $\sum f(3^k) for 1 ≤ k ≤ 13$.
+Find $\sum f(3^k) for 1 ≤ k ≤ 13$.
 
 # --hints--
 
-`reflexivePosition()` sollte `18174995535140` zurückgeben.
+`reflexivePosition()` should return `18174995535140`.
 
 ```js
 assert.strictEqual(reflexivePosition(), 18174995535140);

@@ -8,9 +8,9 @@ dashedName: add-methods-after-inheritance
 
 # --description--
 
-Функція-конструктор, яка успадковує об’єкт `prototype` від функції-конструктора супертипу, всеодно може мати власні методи на додачу до успадкованих.
+Функція конструктора, яка успадковує свій об'єкт `prototype` від функції супертипу конструктора, все ще може мати свої власні методи на додачу до успадкованих методів.
 
-Наприклад, `Bird` є конструктором, який успадковує `prototype` від `Animal`:
+Наприклад, `Bird` – це конструктор, який успадковує `prototype` від `Animal`:
 
 ```js
 function Animal() { }
@@ -22,7 +22,7 @@ Bird.prototype = Object.create(Animal.prototype);
 Bird.prototype.constructor = Bird;
 ```
 
-Окрім успадкованого від `Animal`, за бажанням можна додати поведінку, унікальну для об’єктів `Bird`. У такому разі `Bird` отримує функцію `fly()`. Функції додаються до прототипу `Bird` так само, як і будь-яка функція-конструктор:
+Окрім того, що успадковано від `Animal`, за бажанням можна додати поведінку, унікальну для об'єктів `Bird`. У такому разі `Bird` отримує функцію `fly()`. Функції додаються до `Bird's` `prototype` так само, як і будь-яка функція конструктора:
 
 ```js
 Bird.prototype.fly = function() {
@@ -30,7 +30,7 @@ Bird.prototype.fly = function() {
 };
 ```
 
-Тепер екземпляри `Bird` матимуть методи `eat()` та `fly()`:
+Тепер екземпляри `Bird` матимуть обидва методи: `eat()` та `fly()`:
 
 ```js
 let duck = new Bird();
@@ -38,45 +38,45 @@ duck.eat();
 duck.fly();
 ```
 
-`duck.eat()` показуватиме рядок `nom nom nom` на консолі, а `duck.fly()` показуватиме рядок `I'm flying!`.
+`duck.eat()` показуватиме рядок `nom nom nom` у консолі, а `duck.fly()` показуватиме рядок `I'm flying!`.
 
 # --instructions--
 
-Додайте необхідний код так, щоб об’єкт `Dog` успадковував від `Animal`, а прототип конструктора `Dog` був налаштований на `Dog`. Потім додайте метод `bark()` до об’єкта `Dog`, щоб `beagle` міг `eat()` та `bark()`. Метод `bark()` має вивести `Woof!` на консоль.
+Додайте все необхідне кодування так, щоб об’єкт `Dog` успадковував від `Animal`, а конструктор `Dog` `prototype` був встановлений для `Dog`. Потім використайте метод `bark()` `Dog` щодо об'єкта, щоб `beagle` міг водночас `eat()` й `bark()`. Метод `bark()` треба вводити `Woof!` на консоль.
 
 # --hints--
 
-`Animal` не має відповідати на метод `bark()`.
+`Animal` не повинен збігатися зі методом `bark()`.
 
 ```js
 assert(typeof Animal.prototype.bark == 'undefined');
 ```
 
-`Dog` має успадкувати метод `eat()` від `Animal`.
+`Dog` повинен наслідувати метод `eat()` від `Animal`.
 
 ```js
 assert(typeof Dog.prototype.eat == 'function');
 ```
 
-Прототип `Dog` повинен мати метод `bark()`.
+`Dog` прототип повинен містити в собі метод `bark()`.
 
 ```js
 assert('bark' in Dog.prototype);
 ```
 
-`beagle` має бути екземпляром `Animal`.
+`beagle`повинен мати `instanceof` `Animal`.
 
 ```js
 assert(beagle instanceof Animal);
 ```
 
-Значенням конструктора для `beagle` має бути `Dog`.
+Конструктор для `beagle` має бути встановлений на `Dog`.
 
 ```js
 assert(beagle.constructor === Dog);
 ```
 
-`beagle.eat()` має вивести рядок `nom nom nom`
+`beagle.eat()` має бути зазначеним на рядку `nom nom nom`
 
 ```js
 capture();
@@ -85,7 +85,7 @@ uncapture();
 assert(logOutput == 'nom nom nom');
 ```
 
-`beagle.bark()` має вивести рядок `Woof!`
+`beagle.bark()` має бути зазначеним на рядку `Woof!`
 
 ```js
 capture();

@@ -39,7 +39,7 @@ Refactoriza la función `setGear` dentro del objeto `bicycle` para que utilice l
 La expresión tradicional "function" no debe ser utilizada.
 
 ```js
-assert(!code.match(/function/));
+(getUserInput) => assert(!code.match(/function/));
 ```
 
 `setGear` debe ser una función declarativa.
@@ -79,7 +79,6 @@ console.log(bicycle.gear);
 ```js
 const bicycle = {
   gear: 2,
-  // setGear: function(newGear) {
   setGear(newGear) {
     this.gear = newGear;
   }

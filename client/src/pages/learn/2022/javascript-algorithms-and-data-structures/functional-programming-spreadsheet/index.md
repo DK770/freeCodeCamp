@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Functional Programming Spreadsheet
-block: functional-programming-spreadsheet
-superBlock: javascript-algorithms-and-data-structures
+block: Functional Programming Spreadsheet
+superBlock: JavaScript Algorithms and Data Structures
 ---
 
 ## Introduction to the JavaScript Spreadsheet

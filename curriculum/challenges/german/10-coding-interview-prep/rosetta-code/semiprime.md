@@ -18,73 +18,73 @@ Write a function that returns true if a number is semiprime, or false if it is n
 
 # --hints--
 
-`isSemiPrime` sollte eine Funktion sein.
+`isSemiPrime` should be a function.
 
 ```js
 assert(typeof isSemiPrime === 'function');
 ```
 
-`isSemiPrime(100)` sollte einen Boolean zurückgeben.
+`isSemiPrime(100)` should return a boolean.
 
 ```js
 assert(typeof isSemiPrime(100) === 'boolean');
 ```
 
-`isSemiPrime(100)` sollte `false` zurückgeben.
+`isSemiPrime(100)` should return `false`.
 
 ```js
 assert.equal(isSemiPrime(100), false);
 ```
 
-`isSemiPrime(504)` sollte `false` zurückgeben.
+`isSemiPrime(504)` should return `false`.
 
 ```js
 assert.equal(isSemiPrime(504), false);
 ```
 
-`isSemiPrime(4)` sollte `true` zurückgeben.
+`isSemiPrime(4)` should return `true`.
 
 ```js
 assert.equal(isSemiPrime(4), true);
 ```
 
-`isSemiPrime(46)` sollte `true` zurückgeben.
+`isSemiPrime(46)` should return `true`.
 
 ```js
 assert.equal(isSemiPrime(46), true);
 ```
 
-`isSemiPrime(13)` sollte `false` zurückgeben.
+`isSemiPrime(13)` should return `false`.
 
 ```js
 assert.equal(isSemiPrime(13), false);
 ```
 
-`isSemiPrime(74)` sollte `true` zurückgeben.
+`isSemiPrime(74)` should return `true`.
 
 ```js
 assert.equal(isSemiPrime(74), true);
 ```
 
-`isSemiPrime(1679)` sollte `true` zurückgeben.
+`isSemiPrime(1679)` should return `true`.
 
 ```js
 assert.equal(isSemiPrime(1679), true);
 ```
 
-`isSemiPrime(2)` sollte `false` zurückgeben.
+`isSemiPrime(2)` should return `false`.
 
 ```js
 assert.equal(isSemiPrime(2), false);
 ```
 
-`isSemiPrime(95)` sollte `true` zurückgeben.
+`isSemiPrime(95)` should return `true`.
 
 ```js
 assert.equal(isSemiPrime(95), true);
 ```
 
-`isSemiPrime(124)` sollte `false` zurückgeben.
+`isSemiPrime(124)` should return `false`.
 
 ```js
 assert.equal(isSemiPrime(124), false);

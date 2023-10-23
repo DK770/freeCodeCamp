@@ -1,7 +1,7 @@
 ---
 title: Introduction to the TensorFlow Lectures
-block: tensorflow
-superBlock: machine-learning-with-python
+block: TensorFlow
+superBlock: Machine Learning with Python
 ---
 
 ## Introduction to the TensorFlow Challenges

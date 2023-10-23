@@ -1,13 +1,13 @@
 ---
 id: 60f85a62fb30c80bcea0cedb
-title: Step 25
+title: Step 24
 challengeType: 0
-dashedName: step-25
+dashedName: step-24
 ---
 
 # --description--
 
-Gli utenti potranno scegliere tra `Personal` e `Business`.
+Gli utenti potranno scegliere tra `Personal Account` e `Business Account`.
 
 Per fare ciò, all'interno di ciascuno dei primi due elementi `label`, aggiungi un elemento `input` con `type="radio"`.
 
@@ -47,7 +47,7 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
   <body>
     <h1>Registration Form</h1>
     <p>Please fill out this form with the required information</p>
-    <form method="post" action='https://register-demo.freecodecamp.org'>
+    <form action='https://register-demo.freecodecamp.org'>
       <fieldset>
         <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
         <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
@@ -56,6 +56,7 @@ assert.equal(document.querySelectorAll('fieldset:nth-child(2) input[type="radio"
       </fieldset>
 --fcc-editable-region--
       <fieldset>
+        <label></label>
         <label></label>
         <label></label>
       </fieldset>

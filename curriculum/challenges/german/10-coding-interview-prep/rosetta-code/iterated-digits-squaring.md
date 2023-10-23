@@ -20,49 +20,49 @@ Write a function that takes a number as a parameter and returns 1 or 89 after pe
 
 # --hints--
 
-`iteratedSquare` sollte eine Funktion sein.
+`iteratedSquare` should be a function.
 
 ```js
 assert(typeof iteratedSquare == 'function');
 ```
 
-`iteratedSquare(4)` sollte eine Zahl zurückgeben.
+`iteratedSquare(4)` should return a number.
 
 ```js
 assert(typeof iteratedSquare(4) == 'number');
 ```
 
-`iteratedSquare(4)` sollte `89` zurückgeben.
+`iteratedSquare(4)` should return `89`.
 
 ```js
 assert.equal(iteratedSquare(4), 89);
 ```
 
-`iteratedSquare(7)` sollte `1` zurückgeben.
+`iteratedSquare(7)` should return `1`.
 
 ```js
 assert.equal(iteratedSquare(7), 1);
 ```
 
-`iteratedSquare(15)` sollte `89` zurückgeben.
+`iteratedSquare(15)` should return `89`.
 
 ```js
 assert.equal(iteratedSquare(15), 89);
 ```
 
-`iteratedSquare(20)` sollte `89` zurückgeben.
+`iteratedSquare(20)` should return `89`.
 
 ```js
 assert.equal(iteratedSquare(20), 89);
 ```
 
-`iteratedSquare(70)` sollte `1` zurückgeben.
+`iteratedSquare(70)` should return `1`.
 
 ```js
 assert.equal(iteratedSquare(70), 1);
 ```
 
-`iteratedSquare(100)` sollte `1` zurückgeben.
+`iteratedSquare(100)` should return `1`.
 
 ```js
 assert.equal(iteratedSquare(100), 1);

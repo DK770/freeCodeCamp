@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aed608826
-title: Використайте appendTo, щоб перемістити елементи за допомогою jQuery
+title: Використання appendTo для переміщення елементів за допомогою jQuery
 challengeType: 6
 forumTopicId: 18340
 dashedName: use-appendto-to-move-elements-with-jquery
@@ -8,33 +8,33 @@ dashedName: use-appendto-to-move-elements-with-jquery
 
 # --description--
 
-Спробуємо перемістити елементи з одного `div` до іншого.
+Тепер спробуймо перемістити елементи з одного `div` до іншого.
 
-jQuery має функцію `appendTo()`, яка дозволяє вибрати елементи HTML та додати їх до іншого елемента.
+jQuery має функцію `appendTo()`, яка дозволяє вибирати HTML елементи та додавати їх до іншого елемента.
 
-Наприклад, якщо потрібно перемістити `target4` із правої стіни до лівої, то використаємо:
+Наприклад, якщо ми хочемо змістити `target4` із правої комірки у ліву, то використовуємо:
 
 ```js
 $("#target4").appendTo("#left-well");
 ```
 
-Перемістіть елемент `target2` з `left-well` до `right-well`.
+Змістіть елемент `target2` із `left-well` до вашого `right-well`.
 
 # --hints--
 
-Елемент `target2` не повинен бути всередині `left-well`.
+Ваш елемент `target2` не повинен бути всередині вашого `left-well`.
 
 ```js
 assert($('#left-well').children('#target2').length === 0);
 ```
 
-Елемент `target2` повинен бути всередині `right-well`.
+Ваш елемент `target2` повинен бути всередині вашого `right-well`.
 
 ```js
 assert($('#right-well').children('#target2').length > 0);
 ```
 
-Для переміщення цих елементів використовуйте лише jQuery.
+Щоб перемістити ці елементи, використовуйте лише jQuery.
 
 ```js
 assert(!code.match(/class.*animated/g));

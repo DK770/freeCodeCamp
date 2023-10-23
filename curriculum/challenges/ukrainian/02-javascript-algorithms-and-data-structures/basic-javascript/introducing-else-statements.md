@@ -1,6 +1,6 @@
 ---
 id: 56533eb9ac21ba0edf2244da
-title: Вступ до інструкцій else
+title: Поняття про команду Else
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cek4Efq'
 forumTopicId: 18207
@@ -9,7 +9,7 @@ dashedName: introducing-else-statements
 
 # --description--
 
-Якщо умова інструкції `if` правильна, то виконується наступний блок коду. А якщо умова хибна? Зазвичай нічого не станеться. У випадку інструкції `else` може спрацювати альтернативний блок коду.
+Коли умова команди `if` правильна, то наступний блок з кодом виконується. Що ж коли ця умова хибна? Зазвичай нічого не станеться. У випадку `else`, альтернативний блок коду може спрацювати.
 
 ```js
 if (num > 10) {
@@ -21,47 +21,47 @@ if (num > 10) {
 
 # --instructions--
 
-Об’єднайте інструкції `if` в єдину інструкцію `if/else`.
+Об’єднайте команди `if` в єдину команду `if/else`.
 
 # --hints--
 
-Ви повинні мати лише одну інструкцію `if` у редакторі
+Ви повинні отримати одну команду `if` у редакторі
 
 ```js
 assert(code.match(/if/g).length === 1);
 ```
 
-Ви повинні використати інструкцію `else`
+Вам слід використати команду `else`
 
 ```js
 assert(/else/g.test(code));
 ```
 
-`testElse(4)` має повертати рядок `5 or Smaller`
+`testElse(4)` повинен видати рядок `5 or Smaller`
 
 ```js
 assert(testElse(4) === '5 or Smaller');
 ```
 
-`testElse(5)` має повертати рядок `5 or Smaller`
+`testElse(5)` повинен видати рядок `5 or Smaller`
 
 ```js
 assert(testElse(5) === '5 or Smaller');
 ```
 
-`testElse(6)` має повертати рядок `Bigger than 5`
+`testElse(6)` повинен видати рядок `Bigger than 5`
 
 ```js
 assert(testElse(6) === 'Bigger than 5');
 ```
 
-`testElse(10)` має повертати рядок `Bigger than 5`
+`testElse(10)` повинен видати рядок `Bigger than 5`
 
 ```js
 assert(testElse(10) === 'Bigger than 5');
 ```
 
-Не змінюйте код над/під зазначеним коментарем.
+Не варто змінювати код вище або нижче зазначених коментарів.
 
 ```js
 assert(/let result = "";/.test(code) && /return result;/.test(code));

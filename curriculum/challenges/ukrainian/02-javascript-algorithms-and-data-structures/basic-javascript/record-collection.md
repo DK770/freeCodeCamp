@@ -1,6 +1,6 @@
 ---
 id: 56533eb9ac21ba0edf2244cf
-title: Колекція музичних альбомів
+title: Збірка записів
 challengeType: 1
 forumTopicId: 18261
 dashedName: record-collection
@@ -8,27 +8,21 @@ dashedName: record-collection
 
 # --description--
 
-Ви створюєте функцію, яка допомагає підтримувати колекцію музичних альбомів. Колекція організована як об’єкт, який містить кілька альбомів, які також є об’єктами. Кожен альбом представлено в колекції унікальним `id` як назвою властивості. У кожному об’єкті альбому є різні властивості, що описують інформацію про альбом. Не всі альбоми мають повну інформацію.
+Вам наданий літерал об'єкту, який є частиною вашої збірки музичних альбомів. Кожен альбом має свій унікальний ідентифікаційний номер та декілька інших властивостей. Не всі альбоми мають повну інформацію.
 
-Функція `updateRecords` приймає 4 аргументи, представлені такими параметрами функції:
+Ви починаєте з функції `updateRecords`, яка приймає літерал об'єкту `records`, який містить колекцію музичного альбому, `id`, `prop` (такі як `artist` чи `tracks`), і `value`. Завершіть функцію, використовуючи правила нижче, щоб змінити об'єкт, переданий до функції.
 
--   `records` — об’єкт, що містить декілька окремих альбомів
--   `id` — число, що позначає певний альбом в об’єкті `records`
--   `prop` — рядок, що позначає назву властивості альбому, яку потрібно оновити
--   `value` — рядок, що містить інформацію, яка використовується для оновлення властивості альбому
-
-Завершіть функцію, використовуючи правила нижче, щоб змінити об’єкт, переданий до функції.
-
--   Ваша функція завжди повинна повертати весь об’єкт `records`.
+-   Ваша функція повинна завжди повертати весь об'єкт збірки записів.
+-   Якщо `prop` це не `tracks` і `value` не є пустим рядком, то оновіть або встановіть `prop` альбому до `value`.
+-   Якщо `prop` є `tracks` але альбом немає властивості `tracks`, створіть пустий масив та додайте `value` до нього.
+-   Якщо `prop` є `tracks` та `value` не є пустим рядком, додайте `value` до кінця наявного масиву `tracks` у альбомі.
 -   Якщо `value` є пустим рядком, видаліть дану властивість `prop` з альбому.
--   Якщо `prop` не є `tracks` та `value` не є пустим рядком, призначте `value` до `prop` альбому.
--   Якщо `prop` є `tracks` та `value` не є пустим рядком, вам треба оновити масив `tracks` в альбомі. Якщо альбом не має властивості `tracks`, то призначте порожній масив. Потім додайте `value` як останній елемент у масиві `tracks` альбому.
 
-**Примітка:** копія об’єкту `recordCollection` використовується для тестів. Ви не повинні напряму змінювати об’єкт `recordCollection`.
+**Note:** Копія об'єкту `recordCollection` використовується для тестування.
 
 # --hints--
 
-Після `updateRecords(recordCollection, 5439, "artist", "ABBA")`, `artist` має стати рядком `ABBA`
+Після `updateRecords(recordCollection, 5439, "artist", "ABBA")`, `artist` повинен бути рядок `ABBA`
 
 ```js
 assert(
@@ -37,7 +31,7 @@ assert(
 );
 ```
 
-Після `updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me")`, `tracks` повинен мати рядок `Take a Chance on Me` як останній та єдиний елемент.
+After `updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me")`, `tracks` should have the string `Take a Chance on Me` as the last and only element.
 
 ```js
 assert(
@@ -47,14 +41,14 @@ assert(
 );
 ```
 
-Після `updateRecords(recordCollection, 2548, "artist", "")`, `artist` не має бути налаштованим
+Після `updateRecords(recordCollection, 2548, "artist", "")`, не потрібно встановлювати `artist`
 
 ```js
 updateRecords(_recordCollection, 2548, 'artist', '');
 assert(!_recordCollection[2548].hasOwnProperty('artist'));
 ```
 
-Після `updateRecords(recordCollection, 1245, "tracks", "Addicted to Love")`, `tracks` повинен мати рядок `Addicted to Love` як останній елемент.
+Після `updateRecords(recordCollection, 1245, "tracks", "Addicted to Love")`, `tracks` повинні мати рядок `Addicted to Love` останнім елементом.
 
 ```js
 assert(
@@ -64,7 +58,7 @@ assert(
 );
 ```
 
-Після `updateRecords(recordCollection, 2468, "tracks", "Free")`, `tracks` повинен мати рядок `1999` як перший елемент.
+Після `updateRecords(recordCollection, 2468, "tracks", "Free")`, `tracks` повинні мати рядок `1999` першим елементом.
 
 ```js
 assert(
@@ -74,14 +68,14 @@ assert(
 );
 ```
 
-Після `updateRecords(recordCollection, 2548, "tracks", "")`, `tracks` не має бути налаштованим
+Після `updateRecords(recordCollection, 2548, "tracks", "")`, не потрібно встановлювати `tracks`
 
 ```js
 updateRecords(_recordCollection, 2548, 'tracks', '');
 assert(!_recordCollection[2548].hasOwnProperty('tracks'));
 ```
 
-Після `updateRecords(recordCollection, 1245, "albumTitle", "Riptide")`, `albumTitle` має стати рядком `Riptide`
+Після `updateRecords(recordCollection, 1245, "albumTitle", "Riptide")`, `albumTitle` повинно стати рядком `Riptide`
 
 ```js
 assert(

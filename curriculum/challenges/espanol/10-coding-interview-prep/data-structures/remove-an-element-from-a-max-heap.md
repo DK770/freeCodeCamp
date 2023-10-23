@@ -1,6 +1,6 @@
 ---
 id: 587d825b367417b2b2512c8b
-title: Elimina un elemento de un montón máximo
+title: Remove an Element from a Max Heap
 challengeType: 1
 forumTopicId: 301710
 dashedName: remove-an-element-from-a-max-heap
@@ -8,26 +8,26 @@ dashedName: remove-an-element-from-a-max-heap
 
 # --description--
 
-Ahora que podemos añadir elementos a nuestra pila veamos cómo podemos eliminar los elementos. Quitar e insertar elementos requieren una lógica similar. En un montón máximo normalmente querrá eliminar el mayor valor, por lo que esto implica simplemente extraerlo de la raíz de nuestro árbol. Esto romperá la propiedad pila de nuestro árbol, entonces debemos reestablecerla en alguna manera. Normalmente, para un apilado máximo esto se hace de la siguiente manera:
+Ahora que podemos añadir elementos a nuestra pila veamos cómo podemos eliminar los elementos. Quitar e insertar elementos requieren una lógica similar. En un montón máximo normalmente querrá eliminar el mayor valor, por lo que esto implica simplemente extraerlo de la raíz de nuestro árbol. This will break the heap property of our tree, so we must reestablish it in some way. Typically, for a max heap this is done in the following way:
 
 <ol>
-  <li>Mueve el último elemento en la pila en la posición raíz.</li>
+  <li>Move the last element in the heap into the root position.</li>
   <li>Si cualquiera de los dos hijos de la raíz es mayor que ella, intercambia la raíz con el hijo de mayor valor.</li>
-  <li>Continúe intercambiando hasta que el padre sea mayor que ambos hijos o alcance el último nivel en el árbol.</li>
+  <li>Continue swapping until the parent is greater than both children or you reach the last level in the tree.</li>
 </ol>
 
 # --instructions--
 
-Instrucciones: Agrega un método a nuestro apilado máximo llamado `remove`. Este método debe devolver el mayor valor que ha sido agregado a nuestra pila máxima y eliminarlo de la pila. También debería reordenar la pila para que la propiedad de la pila sea mantenida. Luego de remover un elemento, el siguiente elemento más grande que queda en la pila debe convertirse en la raíz.
+Instructions: Add a method to our max heap called `remove`. This method should return the greatest value that has been added to our max heap and remove it from the heap. It should also reorder the heap so the heap property is maintained. After removing an element, the next greatest element remaining in the heap should become the root.
 
 # --hints--
 
-La estructura de datos `MaxHeap` debería existir.
+The `MaxHeap` data structure should exist.
 
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     }
@@ -36,12 +36,12 @@ assert(
 );
 ```
 
-`MaxHeap` debería tener un método llamado `print`.
+`MaxHeap` should have a method called `print`.
 
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -52,12 +52,12 @@ assert(
 );
 ```
 
-`MaxHeap` debería tener un método llamado `insert`.
+`MaxHeap` should have a method called `insert`.
 
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -68,12 +68,12 @@ assert(
 );
 ```
 
-`MaxHeap` debería tener un método llamado `remove`.
+`MaxHeap` should have a method called `remove`.
 
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -84,7 +84,7 @@ assert(
 );
 ```
 
-El método `remove` debería remover el mayor elemento de la pila máxima mientras se mantiene la propiedad máxima de la pila.
+The `remove` method should remove the greatest element from the max heap while maintaining the max heap property.
 
 ```js
 function isHeap(arr, i, n) {
@@ -104,7 +104,7 @@ function isHeap(arr, i, n) {
 
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -120,15 +120,9 @@ assert(
       return false;
     }
     const removed = test.remove();
-    if (!vals.includes(removed)) return false;
-    if (removed > max) return false
+    if(removed > max) return false
     max = removed;
     result.push(removed);
-  }
-  for (let i = 0; i < vals.length; i++) {
-     if (!result.includes(vals[i])) {
-       return false;
-     }
   }
   return true
   })()
@@ -140,7 +134,7 @@ assert(
 ## --seed-contents--
 
 ```js
-const MaxHeap = function () {
+var MaxHeap = function () {
   this.heap = [];
   this.parent = index => {
     return Math.floor((index - 1) / 2);

@@ -1,6 +1,6 @@
 ---
 id: 5900f4361000cf542c50ff48
-title: 'Problem 201: Teilmengen mit einer eindeutigen Summe'
+title: 'Problem 201: Subsets with a unique sum'
 challengeType: 1
 forumTopicId: 301841
 dashedName: problem-201-subsets-with-a-unique-sum
@@ -8,9 +8,9 @@ dashedName: problem-201-subsets-with-a-unique-sum
 
 # --description--
 
-Für eine beliebige Menge $A$ von Zahlen sei $sum(A)$ die Summe der Elemente von $A$.
+For any set $A$ of numbers, let $sum(A)$ be the sum of the elements of $A$.
 
-Betrachte die Menge $B = \\{1,3,6,8,10,11\\}$. Es gibt 20 Teilmengen von $B$, die drei Elemente enthalten, und ihre Summen sind:
+Consider the set $B = \\{1,3,6,8,10,11\\}$. There are 20 subsets of $B$ containing three elements, and their sums are:
 
 $$\begin{align}   & sum(\\{1,3,6\\}) = 10 \\\\
   & sum(\\{1,3,8\\}) = 12 \\\\   & sum(\\{1,3,10\\}) = 14 \\\\
@@ -24,15 +24,15 @@ $$\begin{align}   & sum(\\{1,3,6\\}) = 10 \\\\
   & sum(\\{6,8,11\\}) = 25 \\\\   & sum(\\{6,10,11\\}) = 27 \\\\
   & sum(\\{8,10,11\\}) = 29 \\end{align}$$
 
-Einige dieser Summen kommen mehrmals vor, andere sind einmalig. Für eine Menge $A$ sei $U(A,k)$ die Menge der eindeutigen Summen von $k$-Element-Teilmengen von $A$, in unserem Beispiel finden wir $U(B,3) = \\{10,12,14,18,21,25,27,29\\}$ und $sum(U(B,3)) = 156$.
+Some of these sums occur more than once, others are unique. For a set $A$, let $U(A,k)$ be the set of unique sums of $k$-element subsets of $A$, in our example we find $U(B,3) = \\{10,12,14,18,21,25,27,29\\}$ and $sum(U(B,3)) = 156$.
 
-Betrachten wir nun die $100$-Elementmenge $S = \\{1^2, 2^2, \ldots , {100}^2\\}$. $S$ hat $100\\,891\\,344\\,545\\,564\\,193\\,334\\,812\\,497\\,256\\\;$ $50$-Element-Untermengen.
+Now consider the $100$-element set $S = \\{1^2, 2^2, \ldots , {100}^2\\}$. $S$ has $100\\,891\\,344\\,545\\,564\\,193\\,334\\,812\\,497\\,256\\;$ $50$-element subsets.
 
-Bestimme die Summe aller Integer, die die Summe von genau einer der $50$-Element-Teilmengen von $S$ sind, d.h. finde $sum(U(S,50))$.
+Determine the sum of all integers which are the sum of exactly one of the $50$-element subsets of $S$, i.e. find $sum(U(S,50))$.
 
 # --hints--
 
-`uniqueSubsetsSum()` sollte `115039000` zurückgeben.
+`uniqueSubsetsSum()` should return `115039000`.
 
 ```js
 assert.strictEqual(uniqueSubsetsSum(), 115039000);

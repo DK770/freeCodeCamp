@@ -61,7 +61,7 @@ test('Submit the surname "Polo" in the HTML form', function (done) {
 
 # --hints--
 
-すべてのテストが成功する必要があります。
+すべてのテストに合格する必要があります。
 
 ```js
 (getUserInput) =>

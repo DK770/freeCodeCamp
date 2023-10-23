@@ -1,18 +1,19 @@
 import {
+  Panel,
   FormControl,
   FormGroup,
   ControlLabel,
-  Button
+  Button,
+  Col,
+  Row
 } from '@freecodecamp/react-bootstrap';
 import React, { useState } from 'react';
 import Helmet from 'react-helmet';
-import type { TFunction } from 'i18next';
-import { Trans, withTranslation } from 'react-i18next';
+import { TFunction, Trans, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { Col, Row, Panel } from '@freecodecamp/ui';
 
-import Login from '../components/Header/components/login';
+import Login from '../components/Header/components/Login';
 
 import { Spacer, Loader, FullWidthRow } from '../components/helpers';
 import { reportUser } from '../redux/actions';
@@ -82,17 +83,19 @@ function ShowUser({
     return (
       <main>
         <FullWidthRow>
-          <Spacer size='large' />
-          <Panel variant='primary' className='text-center'>
+          <Spacer size={2} />
+          <Panel bsStyle='info' className='text-center'>
             <Panel.Heading>
-              <Panel.Title>{t('report.sign-in')}</Panel.Title>
+              <Panel.Title componentClass='h3'>
+                {t('report.sign-in')}
+              </Panel.Title>
             </Panel.Heading>
             <Panel.Body className='text-center'>
-              <Spacer size='large' />
+              <Spacer size={2} />
               <Col md={6} mdOffset={3} sm={8} smOffset={2} xs={12}>
                 <Login block={true}>{t('buttons.click-here')}</Login>
               </Col>
-              <Spacer size='exLarge' />
+              <Spacer size={3} />
             </Panel.Body>
           </Panel>
         </FullWidthRow>
@@ -105,7 +108,7 @@ function ShowUser({
       <Helmet>
         <title>{t('report.portfolio')} | freeCodeCamp.org</title>
       </Helmet>
-      <Spacer size='large' />
+      <Spacer size={2} />
       <Row className='text-center overflow-fix'>
         <Col sm={8} smOffset={2} xs={12}>
           <h2>{t('report.portfolio-2', { username: username })}</h2>
@@ -132,7 +135,7 @@ function ShowUser({
             <Button block={true} bsStyle='primary' type='submit'>
               {t('report.submit')}
             </Button>
-            <Spacer size='medium' />
+            <Spacer />
           </form>
         </Col>
       </Row>

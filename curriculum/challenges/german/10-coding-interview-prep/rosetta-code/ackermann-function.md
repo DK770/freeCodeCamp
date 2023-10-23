@@ -22,31 +22,31 @@ Write a function which returns the value of $A(m, n)$. Arbitrary precision is pr
 
 # --hints--
 
-`ack` sollte eine Funktion sein.
+`ack` should be a function.
 
 ```js
 assert(typeof ack === 'function');
 ```
 
-`ack(0, 0)` sollte 1 zurückgeben.
+`ack(0, 0)` should return 1.
 
 ```js
 assert(ack(0, 0) === 1);
 ```
 
-`ack(1, 1)` sollte 3 zurückgeben.
+`ack(1, 1)` should return 3.
 
 ```js
 assert(ack(1, 1) === 3);
 ```
 
-`ack(2, 5)` sollte 13 zurückgeben.
+`ack(2, 5)` should return 13.
 
 ```js
 assert(ack(2, 5) === 13);
 ```
 
-`ack(3, 3)` sollte 61 zurückgeben.
+`ack(3, 3)` should return 61.
 
 ```js
 assert(ack(3, 3) === 61);

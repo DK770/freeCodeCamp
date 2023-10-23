@@ -20,11 +20,11 @@ Asserts that the `actual` is equal to `expected`, to within a +/- `delta` range.
 
 Within `tests/1_unit-tests.js` under the test labelled `#10` in the `Comparisons` suite, change each `assert` to `assert.approximately` to make the test pass (should evaluate to `true`).
 
-Wählen den Minimalbereich (3. Parameter) aus, damit der Test immer bestanden wird. Es sollte weniger als 1 sein.
+Choose the minimum range (3rd parameter) to make the test always pass. It should be less than 1.
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+All tests should pass.
 
 ```js
 (getUserInput) =>
@@ -38,7 +38,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-Du solltest den richtigen Bereich für die erste Behauptung wählen - `approximately(actual, expected, range)`.
+You should choose the correct range for the first assertion - `approximately(actual, expected, range)`.
 
 ```js
 (getUserInput) =>
@@ -57,7 +57,7 @@ Du solltest den richtigen Bereich für die erste Behauptung wählen - `approxima
   );
 ```
 
-Du solltest den richtigen Bereich für die zweite Behauptung wählen - `approximately(actual, expected, range)`.
+You should choose the correct range for the second assertion - `approximately(actual, expected, range)`.
 
 ```js
 (getUserInput) =>

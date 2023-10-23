@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Front End Development Libraries Projects
-block: front-end-development-libraries-projects
-superBlock: front-end-development-libraries
+block: Front End Development Libraries Projects
+superBlock: Front End Development Libraries
 ---
 
 ## Introduction to the Front End Development Libraries Projects

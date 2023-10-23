@@ -14,7 +14,7 @@ import {
   takeLatest
 } from 'redux-saga/effects';
 
-import { challengeTypes } from '../../../../../shared/config/challenge-types';
+import { challengeTypes } from '../../../../utils/challenge-types';
 import { createFlashMessage } from '../../../components/Flash/redux';
 import { FlashMessages } from '../../../components/Flash/redux/flash-messages';
 import {
@@ -30,15 +30,13 @@ import {
   challengeHasPreview,
   getTestRunner,
   isJavaScriptChallenge,
+  isLoopProtected,
   updatePreview,
   updateProjectPreview
 } from '../utils/build';
-import { runPythonInFrame, mainPreviewId } from '../utils/frame';
-import { executeGA } from '../../../redux/actions';
 import { actionTypes } from './action-types';
 import {
   disableBuildOnError,
-  executeChallengeComplete,
   initConsole,
   initLogs,
   logsToConsole,
@@ -52,15 +50,15 @@ import {
   challengeMetaSelector,
   challengeTestsSelector,
   isBuildEnabledSelector,
-  isExecutingSelector,
   portalDocumentSelector
 } from './selectors';
 
 // How long before bailing out of a preview.
 const previewTimeout = 2500;
+let previewTask;
 
 // when 'run tests' is clicked, do this first
-function* executeCancellableChallengeSaga(payload) {
+export function* executeCancellableChallengeSaga(payload) {
   const { challengeType, id } = yield select(challengeMetaSelector);
   const { challengeFiles } = yield select(challengeDataSelector);
 
@@ -80,14 +78,22 @@ function* executeCancellableChallengeSaga(payload) {
     }
   }
 
+  if (previewTask) {
+    yield cancel(previewTask);
+  }
   // executeChallenge with payload containing {showCompletionModal}
   const task = yield fork(executeChallengeSaga, payload);
+  previewTask = yield fork(previewChallengeSaga, { flushLogs: false });
 
   yield take(actionTypes.cancelTests);
   yield cancel(task);
 }
 
-function* executeChallengeSaga({ payload }) {
+export function* executeCancellablePreviewSaga() {
+  previewTask = yield fork(previewChallengeSaga);
+}
+
+export function* executeChallengeSaga({ payload }) {
   const isBuildEnabled = yield select(isBuildEnabledSelector);
   if (!isBuildEnabled) {
     return;
@@ -109,10 +115,10 @@ function* executeChallengeSaga({ payload }) {
 
     const challengeData = yield select(challengeDataSelector);
     const challengeMeta = yield select(challengeMetaSelector);
+    const protect = isLoopProtected(challengeMeta);
     const buildData = yield buildChallengeData(challengeData, {
       preview: false,
-      disableLoopProtectTests: challengeMeta.disableLoopProtectTests,
-      disableLoopProtectPreview: challengeMeta.disableLoopProtectPreview,
+      protect,
       usesTestRunner: true
     });
     const document = yield getContext('document');
@@ -130,16 +136,6 @@ function* executeChallengeSaga({ payload }) {
       playTone('tests-completed');
     } else {
       playTone('tests-failed');
-      if (challengeMeta.certification === 'responsive-web-design') {
-        yield put(
-          executeGA({
-            event: 'challenge_failed',
-            challenge_id: challengeMeta.id,
-            challenge_path: window?.location?.pathname,
-            challenge_files: challengeData.challengeFiles
-          })
-        );
-      }
     }
     if (challengeComplete && payload?.showCompletionModal) {
       yield put(openModal('completion'));
@@ -149,7 +145,6 @@ function* executeChallengeSaga({ payload }) {
   } catch (e) {
     yield put(updateConsole(e));
   } finally {
-    yield put(executeChallengeComplete());
     consoleProxy.close();
   }
 }
@@ -233,10 +228,7 @@ function* previewChallengeSaga({ flushLogs = true } = {}) {
   const proxyLogger = args => logProxy.put(args);
 
   try {
-    const isExecuting = yield select(isExecutingSelector);
-    // executeChallengeSaga flushes the logs, so there's no need to if that's
-    // just happened.
-    if (flushLogs && !isExecuting) {
+    if (flushLogs) {
       yield put(initLogs());
       yield put(initConsole(''));
     }
@@ -246,10 +238,10 @@ function* previewChallengeSaga({ flushLogs = true } = {}) {
 
     if (canBuildChallenge(challengeData)) {
       const challengeMeta = yield select(challengeMetaSelector);
+      const protect = isLoopProtected(challengeMeta);
       const buildData = yield buildChallengeData(challengeData, {
         preview: true,
-        disableLoopProtectTests: challengeMeta.disableLoopProtectTests,
-        disableLoopProtectPreview: challengeMeta.disableLoopProtectPreview
+        protect
       });
       // evaluate the user code in the preview frame or in the worker
       if (challengeHasPreview(challengeData)) {
@@ -258,15 +250,6 @@ function* previewChallengeSaga({ flushLogs = true } = {}) {
         const finalDocument = portalDocument || document;
 
         yield call(updatePreview, buildData, finalDocument, proxyLogger);
-
-        // Python challenges need to be created in two steps:
-        // 1) build the frame
-        // 2) evaluate the code in the frame. This is necessary to avoid
-        //    recreating the frame (which is slow since loadPyodide takes a long
-        //    time)on every change.
-        if (challengeData.challengeType === challengeTypes.python) {
-          yield updatePython(challengeData);
-        }
       } else if (isJavaScriptChallenge(challengeData)) {
         const runUserCode = getTestRunner(buildData, {
           proxyLogger,
@@ -277,7 +260,6 @@ function* previewChallengeSaga({ flushLogs = true } = {}) {
       }
     }
   } catch (err) {
-    console.log('previewChallengeSaga error', err);
     if (err[0] === 'timeout') {
       // TODO: translate the error
       // eslint-disable-next-line no-ex-assign
@@ -285,32 +267,6 @@ function* previewChallengeSaga({ flushLogs = true } = {}) {
     }
     console.log(err);
     yield put(updateConsole(escape(err)));
-  }
-}
-
-function* updatePreviewSaga() {
-  const challengeData = yield select(challengeDataSelector);
-  if (challengeData.challengeType === challengeTypes.python) {
-    yield updatePython(challengeData);
-  } else {
-    // all other challenges have to recreate the preview
-    yield previewChallengeSaga();
-  }
-}
-
-function* updatePython(challengeData) {
-  const document = yield getContext('document');
-  // TODO: refactor the build pipeline so that we have discrete, composable
-  // functions to handle transforming code, embedding it and building the
-  // final html. Then we can just use the transformation function here.
-  const buildData = yield buildChallengeData(challengeData);
-  const code = buildData.transformedPython;
-  // TODO: proxy errors to the console
-  try {
-    yield call(runPythonInFrame, document, code, mainPreviewId);
-  } catch (err) {
-    console.log('Error evaluating python code', code);
-    console.log('Message:', err.message);
   }
 }
 
@@ -335,14 +291,15 @@ function* previewProjectSolutionSaga({ payload }) {
 export function createExecuteChallengeSaga(types) {
   return [
     takeLatest(types.executeChallenge, executeCancellableChallengeSaga),
-    takeLatest(types.updateFile, updatePreviewSaga),
     takeLatest(
-      [types.challengeMounted, types.resetChallenge],
-      previewChallengeSaga
+      [
+        types.updateFile,
+        types.previewMounted,
+        types.challengeMounted,
+        types.resetChallenge
+      ],
+      executeCancellablePreviewSaga
     ),
-    takeLatest(types.previewMounted, previewChallengeSaga, {
-      flushLogs: false
-    }),
     takeLatest(types.projectPreviewMounted, previewProjectSolutionSaga)
   ];
 }

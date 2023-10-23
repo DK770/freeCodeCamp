@@ -11,26 +11,28 @@ dashedName: using-objects-for-lookups
 
 對象和字典一樣，可以用來存儲鍵/值對。 如果數據是扁平的，你可以用對象來查找你想要的值，而不是鏈式使用 `switch` 或 `if/else` 語句。 當你知道你的輸入數據在某個範圍時，這種查找方式極爲有效。
 
-這是一個文章對象的示例：
+這是簡單的反向字母表：
 
 ```js
-const article = {
-  "title": "How to create objects in JavaScript",
-  "link": "https://www.freecodecamp.org/news/a-complete-guide-to-creating-objects-in-javascript-b0e2450655e8/",
-  "author": "Kaashan Hussain",
-  "language": "JavaScript",
-  "tags": "TECHNOLOGY",
-  "createdAt": "NOVEMBER 28, 2018"
+const alpha = {
+  1:"Z",
+  2:"Y",
+  3:"X",
+  4:"W",
+  ...
+  24:"C",
+  25:"B",
+  26:"A"
 };
 
-const articleAuthor = article["author"];
-const articleLink = article["link"];
+const thirdLetter = alpha[2];
+const lastLetter = alpha[24];
 
-const value = "title";
-const valueLookup = article[value];
+const value = 2;
+const valueLookup = alpha[value];
 ```
 
-`articleAuthor` 是字符串 `Kaashan Hussain`，`articleLink` 是字符串 `https://www.freecodecamp.org/news/a-complete-guide-to-creating-objects-in-javascript-b0e2450655e8/`，`valueLookup` 是字符串 `How to create objects in JavaScript`。
+`thirdLetter` 是字符串 `Y`，`lastLetter` 是字符串 `C`，`valueLookup` 是字符串 `Y`。
 
 # --instructions--
 

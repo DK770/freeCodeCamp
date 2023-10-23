@@ -1,6 +1,6 @@
 ---
 id: 587d7fad367417b2b2512be2
-title: Змініть текст за допомогою подій натискання
+title: Зміна тексту кліком "Events"
 challengeType: 6
 forumTopicId: 301500
 dashedName: change-text-with-click-events
@@ -8,11 +8,11 @@ dashedName: change-text-with-click-events
 
 # --description--
 
-Коли відбувається подія натискання, ви можете використати JavaScript, щоб оновити елемент HTML.
+Кліком ви можете оновити елемент HTML за допомогою JavaScript.
 
-Наприклад, якщо користувач натисне кнопку `Get Message`, то вона змінить текст елемента з класом `message` на `Here is the message`.
+Наприклад, коли користувач натискає кнопку `Get Message`, текст елемента класу `message` змінюється на `Here is the message`.
 
-Для цього додайте такий код в межах події натискання:
+Так кліком можна змінити код:
 
 ```js
 document.getElementsByClassName('message')[0].textContent="Here is the message";
@@ -20,11 +20,11 @@ document.getElementsByClassName('message')[0].textContent="Here is the message";
 
 # --instructions--
 
-Додайте код всередині обробника події `onclick`, щоб змінити текст всередині елемента `message` на `Here is the message`.
+Додайте код `onclick` обробника подій, щоб змінити текст в елементі `message` на `Here is the message`.
 
 # --hints--
 
-Код має використати метод `document.getElementsByClassName`, щоб вибрати елемент з класом `message` та встановити його `textContent` на наданий рядок.
+Використайте у коді метод `document.getElementsByClassName`, щоб вибрати елемент класу `message` та додати `textContent` у заданий рядок.
 
 ```js
 assert(

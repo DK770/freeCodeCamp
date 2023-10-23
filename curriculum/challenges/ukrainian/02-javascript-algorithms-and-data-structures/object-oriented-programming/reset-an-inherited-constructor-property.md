@@ -1,6 +1,6 @@
 ---
 id: 587d7db1367417b2b2512b86
-title: Скидання властивості успадкованого конструктора
+title: Скинути властивість успадкованого конструктора
 challengeType: 1
 forumTopicId: 301324
 dashedName: reset-an-inherited-constructor-property
@@ -8,7 +8,7 @@ dashedName: reset-an-inherited-constructor-property
 
 # --description--
 
-Якщо об’єкт успадковує `prototype` від іншого об’єкту, він також успадковує властивість конструктора супертипу.
+Якщо об'єкт успадковує `prototype` від іншого об'єкту, він також успадковує властивість конструктору супертипу.
 
 Наприклад:
 
@@ -19,7 +19,7 @@ let duck = new Bird();
 duck.constructor
 ```
 
-Але `duck` та усі екземпляри `Bird` мають показати, що їх створив `Bird`, а не `Animal`. Для цього ви можете власноруч встановити властивість конструктора `Bird` на об’єкт `Bird`:
+Але `duck` й усі відбитки `Bird` повинні відображати, що вони були відтворені в `Bird`, а не в `Animal`. Для цього ви можете власноруч встановити властивість конструктора `Bird` для `Bird`:
 
 ```js
 Bird.prototype.constructor = Bird;
@@ -28,29 +28,29 @@ duck.constructor
 
 # --instructions--
 
-Змініть код, щоб `duck.constructor` та `beagle.constructor` повернули відповідні конструктори.
+Змініть код, щоб `duck.constructor` й `beagle.constructor` повернули їх відповідні конструктори.
 
 # --hints--
 
-`Bird.prototype` має бути екземпляром `Animal`.
+`Bird.prototype` повинен бути частиною `Animal`.
 
 ```js
 assert(Animal.prototype.isPrototypeOf(Bird.prototype));
 ```
 
-`duck.constructor` має повернути `Bird`.
+`duck.constructor` має повертати `Bird`.
 
 ```js
 assert(duck.constructor === Bird);
 ```
 
-`Dog.prototype` має бути екземпляром `Animal`.
+`Dog.prototype` має бути частиною `Animal`.
 
 ```js
 assert(Animal.prototype.isPrototypeOf(Dog.prototype));
 ```
 
-`beagle.constructor` має повернути `Dog`.
+`beagle.constructor` має повертати `Dog`.
 
 ```js
 assert(beagle.constructor === Dog);

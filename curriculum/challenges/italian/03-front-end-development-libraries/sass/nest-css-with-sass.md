@@ -13,31 +13,31 @@ Sass permette di annidare le regole CSS, e questo è utile per organizzare un fo
 Normalmente, ogni elemento è l'oggetto di una linea diversa che lo stilizza, in questo modo:
 
 ```scss
-article {
-  height: 200px;
+nav {
+  background-color: red;
 }
 
-article p {
-  color: white;
+nav ul {
+  list-style: none;
 }
 
-article ul {
-  color: blue;
+nav ul li {
+  display: inline-block;
 }
 ```
 
 Per un grande progetto però, il file CSS avrà molte linee e regole. Qui la nidificazione può aiutare a organizzare il codice inserendo le regole di stile figlie all'interno dei rispettivi elementi genitori:
 
 ```scss
-article {
-  height: 200px;
-
-  p {
-    color: white;
-  }
+nav {
+  background-color: red;
 
   ul {
-    color: blue;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
   }
 }
 

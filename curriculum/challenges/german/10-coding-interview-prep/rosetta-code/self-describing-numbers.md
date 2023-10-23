@@ -29,31 +29,31 @@ Write a function that takes a positive integer as a parameter. If it is self-des
 
 # --hints--
 
-`isSelfDescribing` sollte eine Funktion sein.
+`isSelfDescribing` should be a function.
 
 ```js
 assert(typeof isSelfDescribing == 'function');
 ```
 
-`isSelfDescribing()` sollte einen Boolean zurückgeben.
+`isSelfDescribing()` should return a boolean.
 
 ```js
 assert(typeof isSelfDescribing(2020) == 'boolean');
 ```
 
-`isSelfDescribing(2020)` sollte `true` zurückgeben.
+`isSelfDescribing(2020)` should return `true`.
 
 ```js
 assert.equal(isSelfDescribing(2020), true);
 ```
 
-`isSelfDescribing(3021)` sollte `false` zurückgeben.
+`isSelfDescribing(3021)` should return `false`.
 
 ```js
 assert.equal(isSelfDescribing(3021), false);
 ```
 
-`isSelfDescribing(3211000)` sollte `true` zurückgeben.
+`isSelfDescribing(3211000)` should return `true`.
 
 ```js
 assert.equal(isSelfDescribing(3211000), true);

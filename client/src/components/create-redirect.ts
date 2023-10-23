@@ -1,8 +1,8 @@
+/* eslint-disable react/display-name */
 import { navigate } from 'gatsby';
-import type { RouteComponentProps } from '@reach/router';
 
 const createRedirect =
-  (to = '/'): ((_props: RouteComponentProps) => JSX.Element | null) =>
+  (to = '/'): (() => JSX.Element | null) =>
   () => {
     if (typeof window !== 'undefined') {
       void navigate(to);

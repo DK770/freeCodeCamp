@@ -43,7 +43,7 @@ assert(
 );
 ```
 
-`['a', 'b'].isSubsetOf(['a', 'b', 'c', 'd'])` sollte `true` zurückgeben.
+`['a', 'b'].isSubsetOf(['a', 'b', 'c', 'd'])` should return `true`.
 
 ```js
 assert(
@@ -62,7 +62,7 @@ assert(
 );
 ```
 
-`['a', 'b', 'c'].isSubsetOf(['a', 'b'])` sollte `false` zurückgeben.
+`['a', 'b', 'c'].isSubsetOf(['a', 'b'])` should return `false`.
 
 ```js
 assert(
@@ -80,7 +80,7 @@ assert(
 );
 ```
 
-`[].isSubsetOf([])` sollte `true` zurückgeben.
+`[].isSubsetOf([])` should return `true`.
 
 ```js
 assert(
@@ -93,7 +93,7 @@ assert(
 );
 ```
 
-`['a', 'b'].isSubsetOf(['c', 'd'])` sollte `false` zurückgeben.
+`['a', 'b'].isSubsetOf(['c', 'd'])` should return `false`.
 
 ```js
 assert(

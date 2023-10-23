@@ -1,6 +1,6 @@
 ---
 id: 5900f4771000cf542c50ff8a
-title: 'Problem 267: Milliardär'
+title: 'Problem 267: Billionaire'
 challengeType: 1
 forumTopicId: 301916
 dashedName: problem-267-billionaire
@@ -8,21 +8,21 @@ dashedName: problem-267-billionaire
 
 # --description--
 
-Du erhälst eine einzigartige Investitionsmöglichkeit.
+You are given a unique investment opportunity.
 
-Wenn du mit einem Kapital von £1 beginnst, kannst du einen festen Anteil $f$ deines Kapitals wählen, um 1000 Mal auf einen fairen Münzwurf zu wetten.
+Starting with £1 of capital, you can choose a fixed proportion, $f$, of your capital to bet on a fair coin toss repeatedly for 1000 tosses.
 
-Dein Gewinn ist das Doppelte deines Einsatzes bei Kopf und du verlierst deinen Einsatz bei Zahl.
+Your return is double your bet for heads and you lose your bet for tails.
 
-Zum Beispiel, wenn $f = \frac{1}{4}$, setzt du für den ersten Wurf £0.25, wenn Kopf erscheint, gewinnst du £0.5 und hast somit £1.5. Dann setzt du £0.375 und wenn der zweite Wurf Zahl ergibt, hast du £1.125.
+For example, if $f = \frac{1}{4}$, for the first toss you bet £0.25, and if heads comes up you win £0.5 and so then have £1.5. You then bet £0.375 and if the second toss is tails, you have £1.125.
 
-Wenn du $f$ wählst, um deine Chancen zu maximieren, nach 1.000 Umdrehungen mindestens £1.000.000.000 zu besitzen, wie hoch ist dann die Wahrscheinlichkeit, dass du Milliardär wirst?
+Choosing $f$ to maximize your chances of having at least £1,000,000,000 after 1,000 flips, what is the chance that you become a billionaire?
 
-Alle Berechnungen werden als genau angenommen (keine Rundungen), gebe aber deine Antwort gerundet auf 12 Dezimalstellen hinter dem Komma in der Form 0.abcdefghijkl an.
+All computations are assumed to be exact (no rounding), but give your answer rounded to 12 digits behind the decimal point in the form 0.abcdefghijkl.
 
 # --hints--
 
-`billionaire()` sollte `0.999992836187` zurückgeben.
+`billionaire()` should return `0.999992836187`.
 
 ```js
 assert.strictEqual(billionaire(), 0.999992836187);

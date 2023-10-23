@@ -1,15 +1,19 @@
 const path = require('path');
-const envData = require('./config/env.json');
+const envData = require('../config/env.json');
 const {
   buildChallenges,
   replaceChallengeNode,
   localeChallengesRootDir
 } = require('./utils/build-challenges');
 
-const { clientLocale, curriculumLocale, homeLocation } = envData;
+const { clientLocale, curriculumLocale, homeLocation, sentryClientDSN } =
+  envData;
 
 const curriculumIntroRoot = path.resolve(__dirname, './src/pages');
-const pathPrefix = clientLocale === 'english' ? '' : '/' + clientLocale;
+const pathPrefix =
+  clientLocale === 'english' || clientLocale === 'chinese'
+    ? ''
+    : '/' + clientLocale;
 
 module.exports = {
   flags: {
@@ -21,7 +25,12 @@ module.exports = {
   },
   pathPrefix: pathPrefix,
   plugins: [
-    'gatsby-plugin-pnpm',
+    {
+      resolve: '@sentry/gatsby',
+      options: {
+        dsn: sentryClientDSN
+      }
+    },
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
       options: {
@@ -44,9 +53,7 @@ module.exports = {
       }
     },
     {
-      resolve: require.resolve(
-        '../tools/client-plugins/gatsby-source-challenges'
-      ),
+      resolve: 'fcc-source-challenges',
       options: {
         name: 'challenges',
         source: buildChallenges,
@@ -65,9 +72,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark'
     },
     {
-      resolve: require.resolve(
-        '../tools/client-plugins/gatsby-remark-node-identity'
-      ),
+      resolve: 'gatsby-remark-node-identity',
       options: {
         identity: 'blockIntroMarkdown',
         predicate: ({ frontmatter }) => {
@@ -80,9 +85,7 @@ module.exports = {
       }
     },
     {
-      resolve: require.resolve(
-        '../tools/client-plugins/gatsby-remark-node-identity'
-      ),
+      resolve: 'gatsby-remark-node-identity',
       options: {
         identity: 'superBlockIntroMarkdown',
         predicate: ({ frontmatter }) => {
@@ -94,6 +97,20 @@ module.exports = {
         }
       }
     },
+    // {
+    //   resolve: `gatsby-plugin-advanced-sitemap`,
+    //   options: {
+    //     exclude: [
+    //       `/dev-404-page`,
+    //       `/404`,
+    //       `/404.html`,
+    //       `/offline-plugin-app-shell-fallback`,
+    //       `/learn`,
+    //       /(\/)learn(\/)\S*/
+    //     ],
+    //     addUncaughtPages: true
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

@@ -8,37 +8,37 @@ dashedName: missing-letters
 
 # --description--
 
-Знайдіть пропущену літеру в переданому діапазоні літер та поверніть її.
+Знайдіть пропущену літеру в заданому діапазоні літер і поверніть її.
 
-Якщо у діапазоні наявні всі літери, поверніть `undefined`.
+Якщо у діапазоні є всі літери, повернути `undefined`.
 
 # --hints--
 
-`fearNotLetter("abce")` має повертати рядок `d`.
+`fearNotLetter("abce")` повинен повертати рядок `d`.
 
 ```js
 assert.deepEqual(fearNotLetter('abce'), 'd');
 ```
 
-`fearNotLetter("abcdefghjklmno")` має повертати рядок `i`.
+`fearNotLetter("abcdefghjklmno")` повинен повертати рядок `i`.
 
 ```js
 assert.deepEqual(fearNotLetter('abcdefghjklmno'), 'i');
 ```
 
-`fearNotLetter("stvwx")` має повертати рядок `u`.
+`fearNotLetter("stvwx")` повинен повертати рядок `u`.
 
 ```js
 assert.deepEqual(fearNotLetter('stvwx'), 'u');
 ```
 
-`fearNotLetter("bcdf")` має повертати рядок `e`.
+`fearNotLetter("bcdf")` повинен повертати рядок `e`.
 
 ```js
 assert.deepEqual(fearNotLetter('bcdf'), 'e');
 ```
 
-`fearNotLetter("abcdefghijklmnopqrstuvwxyz")` має повертати `undefined`.
+`fearNotLetter("abcdefghijklmnopqrstuvwxyz")` повинен повертати рядок `undefined`.
 
 ```js
 assert.isUndefined(fearNotLetter('abcdefghijklmnopqrstuvwxyz'));

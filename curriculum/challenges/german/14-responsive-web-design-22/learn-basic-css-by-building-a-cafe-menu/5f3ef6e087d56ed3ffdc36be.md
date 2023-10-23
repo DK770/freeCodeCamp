@@ -1,13 +1,13 @@
 ---
 id: 5f3ef6e087d56ed3ffdc36be
-title: Schritt 61
+title: Step 61
 challengeType: 0
 dashedName: step-61
 ---
 
 # --description--
 
-Wende jetzt die `established`-Klasse auf den Text `Est. 2020` an.
+Now apply the `established` class to the `Est. 2020` text.
 
 # --hints--
 
@@ -17,14 +17,14 @@ Du solltest die `class` des `p`-Elements auf `established` setzen.
 assert(code.match(/<p class=('|")established\1>/i));
 ```
 
-Deine `established`-Klasse sollte sich auf dem Element mit dem Text `Est. 2020` befinden.
+Your `established` class should be on the element with the text `Est. 2020`.
 
 ```js
 const established = $('.established');
 assert(established[0].innerText.match(/Est\.\s2020/i));
 ```
 
-Dein `established`-Klassen-Element sollte einen kursiven Text haben.
+Your `established` class element should have italic text.
 
 ```js
 assert($('.established').css('font-style') === 'italic');

@@ -22,7 +22,7 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 
 控制台将显示字符串 `You have passed 3 arguments.` 和 `You have passed 4 arguments.`。
 
-rest 参数使我们不需要使用 `arguments` 对象，允许我们对传递给函数 `howMany` 的参数数组使用数组方法。
+使用 rest 参数，就不需要查看 `args` 数组，并且允许我们在参数数组上使用 `map()`、`filter()` 和 `reduce()`。
 
 # --instructions--
 
@@ -67,11 +67,7 @@ assert(__helpers.removeWhiteSpace(code).match(/sum=\(\.\.\.args\)=>/));
 ```js
 const sum = (x, y, z) => {
   const args = [x, y, z];
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```
 
@@ -79,10 +75,6 @@ const sum = (x, y, z) => {
 
 ```js
 const sum = (...args) => {
-  let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
-  }
-  return total;
+  return args.reduce((a, b) => a + b, 0);
 }
 ```

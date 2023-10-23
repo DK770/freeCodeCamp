@@ -8,7 +8,7 @@ dashedName: expand-your-project-with-external-packages-from-npm
 
 # --description--
 
-Einer der wichtigsten Gründe für die Verwendung eines Paketmanagers, ist dessen leistungstarkes Abhängigkeitsmanagement. Anstatt manuell sicherzustellen, dass du alle Abhängigkeiten erhältst, wenn du ein Projekt auf einem neuen Computer einrichtest, installiert npm alles automatisch für dich. Aber wie kann npm genau wissen, was dein Projekt benötigt? Lerne den `dependencies`-Abschnitt deiner package.json Datei kennen.
+Einer der wichtigsten Gründe für die Verwendung eines Paketmanagers, ist dessen leistungstarkes Abhängigkeitsmanagement. Anstatt manuell sicherzustellen, dass du alle Abhängigkeiten erhältst, wenn du ein Projekt auf einem neuen Computer einrichtest, installiert npm alles automatisch für dich. Aber wie kann npm genau wissen, was dein Projekt benötigt? Meet the `dependencies` section of your package.json file.
 
 In diesem Abschnitt werden die Pakete, die dein Projekt benötigt, in folgendem Format gespeichert:
 
@@ -22,13 +22,13 @@ In diesem Abschnitt werden die Pakete, die dein Projekt benötigt, in folgendem 
 
 # --instructions--
 
-Füge die Version `1.1.0` des `@freecodecamp/example`-Pakets dem `dependencies`-Feld deiner `package.json`-Datei hinzu.
+Add version "1.1.0" of the `@freecodecamp/example` package to the `dependencies` field of your `package.json` file.
 
-**Hinweis:** `@freecodecamp/example` ist eine Mogelpackung, die wir hier als Lernbeispiel verwenden.
+**Note:** `@freecodecamp/example` is a faux package used as a learning tool.
 
 # --hints--
 
-`"dependencies"` sollte `"@freecodecamp/example"` enthalten.
+`"dependencies"` should include `"@freecodecamp/example"`.
 
 ```js
 (getUserInput) =>
@@ -47,7 +47,7 @@ Füge die Version `1.1.0` des `@freecodecamp/example`-Pakets dem `dependencies`-
   );
 ```
 
-Die `"@freecodecamp/example"`-Version sollte `"1.1.0"` sein.
+`"@freecodecamp/example"` version should be `"1.1.0"`.
 
 ```js
 (getUserInput) =>

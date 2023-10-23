@@ -35,7 +35,7 @@ The algorithm follows:
   <li>Deal all 52 cards, face up, across 8 columns. The first 8 cards go in 8 columns, the next 8 cards go on the first 8 cards, and so on.</li>
 </ol>
 
-**Beispiel:**
+**Example:**
 
 **Order to deal cards**
 
@@ -47,7 +47,7 @@ The algorithm follows:
 41 42 43 44 45 46 47 48
 49 50 51 52</pre>
 
-**Spiel #1**
+**Game #1**
 
 ```js
 [
@@ -61,7 +61,7 @@ The algorithm follows:
 ]
 ```
 
-**Spiel #617**
+**Game #617**
 
 ```js
 [
@@ -81,13 +81,13 @@ Write a function to take a deal number and deal cards in the same order as this 
 
 # --hints--
 
-`dealFreeCell` sollte eine Funktion sein.
+`dealFreeCell` should be a function.
 
 ```js
 assert(typeof dealFreeCell === 'function');
 ```
 
-`dealFreeCell(seed)` sollte ein Objekt zurückgeben.
+`dealFreeCell(seed)` should return an object.
 
 ```js
 assert(typeof dealFreeCell(1) === 'object');
@@ -175,7 +175,7 @@ function dealFreeCell(seed) {
   const rng = FreeCellRNG(seed);
   const deck = getDeck();
 
-  const dealtCards = [[], [], [], [], [], [], []];
+  const deltCards = [[], [], [], [], [], [], []];
   let currentColumn = 0;
   let currentRow = 0;
 
@@ -195,7 +195,7 @@ function dealFreeCell(seed) {
     card = deck.pop();
 
     // Deal this card
-    dealtCards[currentRow].push(card);
+    deltCards[currentRow].push(card);
     currentColumn += 1;
     if (currentColumn === 8) {
       currentColumn = 0;
@@ -203,6 +203,6 @@ function dealFreeCell(seed) {
     }
   }
 
-  return dealtCards;
+  return deltCards;
 }
 ```

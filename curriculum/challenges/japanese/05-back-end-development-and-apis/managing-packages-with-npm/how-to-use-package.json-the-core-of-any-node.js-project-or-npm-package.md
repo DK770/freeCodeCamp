@@ -14,19 +14,13 @@ dashedName: how-to-use-package-json-the-core-of-any-node-js-project-or-npm-packa
 - <a href="https://replit.com/github/freeCodeCamp/boilerplate-npm" target="_blank" rel="noopener noreferrer nofollow">Replit スタータープロジェクト</a>を使用して、チャレンジを完了させる。
 - 使い慣れたサイトビルダーを使用してプロジェクトを完了させる。 必ず GitHub リポジトリのすべてのファイルを取り込む。
 
-Replit を使用する場合は、下記の手順でプロジェクトをセットアップしてください。
+完了したら、プロジェクトの動作デモをどこか公開の場にホストしてください。 そして、`Solution Link` フィールドでデモへの URL を送信してください。
 
--   まず、Replit でプロジェクトをインポートします。
--   すると、`.replit` ファイルのウィンドウが表示されます。
--   `Use run command` を選択して `Done` ボタンをクリックします。
+`package.json` ファイルは、Node.js プロジェクトまたは npm パッケージの中心となります。 HTML ドキュメントの &lt;head> セクションでウェブページの内容を記述するのと同じように、このファイルにはプロジェクトに関する情報を保存します。 ファイルは単一の JSON オブジェクトで構成され、そこに情報がキーと値のペアで保存されます。 必須のフィールドは「name」と「version」の 2 つのみですが、将来のユーザーや保守作業者に役立つように、プロジェクトに関する追加情報を記述しておくことをお勧めします。
 
-完了したら、プロジェクトの動作デモをどこか公開の場にホストしてください。 そして「回答のリンク」欄に、デモの URL を提出してください。
+プロジェクトのファイルツリーを見ると、package.json ファイルはツリーの最上位のレベルにあります。 以降のチャレンジではこのファイルに改良を加えていきます。
 
-`package.json` ファイルは、Node.js プロジェクトまたは npm パッケージの中心となります。 It stores information about your project, similar to how the `head` section of an HTML document describes the content of a webpage. ファイルは単一の JSON オブジェクトで構成され、そこに情報がキーと値のペアで保存されます。 There are only two required fields; `name` and `version`, but it’s good practice to provide additional information about your project that could be useful to future users or maintainers.
-
-If you look at the file tree of your project, you will find the `package.json` file on the top level of the tree. 以降のチャレンジではこのファイルに改良を加えていきます。
-
-このファイルで最もよく使われる情報の 1 つは、`author` フィールドです。 これはプロジェクトの作成者を指定するもので、連絡先などの詳細を記した文字列またはオブジェクトで構成できます。 より大きなプロジェクトではオブジェクトが推奨されますが、このプロジェクトでは次の例のような単純な文字列を使用します。
+このファイルで最も一般的な情報の 1 つは、 `author` フィールドです。 これはプロジェクトの作成者を指定するもので、連絡先などの詳細を記した文字列またはオブジェクトで構成できます。 より大きなプロジェクトではオブジェクトが推奨されますが、このプロジェクトでは次の例のような単純な文字列を使用します。
 
 ```json
 "author": "Jane Doe",
@@ -34,13 +28,13 @@ If you look at the file tree of your project, you will find the `package.json` f
 
 # --instructions--
 
-Add your name as the `author` of the project in the `package.json` file.
+package.json ファイルで、プロジェクトの `author` の名前を追加してください。
 
-**注: ** JSON を記述しているので、すべてのフィールド名に二重引用符 (") を使用し、コンマ (,) で区切る必要があります。
+**注: ** JSON を記述しているので、すべてのフィールド名で二重引用符 (") を使用し、コンマ (,) で区切る必要があります。
 
 # --hints--
 
-`package.json` should have a valid "author" key
+package.json で、有効な「author」キーを記述する必要があります。
 
 ```js
 (getUserInput) =>

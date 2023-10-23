@@ -8,21 +8,21 @@ dashedName: build-a-cash-register
 
 # --description--
 
-Entwirf eine Registrierkassenfunktion `checkCashRegister()`, die als erstes Argument den Kaufpreis (`price`), als zweites Argument das übergebene Bargeld (`cash`) und als drittes Argument den Kassenbestand (`cid`) akzeptiert.
+Design a cash register drawer function `checkCashRegister()` that accepts purchase price as the first argument (`price`), payment as the second argument (`cash`), and cash-in-drawer (`cid`) as the third argument.
 
-`cid` ist ein 2D-Array mit den verfügbaren Währungen.
+`cid` is a 2D array listing available currency.
 
-Die `checkCashRegister()`-Funktion sollte immer ein Objekt mit den Schlüsseln `status` und `change` zurückgeben.
+The `checkCashRegister()` function should always return an object with a `status` key and a `change` key.
 
-Gib `{status: "INSUFFICIENT_FUNDS", change: []}` zurück, wenn der Kassenbestand nicht das benötigte Wechselgeld hergibt oder du das genaue Wechselgeld nicht zurückgeben kannst.
+Return `{status: "INSUFFICIENT_FUNDS", change: []}` if cash-in-drawer is less than the change due, or if you cannot return the exact change.
 
-Gib `{status: "CLOSED", change: [...]}` mit dem vorhandenen Wechselgeld als Wert für den Schlüssel `change` zurück, wenn der Kassenbestand gleich dem fälligen Wechselgeld ist.
+Return `{status: "CLOSED", change: [...]}` with cash-in-drawer as the value for the key `change` if it is equal to the change due.
 
 Otherwise, return `{status: "OPEN", change: [...]}`, with the change due in coins and bills, sorted in highest to lowest order, as the value of the `change` key.
 
-<table><tbody><tr><th>Währungseinheit</th><th>Betrag</th></tr><tr><td>Penny</td><td>$0.01 (PENNY)</td></tr><tr><td>Nickel</td><td>$0.05 (NICKEL)</td></tr><tr><td>Dime</td><td>$0.1 (DIME)</td></tr><tr><td>Quarter</td><td>$0.25 (QUARTER)</td></tr><tr><td>Dollar</td><td>$1 (ONE)</td></tr><tr><td>Fünf Dollar</td><td>$5 (FIVE)</td></tr><tr><td>Zehn Dollar</td><td>$10 (TEN)</td></tr><tr><td>Zwanzig Dollar</td><td>$20 (TWENTY)</td></tr><tr><td>Einhundert Dollar</td><td>$100 (ONE HUNDRED)</td></tr></tbody></table>
+<table class='table table-striped'><tbody><tr><th>Währungseinheit</th><th>Amount</th></tr><tr><td>Penny</td><td>$0.01 (PENNY)</td></tr><tr><td>Nickel</td><td>$0.05 (NICKEL)</td></tr><tr><td>Dime</td><td>$0.1 (DIME)</td></tr><tr><td>Quarter</td><td>$0.25 (QUARTER)</td></tr><tr><td>Dollar</td><td>$1 (ONE)</td></tr><tr><td>Fünf Dollar</td><td>$5 (FIVE)</td></tr><tr><td>Zehn Dollar</td><td>$10 (TEN)</td></tr><tr><td>Zwanzig Dollar</td><td>$20 (TWENTY)</td></tr><tr><td>Einhundert Dollar</td><td>$100 (ONE HUNDRED)</td></tr></tbody></table>
 
-Anbei ein Beispiel für einen Array mit Wechselgeld:
+See below for an example of a cash-in-drawer array:
 
 ```js
 [

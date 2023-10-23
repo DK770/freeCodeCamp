@@ -3,7 +3,7 @@ import React from 'react';
 import { Image } from './image';
 
 describe('Render the image', () => {
-  it('should render the image with the alt and src attributes', () => {
+  it('sould render the image with the alt and src attributes', () => {
     render(
       <Image
         alt="Quincy Larson's Signature"

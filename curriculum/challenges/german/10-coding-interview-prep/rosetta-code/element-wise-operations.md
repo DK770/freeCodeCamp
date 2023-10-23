@@ -24,13 +24,13 @@ The first parameter will be the operation to be performed, for example, "m_add" 
 
 # --hints--
 
-`operation` sollte eine Funktion sein.
+`operation` should be a function.
 
 ```js
 assert(typeof operation === 'function');
 ```
 
-`operation("m_add",[[1,2],[3,4]],[[1,2],[3,4]])` sollte `[[2,4],[6,8]]` zurückgeben.
+`operation("m_add",[[1,2],[3,4]],[[1,2],[3,4]])` should return `[[2,4],[6,8]]`.
 
 ```js
 assert.deepEqual(
@@ -52,7 +52,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("s_add",[[1,2],[3,4]],2)` sollte `[[3,4],[5,6]]` zurückgeben.
+`operation("s_add",[[1,2],[3,4]],2)` should return `[[3,4],[5,6]]`.
 
 ```js
 assert.deepEqual(
@@ -71,7 +71,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("m_sub",[[1,2],[3,4]],[[1,2],[3,4]])` sollte `[[0,0],[0,0]]` zurückgeben.
+`operation("m_sub",[[1,2],[3,4]],[[1,2],[3,4]])` should return `[[0,0],[0,0]]`.
 
 ```js
 assert.deepEqual(
@@ -93,7 +93,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("m_mult",[[1,2],[3,4]],[[1,2],[3,4]])` sollte `[[1,4],[9,16]]` zurückgeben.
+`operation("m_mult",[[1,2],[3,4]],[[1,2],[3,4]])` should return `[[1,4],[9,16]]`.
 
 ```js
 assert.deepEqual(
@@ -115,7 +115,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("m_div",[[1,2],[3,4]],[[1,2],[3,4]])` sollte `[[1,1],[1,1]]` zurückgeben.
+`operation("m_div",[[1,2],[3,4]],[[1,2],[3,4]])` should return `[[1,1],[1,1]]`.
 
 ```js
 assert.deepEqual(
@@ -137,7 +137,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("m_exp",[[1,2],[3,4]],[[1,2],[3,4]])` sollte `[[1,4],[27,256]]` zurückgeben.
+`operation("m_exp",[[1,2],[3,4]],[[1,2],[3,4]])` should return `[[1,4],[27,256]]`.
 
 ```js
 assert.deepEqual(
@@ -159,7 +159,7 @@ assert.deepEqual(
 );
 ```
 
-`operation("m_add",[[1,2,3,4],[5,6,7,8]],[[9,10,11,12],[13,14,15,16]])` sollte `[[10,12,14,16],[18,20,22,24]]` zurückgeben.
+`operation("m_add",[[1,2,3,4],[5,6,7,8]],[[9,10,11,12],[13,14,15,16]])` should return `[[10,12,14,16],[18,20,22,24]]`.
 
 ```js
 assert.deepEqual(

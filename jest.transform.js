@@ -4,7 +4,7 @@ const babelOptions = {
       '@babel/preset-env',
       {
         targets: {
-          node: 18
+          node: 14
         }
       }
     ],

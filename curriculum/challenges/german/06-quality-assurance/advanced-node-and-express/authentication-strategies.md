@@ -1,6 +1,6 @@
 ---
 id: 5895f70df9fc0f352b528e68
-title: Authentifizierungsmöglichkeiten
+title: Authentication Strategies
 challengeType: 2
 forumTopicId: 301547
 dashedName: authentication-strategies
@@ -8,76 +8,81 @@ dashedName: authentication-strategies
 
 # --description--
 
-Eine Strategie ist eine Möglichkeit, einen Benutzer zu authentifizieren. Du kannst eine Strategie anwenden, die es Nutzern ermöglicht, sich entweder auf Grundlage lokal gespeicherter Informationen zu authentifizieren (sofern sie sich zuerst registrieren) oder mithilfe verschiedener Anbieter wie Google oder GitHub. Für dieses Projekt werden wir die Passport-Middleware verwenden. Passport bietet eine umfassende Reihe von Strategien, die die Authentifizierung mit einem Benutzernamen und Passwort, GitHub, Google und mehr unterstützen.
+A strategy is a way of authenticating a user. You can use a strategy for allowing users to authenticate based on locally saved information (if you have them register first) or from a variety of providers such as Google or GitHub. For this project, we will use Passport middleware. Passport provides a comprehensive set of strategies that support authentication using a username and password, GitHub, Google, and more.
 
-`passport-local@~1.0.0` ist bereits als Abhängigkeit hinzugefügt worden. Füge ihn wie folgt zu Ihrem Server hinzu:
+`passport-local@~1.0.0` has already been added as a dependency, so add it to your server as follows: `const LocalStrategy = require('passport-local');`
 
-```javascript
-const LocalStrategy = require('passport-local');
+Now you will have to tell passport to **use** an instantiated LocalStrategy object with a few settings defined. Make sure this (as well as everything from this point on) is encapsulated in the database connection since it relies on it!
+
+```js
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    myDataBase.findOne({ username: username }, function (err, user) {
+      console.log('User '+ username +' attempted to log in.');
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (password !== user.password) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
 ```
 
-Teile Passport mithilfe von **use** mit, ein instanziiertes `LocalStrategy`-Objekt mit bestimmten Einstellungen zu verwenden. Vergewissere dich, dass dies (wie auch alles andere ab jetzt) in der Datenbankverbindung gekapselt ist, da sie davon abhängt!:
+This is defining the process to use when we try to authenticate someone locally. First, it tries to find a user in our database with the username entered, then it checks for the password to match, then finally, if no errors have popped up that we checked for, like an incorrect password, the `user`'s object is returned and they are authenticated.
 
-```javascript
-passport.use(new LocalStrategy((username, password, done) => {
-  myDataBase.findOne({ username: username }, (err, user) => {
-    console.log(`User ${username} attempted to log in.`);
-    if (err) return done(err);
-    if (!user) return done(null, false);
-    if (password !== user.password) return done(null, false);
-    return done(null, user);
-  });
-}));
-```
+Many strategies are set up using different settings, but generally it is easy to set it up based on the README in that strategy's repository. A good example of this is the GitHub strategy where we don't need to worry about a username or password because the user will be sent to GitHub's auth page to authenticate. As long as they are logged in and agree then GitHub returns their profile for us to use.
 
-Hier wird der Prozess definiert, der verwendet werden soll, wenn du versuchst, jemanden lokal zu authentifizieren. Zunächst wird versucht, in deiner Datenbank einen Benutzer mit dem eingegebenen Benutzernamen zu finden. Dann wird geprüft, ob das Kennwort übereinstimmt. Wenn keine Fehler aufgetreten sind, auf die du geprüft hast (z. B. ein falsches Passwort), wird das `user`-Objekt zurückgegeben und der Benutzer ist authentifiziert.
+In the next step, we will set up how to actually call the authentication strategy to validate a user based on form data!
 
-Viele Strategien werden mit unterschiedlichen Einstellungen eingerichtet. Im Allgemeinen ist es einfach, sie anhand der README im Repository der jeweiligen Strategie einzurichten. Ein gutes Beispiel hierfür ist die GitHub-Strategie, bei der Sie sich nicht um einen Benutzernamen oder ein Passwort kümmern müssen, da der Benutzer zur Authentifizierung an die GitHub-Authentifizierungsseite weitergeleitet wird. Solange sie angemeldet sind und zustimmen, gibt GitHub ihr Profil zurück, das du verwenden kannst.
-
-Im nächsten Schritt richten Sie ein, wie die Authentifizierungsstrategie aufgerufen werden soll, um einen Benutzer anhand von Formulardaten zu überprüfen.
-
-Reiche deine Seite ein, wenn du davon ausgehst, alles richtig gemacht zu haben. Wenn du auf Fehler stößt, kannst du <a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#authentication-strategies-6" target="_blank" rel="noopener noreferrer nofollow">das bis zu diesem Punkt abgeschlossene Projekt überprüfen</a>.
+Submit your page when you think you've got it right. If you're running into errors, you can <a href="https://gist.github.com/camperbot/53b495c02b92adeee0aa1bd3f3be8a4b" target="_blank" rel="noopener noreferrer nofollow">check out the project completed up to this point</a>.
 
 # --hints--
 
-Passport-local sollte eine Abhängigkeit sein.
+Passport-local should be a dependency.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/package.json", getUserInput("url"));
-  const res = await fetch(url);
-  const packJson = await res.json();
-  assert.property(
-    packJson.dependencies,
-    'passport-local',
-    'Your project should list "passport-local " as a dependency'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/package.json').then(
+    (data) => {
+      var packJson = JSON.parse(data);
+      assert.property(
+        packJson.dependencies,
+        'passport-local',
+        'Your project should list "passport-local " as a dependency'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-}
 ```
 
-Passport-local sollte korrekt benötigt und eingerichtet werden.
+Passport-local should be correctly required and setup.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/server.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /require.*("|')passport-local("|')/,
-    'You should have required passport-local'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/server.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /require.*("|')passport-local("|')/gi,
+        'You should have required passport-local'
+      );
+      assert.match(
+        data,
+        /new LocalStrategy/gi,
+        'You should have told passport to use a new strategy'
+      );
+      assert.match(
+        data,
+        /findOne/gi,
+        'Your new local strategy should use the findOne query to find a username based on the inputs'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-  assert.match(
-    data,
-    /new LocalStrategy/,
-    'You should have told passport to use a new strategy'
-  );
-  assert.match(
-    data,
-    /findOne/,
-    'Your new local strategy should use the findOne query to find a username based on the inputs'
-  );
-}
 ```
 
 # --solutions--

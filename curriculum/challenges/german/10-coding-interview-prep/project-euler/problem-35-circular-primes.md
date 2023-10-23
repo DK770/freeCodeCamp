@@ -1,6 +1,6 @@
 ---
 id: 5900f38f1000cf542c50fea2
-title: 'Problem 35: Kreisförmige Primzahlen'
+title: 'Problem 35: Circular primes'
 challengeType: 1
 forumTopicId: 302009
 dashedName: problem-35-circular-primes
@@ -8,55 +8,55 @@ dashedName: problem-35-circular-primes
 
 # --description--
 
-Die Zahl 197 wird als kreisförmige Primzahl bezeichnet, weil alle Drehungen der Ziffern: 197, 971, und 719, selbst Primzahlen sind.
+The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
 
-Es gibt dreizehn solcher Primzahlen unter 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79 und 97.
+There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
 
-Wie viele kreisförmige Primzahlen gibt es unter `n`, wobei 100 ≤ `n` ≤ 1000000?
+How many circular primes are there below `n`, whereas 100 ≤ `n` ≤ 1000000?
 
-**Hinweis:**
+**Note:**
 
-Kreisförmige Primzahlen können eine individuelle Drehung von `n` überschreiten.
+Circular primes individual rotation can exceed `n`.
 
 # --hints--
 
-`circularPrimes(100)` sollte eine Zahl zurückgeben.
+`circularPrimes(100)` should return a number.
 
 ```js
 assert(typeof circularPrimes(100) === 'number');
 ```
 
-`circularPrimes(100)` sollte 13 ergeben.
+`circularPrimes(100)` should return 13.
 
 ```js
 assert(circularPrimes(100) == 13);
 ```
 
-`circularPrimes(100000)` sollte 43 zurückgeben.
+`circularPrimes(100000)` should return 43.
 
 ```js
 assert(circularPrimes(100000) == 43);
 ```
 
-`circularPrimes(250000)` sollte 45 zurückgeben.
+`circularPrimes(250000)` should return 45.
 
 ```js
 assert(circularPrimes(250000) == 45);
 ```
 
-`circularPrimes(500000)` sollte 49 zurückgeben.
+`circularPrimes(500000)` should return 49.
 
 ```js
 assert(circularPrimes(500000) == 49);
 ```
 
-`circularPrimes(750000)` sollte 49 zurückgeben.
+`circularPrimes(750000)` should return 49.
 
 ```js
 assert(circularPrimes(750000) == 49);
 ```
 
-`circularPrimes(1000000)` sollte 55 zurückgeben.
+`circularPrimes(1000000)` should return 55.
 
 ```js
 assert(circularPrimes(1000000) == 55);

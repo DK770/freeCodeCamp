@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Data Visualization with D3 Challenges
-block: data-visualization-with-d3
-superBlock: data-visualization
+block: Data Visualization with D3
+superBlock: Data Visualization
 ---
 
 ## Introduction to the Data Visualization with D3 Challenges

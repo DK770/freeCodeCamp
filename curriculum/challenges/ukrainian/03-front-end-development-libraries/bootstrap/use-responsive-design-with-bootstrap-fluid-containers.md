@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9acde08712
-title: Використайте адаптивний дизайн до рідких контейнерів Bootstrap
+title: Дотримуйтесь принципу Адаптивного веб дизайну при роботі із Fluid Containers у Bootstrap
 challengeType: 0
 forumTopicId: 18362
 dashedName: use-responsive-design-with-bootstrap-fluid-containers
@@ -8,31 +8,31 @@ dashedName: use-responsive-design-with-bootstrap-fluid-containers
 
 # --description--
 
-У розділі freeCodeCamp, який стосувався роботи із HTML5 та CSS, ми створили застосунок з фотографіями котів. Тепер повернемося до нього. Цього разу ми стилізуємо його, використавши популярний фреймворк адаптивного CSS від Bootstrap.
+У розділі freeCodeCamp, що стосувався роботи із HTML5 та CSS ми створили додаток Cat Photo. Тож давайте повернемося саме до нього. Цього разу, ми створюватимемо його дизайн, використовуючи популярний шаблон Bootstrap - фреймворк CSS із швидким реагуванням.
 
-Bootstrap визначає ширину екрану та змінює розмір елементів HTML. Звідси походить назва <dfn>адаптивного дизайну</dfn>.
+Bootstrap автоматично визначить ширину екрану і підлаштує розмір елементів HTML. Звідси і назва <dfn>адаптивний дизайн</dfn>.
 
-Завдяки адаптивному дизайну не потрібно створювати мобільну версію вебсайту. Він матиме хороший вигляд на екрані будь-якої ширини.
+З адаптивним дизайном немає необхідності розробляти мобільну версію вашого веб-сайту. Картинка адекватно відображатиметься на екранах з будь-якою шириною.
 
-Bootstrap можна використати у будь-якому застосунку, додавши цей код зверху HTML:
+Можна внести Bootstrap до будь-якого додатка, додавши нижчезазначений код на початку вашого HTML:
 
 ```html
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 ```
 
-Ми вже додали цей код замість вас. Зверніть увагу, що можна використовувати `>` або `/>`, щоб закрити тег `link`.
+У цьому випадку ми вже додали його для вас на цю сторінку за замовчуванням. Зауважимо, що можна використати як `>`, так і `/>`, щоб закрити теґ `link`.
 
-Для початку вкладіть всі елементи HTML (окрім тегу `link` та елемента `style`) в елемент `div` з класом `container-fluid`.
+Для початку слід вкласти весь HTML (окрім теґу `link` та елемента `style`) в елемент `div` з класом `container-fluid`.
 
 # --hints--
 
-Елемент `div` повинен мати клас `container-fluid`.
+Ваш елемент `div` має мати клас `container-fluid`.
 
 ```js
 assert($('div').hasClass('container-fluid'));
 ```
 
-Елемент `div` повинен мати кінцевий тег.
+Ваш елемент `div` має мати кінцевий теґ.
 
 ```js
 assert(
@@ -42,7 +42,7 @@ assert(
 );
 ```
 
-Усі елементи HTML, розташовані після тегу `style`, мають бути вкладеними в `.container-fluid`.
+Всі елементи HTML після кінцевого теґу `style` треба вкласти в `.container-fluid`.
 
 ```js
 assert($('.container-fluid').children().length >= 8 && !$('.container-fluid').has("style").length && !$('.container-fluid').has("link").length);

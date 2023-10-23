@@ -39,16 +39,23 @@ Dein Code sollte nicht die Methode `splice` verwenden.
 assert(!code.match(/\.?[\s\S]*?splice/g));
 ```
 
-You should not mutate the original array passed to the function.
+Das Array `inputCities` sollte sich nicht ändern.
 
 ```js
-assert.deepEqual(_inputCities, ["Chicago", "Delhi", "Islamabad", "London", "Berlin"]);
+assert(
+  JSON.stringify(inputCities) ===
+    JSON.stringify(['Chicago', 'Delhi', 'Islamabad', 'London', 'Berlin'])
+);
 ```
 
 `nonMutatingSplice(["Chicago", "Delhi", "Islamabad", "London", "Berlin"])` sollte `["Chicago", "Delhi", "Islamabad"]` zurückgeben.
 
 ```js
-assert.deepEqual(nonMutatingSplice(_inputCities), ["Chicago", "Delhi", "Islamabad"]);
+assert(
+  JSON.stringify(
+    nonMutatingSplice(['Chicago', 'Delhi', 'Islamabad', 'London', 'Berlin'])
+  ) === JSON.stringify(['Chicago', 'Delhi', 'Islamabad'])
+);
 ```
 
 # --seed--
@@ -57,15 +64,14 @@ assert.deepEqual(nonMutatingSplice(_inputCities), ["Chicago", "Delhi", "Islamaba
 
 ```js
 function nonMutatingSplice(cities) {
-
+  // Only change code below this line
   return cities.splice(3);
+
+  // Only change code above this line
 }
-```
 
-## --after-user-code--
-
-```js
-const _inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+nonMutatingSplice(inputCities);
 ```
 
 # --solutions--
@@ -74,4 +80,5 @@ const _inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 function nonMutatingSplice(cities) {
   return cities.slice(0,3);
 }
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 ```

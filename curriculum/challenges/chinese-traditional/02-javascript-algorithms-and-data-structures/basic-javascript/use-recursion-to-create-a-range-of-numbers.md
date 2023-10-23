@@ -56,7 +56,7 @@ assert.deepStrictEqual(rangeOfNumbers(6, 9), [6, 7, 8, 9]);
 assert.deepStrictEqual(rangeOfNumbers(4, 4), [4]);
 ```
 
-不應使用全局變量來緩存數組。
+Global variables should not be used to cache the array.
 
 ```js
 rangeOfNumbers(1, 3)

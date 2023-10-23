@@ -53,7 +53,7 @@ const Palette = ({ colors }: PaletteProps) => {
   );
 };
 
-export const AllPalettes = (): JSX.Element => {
+export const AllPalettes = () => {
   return (
     <>
       <Palette colors={getPaletteByColorName('gray')} />

@@ -12,49 +12,49 @@ Determine whether a given year is a leap year in the Gregorian calendar.
 
 # --hints--
 
-`isLeapYear` sollte eine Funktion sein.
+`isLeapYear` should be a function.
 
 ```js
 assert(typeof isLeapYear == 'function');
 ```
 
-`isLeapYear()` sollte einen Boolean zurückgeben.
+`isLeapYear()` should return a boolean.
 
 ```js
 assert(typeof isLeapYear(2018) == 'boolean');
 ```
 
-`isLeapYear(2018)` sollte `false` zurückgeben.
+`isLeapYear(2018)` should return `false`.
 
 ```js
 assert.equal(isLeapYear(2018), false);
 ```
 
-`isLeapYear(2016)` sollte `true` zurückgeben.
+`isLeapYear(2016)` should return `true`.
 
 ```js
 assert.equal(isLeapYear(2016), true);
 ```
 
-`isLeapYear(2000)` sollte `true` zurückgeben.
+`isLeapYear(2000)` should return `true`.
 
 ```js
 assert.equal(isLeapYear(2000), true);
 ```
 
-`isLeapYear(1900)` sollte `false` zurückgeben.
+`isLeapYear(1900)` should return `false`.
 
 ```js
 assert.equal(isLeapYear(1900), false);
 ```
 
-`isLeapYear(1996)` sollte `true` zurückgeben.
+`isLeapYear(1996)` should return `true`.
 
 ```js
 assert.equal(isLeapYear(1996), true);
 ```
 
-`isLeapYear(1800)` sollte `false` zurückgeben.
+`isLeapYear(1800)` should return `false`.
 
 ```js
 assert.equal(isLeapYear(1800), false);

@@ -197,7 +197,7 @@ $ ObjectId()
 ObjectId("5a474d78df58bafeb3535d34")
 ````
 
-The result is a new id, for example, `5a474d78df58bafeb3535d34` above.
+El resultado es una nueva identificación, por ejemplo `5a474d78df58bafeb3535d34` arriba.
 
 Una vez que tengas tu id, ponlo en el archivo markdown como el campo `id` en la parte superior, p.ej.
 
@@ -250,7 +250,7 @@ Si toma más de dos minutos completar el desafío, tienes dos opciones:
 - Simplificar el desafío, o
 - Dividir el desafío en dos desafíos.
 
-The 2-minute rule forces you, the challenge designer, to make your directions concise, your seed code clear, and your tests straightforward.
+La regla de los 2 minutos le obliga a usted, el diseñador del desafío, a hacer sus instrucciones concisas, su código semilla claro y sus pruebas directas.
 
 We track how long it takes for campers to solve challenges and use this information to identify challenges that need to be simplified or split.
 
@@ -274,7 +274,7 @@ Usa `parseInt` para convertir la variable `realNumber` en un entero.
 ```
 
 - Las referencias a los nombres de archivos y directorios de rutas (por ejemplo, `package.json`, `src/components`) deben estar envueltas en etiquetas `<code>`.
-- Los bloques de código de múltiples líneas **deben estar precedidos por una línea vacía**. La siguiente línea debe comenzar con tres backticks seguidos inmediatamente por uno de los [idiomas soportados](https://prismjs.com/#supported-languages). To complete the code block, you must start a new line that only has three backticks and **another empty line**. Ver el ejemplo a continuación:
+- Los bloques de código de múltiples líneas **deben estar precedidos por una línea vacía**. La siguiente línea debe comenzar con tres backticks seguidos inmediatamente por uno de los [idiomas soportados](https://prismjs.com/#supported-languages). Para completar el bloque de código, debe iniciar una nueva línea que solo tiene tres backticks y **otra línea vacía**. Ver el ejemplo a continuación:
 - El espacio en blanco es importante en Markdown, por lo que le recomendamos que lo haga visible en su editor.
 
 **Nota:** Si va a utilizar un código de ejemplo en YAML, utilice yaml en lugar de yml para el idioma a la derecha de la comilla inversa.
@@ -290,10 +290,9 @@ Lo siguiente es un ejemplo de código:
 ````
 
 - La información adicional en forma de una nota debe ser formateada `Nota: El texto restante de la nota...
-- Si se necesitan varias notas. then list all of the notes in separate sentences using the format `Note: First note text. Second note text.`
-- Use single quotes where applicable
+- Si se necesitan varias notas. then list all of the notes in separate sentences using the format `Note: First note text. - Utilizar comillas simples donde sea aplicable
 
-**Note:** The equivalent _Markdown_ should be used in place of _HTML_ tags.
+**Nota:** Se debe utilizar el equivalente _Markdown_ en lugar de etiquetas _HTML_.
 
 ## Pruebas de escritura
 
@@ -303,24 +302,24 @@ Nuestro objetivo es comunicar el único punto que el reto está tratando de ense
 
 Las pruebas de desafío pueden hacer uso de las librerías de aserción de Node.js y Chai.js. Además, si es necesario, se puede acceder al código generado por el usuario en la variable `code`. Además, el objeto `__helpers`  expone varias funciones que simplifican el proceso de escritura de los test. Las funciones disponibles estan definidas en _client/src/utils/curriculum-helpers.ts_.
 
-## Formatting Seed Code
+## Código de semilla de formato
 
-Here are specific formatting guidelines for the challenge seed code:
+Aquí están las pautas de formato específicas para el código de semilla del reto:
 
-- Use two spaces to indent
-- JavaScript statements end with a semicolon
-- Use double quotes where applicable
+- Utilice dos espacios para indentar
+- Las declaraciones de JavaScript terminan con punto y coma
+- Utilice comillas dobles donde sea aplicable
 
-### Seed Code Comments
+### Comentarios de código de semilla
 
-We have a [comment dictionary](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) that contains the only comments that can be used within the seed code. El caso exacto y el espaciado del comentario del diccionario deben ser utilizados. El diccionario de comentarios no debe ser expandido sin una discusión previa con el equipo de desarrollo.
+Tenemos un [diccionario de comentarios](/curriculum/dictionaries/english/comentarios.) que contiene los únicos comentarios que pueden ser usados dentro del código de semilla. El caso exacto y el espaciado del comentario del diccionario deben ser utilizados. El diccionario de comentarios no debe ser expandido sin una discusión previa con el equipo de desarrollo.
 
 Los comentarios usados deben tener un espacio entre los caracteres del comentario y los propios comentarios. En general, los comentarios deben usarse con moderación. Siempre considere reescribir la descripción o las instrucciones de un desafío si pudiera evitar usar un comentario de código de semilla.
 
-Example of a valid single-line JavaScript comment:
+Ejemplo de comentario válido de JavaScript en una sola línea:
 
 ```js
-// Only change code below this line
+// Sólo cambiar el código debajo de esta línea
 ````
 
 Ejemplo de un comentario de CSS válido:
@@ -373,9 +372,9 @@ class MyComponent extends React.Component {
 }
 ```
 
-### Translation of Seed Code Comments
+### Traducción de comentarios de código de semilla
 
-Hay diccionarios de comentarios separados para cada idioma. The [English version of the comment dictionary](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/dictionaries/english/comments.json) is the basis for the translations found in the corresponding non-English versions of the files. The non-English version of the Chinese comment dictionary would be located at `/curriculum/dictionaries/chinese/comments.json`. Cada diccionario consiste en un arreglo de objetos con una propiedad `id` única y una propiedad `text`. Solo debe modificarse el `text` para abarcar la traducción del comentario inglés correspondiente.
+Hay diccionarios de comentarios separados para cada idioma. La [versión inglesa del diccionario de comentarios](/curriculum/dictionaries/english/comments.js) es la base de las traducciones que se encuentran en las correspondientes versiones no inglesas de los archivos. La versión no inglesa del diccionario de comentarios en chino se encuentra en  `/curriculum/dictionaries/chinese/comments.js`. Cada diccionario consiste en un arreglo de objetos con una propiedad `id` única y una propiedad `text`. Solo debe modificarse el `text` para abarcar la traducción del comentario inglés correspondiente.
 
 Algunos comentarios pueden contener una palabra/frase que no debe ser traducida. Por ejemplo, los nombres de las variables o los nombres propios de las bibliotecas, como "React", no deben traducirse. Vea el comentario siguiente como ejemplo. La palabra `myGlobal` no debe traducirse.
 
@@ -395,16 +394,16 @@ Si encuentras un problema en el tema de pistas/soluciones de un desafío existen
 
 ### Añadir nuevos temas de sugerencias/soluciones de Desafío
 
-Take the following steps when adding a new challenge hints/solutions-related topic.
+Siga los siguientes pasos cuando añada un nuevo tema relacionado con las pistas/soluciones del desafío.
 
 1. Comience siguiendo los mismos pasos para crear un nuevo tema pero revise el siguiente para crear el título.
 2. El título del tema debe comenzar con `Guía de Desafío gratuita:` concatenada con el título real del desafío curricular. Por ejemplo, si el desafío se llama "`Chunky Monkey`", el título del tema sería "`Guía gratuita del Desafío CodeCamp: Chunky Monkey`".
 3. `camperbot` debe ser el dueño de estos temas/posts, así que necesitarás solicitar a un administrador que cambie la propiedad de la publicación principal a `camperbot`.
 4. Una vez creado el nuevo tema, se crea un identificador del tema del foro. Se encuentra al final de la URL del tema del foro. Este id debe añadirse a la parte frontal del archivo de desafío curriculum a través del proceso normal de pull request para el botón `Obtener una pista` para vincular al tema.
 
-### Guidelines for Content of Hints and Solutions Topics
+### Orientaciones para el contenido de pistas y temas de soluciones
 
-When proposing a solution for a curriculum challenge-related Guide topic, the full code must be added. Esto incluye todo el código semilla original más los cambios necesarios para pasar todas las pruebas de desafío. Para crear nuevos temas de pistas/soluciones debe utilizarse la siguiente plantilla:
+Cuando se proponga una solución para un tema de la Guía relacionado con el desafío del plan de estudios, debe añadirse el código completo. Esto incluye todo el código semilla original más los cambios necesarios para pasar todas las pruebas de desafío. Para crear nuevos temas de pistas/soluciones debe utilizarse la siguiente plantilla:
 
 ````md
 # El nombre del desafío va aquí
@@ -461,17 +460,17 @@ Antes de que tu [hagas un pull request](how-to-open-a-pull-request.md) para tus 
 1. Para testear todos los desafíos, ejecuta el siguiente comando desde el directorio raíz
 
 ````
-pnpm run test:curriculum
+npm run test:curriculum
 ```
 
 2. También puedes probar un bloque o un superbloque de desafíos con estos comandos
 
 ```
-FCC_BLOCK='Basic HTML and HTML5' pnpm run test:curriculum
+npm run test:curriculum --block='Basic HTML and HTML5'
 ```
 
 ```
-FCC_SUPERBLOCK='responsive-web-design' pnpm run test:curriculum
+npm run test:curriculum --superblock=responsive-web-design
 ```
 
 También puedes probar un desafío individualmente realizando los siguientes pasos:
@@ -485,104 +484,18 @@ También puedes probar un desafío individualmente realizando los siguientes pas
 2. Ejecute lo siguiente para cada archivo de desafío para el que haya cambiado (sustituyendo "el-titulo-del-desafio-va-aqui" por el título completo del desafío):
 
    ```
-   pnpm run test -- -g challenge-title-goes-here
-   ```
+   npm run test -- -g el-titulo-del-desafio-va-aqui ```
 
-> [!TIP]
-> You can set the environment variable `LOCALE` in the `.env` to the language of the challenge(s) you need to test.
->
-> The currently accepted values are `english` and `chinese`, with `english` being set by default.
+Una vez que haya verificado que cada desafío en el que ha trabajado supera las pruebas, [cree una solicitud de extracción](how-to-open-a-pull-request.md).
 
-## Proposing a Pull Request (PR)
+> [!TIP] Puede establecer la variable de entorno `LOCALE` en `.env` en el idioma de los retos que necesita probar.
+> 
+> Los valores aceptados actualmente son `english` y `chinese`, con `english` configurado de manera predeterminada.
 
-After you've committed your changes, check here for [how to open a Pull Request](how-to-open-a-pull-request.md).
+### Enlaces útiles
 
-## Useful Links
+Creación y edición de desafíos:
 
-Creating and Editing Challenges:
+1. [Tipos de desafío](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.js#L1-L13) - lo que significan los valores numéricos del tipo de desafío (enum).
 
-1. [Challenge types](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.js#L1-L13) - what the numeric challenge type values mean (enum).
-
-2. [Contributing to FreeCodeCamp - Writing ES6 Challenge Tests](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - a video following [Ethan Arrowood](https://twitter.com/ArrowoodTech) as he contributes to the old version of the curriculum.
-
-## Helper Scripts
-
-> [!NOTE]
-> If you are working with the step-based challenges, refer to the [Work on Practice Projects](how-to-work-on-practice-projects.md) section.
-
-There are a few helper scripts that can be used to manage the challenges in a block. Note that these commands should all be run in the block directory. For example:
-
-```bash
-cd curriculum/challenges/english/02-javascript-algorithms-and-data-structures/basic-algorithm-scripting
-```
-
-### Add New Challenge
-
-To add a new challenge at the end of a block, call the script:
-
-```bash
-pnpm run create-next-challenge
-```
-
-This will prompt you for the challenge information and create the challenge file, updating the `meta.json` file with the new challenge information.
-
-### Delete a Challenge
-
-To delete a challenge, call the script:
-
-```bash
-pnpm run delete-challenge
-```
-
-This will prompt you to select which challenge should be deleted, then delete the file and update the `meta.json` file to remove the challenge from the order.
-
-### Insert a Challenge
-
-To insert a challenge before an existing challenge, call the script:
-
-```bash
-pnpm run insert-challenge
-```
-
-This will prompt you for the challenge information, then for the challenge to insert before. For example, if your choices are:
-
-```bash
-a
-b
-c
-```
-
-And you choose `b`, your new order will be:
-
-```bash
-a
-new challenge
-b
-c
-```
-
-### Update Challenge Order
-
-If you need to manually re-order the challenges, call the script:
-
-```bash
-pnpm run update-challenge-order
-```
-
-This will take you through an interactive process to select the order of the challenges.
-
-## Troubleshooting
-
-### Infinite Loop Detected
-
-If you see the following error in the console while previewing a challenge:
-
-```text
-Potential infinite loop detected on line <number>...
-```
-
-This means that the loop-protect plugin has found a long-running loop or recursive function. If your challenge needs to do that (e.g. it contains an event loop that is supposed to run indefinitely), then you can prevent the plugin from being used in the preview. To do so, add `disableLoopProtectPreview: true` to the block's `meta.json` file.
-
-If your tests are computationally intensive, then you may see this error when they run. If this happens then you can add `disableLoopProtectTests: true` to the block's `meta.json` file.
-
-It's not typically necessary to have both set to true, so only set them as needed.
+2. [Contribuyendo a FreeCodeCamp - Escribiendo Pruebas de Desafío de ES6](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - un vídeo que sigue a [Ethan Arrowood](https://twitter.com/ArrowoodTech) mientras contribuye a la versión antigua del currículo.

@@ -1,14 +1,11 @@
 const jwt = require('jsonwebtoken');
-const { allowedOrigins } = require('../../../config/cors-settings');
-// process.env.HOME_LOCATION is being used as a fallback here. If the one
-// provided by the client is invalid we default to this.
-const { availableLangs } = require('../../../../shared/config/i18n');
+const { allowedOrigins } = require('../../../../config/cors-settings');
+// homeLocation is being used as a fallback here. If the one provided by the
+// client is invalid we default to this.
+const { homeLocation } = require('../../../../config/env.json');
+const { availableLangs } = require('../../../../config/i18n/all-langs');
 
-function getReturnTo(
-  encryptedParams,
-  secret,
-  _homeLocation = process.env.HOME_LOCATION
-) {
+function getReturnTo(encryptedParams, secret, _homeLocation = homeLocation) {
   let params;
   try {
     params = jwt.verify(encryptedParams, secret);
@@ -28,7 +25,7 @@ function getReturnTo(
 
 function normalizeParams(
   { returnTo, origin, pathPrefix },
-  _homeLocation = process.env.HOME_LOCATION
+  _homeLocation = homeLocation
 ) {
   // coerce to strings, just in case something weird and nefarious is happening
   returnTo = '' + returnTo;
@@ -62,7 +59,7 @@ function getRedirectParams(req, _normalizeParams = normalizeParams) {
   const url = req.header('Referer');
   // since we do not always redirect the user back to the page they were on
   // we need client locale and origin to construct the redirect url.
-  const returnUrl = new URL(url ? url : process.env.HOME_LOCATION);
+  const returnUrl = new URL(url ? url : homeLocation);
   const origin = returnUrl.origin;
   // if this is not one of the client languages, validation will convert
   // this to '' before it is used.

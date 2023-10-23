@@ -33,73 +33,73 @@ No maximum value for `n` should be assumed.
 
 # --hints--
 
-`ffr` sollte eine Funktion sein.
+`ffr` should be a function.
 
 ```js
 assert(typeof ffr === 'function');
 ```
 
-`ffs` sollte eine Funktion sein.
+`ffs` should be a function.
 
 ```js
 assert(typeof ffs === 'function');
 ```
 
-`ffr` sollte Integer zurückgeben.
+`ffr` should return integer.
 
 ```js
 assert(Number.isInteger(ffr(1)));
 ```
 
-`ffs` sollte Integer zurückgeben.
+`ffs` should return integer.
 
 ```js
 assert(Number.isInteger(ffs(1)));
 ```
 
-`ffr(10)` sollte `69` zurückgeben
+`ffr(10)` should return `69`
 
 ```js
 assert.equal(ffr(ffrParamRes[0][0]), ffrParamRes[0][1]);
 ```
 
-`ffr(50)` sollte `1509` zurückgeben
+`ffr(50)` should return `1509`
 
 ```js
 assert.equal(ffr(ffrParamRes[1][0]), ffrParamRes[1][1]);
 ```
 
-`ffr(100)` sollte `5764` zurückgeben
+`ffr(100)` should return `5764`
 
 ```js
 assert.equal(ffr(ffrParamRes[2][0]), ffrParamRes[2][1]);
 ```
 
-`ffr(1000)` sollte `526334` zurückgeben
+`ffr(1000)` should return `526334`
 
 ```js
 assert.equal(ffr(ffrParamRes[3][0]), ffrParamRes[3][1]);
 ```
 
-`ffs(10)` sollte `14` zurückgeben
+`ffs(10)` should return `14`
 
 ```js
 assert.equal(ffs(ffsParamRes[0][0]), ffsParamRes[0][1]);
 ```
 
-`ffs(50)` sollte `59` zurückgeben
+`ffs(50)` should return `59`
 
 ```js
 assert.equal(ffs(ffsParamRes[1][0]), ffsParamRes[1][1]);
 ```
 
-`ffs(100)` sollte `112` zurückgeben
+`ffs(100)` should return `112`
 
 ```js
 assert.equal(ffs(ffsParamRes[2][0]), ffsParamRes[2][1]);
 ```
 
-`ffs(1000)` sollte `1041` zurückgeben
+`ffs(1000)` should return `1041`
 
 ```js
 assert.equal(ffs(ffsParamRes[3][0]), ffsParamRes[3][1]);

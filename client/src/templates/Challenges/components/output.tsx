@@ -20,7 +20,6 @@ function Output({ defaultOutput, output }: OutputProps): JSX.Element {
   return (
     <pre
       className='output-text'
-      data-cy='output-text'
       dangerouslySetInnerHTML={{ __html: message }}
       role='region'
       aria-label={i18next.t('learn.editor-tabs.console')}

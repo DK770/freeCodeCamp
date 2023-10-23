@@ -9,17 +9,17 @@ dashedName: selecting-from-many-options-with-switch-statements
 
 # --description--
 
-Wenn du einen Wert mit vielen Optionen abgleichen musst, kannst du eine <dfn>switch</dfn>-Anweisung verwenden. Eine `switch`-Anweisung vergleich den Wert einen mit der <dfn>case</dfn>-Anweisungen, in denen verschiedene mögliche Werte definiert werden. Alle gültigen JavaScript-Anweisungen können innerhalb eines <dfn>case</dfn>-Blocks ausgeführt werden und werden ab dem ersten übereinstimmenden `case`-Wert ausgeführt, bis ein `break` auftritt.
+Wenn du viele Optionen zur Auswahl hast, verwende eine <dfn>switch</dfn>-Anweisung. Eine `switch`-Anweisung testet einen Wert und kann viele <dfn>case</dfn>-Anweisungen haben, die verschiedene mögliche Werte definieren. Die Anweisungen werden ab dem ersten übereinstimmenden `case`-Wert ausgeführt, bis ein `break` auftritt.
 
 Hier ist ein Beispiel für eine `switch`-Anweisung:
 
 ```js
-switch (fruit) {
-  case "apple":
-    console.log("The fruit is an apple");
+switch (lowercaseLetter) {
+  case "a":
+    console.log("A");
     break;
-  case "orange":
-    console.log("The fruit is an orange");
+  case "b":
+    console.log("B");
     break;
 }
 ```

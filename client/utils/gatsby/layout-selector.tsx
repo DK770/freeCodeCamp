@@ -1,8 +1,11 @@
 import React from 'react';
 
-import CertificationLayout from '../../src/components/layouts/certification';
-import DefaultLayout from '../../src/components/layouts/default';
+import {
+  CertificationLayout,
+  DefaultLayout
+} from '../../src/components/layouts';
 import FourOhFourPage from '../../src/pages/404';
+import { isChallenge } from '../../src/utils/path-parsers';
 
 interface LayoutSelectorProps {
   element: JSX.Element;
@@ -19,8 +22,6 @@ export default function layoutSelector({
     location: { pathname }
   } = props;
 
-  const isChallenge = !!props.pageContext?.challengeMeta;
-
   if (element.type === FourOhFourPage) {
     return (
       <DefaultLayout pathname={pathname} showFooter={true}>
@@ -31,7 +32,7 @@ export default function layoutSelector({
     return (
       <CertificationLayout pathname={pathname}>{element}</CertificationLayout>
     );
-  } else if (isChallenge) {
+  } else if (isChallenge(pathname)) {
     return (
       <DefaultLayout
         pathname={pathname}

@@ -12,12 +12,8 @@ import {
   certTypeTitleMap,
   certTypeIdMap,
   certIds,
-  oldDataVizId,
-  currentCertifications,
-  upcomingCertifications,
-  legacyCertifications,
-  legacyFullStackCertification
-} from '../../../../shared/config/certification-settings';
+  oldDataVizId
+} from '../../../../config/certification-settings';
 import { reportError } from '../middlewares/sentry-error-handler.js';
 
 import { deprecatedEndpoint } from '../utils/disabled-endpoints';
@@ -41,9 +37,7 @@ const {
   sciCompPyV7Id,
   dataAnalysisPyV7Id,
   machineLearningPyV7Id,
-  relationalDatabaseV8Id,
-  collegeAlgebraPyV8Id,
-  foundationalCSharpV8Id
+  relationalDatabaseV8Id
 } = certIds;
 
 const log = debug('fcc:certification');
@@ -56,7 +50,7 @@ export default function bootCertificate(app) {
   const showCert = createShowCert(app);
   const verifyCert = createVerifyCert(certTypeIds, app);
 
-  api.put('/certificate/verify', ifNoUser401, ifNoCertification404, verifyCert);
+  api.put('/certificate/verify', ifNoUser401, ifNoSuperBlock404, verifyCert);
   api.get('/certificate/showCert/:username/:certSlug', showCert);
   api.get('/certificate/verify-can-claim-cert', deprecatedEndpoint);
   app.use(api);
@@ -64,12 +58,12 @@ export default function bootCertificate(app) {
 
 export function getFallbackFullStackDate(completedChallenges, completedDate) {
   var chalIds = [
-    respWebDesignId,
-    jsAlgoDataStructId,
-    frontEndDevLibsId,
-    dataVis2018Id,
-    apisMicroservicesId,
-    legacyInfosecQaId
+    certTypeIdMap[certTypes.respWebDesign],
+    certTypeIdMap[certTypes.jsAlgoDataStruct],
+    certTypeIdMap[certTypes.frontEndDevLibsId],
+    certTypeIdMap[certTypes.dataVis2018],
+    certTypeIdMap[certTypes.apisMicroservicesId],
+    certTypeIdMap[certTypes.legacyInfosecQaId]
   ];
 
   const latestCertDate = completedChallenges
@@ -79,22 +73,14 @@ export function getFallbackFullStackDate(completedChallenges, completedDate) {
   return latestCertDate ? latestCertDate : completedDate;
 }
 
-export function ifNoCertification404(req, res, next) {
+const certSlugs = Object.keys(certSlugTypeMap);
+
+function ifNoSuperBlock404(req, res, next) {
   const { certSlug } = req.body;
-  if (!certSlug) return res.status(404).end();
-  if (
-    currentCertifications.includes(certSlug) ||
-    legacyCertifications.includes(certSlug) ||
-    legacyFullStackCertification.includes(certSlug)
-  )
-    return next();
-  if (
-    process.env.SHOW_UPCOMING_CHANGES === 'true' &&
-    upcomingCertifications.includes(certSlug)
-  ) {
+  if (certSlug && certSlugs.includes(certSlug)) {
     return next();
   }
-  res.status(404).end();
+  return res.status(404).end();
 }
 
 const renderCertifiedEmail = loopback.template(
@@ -136,19 +122,11 @@ function createCertTypeIds(allChallenges) {
     [certTypes.relationalDatabaseV8]: getCertById(
       relationalDatabaseV8Id,
       allChallenges
-    ),
-    [certTypes.collegeAlgebraPyV8]: getCertById(
-      collegeAlgebraPyV8Id,
-      allChallenges
-    ),
-    [certTypes.foundationalCSharpV8]: getCertById(
-      foundationalCSharpV8Id,
-      allChallenges
     )
   };
 }
 
-function hasCompletedTests(ids, completedChallenges = []) {
+function canClaim(ids, completedChallenges = []) {
   return _.every(ids, ({ id }) =>
     _.find(completedChallenges, ({ id: completedId }) => completedId === id)
   );
@@ -180,9 +158,7 @@ function sendCertifiedEmail(
     isSciCompPyCertV7,
     isDataAnalysisPyCertV7,
     isMachineLearningPyCertV7,
-    isRelationalDatabaseCertV8,
-    isCollegeAlgebraPyCertV8,
-    isFoundationalCSharpCertV8
+    isRelationalDatabaseCertV8
   },
   send$
 ) {
@@ -198,9 +174,7 @@ function sendCertifiedEmail(
     !isSciCompPyCertV7 ||
     !isDataAnalysisPyCertV7 ||
     !isMachineLearningPyCertV7 ||
-    !isRelationalDatabaseCertV8 ||
-    !isCollegeAlgebraPyCertV8 ||
-    !isFoundationalCSharpCertV8
+    !isRelationalDatabaseCertV8
   ) {
     return Observable.just(false);
   }
@@ -237,9 +211,7 @@ function getUserIsCertMap(user) {
     isSciCompPyCertV7 = false,
     isDataAnalysisPyCertV7 = false,
     isMachineLearningPyCertV7 = false,
-    isRelationalDatabaseCertV8 = false,
-    isCollegeAlgebraPyCertV8 = false,
-    isFoundationalCSharpCertV8 = false
+    isRelationalDatabaseCertV8 = false
   } = user;
 
   return {
@@ -258,9 +230,7 @@ function getUserIsCertMap(user) {
     isSciCompPyCertV7,
     isDataAnalysisPyCertV7,
     isMachineLearningPyCertV7,
-    isRelationalDatabaseCertV8,
-    isCollegeAlgebraPyCertV8,
-    isFoundationalCSharpCertV8
+    isRelationalDatabaseCertV8
   };
 }
 
@@ -297,7 +267,7 @@ function createVerifyCert(certTypeIds, app) {
         }
 
         const { id, tests, challengeType } = challenge;
-        if (!hasCompletedTests(tests, user.completedChallenges)) {
+        if (!canClaim(tests, user.completedChallenges)) {
           return Observable.just({
             type: 'info',
             message: 'flash.incomplete-steps',
@@ -405,8 +375,6 @@ function createShowCert(app) {
       isDataAnalysisPyCertV7: true,
       isMachineLearningPyCertV7: true,
       isRelationalDatabaseCertV8: true,
-      isCollegeAlgebraPyCertV8: true,
-      isFoundationalCSharpCertV8: true,
       isHonest: true,
       username: true,
       name: true,
@@ -528,7 +496,6 @@ function createShowCert(app) {
 
         if (!showName) {
           return res.json({
-            certSlug,
             certTitle,
             username,
             date: completedDate,
@@ -537,7 +504,6 @@ function createShowCert(app) {
         }
 
         return res.json({
-          certSlug,
           certTitle,
           username,
           name,

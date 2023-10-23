@@ -1,6 +1,6 @@
 ---
 id: 5900f5481000cf542c51005a
-title: 'Problem 475: Musikfestival'
+title: 'Problem 475: Music festival'
 challengeType: 1
 forumTopicId: 302152
 dashedName: problem-475-music-festival
@@ -8,21 +8,21 @@ dashedName: problem-475-music-festival
 
 # --description--
 
-$12n$ Musiker nehmen an einem Musikfestival teil. Am ersten Tag bilden sie $3n$-Quartette und üben den ganzen Tag.
+$12n$ musicians participate at a music festival. On the first day, they form $3n$ quartets and practice all day.
 
-Es ist eine Katastrophe. Am Ende des Tages beschließen alle Musiker, dass sie nie wieder mit einem Mitglied ihres Quartetts spielen wollen.
+It is a disaster. At the end of the day, all musicians decide they will never again agree to play with any member of their quartet.
 
-Am zweiten Tag bilden sie $4n$-Trios, wobei jeder Musiker seine bisherigen Quartettpartner meidet.
+On the second day, they form $4n$ trios, each musician avoiding his previous quartet partners.
 
-Lasse $f(12n)$ die Anzahl der Möglichkeiten sein, die Trios unter den $12n$ Musikern zu organisieren.
+Let $f(12n)$ be the number of ways to organize the trios amongst the $12n$ musicians.
 
-Du erhältst $f(12) = 576$ und $f(24)\bmod 1\\.000\\.000\.007 = 509\\.089\\.824$.
+You are given $f(12) = 576$ and $f(24)\bmod 1\\,000\\,000\\,007 = 509\\,089\\,824$.
 
-Finde $f(600)\bmod 1\\,000\\,000\\,007$.
+Find $f(600)\bmod 1\\,000\\,000\\,007$.
 
 # --hints--
 
-`musicFestival()` sollte `75780067` zurückgeben.
+`musicFestival()` should return `75780067`.
 
 ```js
 assert.strictEqual(musicFestival(), 75780067);

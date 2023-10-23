@@ -1,6 +1,6 @@
 ---
 id: 587d824b367417b2b2512c48
-title: Використайте Assert.isOK та Assert.isNotOK
+title: Використання Assert.isOK і Assert.isNotOK
 challengeType: 2
 forumTopicId: 301607
 dashedName: use-assert-isok-and-assert-isnotok
@@ -8,15 +8,15 @@ dashedName: use-assert-isok-and-assert-isnotok
 
 # --description--
 
-Нагадуємо, що цей проєкт створюється на основі стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
+Нагадуємо, що цей проєкт створюється на основі наступного стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
-`isOk()` перевіряє істинне значення, а `isNotOk()` перевіряє хибне значення.
+`isOk()` перевіряє правдиве значення, а `isNotOk()` перевіряє хибне значення.
 
-Щоб дізнатися більше про істинні й хибні значення, див. наше завдання <a href="https://www.freecodecamp.org/ukrainian/learn/javascript-algorithms-and-data-structures/basic-algorithm-scripting/falsy-bouncer" target="_blank" rel="noopener noreferrer nofollow">«Викидайло брехні»</a>.
+To learn more about truthy and falsy values, try our <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-algorithm-scripting/falsy-bouncer" target="_blank" rel="noopener noreferrer nofollow">Falsy Bouncer</a> challenge.
 
 # --instructions--
 
-У межах `tests/1_unit-tests.js` під тестом з міткою `#3` в наборі `Basic Assertions` змініть кожний `assert` на `assert.isOk()` або `assert.isNotOk()`, щоб пройти тест (повинен дорівнювати `true`). Не змінюйте аргументи, передані до тверджень.
+У `tests/1_unit-tests.js` тесті з позначкою `#3` у наборі `Basic Assertions` змініть кожне `assert` на `assert.isOk()` або `assert.isNotOk()`, щоб пройти тест (має мати значення `true`). Не змінюйте аргументи, передані до тверджень.
 
 # --hints--
 
@@ -34,7 +34,7 @@ dashedName: use-assert-isok-and-assert-isnotok
   );
 ```
 
-Ви повинні обрати правильний метод для першого твердження: `isOk` або `isNotOk`.
+Потрібно обрати правильний метод для першого твердження – `isOk` у порівнянні з `isNotOk`.
 
 ```js
 (getUserInput) =>
@@ -48,7 +48,7 @@ dashedName: use-assert-isok-and-assert-isnotok
   );
 ```
 
-Ви повинні обрати правильний метод для другого твердження: `isOk` або `isNotOk`.
+Потрібно обрати правильний метод для другого твердження – `isOk` у порівнянні з `isNotOk`.
 
 ```js
 (getUserInput) =>
@@ -62,7 +62,7 @@ dashedName: use-assert-isok-and-assert-isnotok
   );
 ```
 
-Ви повинні обрати правильний метод для третього твердження: `isOk` або `isNotOk`.
+Потрібно обрати правильний метод для третього твердження – `isOk` у порівнянні з `isNotOk`.
 
 ```js
 (getUserInput) =>

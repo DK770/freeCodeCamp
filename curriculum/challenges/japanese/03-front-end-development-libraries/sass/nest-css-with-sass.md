@@ -13,31 +13,31 @@ Sass では CSS ルールのネスト (入れ子) が可能であり、スタイ
 通常、要素にスタイルを設定するには、次のように要素ごとに異なる行でターゲットを記述します。
 
 ```scss
-article {
-  height: 200px;
+nav {
+  background-color: red;
 }
 
-article p {
-  color: white;
+nav ul {
+  list-style: none;
 }
 
-article ul {
-  color: blue;
+nav ul li {
+  display: inline-block;
 }
 ```
 
 大きなプロジェクトでは、CSS ファイルにたくさんの行やルールが記述されます。 次のようにネストしてそれぞれの親要素の中に子のスタイルルールを記述することで、コードが整理しやすくなります。
 
 ```scss
-article {
-  height: 200px;
-
-  p {
-    color: white;
-  }
+nav {
+  background-color: red;
 
   ul {
-    color: blue;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
   }
 }
 

@@ -34,21 +34,25 @@ In this challenge you are going to use `Object.freeze` to prevent mathematical c
 You should not replace the `const` keyword.
 
 ```js
-assert(code.match(/const/g));
+(getUserInput) => assert(getUserInput('index').match(/const/g));
 ```
 
 `MATH_CONSTANTS` should be a constant variable (by using `const`).
 
 ```js
-assert(code.match(/const\s+MATH_CONSTANTS/g));
+(getUserInput) =>
+  assert(getUserInput('index').match(/const\s+MATH_CONSTANTS/g));
 ```
 
 You should not change the original declaration of `MATH_CONSTANTS`.
 
 ```js
-assert(code.match(
-   /const\s+MATH_CONSTANTS\s+=\s+{\s+PI:\s+3.14\s+};/g
-));
+(getUserInput) =>
+  assert(
+    getUserInput('index').match(
+      /const\s+MATH_CONSTANTS\s+=\s+{\s+PI:\s+3.14\s+};/g
+    )
+  );
 ```
 
 `PI` should equal `3.14`.

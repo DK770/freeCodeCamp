@@ -30,7 +30,7 @@ Write a function that takes the initial number of prisoners and `k` as parameter
 
 # --hints--
 
-`josephus` має бути функцією.
+`josephus` повинен бути функцією.
 
 ```js
 assert(typeof josephus == 'function');

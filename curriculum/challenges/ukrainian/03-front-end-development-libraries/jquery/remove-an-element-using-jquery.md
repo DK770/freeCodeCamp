@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aed708826
-title: Видаліть елемент за допомогою jQuery
+title: Видаляйте елемент за допомогою jQuery
 challengeType: 6
 forumTopicId: 18262
 dashedName: remove-an-element-using-jquery
@@ -8,15 +8,15 @@ dashedName: remove-an-element-using-jquery
 
 # --description--
 
-Тепер видалимо елемент HTML зі сторінки за допомогою jQuery.
+Видалимо елемент у форматі HTML із вашої сторінки за допомогою jQuery.
 
-jQuery має функцію під назвою `.remove()`, яка повністю видаляє елемент HTML.
+jQuery має функцію під назвою `.remove()`, яка повністю видалить HTML-елемент
 
-Видаліть елемент `#target4` зі сторінки за допомогою функції `.remove()`.
+Видаліть зі сторінки елемент `#target4` за допомогою функції `.remove()`.
 
 # --hints--
 
-Використайте jQuery, щоб видалити елемент `target4` зі сторінки.
+Ви можете використовувати jQuery, щоб видалити елемент `target4` з вашої сторінки.
 
 ```js
 assert(
@@ -24,7 +24,7 @@ assert(
 );
 ```
 
-Для видалення цього класу використовуйте лише jQuery.
+Використовуйте лише jQuery, щоб видалити цей елемент.
 
 ```js
 assert(

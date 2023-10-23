@@ -1,6 +1,6 @@
 # Impostare freeCodeCamp sul sottosistema Windows per Linux (WSL)
 
-> [!NOTE] Before you follow these instructions make sure your system meets the requirements.
+> [!NOTE] Prima di seguire queste istruzioni assicurati che il sistema soddisfi i requisiti
 > 
 > **WSL 2**: Windows 10 a 64 bit (Versione 2004, Build 19041 o superiore) - disponibile per tutte le distribuzioni tra cui Windows 10 Home.
 > 
@@ -18,7 +18,7 @@ Segui le istruzioni sulla [documentazione ufficiale](https://docs.microsoft.com/
 
    > [!NOTE]
    > 
-   > While you may use other non-Debian-based distributions, they all come with their own 'gotchas' that are beyond the scope of this guide.
+   > Anche se si possono utilizzare altre distribuzioni non basate su debian, hanno tutte i loro trabocchetti e sono al di là della portata di questa guida.
 
 2. Aggiorna le dipendenze per il sistema operativo
 
@@ -44,13 +44,13 @@ git version 2.25.1
 
 ## Installazione di un editor di codice
 
-Consigliamo vivamente di installare [Visual Studio Code](https://code.visualstudio.com) su Windows 10. It has great support for WSL and automatically installs all the necessary extensions on your WSL distribution.
+Consigliamo vivamente di installare [Visual Studio Code](https://code.visualstudio.com) su Windows 10. Ha un grande supporto per WSL e installa automaticamente tutte le estensioni necessarie sulla tua distribuzione WSL.
 
 Essenzialmente, modificherai e memorizzerai il tuo codice su Ubuntu-18.04 con Visual Studio Code installato su Windows.
 
-If you use [IntelliJ Idea](https://www.jetbrains.com/idea/), you may need to update your Node interpreter and npm package manager to what is installed on your WSL distro.
+Se usi [IntelliJ Idea](https://www.jetbrains.com/idea/), potresti aver bisogno di aggiornare il tuo interprete Node e il gestore di pacchetti Npm a quello installato nella tua distribuzione WSL.
 
-You can check these settings by going to Settings > Languages & Frameworks > Node.js and npm.
+Puoi controllare queste impostazioni andando su Settings > Languages & Frameworks > Node.js and NPM.
 
 ## Installazione di Docker Desktop
 
@@ -72,7 +72,7 @@ Una volta che hai configurato Docker Desktop per lavorare con WSL2, segui questi
 
 1. Avvia un nuovo terminale Ubuntu-18.04
 
-2. Pull `MongoDB 4.0.x` from Docker Hub
+2. Scarica `MongoDB 4.0.x` da dockerhub
 
    ```console
    docker pull mongo:4.0
@@ -91,7 +91,7 @@ Una volta che hai configurato Docker Desktop per lavorare con WSL2, segui questi
 
 4. Ora puoi accedere al servizio sia da Windows che da Ubuntu da `mongodb://localhost:27017`.
 
-## Installazione di Node.js e pnpm
+## Installazione di Node.js e npm
 
 Raccomandiamo di installare la release LTS di Node.js con un gestore di versioni di node (node version manager): [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -111,23 +111,23 @@ nvm install 14
 nvm use 12
 ```
 
-Node.js ha in dotazione `npm`, che puoi usare per installare `pnpm`:
+Node.js è impacchetato con `npm`, puoi aggiornare all'ultima versione di `npm` con:
 
 ```console
-npm install -g pnpm
+npm install -g npm@latest
 ```
 
-## Set up freeCodeCamp Locally
+## Imposta freeCodeCamp localmente
 
-Now that you have installed the pre-requisites, follow [our local setup guide](how-to-setup-freecodecamp-locally.md) to clone, install and set up freeCodeCamp locally on your machine.
+Ora che hai installato i pre-requisiti, segui [la nostra guida per settare freeCodeCamp localmente](how-to-setup-freecodecamp-locally.md) per clonare, installare e settare freeCodeCamp sul tuo computer.
 
 > [!WARNING]
 > 
-> Please note, at this time the setup for Cypress tests (and related GUI needs) are a work in progress. Dovresti essere comunque in grado di lavorare sulla maggior parte del codebase.
+> Si prega di notare che, in questo momento, la configurazione per i test Cypress (e le relative esigenze GUI) sono un lavoro in corso. Dovresti essere comunque in grado di lavorare sulla maggior parte del codebase.
 
 ## Link Utili
 
-- [A WSL2 Dev Setup with Ubuntu 20.04, Node.js, MongoDB, VS Code, and Docker](https://hn.mrugesh.dev/wsl2-dev-setup-with-ubuntu-nodejs-mongodb-and-docker) - an article by Mrugesh Mohapatra (Staff Developer at freeCodeCamp.org)
+- [Un setup di WSL2 per lo sviluppo con Ubuntu 20.04, Node.js, MongoDB, VS Code e Docker](https://hn.mrugesh.dev/wsl2-dev-setup-with-ubuntu-nodejs-mongodb-and-docker) - un articolo di Mrugesh Mohapatra (Staff Developer at freeCodeCamp.org)
 - Domande frequenti su:
   - [Sottosistema Windows per Linux](https://docs.microsoft.com/en-us/windows/wsl/faq)
   - [Docker Desktop per Windows](https://docs.docker.com/docker-for-windows/faqs)

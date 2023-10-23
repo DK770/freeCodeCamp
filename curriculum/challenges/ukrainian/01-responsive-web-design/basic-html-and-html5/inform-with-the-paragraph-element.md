@@ -37,7 +37,7 @@ assert($('p').length > 0);
 assert.isTrue(/hello(\s)+paragraph/gi.test($('p').text()));
 ```
 
-Елемент `p` повинен мати кінцевий тег.
+Ваш елемент `p` повинен містити кінцевий теґ.
 
 ```js
 assert(

@@ -1,6 +1,6 @@
 ---
 id: 5ea9997bbec2e9bc47e94dae
-title: Einführung und Einrichtung
+title: Introduction and Setup
 challengeType: 11
 videoId: XeQ7ZKtb998
 bilibiliIds:
@@ -22,7 +22,7 @@ Atom and the atom-python-run extension.
 
 ---
 
-VSCode und Microsofts Python-Erweiterung.
+VSCode and Microsoft's Python extension.
 
 ---
 

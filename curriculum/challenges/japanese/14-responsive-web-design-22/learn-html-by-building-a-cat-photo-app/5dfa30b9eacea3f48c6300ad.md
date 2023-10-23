@@ -7,13 +7,11 @@ dashedName: step-15
 
 # --description--
 
-以前のステップでは、アンカー要素を使用してテキストをリンクに変換しました。 他の種類のコンテンツも、アンカータグで囲むことでリンクにすることができます。
-
 画像を適切な要素のタグで囲んで、リンクに変換してください。 アンカーの `href` 属性値には `https://freecatphotoapp.com` を使用してください。
 
 # --hints--
 
-`src` の値が `https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg` に設定された `img` 要素が必要です。 誤って削除された可能性があります。
+`img` 要素および `src` の値 `https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg` が必要です。 誤って削除された可能性があります。
 
 ```js
 assert(
@@ -29,7 +27,7 @@ assert(
 assert(document.querySelectorAll('a').length >= 2);
 ```
 
-You are missing a closing (`a`) tag after the image.
+アンカー (`a`) の開始タグは 1 つだけ追加してください。 余分なものは削除してください。
 
 ```js
 assert(document.querySelectorAll('a').length === 2);
@@ -79,7 +77,7 @@ assert(document.querySelector('img').parentNode.nodeName === 'A');
       <h1>CatPhotoApp</h1>
       <h2>Cat Photos</h2>
       <!-- TODO: Add link to cat photos -->
-      <p>See more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a> in our gallery.</p>
+      <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
 --fcc-editable-region--
       <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
 --fcc-editable-region--

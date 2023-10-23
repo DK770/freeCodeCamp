@@ -1,6 +1,6 @@
 ---
 id: 5a24c314108439a4d403617c
-title: Використайте метод життєвого циклу componentWillMount
+title: Використання методу життєвого циклу componentWillMount
 challengeType: 6
 forumTopicId: 301423
 dashedName: use-the-lifecycle-method-componentwillmount
@@ -8,17 +8,17 @@ dashedName: use-the-lifecycle-method-componentwillmount
 
 # --description--
 
-Компоненти React мають декілька спеціальних методів, які надають можливість виконувати дії у визначений час їхнього життєвого циклу. Вони називаються методами життєвого циклу, або перехоплювачами життєвого циклу, і дозволяють виловити компонент у визначений час. Це може бути перед відтворенням, оновленням, отриманням пропсу, від’єднанням тощо. Ось список декількох головних методів життєвого циклу: `componentWillMount()` `componentDidMount()` `shouldComponentUpdate()` `componentDidUpdate()` `componentWillUnmount()`. В наступнних уроках ми розглянемо деякі основні випадки їх використання.
+Компоненти у React мають декілька спеціальних методів, що забезпечують можливість виконувати дії у визначений час у їхньому життєвому циклі. Вони називаються методами життєвого циклу, чи перехоплювачами життєвого циклу і дозволяють виловити компонент у визначений час. Це може бути до того, як вони будуть показані, перш ніж вони оновляться, перш ніж вони отримають реквізити, перш ніж від'єднати і так далі. Ось список декількох методів життєвого циклу: `componentWillMount()` `componentDidMount()` `shouldComponentUpdate()` `componentDidUpdate()` `componentWillUnmount()`. Протягом наступних уроків розглянемо деякі основні випадки використання даних методів.
 
-**Примітка:** метод життєвого циклу `componentWillMount` буде нерекомендований у майбутній версії 16.X і видалений з версії 17. Дізнайтесь більше у цій <a href="https://www.freecodecamp.org/news/how-to-safely-use-reacts-life-cycles-with-fiber-s-async-rendering-fd4469ebbd8f/" target="_blank" rel="noopener noreferrer nofollow">публікації</a>
+**Примітка:** метод життєвого циклу `componentWillMount` буде виключено з майбутньої версії 16.X і видалено з версії 17. Дізнайтесь більше у цій <a href="https://www.freecodecamp.org/news/how-to-safely-use-reacts-life-cycles-with-fiber-s-async-rendering-fd4469ebbd8f/" target="_blank" rel="noopener noreferrer nofollow">публікації</a>
 
 # --instructions--
 
-Метод `componentWillMount()` викликається перед методом `render()`, коли компонент підключений до DOM. Напишіть щось на консолі в межах `componentWillMount()` (можливо, вам знадобиться відкрити консоль браузера, щоб побачити вивід).
+Метод `componentWillMount()` викликається перед методом `render()`, коли компонент підключений до DOM. Запишіть щось в консоль в межах `componentWillMount()`; щоб побачити результат - відкрийте консоль вашого браузера.
 
 # --hints--
 
-`MyComponent` має відтворити елемент `div`.
+`MyComponent` має відобразити `div` елемент.
 
 ```js
 assert(
@@ -29,7 +29,7 @@ assert(
 );
 ```
 
-`console.log` потрібно викликати в `componentWillMount`.
+`console.log` слід викликати у `componentWillMount`.
 
 ```js
 assert(

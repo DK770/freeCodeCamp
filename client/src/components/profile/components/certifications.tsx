@@ -1,12 +1,13 @@
-import React from 'react';
+import { Col, Row } from '@freecodecamp/react-bootstrap';
+import { curry } from 'lodash-es';
+import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { Col, Row } from '@freecodecamp/ui';
 
 import { certificatesByNameSelector } from '../../../redux/selectors';
 import type { CurrentCert } from '../../../redux/prop-types';
-import { FullWidthRow, Link, Spacer } from '../../helpers';
+import { ButtonSpacer, FullWidthRow, Link, Spacer } from '../../helpers';
 import './certifications.css';
 
 const mapStateToProps = (
@@ -39,15 +40,9 @@ interface CertificationProps {
   username: string;
 }
 
-interface CertButtonProps {
-  cert: CurrentCert;
-  username: string;
-}
-
-function CertButton({ username, cert }: CertButtonProps): JSX.Element {
-  const { t } = useTranslation();
-  return (
-    <>
+function renderCertShow(username: string, cert: CurrentCert): React.ReactNode {
+  return cert.show ? (
+    <Fragment key={cert.title}>
       <Row>
         <Col className='certifications' sm={10} smPush={1}>
           <Link
@@ -55,15 +50,13 @@ function CertButton({ username, cert }: CertButtonProps): JSX.Element {
             to={`/certification/${username}/${cert.certSlug}`}
             data-cy='claimed-certification'
           >
-            {t('buttons.view-cert-title', {
-              certTitle: t(`certification.title.${cert.certSlug}`)
-            })}
+            View {cert.title}
           </Link>
         </Col>
       </Row>
-      <Spacer size='small' />
-    </>
-  );
+      <ButtonSpacer />
+    </Fragment>
+  ) : null;
 }
 
 function Certificates({
@@ -74,16 +67,13 @@ function Certificates({
   username
 }: CertificationProps): JSX.Element {
   const { t } = useTranslation();
+  const renderCertShowWithUsername = curry(renderCertShow)(username);
   return (
     <FullWidthRow className='certifications'>
       <h2 className='text-center'>{t('profile.fcc-certs')}</h2>
       <br />
       {hasModernCert && currentCerts ? (
-        currentCerts
-          .filter(({ show }) => show)
-          .map(cert => (
-            <CertButton key={cert.certSlug} cert={cert} username={username} />
-          ))
+        currentCerts.map(renderCertShowWithUsername)
       ) : (
         <p className='text-center'>{t('profile.no-certs')}</p>
       )}
@@ -92,17 +82,8 @@ function Certificates({
           <br />
           <h3 className='text-center'>{t('settings.headings.legacy-certs')}</h3>
           <br />
-          {legacyCerts &&
-            legacyCerts
-              .filter(({ show }) => show)
-              .map(cert => (
-                <CertButton
-                  key={cert.certSlug}
-                  cert={cert}
-                  username={username}
-                />
-              ))}
-          <Spacer size='large' />
+          {legacyCerts && legacyCerts.map(renderCertShowWithUsername)}
+          <Spacer size={2} />
         </div>
       ) : null}
       <hr />

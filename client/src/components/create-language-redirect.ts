@@ -13,10 +13,12 @@ const createLanguageRedirect = ({
     .filter(item => (item !== clientLocale && item !== lang ? item : ''))
     .join('/');
 
-  const hostTail = window?.location?.host;
-  const nextLocation = `${window?.location?.protocol}//${hostTail}`;
+  const hostTail = window?.location?.host.split('.').slice(1).join('.');
+  const nextClient = lang !== 'chinese' ? 'www' : 'chinese';
+  const nextLocation = `${window?.location?.protocol}//${nextClient}.${hostTail}`;
 
-  if (lang === 'english') return `${nextLocation}/${path}`;
+  if (lang === 'english' || lang === 'chinese')
+    return `${nextLocation}/${path}`;
 
   return `${nextLocation}/${lang}/${path}`;
 };

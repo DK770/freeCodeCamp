@@ -592,13 +592,16 @@ describe('user stats', () => {
     });
 
     it('resolves a user for a given id', done => {
-      expect.assertions(4);
+      expect.assertions(7);
       getUserById(mockUserID, mockApp.models.User)
         .then(user => {
           expect(user).toEqual(mockUser);
 
           expect(user).toHaveProperty('progressTimestamps');
           expect(user).toHaveProperty('completedChallengeCount');
+          expect(user).toHaveProperty('completedProjectCount');
+          expect(user).toHaveProperty('completedCertCount');
+          expect(user).toHaveProperty('completedLegacyCertCount');
           expect(user).toHaveProperty('completedChallenges');
         })
         .then(done)

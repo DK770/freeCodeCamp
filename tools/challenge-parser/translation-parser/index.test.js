@@ -32,12 +32,36 @@ describe('translation parser', () => {
         lang: 'chinese'
       };
       const actual = translateGeneric(
-        { text: seed },
+        { text: seed, commentCounts: new Map() },
         config,
         '((?<!https?:)//\\s*)',
         '(\\s*$)'
       );
       expect(actual.text).toBe(transSeed);
+    });
+    it('returns an object containing a count of the replaced comments', () => {
+      expect.assertions(1);
+      const seed = `//  Add your code below this line
+      // Add your code above this line
+      // Add your code below this line
+      `;
+      const expectedCommentCounts = new Map();
+      expectedCommentCounts
+        .set('(Chinese) Add your code below this line (Chinese)', 2)
+        .set('(Chinese) Add your code above this line (Chinese)', 1);
+      const knownComments = Object.keys(SIMPLE_TRANSLATION);
+      const config = {
+        knownComments,
+        dict: SIMPLE_TRANSLATION,
+        lang: 'chinese'
+      };
+      const actual = translateGeneric(
+        { text: seed, commentCounts: new Map() },
+        config,
+        '((?<!https?:)//\\s*)',
+        '(\\s*$)'
+      );
+      expect(actual.commentCounts).toEqual(expectedCommentCounts);
     });
   });
 
@@ -170,9 +194,11 @@ describe('translation parser', () => {
         /* (Chinese) Add your code below this line (Chinese) */
         /* (Chinese) Add your code below this line (Chinese) */
       </style>`;
+      const commentCounts = new Map();
+      commentCounts.set('(Chinese) Add your code below this line (Chinese)', 2);
       expect(
         translateComments(seed, 'chinese', SIMPLE_TRANSLATION, 'html')
-      ).toEqual({ text: transSeed });
+      ).toEqual({ text: transSeed, commentCounts });
     });
 
     it('ignores css comments outside style tags', () => {

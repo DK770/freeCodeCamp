@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aec908848
-title: Створіть стіни Bootstrap
+title: Створення Bootstrap Wells
 challengeType: 0
 forumTopicId: 16825
 dashedName: create-bootstrap-wells
@@ -8,25 +8,25 @@ dashedName: create-bootstrap-wells
 
 # --description--
 
-Bootstrap має клас під назвою `well`, який може створювати візуальний ефект глибини для стовпців.
+Bootstrap має клас, що називається `well`, який може створювати візуальний ефект глибини для ваших стовпців.
 
-Вкладіть один елемент `div` з класом `well` в межах кожного елемента `div` `col-xs-6`.
+Вкладіть один елемент `div` класу `well` у кожен із елементів `col-xs-6` `div`.
 
 # --hints--
 
-Додайте елемент `div` з класом `well` всередині кожного елемента `div` з класом `col-xs-6`
+Необхідно додати елемент `div` класу `well` у середину кожного із елементів `div` класу `col-xs-6`
 
 ```js
 assert($('div.col-xs-6').not(':has(>div.well)').length < 1);
 ```
 
-Обидва елементи `div` з класом `col-xs-6` мають бути вкладеними в елементі `div` з класом `row`.
+Обидва елементи `div` класу `col-xs-6` повинні бути вкладені у елемент `div` із класом `row`.
 
 ```js
 assert($('div.row > div.col-xs-6').length > 1);
 ```
 
-Усі елементи `div` повинні мати кінцеві теги.
+Усі елементи `div` повинні містити кінцеві теґи.
 
 ```js
 assert(

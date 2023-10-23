@@ -1,6 +1,6 @@
 ---
 id: 56bbb991ad1ed5201cd392ca
-title: Доступ до даних масиву за допомогою індексів
+title: Доступ до елементу в масиві за допомогою індексу
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cBZQbTz'
 forumTopicId: 16158
@@ -11,7 +11,7 @@ dashedName: access-array-data-with-indexes
 
 Ми можемо отримати доступ до даних всередині масивів за допомогою <dfn>індексів</dfn>.
 
-Індекс масивів, так як і в рядках, написаний у дужковій нотації. Однак вони вказують не символ, а певний запис у масиві. Як і рядки, масиви використовують індексування <dfn>на основі нуля</dfn>, тому перший елемент у масиві має індекс `0`.
+Індекс масивів, так як і в рядках, вказується у квадратних дужках ([]). Однак індекс в масивах використовується для отримання доступу до певного елемента в масиві. Як і рядки, масиви використовують індексування <dfn>на основі нуля</dfn>, тому перший елемент у масиві має індекс `0`.
 
 <br>
 
@@ -23,15 +23,15 @@ console.log(array[0]);
 const data = array[1];
 ```
 
-`console.log(array[0])` друкує `50`, і `data` має значення `60`.
+The `console.log(array[0])` prints `50`, and `data` has the value `60`.
 
 # --instructions--
 
-Створіть змінну під назвою `myData` і встановіть її рівною першому значенню `myArray`, використовуючи дужкову нотацію.
+Create a variable called `myData` and set it to equal the first value of `myArray` using bracket notation.
 
 # --hints--
 
-Змінна `myData` повинна дорівнювати першому значенню `myArray`.
+The variable `myData` should equal the first value of `myArray`.
 
 ```js
 assert(
@@ -49,7 +49,7 @@ assert(
 );
 ```
 
-До даних у змінній `myArray` можна отримати доступ за допомогою дужкової нотації.
+The data in variable `myArray` should be accessed using bracket notation.
 
 ```js
 assert(

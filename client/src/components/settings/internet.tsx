@@ -7,8 +7,7 @@ import {
   ControlLabel
 } from '@freecodecamp/react-bootstrap';
 import React, { Component } from 'react';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import isURL from 'validator/lib/isURL';
 
 import { maybeUrlRE } from '../../utils';
@@ -33,10 +32,6 @@ type InternetState = {
   formValues: Socials;
   originalValues: Socials;
 };
-
-function Info({ message }: { message: string }) {
-  return message ? <HelpBlock>{message}</HelpBlock> : null;
-}
 
 class InternetSettings extends Component<InternetProps, InternetState> {
   static displayName: string;
@@ -71,6 +66,7 @@ class InternetSettings extends Component<InternetProps, InternetState> {
       twitter !== originalValues.twitter ||
       website !== originalValues.website
     ) {
+      // eslint-disable-next-line react/no-did-update-set-state
       return this.setState({
         originalValues: { githubProfile, linkedin, twitter, website }
       });
@@ -152,6 +148,9 @@ class InternetSettings extends Component<InternetProps, InternetState> {
     return null;
   };
 
+  renderHelpBlock = (validationMessage: string) =>
+    validationMessage ? <HelpBlock>{validationMessage}</HelpBlock> : null;
+
   renderCheck = (url: string, validation: string | null) =>
     url && validation === 'success' ? (
       <FormControl.Feedback>
@@ -180,78 +179,71 @@ class InternetSettings extends Component<InternetProps, InternetState> {
 
     const { state: websiteValidation, message: websiteValidationMessage } =
       this.getValidationStateFor(website);
-    const isDisabled = this.isFormPristine() || !this.isFormValid();
+
     return (
       <>
         <SectionHeader>{t('settings.headings.internet')}</SectionHeader>
         <FullWidthRow>
           <form id='internet-presence' onSubmit={this.handleSubmit}>
-            <div role='group' aria-label={t('settings.headings.internet')}>
-              <FormGroup
-                controlId='internet-github'
-                validationState={githubProfileValidation}
-              >
-                <ControlLabel>GitHub</ControlLabel>
-                <FormControl
-                  onChange={this.createHandleChange('githubProfile')}
-                  placeholder='https://github.com/user-name'
-                  type='url'
-                  value={githubProfile}
-                />
-                {this.renderCheck(githubProfile, githubProfileValidation)}
-                <Info message={githubProfileValidationMessage} />
-              </FormGroup>
-              <FormGroup
-                controlId='internet-linkedin'
-                validationState={linkedinValidation}
-              >
-                <ControlLabel>LinkedIn</ControlLabel>
-                <FormControl
-                  onChange={this.createHandleChange('linkedin')}
-                  placeholder='https://www.linkedin.com/in/user-name'
-                  type='url'
-                  value={linkedin}
-                />
-                {this.renderCheck(linkedin, linkedinValidation)}
-                <Info message={linkedinValidationMessage} />
-              </FormGroup>
-              <FormGroup
-                controlId='internet-picture'
-                validationState={twitterValidation}
-              >
-                <ControlLabel>Twitter</ControlLabel>
-                <FormControl
-                  onChange={this.createHandleChange('twitter')}
-                  placeholder='https://twitter.com/user-name'
-                  type='url'
-                  value={twitter}
-                />
-                {this.renderCheck(twitter, twitterValidation)}
-                <Info message={twitterValidationMessage} />
-              </FormGroup>
-              <FormGroup
-                controlId='internet-website'
-                validationState={websiteValidation}
-              >
-                <ControlLabel>{t('settings.labels.personal')}</ControlLabel>
-                <FormControl
-                  onChange={this.createHandleChange('website')}
-                  placeholder='https://example.com'
-                  type='url'
-                  value={website}
-                />
-                {this.renderCheck(website, websiteValidation)}
-                <Info message={websiteValidationMessage} />
-              </FormGroup>
-            </div>
-            <BlockSaveButton
-              aria-disabled={isDisabled}
-              bgSize='lg'
-              {...(isDisabled && { tabIndex: -1 })}
+            <FormGroup
+              controlId='internet-github'
+              validationState={githubProfileValidation}
             >
-              {t('buttons.save')}{' '}
-              <span className='sr-only'>{t('settings.headings.internet')}</span>
-            </BlockSaveButton>
+              <ControlLabel>GitHub</ControlLabel>
+              <FormControl
+                onChange={this.createHandleChange('githubProfile')}
+                placeholder='https://github.com/user-name'
+                type='url'
+                value={githubProfile}
+              />
+              {this.renderCheck(githubProfile, githubProfileValidation)}
+              {this.renderHelpBlock(githubProfileValidationMessage)}
+            </FormGroup>
+            <FormGroup
+              controlId='internet-linkedin'
+              validationState={linkedinValidation}
+            >
+              <ControlLabel>LinkedIn</ControlLabel>
+              <FormControl
+                onChange={this.createHandleChange('linkedin')}
+                placeholder='https://www.linkedin.com/in/user-name'
+                type='url'
+                value={linkedin}
+              />
+              {this.renderCheck(linkedin, linkedinValidation)}
+              {this.renderHelpBlock(linkedinValidationMessage)}
+            </FormGroup>
+            <FormGroup
+              controlId='internet-picture'
+              validationState={twitterValidation}
+            >
+              <ControlLabel>Twitter</ControlLabel>
+              <FormControl
+                onChange={this.createHandleChange('twitter')}
+                placeholder='https://twitter.com/user-name'
+                type='url'
+                value={twitter}
+              />
+              {this.renderCheck(twitter, twitterValidation)}
+              {this.renderHelpBlock(twitterValidationMessage)}
+            </FormGroup>
+            <FormGroup
+              controlId='internet-website'
+              validationState={websiteValidation}
+            >
+              <ControlLabel>{t('settings.labels.personal')}</ControlLabel>
+              <FormControl
+                onChange={this.createHandleChange('website')}
+                placeholder='https://example.com'
+                type='url'
+                value={website}
+              />
+              {this.renderCheck(website, websiteValidation)}
+              {this.renderHelpBlock(websiteValidationMessage)}
+            </FormGroup>
+            <BlockSaveButton
+              disabled={this.isFormPristine() || !this.isFormValid()}
+            />
           </form>
         </FullWidthRow>
       </>

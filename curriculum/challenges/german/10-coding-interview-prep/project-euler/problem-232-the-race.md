@@ -8,23 +8,23 @@ dashedName: problem-232-the-race
 
 # --description--
 
-Zwei Spieler teilen sich eine unparteiische Münze und spielen abwechselnd "The Race".
+Two players share an unbiased coin and take it in turns to play "The Race".
 
-Wenn Spieler 1 an der Reihe ist, wirft er die Münze einmal: Wenn sie Kopf zeigt, erhält er einen Punkt; wenn sie Zahl zeigt, erhält er keinen Punkt.
+On Player 1's turn, he tosses the coin once: if it comes up Heads, he scores one point; if it comes up Tails, he scores nothing.
 
-Wenn Spieler 2 an der Reihe ist, wählt er eine positive ganze Zahl $T$ und wirft die Münze $T$ Mal: Wenn sie immer Kopf zeigt, erhält er $2^{T - 1}$ Punkte; andernfalls erhält er keine Punkte.
+On Player 2's turn, she chooses a positive integer $T$ and tosses the coin $T$ times: if it comes up all Heads, she scores $2^{T - 1}$ points; otherwise, she scores nothing.
 
-Spieler 1 fängt an. Der Gewinner ist der erste, der 100 oder mehr Punkte erreicht.
+Player 1 goes first. The winner is the first to 100 or more points.
 
-In jedem Zug wählt Spieler 2 die Anzahl $T$ der Münzwürfe, die seine Gewinnwahrscheinlichkeit maximiert.
+On each turn Player 2 selects the number, $T$, of coin tosses that maximises the probability of her winning.
 
-Wie hoch ist die Wahrscheinlichkeit, dass Spieler 2 gewinnt?
+What is the probability that Player 2 wins?
 
-Gib deine Antwort auf acht Dezimalstellen gerundet in der Form 0.abcdefgh an.
+Give your answer rounded to eight decimal places in the form 0.abcdefgh .
 
 # --hints--
 
-`theRace()` sollte `0.83648556` zurückgeben.
+`theRace()` should return `0.83648556`.
 
 ```js
 assert.strictEqual(theRace(), 0.83648556);

@@ -8,24 +8,25 @@ dashedName: testing-objects-for-properties
 
 # --description--
 
-Um zu prüfen, ob eine Eigenschaft eines bestimmten Objekts existiert oder nicht, kannst du die Methode `.hasOwnProperty()` verwenden. `someObject.hasOwnProperty(someProperty)` gibt `true` oder `false` zurück, je nachdem, ob die Eigenschaft auf dem Objekt gefunden wird oder nicht.
+Manchmal ist es nützlich zu prüfen, ob die Eigenschaft eines bestimmten Objekts existiert oder nicht. Wir können die Methode `.hasOwnProperty(propname)` von Objekten verwenden, um festzustellen, ob das Objekt den angegebenen Eigenschaftsnamen enthält. `.hasOwnProperty()` gibt `true` oder `false` zurück, wenn die Eigenschaft gefunden wird oder nicht.
 
 **Beispiel**
 
 ```js
-function checkForProperty(object, property) {
-  return object.hasOwnProperty(property);
-}
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
 
-checkForProperty({ top: 'hat', bottom: 'pants' }, 'top'); // true
-checkForProperty({ top: 'hat', bottom: 'pants' }, 'middle'); // false
+myObj.hasOwnProperty("top");
+myObj.hasOwnProperty("middle");
 ```
 
-Der erste `checkForProperty`-Funktionsaufruf gibt `true` zurück, während der zweite `false` zurückgibt.
+Die erste `hasOwnProperty` gibt `true` zurück, während die zweite `false` zurückgibt.
 
 # --instructions--
 
-Ändere die Funktion `checkObj` so, dass sie prüft, ob das Objekt, das an den Funktionsparameter `obj` übergeben wurde, die spezifische Eigenschaft enthält, die an den Funktionsparameter `checkProp` übergeben wurde. Wenn die an `checkProp` übergebene Eigenschaft auf `obj` gefunden wird, wird der Wert dieser Eigenschaft zurückgegeben. Wenn nicht, wird `Not Found` zurückgegeben.
+Ändere die Funktion `checkObj` so, dass sie prüft, ob ein an die Funktion übergebenes Objekt (`obj`) eine bestimmte Eigenschaft enthält (`checkProp`). Wenn die Eigenschaft gefunden wird, wird der Wert der Eigenschaft zurückgegeben. Wenn nicht, wird `"Not Found"` zurückgegeben.
 
 # --hints--
 

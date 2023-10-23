@@ -1,6 +1,6 @@
 ---
 id: 587d7dae367417b2b2512b7a
-title: Перевірка конструктора об’єкта за допомогою instanceof
+title: Перевірка конструктора об'єкта за допомогою instanceof
 challengeType: 1
 forumTopicId: 301337
 dashedName: verify-an-objects-constructor-with-instanceof
@@ -8,7 +8,7 @@ dashedName: verify-an-objects-constructor-with-instanceof
 
 # --description--
 
-Щоразу, коли функція-конструктор створює новий об’єкт, він стає <dfn>екземпляром</dfn> конструктора. JavaScript надає зручний спосіб підтвердження за допомогою оператора `instanceof`. `instanceof` дозволяє порівняти об’єкт з конструктором та повернути `true` або `false` залежно від того, чи був об’єкт створений за допомогою конструктора. Наприклад:
+Щоразу, коли конструктор функцій створює новий об'єкт, він стає <dfn>instance</dfn> для його конструктора. JavaScript є найзручнішим засобом підтвердження оператору `instanceof`. `instanceof` надає змогу порівняти об'єкт із конструктором, повернути `true` або `false` залежно від того, чи був об'єкт створений за допомогою конструктору. Наприклад:
 
 ```js
 let Bird = function(name, color) {
@@ -22,9 +22,9 @@ let crow = new Bird("Alexis", "black");
 crow instanceof Bird;
 ```
 
-Цей метод `instanceof` поверне `true`.
+Цей метод — `instanceof` — має повернути `true`.
 
-Якщо об’єкт створено без використання конструктора, `instanceof` підтвердить, що об’єкт не є екземпляром цього конструктора:
+Якщо об'єкт створено без використання конструктору, `instanceof` підтвердить це:
 
 ```js
 let canary = {
@@ -36,21 +36,21 @@ let canary = {
 canary instanceof Bird;
 ```
 
-Цей метод `instanceof` поверне `false`.
+Цей метод — `instanceof` — має повернути `false`.
 
 # --instructions--
 
-Створіть новий екземпляр конструктора `House`, назвавши його `myHouse` та передавши кількість спалень. Потім використайте `instanceof`, щоб підтвердити, що це екземпляр `House`.
+Створіть нову частину конструктору `House`, викличте її `myHouse` й передайте кількість спалень. Потім використайте `instanceof`, щоб підтвердити, що це є частиною `House`.
 
 # --hints--
 
-`myHouse` повинен мати атрибут `numBedrooms` зі значенням числа.
+`myHouse` має мати атрибути `numBedrooms`, виражені числом.
 
 ```js
 assert(typeof myHouse.numBedrooms === 'number');
 ```
 
-Ви повинні перевірити, що `myHouse` є екземпляром `House`, використавши оператор `instanceof`.
+Ви повинні перевірити, що `myHouse` є частиною `House`, за допомогою оператора `instanceof`.
 
 ```js
 assert(/myHouse\s*instanceof\s*House/.test(code));

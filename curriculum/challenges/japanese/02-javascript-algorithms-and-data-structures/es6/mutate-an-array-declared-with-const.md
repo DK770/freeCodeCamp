@@ -36,21 +36,24 @@ console.log(s);
 `const` キーワードを置き換えないでください。
 
 ```js
-assert(code.match(/const/g));
+(getUserInput) => assert(getUserInput('index').match(/const/g));
 ```
 
 `s` は (`const` を使用して宣言した) 定数変数である必要があります。
 
 ```js
-assert(code.match(/const\s+s/g));
+(getUserInput) => assert(getUserInput('index').match(/const\s+s/g));
 ```
 
 元の配列宣言を変更しないでください。
 
 ```js
-assert(code.match(
-/const\s+s\s*=\s*\[\s*5\s*,\s*7\s*,\s*2\s*\]\s*;?/g
-));
+(getUserInput) =>
+  assert(
+    getUserInput('index').match(
+      /const\s+s\s*=\s*\[\s*5\s*,\s*7\s*,\s*2\s*\]\s*;?/g
+    )
+  );
 ```
 
 `s` が `[2, 5, 7]` と等しくなるようにする必要があります。

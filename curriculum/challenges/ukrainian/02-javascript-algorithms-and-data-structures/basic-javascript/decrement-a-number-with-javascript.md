@@ -1,6 +1,6 @@
 ---
 id: 56533eb9ac21ba0edf2244ad
-title: Декремент числа з JavaScript
+title: Зменшення числа за допомогою JavaScript
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cM2KeS2'
 forumTopicId: 17558
@@ -9,51 +9,51 @@ dashedName: decrement-a-number-with-javascript
 
 # --description--
 
-Ви можете легко <dfn>зменшити</dfn> або відняти одиницю від змінної за допомогою оператора `--`.
+Ви можете легко <dfn>decrement</dfn> або зменшити змінну на одиницю за допомогою оператора `--`.
 
 ```js
 i--;
 ```
 
-те й саме, що
+дорівнює
 
 ```js
 i = i - 1;
 ```
 
-**Примітка:** весь рядок стає `i--;`, усуваючи потребу в знаку рівності.
+**Примітка:** Весь рядок стає `i--;`, усуваючи потребу в знаку рівності.
 
 # --instructions--
 
-Змініть код, щоб використати оператор `--` на `myVar`.
+Змініть код, щоб користуватися оператором `--` у `myVar`.
 
 # --hints--
 
-`myVar` має дорівнювати `10`.
+`myVar` повинен дорівнювати `10`.
 
 ```js
 assert(myVar === 10);
 ```
 
-`myVar = myVar - 1;` потрібно змінити.
+`myVar = myVar - 1;` слід змінити.
 
 ```js
 assert(!code.match(/myVar\s*=\s*myVar\s*[-]\s*1.*?;?/));
 ```
 
-Ви не повинні присвоювати `10` до `myVar`.
+You should not assign `myVar` with `10`.
 
 ```js
 assert(!code.match(/myVar\s*=\s*10.*?;?/));
 ```
 
-Ви повинні використати оператор `--` на `myVar`.
+You should use the `--` operator on `myVar`.
 
 ```js
 assert(/[-]{2}\s*myVar|myVar\s*[-]{2}/.test(code));
 ```
 
-Не змінюйте код над зазначеним коментарем.
+You should not change code above the specified comment.
 
 ```js
 assert(/let myVar = 11;/.test(code));

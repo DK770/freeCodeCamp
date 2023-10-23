@@ -48,25 +48,25 @@ and using `|` as a separator and `^` as escape character, your function should o
 
 # --hints--
 
-`tokenize` sollte eine Funktion sein.
+`tokenize` should be a function.
 
 ```js
 assert(typeof tokenize === 'function');
 ```
 
-`tokenize` sollte ein Array zurückgeben.
+`tokenize` should return an array.
 
 ```js
 assert(typeof tokenize('a', 'b', 'c') === 'object');
 ```
 
-`tokenize('one^|uno||three^^^^|four^^^|^cuatro|', '|', '^')` sollte `['one|uno', '', 'three^^', 'four^|cuatro', '']` zurückgeben
+`tokenize('one^|uno||three^^^^|four^^^|^cuatro|', '|', '^')` should return `['one|uno', '', 'three^^', 'four^|cuatro', '']`
 
 ```js
 assert.deepEqual(tokenize(testStr1, '|', '^'), res1);
 ```
 
-`tokenize('a@&bcd&ef&&@@hi', '&', '@')` sollte `['a&bcd', 'ef', '', '@hi']` zurückgeben
+`tokenize('a@&bcd&ef&&@@hi', '&', '@')` should return `['a&bcd', 'ef', '', '@hi']`
 
 ```js
 assert.deepEqual(tokenize(testStr2, '&', '@'), res2);

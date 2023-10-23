@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Object Oriented Programming Challenges
-block: object-oriented-programming
-superBlock: javascript-algorithms-and-data-structures
+block: Object Oriented Programming
+superBlock: JavaScript Algorithms and Data Structures
 ---
 
 ## Introduction to the Object Oriented Programming Challenges

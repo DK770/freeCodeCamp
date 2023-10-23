@@ -9,9 +9,14 @@ dashedName: escape-sequences-in-strings
 
 # --description--
 
-Anführungszeichen sind nicht die einzigen Zeichen, die innerhalb eines Strings <dfn>ausgelassen</dfn> werden können. Escape-Sequenzen ermöglichen es dir, Zeichen zu verwenden, die du sonst nicht in einem String verwenden könntest.
+Anführungszeichen sind nicht die einzigen Zeichen, die innerhalb eines Strings <dfn>ausgelassen</dfn> werden können. Es gibt zwei Gründe für die Verwendung von Escape-Zeichen:
 
-<table><thead><tr><th>Code</th><th>Ausgabe</th></tr></thead><tbody><tr><td><code>\'</code></td><td>Einzelnes Anführungszeichen</td></tr><tr><td><code>\"</code></td><td>Doppeltes Anführungszeichen</td></tr><tr><td><code>\\</code></td><td>Backslash</td></tr><tr><td><code>\n</code></td><td>Zeilenumbruch</td></tr><tr><td><code>\t</code></td><td>Tabulator</td></tr><tr><td><code>\r</code></td><td>Wagenrücklauf (Carriage Return)</td></tr><tr><td><code>\b</code></td><td>Backspace</td></tr><tr><td><code>\f</code></td><td>Seitenvorschub (Formfeed)</td></tr></tbody></table>
+1.  To allow you to use characters you may not otherwise be able to type out, such as a newline.
+2.  Damit kannst du mehrere Anführungszeichen in einem String darstellen, ohne dass JavaScript fehlinterpretiert, was du meinst.
+
+Das haben wir in der letzten Herausforderung gelernt.
+
+<table class='table table-striped'><thead><tr><th>Code</th><th>Ausgabe</th></tr></thead><tbody><tr><td><code>\'</code></td><td>einzelnes Anführungszeichen</td></tr><tr><td><code>\"</code></td><td>doppeltes Anführungszeichen</td></tr><tr><td><code>\\</code></td><td>Backslash</td></tr><tr><td><code>\n</code></td><td>Zeilenumbruch</td></tr><tr><td><code>\t</code></td><td>tab</td></tr><tr><td><code>\r</code></td><td>carriage return</td></tr><tr><td><code>\b</code></td><td>Backspace</td></tr><tr><td><code>\f</code></td><td>Seitenvorschub (Formfeed)</td></tr></tbody></table>
 
 *Bitte beachte, dass das Backslash selbst mit einem Escape-Zeichen versehen werden muss, um als Backslash angezeigt zu werden.*
 
@@ -19,11 +24,7 @@ Anführungszeichen sind nicht die einzigen Zeichen, die innerhalb eines Strings 
 
 Weise die folgenden drei Textzeilen der einzelnen Variablen `myStr` mit Hilfe von Escape-Sequenzen zu.
 
-<pre>
-FirstLine
-  \SecondLine
-ThirdLine
-</pre>
+<blockquote>FirstLine<br>    \SecondLine<br>ThirdLine</blockquote>
 
 Um Sonderzeichen korrekt einzufügen, musst du Escape-Sequenzen verwenden. Du musst auch die Abstände so einhalten, wie sie oben aussehen, ohne Leerzeichen zwischen Escape-Sequenzen oder Wörtern.
 
@@ -45,31 +46,31 @@ assert(
 );
 ```
 
-`FirstLine` sollte von einem Zeilenumbruchzeichen `\n` gefolgt werden
+`FirstLine` sollte von einem Zeilenumbruchzeichen `\n` gefolgt werden.
 
 ```js
 assert(/FirstLine\n/.test(myStr));
 ```
 
-`myStr` sollte ein Tab-Zeichen `\t` enthalten, das auf ein Zeilenumbruchzeichen folgt
+`myStr` sollte ein Tabulatorzeichen `\t` enthalten, das auf ein Zeilenumbruchzeichen folgt
 
 ```js
 assert(/\n\t/.test(myStr));
 ```
 
-`SecondLine` sollte das Backslash-Zeichen `\` vorangestellt werden
+`SecondLine` sollte das Backslash-Zeichen `\` vorangestellt werden.
 
 ```js
 assert(/\\SecondLine/.test(myStr));
 ```
 
-Zwischen `SecondLine` und `ThirdLine` sollte ein Zeilenumbruch stehen
+Zwischen `SecondLine` und `ThirdLine` sollte ein Zeilenumbruch stehen.
 
 ```js
 assert(/SecondLine\nThirdLine/.test(myStr));
 ```
 
-`myStr` sollte nur die in der Anleitung angegebenen Zeichen enthalten
+`myStr` sollte nur die in den Anweisungen angegebenen Zeichen enthalten.
 
 ```js
 assert(myStr === 'FirstLine\n\t\\SecondLine\nThirdLine');

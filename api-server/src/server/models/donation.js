@@ -68,4 +68,10 @@ export default function initializeDonation(Donation) {
     );
     return null;
   }
+
+  function getCurrentActiveDonationCount$() {
+    return Observable.of(activeDonationCountCache.get());
+  }
+
+  Donation.getCurrentActiveDonationCount$ = getCurrentActiveDonationCount$;
 }

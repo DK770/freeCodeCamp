@@ -14,11 +14,11 @@ As a reminder, this project is being built upon the following starter project on
 
 # --instructions--
 
-Within `tests/1_unit-tests.js` under the test labelled `#17` in the `Objects` suite, change each `assert` to either `assert.typeOf` or `assert.notTypeOf` to make the test pass (should evaluate to `true`). Die an die Asserts übergebenen Argumente dürfen nicht verändert werden.
+Within `tests/1_unit-tests.js` under the test labelled `#17` in the `Objects` suite, change each `assert` to either `assert.typeOf` or `assert.notTypeOf` to make the test pass (should evaluate to `true`). Do not alter the arguments passed to the asserts.
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+All tests should pass.
 
 ```js
 (getUserInput) =>
@@ -32,7 +32,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-Du solltest die richtige Methode für die erste Behauptung wählen - `typeOf` vs. `notTypeOf`.
+You should choose the correct method for the first assertion - `typeOf` vs. `notTypeOf`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ Du solltest die richtige Methode für die erste Behauptung wählen - `typeOf` vs
   );
 ```
 
-Du solltest die richtige Methode für die zweite Behauptung wählen - `typeOf` vs. `notTypeOf`.
+You should choose the correct method for the second assertion - `typeOf` vs. `notTypeOf`.
 
 ```js
 (getUserInput) =>
@@ -68,7 +68,7 @@ Du solltest die richtige Methode für die zweite Behauptung wählen - `typeOf` v
   );
 ```
 
-Du solltest die richtige Methode für die dritte Behauptung wählen - `typeOf` vs. `notTypeOf`.
+You should choose the correct method for the third assertion - `typeOf` vs. `notTypeOf`.
 
 ```js
 (getUserInput) =>
@@ -86,7 +86,7 @@ Du solltest die richtige Methode für die dritte Behauptung wählen - `typeOf` v
   );
 ```
 
-Du solltest die richtige Methode für die vierte Behauptung wählen - `typeOf` vs. `notTypeOf`.
+You should choose the correct method for the fourth assertion - `typeOf` vs. `notTypeOf`.
 
 ```js
 (getUserInput) =>
@@ -104,7 +104,7 @@ Du solltest die richtige Methode für die vierte Behauptung wählen - `typeOf` v
   );
 ```
 
-Du solltest die richtige Methode für die fünfte Behauptung wählen - `typeOf` vs. `notTypeOf`.
+You should choose the correct method for the fifth assertion - `typeOf` vs. `notTypeOf`.
 
 ```js
 (getUserInput) =>

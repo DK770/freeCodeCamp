@@ -4,8 +4,13 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Loader } from '../../components/helpers';
 import { tryToShowDonationModal } from '../../redux/actions';
-import { userFetchStateSelector } from '../../redux/selectors';
+import {
+  userFetchStateSelector,
+  isSignedInSelector,
+  userSelector
+} from '../../redux/selectors';
 import DonateModal from '../Donation/donation-modal';
+import createRedirect from '../create-redirect';
 
 import './prism.css';
 import './prism-night.css';
@@ -18,10 +23,18 @@ type FetchState = {
   errored: boolean;
 };
 
+type User = {
+  acceptedPrivacyTerms: boolean;
+};
+
 const mapStateToProps = createSelector(
   userFetchStateSelector,
-  (fetchState: FetchState) => ({
-    fetchState
+  isSignedInSelector,
+  userSelector,
+  (fetchState: FetchState, isSignedIn, user: User) => ({
+    fetchState,
+    isSignedIn,
+    user
   })
 );
 
@@ -29,18 +42,22 @@ const mapDispatchToProps = {
   tryToShowDonationModal
 };
 
+const RedirectEmailSignUp = createRedirect('/email-sign-up');
+
 type LearnLayoutProps = {
+  isSignedIn?: boolean;
   fetchState: FetchState;
+  user: User;
   tryToShowDonationModal: () => void;
   children?: React.ReactNode;
-  hasEditableBoundaries?: boolean;
 };
 
 function LearnLayout({
+  isSignedIn,
   fetchState,
+  user,
   tryToShowDonationModal,
-  children,
-  hasEditableBoundaries
+  children
 }: LearnLayoutProps): JSX.Element {
   useEffect(() => {
     tryToShowDonationModal();
@@ -60,17 +77,18 @@ function LearnLayout({
     return <Loader fullScreen={true} />;
   }
 
+  if (isSignedIn && !user.acceptedPrivacyTerms) {
+    return <RedirectEmailSignUp />;
+  }
+
   return (
     <>
       <Helmet>
         <meta content='noindex' name='robots' />
       </Helmet>
-      <main
-        id='learn-app-wrapper'
-        {...(hasEditableBoundaries && { 'data-has-editable-boundaries': true })}
-      >
-        {children}
-      </main>
+      <main id='learn-app-wrapper'>{children}</main>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      /* @ts-ignore  */}
       <DonateModal />
     </>
   );

@@ -9,17 +9,17 @@ dashedName: selecting-from-many-options-with-switch-statements
 
 # --description--
 
-Se você precisar corresponder um valor a muitas opções, pode usar uma instrução <dfn>switch</dfn>. Uma instrução `switch` compara o valor a uma instrução de <dfn>caso</dfn>, que define os diversos valores possíveis. Quaisquer instruções JavaScript válidas podem ser executadas dentro de um bloco de <dfn>caso</dfn> (case) e serão executadas a partir do primeiro valor de `case` correspondente até que um `break` seja encontrado.
+Se você possui muitas opções pra escolher, use uma instrução <dfn>switch</dfn>. Uma instrução `switch` testa um valor e pode ter muitas instruções <dfn>case</dfn> as quais definem os diversos valores possíveis. As instruções são executadas desde o primeiro `case` correspondente até que seja encontrado um `break`.
 
 Aqui está um exemplo de uma instrução `switch`:
 
 ```js
-switch (fruit) {
-  case "apple":
-    console.log("The fruit is an apple");
+switch (lowercaseLetter) {
+  case "a":
+    console.log("A");
     break;
-  case "orange":
-    console.log("The fruit is an orange");
+  case "b":
+    console.log("B");
     break;
 }
 ```

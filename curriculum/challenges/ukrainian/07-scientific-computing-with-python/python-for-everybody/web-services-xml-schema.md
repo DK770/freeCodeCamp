@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f0e0b6c005b0e76f07c
-title: 'Вебсервіси: схема XML'
+title: 'Веб-сервіси: Схема XML'
 challengeType: 11
 videoId: yWU9kTxW-nc
 bilibiliIds:

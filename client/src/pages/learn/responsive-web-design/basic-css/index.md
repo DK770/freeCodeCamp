@@ -1,7 +1,7 @@
 ---
 title: Introduction to Basic CSS
-block: basic-css
-superBlock: responsive-web-design
+block: Basic CSS
+superBlock: Responsive Web Design
 ---
 
 ## Introduction to Basic CSS

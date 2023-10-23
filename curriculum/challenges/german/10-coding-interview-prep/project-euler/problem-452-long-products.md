@@ -8,17 +8,17 @@ dashedName: problem-452-long-products
 
 # --description--
 
-Definiere $F(m, n)$ als die Anzahl der Variablen $n$ aus positiven Integer, bei denen das Produkt der Elemente $m$ nicht überschreitet.
+Define $F(m, n)$ as the number of $n$-tuples of positive integers for which the product of the elements doesn't exceed $m$.
 
 $F(10, 10) = 571$.
 
-$F({10}^6, {10}^6)\bmod 1\,234\,567\,891 = 252\,903\,833$.
+$F({10}^6, {10}^6)\bmod 1\\,234\\,567\\,891 = 252\\,903\\,833$.
 
-Finde $F({10}^9, {10}^9)\bmod 1\\,234\\,567\\,891$.
+Find $F({10}^9, {10}^9)\bmod 1\\,234\\,567\\,891$.
 
 # --hints--
 
-`longProducts()` sollte `345558983` zurückgeben.
+`longProducts()` should return `345558983`.
 
 ```js
 assert.strictEqual(longProducts(), 345558983);

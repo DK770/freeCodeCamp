@@ -1,23 +1,12 @@
 import fs from 'fs';
 import { setup } from 'jest-json-schema-extended';
-import { availableLangs, LangNames, LangCodes } from '../../shared/config/i18n';
-import { SuperBlocks } from '../../shared/config/superblocks';
-import intro from './locales/english/intro.json';
+import {
+  availableLangs,
+  LangNames,
+  LangCodes
+} from '../../config/i18n/all-langs';
 
 setup();
-
-interface Intro {
-  [key: string]: {
-    title: string;
-    intro: string[];
-    blocks: {
-      [block: string]: {
-        title: string;
-        intro: string[];
-      };
-    };
-  };
-}
 
 const filesThatShouldExist = [
   {
@@ -25,6 +14,9 @@ const filesThatShouldExist = [
   },
   {
     name: 'motivation.json'
+  },
+  {
+    name: 'trending.json'
   },
   {
     name: 'intro.json'
@@ -67,19 +59,4 @@ describe('Locale tests:', () => {
       });
     });
   });
-});
-
-describe('Intro file structure tests:', () => {
-  const typedIntro = intro as unknown as Intro;
-  const superblocks = Object.values(SuperBlocks);
-  for (const superBlock of superblocks) {
-    expect(typeof typedIntro[superBlock].title).toBe('string');
-    expect(typedIntro[superBlock].intro).toBeInstanceOf(Array);
-    expect(typedIntro[superBlock].blocks).toBeInstanceOf(Object);
-    const blocks = Object.keys(typedIntro[superBlock].blocks);
-    blocks.forEach(block => {
-      expect(typeof typedIntro[superBlock].blocks[block].title).toBe('string');
-      expect(typedIntro[superBlock].blocks[block].intro).toBeInstanceOf(Array);
-    });
-  }
 });

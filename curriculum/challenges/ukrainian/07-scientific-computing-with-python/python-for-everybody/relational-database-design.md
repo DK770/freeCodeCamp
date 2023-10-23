@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f180b6c005b0e76f08c
-title: Проєктування реляційних баз даних
+title: Проектування реляційних баз даних
 challengeType: 11
 videoId: AqdfbrpkbHk
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: relational-database-design
 
 ## --text--
 
-Скільки разів можна зберегти рядкові дані у базі даних в найкращому випадку?
+Якою є оптимальна кількість зберігань для даних в типі string в базі даних?
 
 ## --answers--
 

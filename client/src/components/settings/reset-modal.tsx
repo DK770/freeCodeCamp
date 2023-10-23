@@ -2,7 +2,7 @@ import { Button, Modal } from '@freecodecamp/react-bootstrap';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Spacer } from '../helpers';
+import { ButtonSpacer } from '../helpers';
 
 type ResetModalProps = {
   onHide: () => void;
@@ -43,7 +43,7 @@ function ResetModal(props: ResetModalProps): JSX.Element {
         >
           {t('settings.danger.nevermind-2')}
         </Button>
-        <Spacer size='small' />
+        <ButtonSpacer />
         <Button
           block={true}
           bsSize='lg'

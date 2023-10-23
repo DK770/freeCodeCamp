@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Information Security Projects
-block: information-security-projects
-superBlock: information-security
+block: Information Security Projects
+superBlock: Information Security
 ---
 
 ## Introduction to the Information Security Projects

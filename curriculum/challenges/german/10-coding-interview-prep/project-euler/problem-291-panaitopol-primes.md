@@ -1,6 +1,6 @@
 ---
 id: 5900f48f1000cf542c50ffa2
-title: 'Problem 291: Panaitopol-Primzahlen'
+title: 'Problem 291: Panaitopol Primes'
 challengeType: 1
 forumTopicId: 301943
 dashedName: problem-291-panaitopol-primes
@@ -8,13 +8,13 @@ dashedName: problem-291-panaitopol-primes
 
 # --description--
 
-Eine Primzahl $p$ heißt eine Panaitopol-Primzahl, wenn $p = \frac{x^4 - y^4}{x^3 + y^3}$ für einige positive Integer $x$ und $y$ ist.
+A prime number $p$ is called a Panaitopol prime if $p = \frac{x^4 - y^4}{x^3 + y^3}$ for some positive integers $x$ and $y$.
 
-Finde heraus, wie viele Panaitopol-Primzahlen kleiner als $5 × {10}^{15}$ sind.
+Find how many Panaitopol primes are less than $5 × {10}^{15}$.
 
 # --hints--
 
-`panaitopolPrimes()` sollte `4037526` zurückgeben.
+`panaitopolPrimes()` should return `4037526`.
 
 ```js
 assert.strictEqual(panaitopolPrimes(), 4037526);

@@ -25,25 +25,25 @@ margin: 10px 20px 10px 20px;
 
 # --hints--
 
-Клас `blue-box` повинен надати елементам `margin` зі значенням `40px` зверху.
+Клас `blue-box` повинен задати товщину `40px` `margin` для верхньої частини елементів.
 
 ```js
 assert($('.blue-box').css('margin-top') === '40px');
 ```
 
-Клас `blue-box` повинен надати елементам `margin` зі значенням `20px` справа.
+Клас `blue-box` повинен задати товщину `20px` `margin` для правої частини елементів.
 
 ```js
 assert($('.blue-box').css('margin-right') === '20px');
 ```
 
-Клас `blue-box` повинен надати елементам `margin` зі значенням `20px` знизу.
+Клас `blue-box` повинен задати товщину `20px` `margin` для нижньої частини елементів.
 
 ```js
 assert($('.blue-box').css('margin-bottom') === '20px');
 ```
 
-Клас `blue-box` повинен надати елементам `margin` зі значенням `40px` зліва.
+Клас `blue-box` повинен задати товщину`40px` `margin` для лівої частини елементів.
 
 ```js
 assert($('.blue-box').css('margin-left') === '40px');

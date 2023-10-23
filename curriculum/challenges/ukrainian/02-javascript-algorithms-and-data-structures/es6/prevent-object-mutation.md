@@ -1,6 +1,6 @@
 ---
 id: 598f48a36c8c40764b4e52b3
-title: Запобігання мутаціям об’єкта
+title: Запобігання мутаціям об'єкта
 challengeType: 1
 forumTopicId: 301207
 dashedName: prevent-object-mutation
@@ -8,9 +8,9 @@ dashedName: prevent-object-mutation
 
 # --description--
 
-Як ми побачили у попередньому завданні, саме оголошення `const` не дуже захищає ваші дані від мутацій. Щоб запобігти зміни даних, JavaScript надає функцію `Object.freeze` для запобігання мутації даних.
+З попереднього завдання бачимо, що `const` насправді не захищає ваші дані від змін. Щоб ваші дані не змінилися, JavaScript надає функцію `Object.freeze` для запобігання мутації даних.
 
-Будь-яка спроба змінити об’єкт буде відхилена з повідомленням про помилку, якщо скрипт виконується в строгому режимі.
+Будь -яка спроба змінити об'єкт буде відхилена, з помилкою, якщо тег працює в строгому режимі.
 
 ```js
 let obj = {
@@ -23,32 +23,36 @@ obj.newProp = "Test";
 console.log(obj); 
 ```
 
-Присвоєння `obj.review` й `obj.newProp` призведуть до помилок, оскільки наш редактор за замовчуванням працює в строгому режимі та консоль покаже значення `{ name: "FreeCodeCamp", review: "Awesome" }`.
+The `obj.review` and `obj.newProp` призначення призведе до помилок, тому що наш редактор за замовчуванням працює в строгому режимі,і консоль покаже значення `{ name: "FreeCodeCamp", review: "Awesome" }`.
 
 # --instructions--
 
-У цьому завданні ви використовуватимете `Object.freeze`, щоб запобігти зміни математичних констант. Ви повинні заморозити об’єкт `MATH_CONSTANTS` так, щоб ніхто не зміг змінити значення `PI`, додати чи видалити властивості.
+У цьому завданні вам доведеться використовувати `Object.freeze` для запобігання зміни математичних констант. Вам необхідно заморозити об'єкт `MATH_CONSTANTS` так, щоб ніхто не зміг змінити значення `PI`, додати або видалити властивості.
 
 # --hints--
 
-Ви не повинні замінювати ключове слово `const`.
+Вам не слід замінювати ключове слово `const`.
 
 ```js
-assert(code.match(/const/g));
+(getUserInput) => assert(getUserInput('index').match(/const/g));
 ```
 
-`MATH_CONSTANTS` повинна бути константною змінною (використовуйте `const`).
+`MATH_CONSTANTS` має бути постійною змінною (використовуйте `const`).
 
 ```js
-assert(code.match(/const\s+MATH_CONSTANTS/g));
+(getUserInput) =>
+  assert(getUserInput('index').match(/const\s+MATH_CONSTANTS/g));
 ```
 
-Ви не повинні змінювати початкове оголошення `MATH_CONSTANTS`.
+Вам не слід змінювати початкове значення `MATH_CONSTANTS`.
 
 ```js
-assert(code.match(
-   /const\s+MATH_CONSTANTS\s+=\s+{\s+PI:\s+3.14\s+};/g
-));
+(getUserInput) =>
+  assert(
+    getUserInput('index').match(
+      /const\s+MATH_CONSTANTS\s+=\s+{\s+PI:\s+3.14\s+};/g
+    )
+  );
 ```
 
 `PI` має дорівнювати `3.14`.

@@ -12,9 +12,9 @@ import store from 'store';
 import {
   certTypeIdMap,
   certTypes
-} from '../../../../shared/config/certification-settings';
+} from '../../../../config/certification-settings';
 import { createFlashMessage } from '../../components/Flash/redux';
-import { liveCerts } from '../../../config/cert-and-project-map';
+import { certMap } from '../../resources/cert-and-project-map';
 import {
   getUsernameExists,
   putUpdateMyAbout,
@@ -24,6 +24,7 @@ import {
   putUpdateMyProfileUI,
   putUpdateMyQuincyEmail,
   putUpdateMySocials,
+  putUpdateMySound,
   putUpdateMyTheme,
   putUpdateMyUsername,
   putVerifyCert
@@ -99,10 +100,7 @@ function* updateMySocialsSaga({ payload: update }) {
 function* updateMySoundSaga({ payload: update }) {
   try {
     store.set('fcc-sound', !!update.sound);
-    const data = {
-      message: 'flash.updated-sound',
-      type: 'success'
-    };
+    const { data } = yield call(putUpdateMySound, update);
     yield put(updateMySoundComplete({ ...data, payload: update }));
     yield put(createFlashMessage({ ...data }));
   } catch (e) {
@@ -173,7 +171,7 @@ function* validateUsernameSaga({ payload }) {
 
 function* verifyCertificationSaga({ payload }) {
   // check redux if can claim cert before calling backend
-  const currentCert = liveCerts.find(cert => cert.certSlug === payload);
+  const currentCert = certMap.find(cert => cert.certSlug === payload);
   const completedChallenges = yield select(completedChallengesSelector);
   const certTitle = currentCert?.title || payload;
 

@@ -1,23 +1,23 @@
 ---
 id: 61fdaf9ff894b6a084ecdc1b
-title: Schritt 33
+title: Step 33
 challengeType: 0
 dashedName: step-33
 ---
 
 # --description--
 
-Weise deinem `span[class~="sr-only"]`-Selektor eine `overflow`-Eigenschaft mit dem Wert `hidden` und eine `white-space`-Eigenschaft mit dem Wert `nowrap` zu, um zu verhindern, dass der Textinhalt überlastet wird.
+To prevent the text content from overflowing, give your `span[class~="sr-only"]` selector an `overflow` property set to `hidden` and a `white-space` property set to `nowrap`.
 
 # --hints--
 
-Dein `span[class~="sr-only"]`-Selektor sollte eine `overflow`-Eigenschaft auf `hidden` gesetzt haben.
+Your `span[class~="sr-only"]` selector should have an `overflow` property set to `hidden`.
 
 ```js
 assert(new __helpers.CSSHelp(document).getStyle('span[class~="sr-only"]')?.getPropertyValue('overflow') === 'hidden');
 ```
 
-Dein `span[class~="sr-only"]`-Selektor sollte eine `white-space`-Eigenschaft auf `nowrap` gesetzt haben.
+Your `span[class~="sr-only"]` selector should have a `white-space` property set to `nowrap`.
 
 ```js
 assert(new __helpers.CSSHelp(document).getStyle('span[class~="sr-only"]')?.getPropertyValue('white-space') === 'nowrap');
@@ -157,6 +157,7 @@ span[class~="sr-only"] {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
   height: 1px;
   width: 1px;
 

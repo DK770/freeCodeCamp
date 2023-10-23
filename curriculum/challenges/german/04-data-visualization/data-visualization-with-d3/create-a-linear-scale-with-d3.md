@@ -8,41 +8,41 @@ dashedName: create-a-linear-scale-with-d3
 
 # --description--
 
-Bei den Balken- und Streu-Diagrammen werden die Daten direkt in das SVG eingezeichnet. Wäre jedoch die Höhe eines Balkens oder eines Datenpunkts größer als die SVG-Höhen- oder Breitenwerte, würde er außerhalb des SVG-Bereichs liegen.
+Bei den Balken- und Punktediagrammen werden die Daten direkt im SVG-Canvas dargestellt. Wäre jedoch die Höhe eines Balkens oder eines Datenpunkts größer als die SVG-Höhen- oder Breitenwerte, würde er außerhalb des SVG-Bereichs liegen.
 
-In D3 gibt es Skalen, die bei der Darstellung von Daten helfen. `scales` sind Funktionen, die dem Programm mitteilen, wie eine Menge von unbearbeiteten Datenpunkten den SVG-Pixeln zugeordnet werden soll.
+In D3 gibt es Skalen, die bei der Darstellung von Daten helfen. `scales` are functions that tell the program how to map a set of raw data points onto the pixels of the SVG canvas.
 
-Nehmen wir beispielsweise an, du hast ein SVG der Größe 100x500 und möchtest das Bruttoinlandsprodukt (BIP) für eine Reihe von Ländern darstellen. Die Zahlen wären im Milliarden- oder Billionen-Dollar-Bereich. Du übergibst D3 einen Skalierungstyp, mit welchem du ihm mitteilst, wie die hohen BIP-Werte in dem 100x500 großen Bereich zu platzieren sind.
+For example, say you have a 100x500-sized SVG canvas and you want to plot Gross Domestic Product (GDP) for a number of countries. Die Zahlen wären im Milliarden- oder Billionen-Dollar-Bereich. You provide D3 a type of scale to tell it how to place the large GDP values into that 100x500-sized area.
 
-Es ist unwahrscheinlich, dass du die Rohdaten so darstellen würdest, wie sie sind. Bevor du mit der Einzeichnung beginnst, legst du die Skala für deinen Datensatz fest, so dass die `x`- und `y`-Werte zu deiner SVG-Breite sowie -Höhe passen.
+It's unlikely you would plot raw data as-is. Before plotting it, you set the scale for your entire data set, so that the `x` and `y` values fit your canvas width and height.
 
-D3 verfügt über verschiedene Skalierungstypen. Möchtest du eine lineare Skalierung (wie sie für quantitative Daten meist verwendet wird), verwendest du die D3-Methode `scaleLinear()`:
+D3 has several scale types. For a linear scale (usually used with quantitative data), there is the D3 method `scaleLinear()`:
 
 ```js
 const scale = d3.scaleLinear()
 ```
 
-Standardmäßig verwendet eine Skala die Identitätsbeziehung. Ein- und Ausgabewerte sind gleich. Wie man das ändern kann, ist Gegenstand einer separaten Aufgabenstellung.
+By default, a scale uses the identity relationship. The value of the input is the same as the value of the output. A separate challenge covers how to change this.
 
 # --instructions--
 
-Ändere die `scale`-Variable so, dass eine lineare Skala entsteht. Setze dann die `output`-Variable auf die Skala, die mit einem Eingabeargument von `50` aufgerufen wird.
+Change the `scale` variable to create a linear scale. Then set the `output` variable to the scale called with an input argument of `50`.
 
 # --hints--
 
-Der Text im `h2` sollte `50` sein.
+The text in the `h2` should be `50`.
 
 ```js
 assert($('h2').text() == '50');
 ```
 
-Dein Code sollte die `scaleLinear()`-Methode verwenden.
+Your code should use the `scaleLinear()` method.
 
 ```js
 assert(code.match(/\.scaleLinear/g));
 ```
 
-Die `output`-Variable sollte `scale` mit dem Argument `50` aufrufen.
+The `output` variable should call `scale` with an argument of `50`.
 
 ```js
 assert(output == 50 && code.match(/scale\(\s*?50\s*?\)/g));

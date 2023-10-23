@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Sass Challenges
-block: sass
-superBlock: front-end-development-libraries
+block: Sass
+superBlock: Front End Development Libraries
 ---
 
 ## Introduction to the Sass Challenges

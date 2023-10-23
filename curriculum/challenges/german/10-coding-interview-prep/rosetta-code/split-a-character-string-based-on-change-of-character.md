@@ -22,25 +22,25 @@ should be split as:
 
 # --hints--
 
-`split` sollte eine Funktion sein.
+`split` should be a function.
 
 ```js
 assert(typeof split == 'function');
 ```
 
-`split("hello")` sollte ein Array zurückgeben.
+`split("hello")` should return an array.
 
 ```js
 assert(Array.isArray(split('hello')));
 ```
 
-`split("hello")` sollte `["h", "e", "ll", "o"]` zurückgeben.
+`split("hello")` should return `["h", "e", "ll", "o"]`.
 
 ```js
 assert.deepEqual(split('hello'), ['h', 'e', 'll', 'o']);
 ```
 
-`split("commission")` sollte `["c", "o", "mm", "i", "ss", "i", "o", "n"]` zurückgeben.
+`split("commission")` should return `["c", "o", "mm", "i", "ss", "i", "o", "n"]`.
 
 ```js
 assert.deepEqual(split('commission'), [
@@ -55,7 +55,7 @@ assert.deepEqual(split('commission'), [
 ]);
 ```
 
-`split("ssss----====llloooo")` sollte `["ssss", "----", "====", "lll", "oooo"]` zurückgeben.
+`split("ssss----====llloooo")` should return `["ssss", "----", "====", "lll", "oooo"]`.
 
 ```js
 assert.deepEqual(split('ssss----====llloooo'), [
@@ -67,7 +67,7 @@ assert.deepEqual(split('ssss----====llloooo'), [
 ]);
 ```
 
-`split("sssmmmaaammmaaat")` sollte `["sss", "mmm", "aaa", "mmm", "aaa", "t"]` zurückgeben.
+`split("sssmmmaaammmaaat")` should return `["sss", "mmm", "aaa", "mmm", "aaa", "t"]`.
 
 ```js
 assert.deepEqual(split('sssmmmaaammmaaat'), [
@@ -80,7 +80,7 @@ assert.deepEqual(split('sssmmmaaammmaaat'), [
 ]);
 ```
 
-`split("gHHH5YY++///\\")` sollte `["g", "HHH", "5", "YY", "++", "///", "\\"]` zurückgeben.
+`split("gHHH5YY++///\\")` should return `["g", "HHH", "5", "YY", "++", "///", "\\"]`.
 
 ```js
 assert.deepEqual(split('gHHH5YY++///\\'), [

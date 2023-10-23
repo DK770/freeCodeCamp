@@ -175,7 +175,7 @@ function dealFreeCell(seed) {
   const rng = FreeCellRNG(seed);
   const deck = getDeck();
 
-  const dealtCards = [[], [], [], [], [], [], []];
+  const deltCards = [[], [], [], [], [], [], []];
   let currentColumn = 0;
   let currentRow = 0;
 
@@ -195,7 +195,7 @@ function dealFreeCell(seed) {
     card = deck.pop();
 
     // Deal this card
-    dealtCards[currentRow].push(card);
+    deltCards[currentRow].push(card);
     currentColumn += 1;
     if (currentColumn === 8) {
       currentColumn = 0;
@@ -203,6 +203,6 @@ function dealFreeCell(seed) {
     }
   }
 
-  return dealtCards;
+  return deltCards;
 }
 ```

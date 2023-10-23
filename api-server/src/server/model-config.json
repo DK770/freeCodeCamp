@@ -35,15 +35,7 @@
     "dataSource": "mail",
     "public": false
   },
-  "Exam": {
-    "dataSource": "db",
-    "public": false
-  },
   "Role": {
-    "dataSource": "db",
-    "public": false
-  },
-  "MsUsername": {
     "dataSource": "db",
     "public": false
   },

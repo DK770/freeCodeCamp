@@ -1,6 +1,6 @@
 ---
 id: 56bbb991ad1ed5201cd392cb
-title: Manipular arreglos con el método push
+title: Manipula arreglos con push()
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cnqmVtJ'
 forumTopicId: 18237
@@ -9,21 +9,21 @@ dashedName: manipulate-arrays-with-push
 
 # --description--
 
-Una forma sencilla de añadir datos al final de un arreglo es mediante el método `push()`.
+Una forma fácil de añadir datos al final de un arreglo es a través de la función `push()`.
 
-El método `push()` toma uno o más <dfn>arguments</dfn> y los añade al final del arreglo, en el orden en que aparecen. Devuelve la nueva longitud del arreglo.
+`.push()` toma uno o más <dfn>parámetros</dfn> y los "empuja" al final del arreglo.
 
 Ejemplos:
 
 ```js
 const arr1 = [1, 2, 3];
-arr1.push(4, 5);
+arr1.push(4);
 
 const arr2 = ["Stimpson", "J", "cat"];
 arr2.push(["happy", "joy"]);
 ```
 
-`arr1` ahora tiene el valor `[1, 2, 3, 4, 5]` y `arr2` tiene el valor `["Stimpson", "J", "cat", ["happy", "joy"]]`.
+`arr1` ahora tiene el valor `[1, 2, 3, 4]` y `arr2` tiene el valor `["Stimpson", "J", "cat", ["happy", "joy"]]`.
 
 # --instructions--
 

@@ -36,7 +36,7 @@ dashedName: department-numbers
 
 # --hints--
 
-`combinations` має бути функцією.
+`combinations` мають бути функцією.
 
 ```js
 assert(typeof combinations === 'function');
@@ -101,7 +101,7 @@ function combinations(possibleNumbers, total) {
 function combinations(possibleNumbers, total) {
   let firstNumber;
   let secondNumber;
-  let thirdNumber;
+  let thridNumber;
   const allCombinations = [];
 
   for (let i = 0; i < possibleNumbers.length; i += 1) {
@@ -112,10 +112,10 @@ function combinations(possibleNumbers, total) {
         secondNumber = possibleNumbers[j];
 
         if (j !== i && firstNumber + secondNumber <= total) {
-          thirdNumber = total - firstNumber - secondNumber;
+          thridNumber = total - firstNumber - secondNumber;
 
-          if (thirdNumber !== firstNumber && thirdNumber !== secondNumber && possibleNumbers.includes(thirdNumber)) {
-            allCombinations.push([firstNumber, secondNumber, thirdNumber]);
+          if (thridNumber !== firstNumber && thridNumber !== secondNumber && possibleNumbers.includes(thridNumber)) {
+            allCombinations.push([firstNumber, secondNumber, thridNumber]);
           }
         }
       }

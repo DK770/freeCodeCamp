@@ -9,15 +9,12 @@ dashedName: step-20
 
 The `div` element is used mainly for design layout purposes unlike the other content elements you have used so far. Add a `div` element inside the `body` element and then move all the other elements inside the new `div`.
 
-Inside the opening `div` tag, add the `id` attribute with a value of `menu`.
-
 # --hints--
 
-Your opening `<div>` tag should have an `id` attribute set to `menu`.
+You should have an opening `<div>` tag.
 
 ```js
-const div = $('div')[0];
-assert(div.id === 'menu');
+assert(code.match(/<div>/i));
 ```
 
 You should have a closing `</div>` tag.
@@ -38,7 +35,6 @@ Your `div` tag should be nested in the `body`.
 const div = $('div')[0];
 assert(div.parentElement.tagName === 'BODY');
 ```
-
 
 # --seed--
 

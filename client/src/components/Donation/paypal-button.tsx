@@ -5,20 +5,23 @@ import { createSelector } from 'reselect';
 import {
   paypalConfigurator,
   paypalConfigTypes,
-  defaultDonation,
-  PaymentProvider,
-  type DonationDuration,
-  type DonationAmount
-} from '../../../../shared/config/donation-settings';
-import envData from '../../../config/env.json';
+  defaultDonation
+} from '../../../../config/donation-settings';
+import envData from '../../../../config/env.json';
 import { userSelector, signInLoadingSelector } from '../../redux/selectors';
 import { Themes } from '../settings/theme';
-import { DonationApprovalData, PostPayment } from './types';
-import PayPalButtonScriptLoader from './paypal-button-script-loader';
+import { PayPalButtonScriptLoader } from './paypal-button-script-loader';
 
 type PaypalButtonProps = {
-  donationAmount: DonationAmount;
-  donationDuration: DonationDuration;
+  addDonation: (data: AddDonationData) => void;
+  isSignedIn: boolean;
+  donationAmount: number;
+  donationDuration: string;
+  handleProcessing: (
+    duration: string,
+    amount: number,
+    action: string
+  ) => unknown;
   isDonating: boolean;
   onDonationStateChange: ({
     redirecting,
@@ -32,13 +35,13 @@ type PaypalButtonProps = {
     error: string | null;
   }) => void;
   isPaypalLoading: boolean;
+  skipAddDonation?: boolean;
   t: (label: string) => string;
   ref?: Ref<PaypalButton>;
   theme: Themes;
   isSubscription?: boolean;
   handlePaymentButtonLoad: (provider: 'stripe' | 'paypal') => void;
   isMinimalForm: boolean | undefined;
-  postPayment: (arg0: PostPayment) => void;
 };
 
 type PaypalButtonState = {
@@ -46,6 +49,17 @@ type PaypalButtonState = {
   duration: string;
   planId: string | null;
 };
+
+export interface AddDonationData {
+  redirecting: boolean;
+  processing: boolean;
+  success: boolean;
+  error: string | null;
+  loading?: {
+    stripe: boolean;
+    paypal: boolean;
+  };
+}
 
 const {
   paypalClientId,
@@ -56,7 +70,10 @@ const {
     deploymentEnv: 'staging' | 'live';
   };
 
-class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
+export class PaypalButton extends Component<
+  PaypalButtonProps,
+  PaypalButtonState
+> {
   static displayName = 'PaypalButton';
   state: PaypalButtonState = {
     amount: defaultDonation.donationAmount,
@@ -65,6 +82,7 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
   };
   constructor(props: PaypalButtonProps) {
     super(props);
+    this.handleApproval = this.handleApproval.bind(this);
   }
 
   static getDerivedStateFromProps(
@@ -72,8 +90,8 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
   ): PaypalButtonState {
     const { donationAmount, donationDuration } = props;
     const configurationObj: {
-      amount: DonationAmount;
-      duration: DonationDuration;
+      amount: number;
+      duration: string;
       planId: string | null;
     } = paypalConfigurator(
       donationAmount,
@@ -87,10 +105,30 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
     return { ...configurationObj };
   }
 
+  handleApproval = (data: AddDonationData, isSubscription: boolean): void => {
+    const { amount, duration } = this.state;
+    const { isSignedIn = false } = this.props;
+
+    // If the user is signed in and the payment is subscritipn call the api
+    if (isSignedIn && isSubscription) {
+      this.props.addDonation(data);
+    }
+
+    this.props.handleProcessing(duration, amount, 'Paypal payment submission');
+
+    // Show success anytime because the payment has gone through paypal
+    this.props.onDonationStateChange({
+      redirecting: false,
+      processing: false,
+      success: true,
+      error: data.error ? data.error : null
+    });
+  };
+
   render(): JSX.Element | null {
     const { duration, planId, amount } = this.state;
     const { t, theme, isPaypalLoading, isMinimalForm } = this.props;
-    const isSubscription = duration !== 'one-time';
+    const isSubscription = duration !== 'onetime';
     const buttonColor = theme === Themes.Night ? 'white' : 'gold';
     if (!paypalClientId) {
       return null;
@@ -98,6 +136,7 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
 
     return (
       <div className={'paypal-buttons-container'}>
+        {/* eslint-disable @typescript-eslint/naming-convention */}
         <PayPalButtonScriptLoader
           clientId={paypalClientId}
           createOrder={(
@@ -138,11 +177,8 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
           isMinimalForm={isMinimalForm}
           isPaypalLoading={isPaypalLoading}
           isSubscription={isSubscription}
-          onApprove={(data: DonationApprovalData) => {
-            this.props.postPayment({
-              paymentProvider: PaymentProvider.Paypal,
-              data
-            });
+          onApprove={(data: AddDonationData) => {
+            this.handleApproval(data, isSubscription);
           }}
           onCancel={() => {
             this.props.onDonationStateChange({
@@ -169,6 +205,7 @@ class PaypalButton extends Component<PaypalButtonProps, PaypalButtonState> {
             color: buttonColor
           }}
         />
+        {/* eslint-enable @typescript-eslint/naming-convention */}
       </div>
     );
   }

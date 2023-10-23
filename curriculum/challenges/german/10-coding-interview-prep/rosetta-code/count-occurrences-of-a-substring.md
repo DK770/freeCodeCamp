@@ -25,25 +25,25 @@ In general, this essentially means matching from left-to-right or right-to-left.
 
 # --hints--
 
-`countSubstring` sollte eine Funktion sein.
+`countSubstring` should be a function.
 
 ```js
 assert(typeof countSubstring === 'function');
 ```
 
-`countSubstring("the three truths", "th")` sollte `3` zurückgeben.
+`countSubstring("the three truths", "th")` should return `3`.
 
 ```js
 assert.equal(countSubstring(testCases[0], searchString[0]), results[0]);
 ```
 
-`countSubstring("ababababab", "abab")` sollte `2` zurückgeben.
+`countSubstring("ababababab", "abab")` should return `2`.
 
 ```js
 assert.equal(countSubstring(testCases[1], searchString[1]), results[1]);
 ```
 
-`countSubstring("abaabba*bbaba*bbab", "a*b")` sollte `2` zurückgeben.
+`countSubstring("abaabba*bbaba*bbab", "a*b")` should return `2`.
 
 ```js
 assert.equal(countSubstring(testCases[2], searchString[2]), results[2]);

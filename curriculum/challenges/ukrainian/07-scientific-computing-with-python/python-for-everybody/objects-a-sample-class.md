@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f160b6c005b0e76f086
-title: 'Об’єкти: приклад класу'
+title: 'Об''єкти: Приклад класу'
 challengeType: 11
 videoId: FiABKEuaSJ8
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: objects-a-sample-class
 
 ## --text--
 
-Що виведе на екран дана програма?:
+Що виведе дана програма на екран?:
 
 ```python
 class PartyAnimal:

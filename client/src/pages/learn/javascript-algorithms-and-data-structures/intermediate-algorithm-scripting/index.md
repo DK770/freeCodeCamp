@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Intermediate Algorithm Scripting Challenges
-block: intermediate-algorithm-scripting
-superBlock: javascript-algorithms-and-data-structures
+block: Intermediate Algorithm Scripting
+superBlock: JavaScript Algorithms and Data Structures
 ---
 
 ## Introduction to the Intermediate Algorithm Scripting Challenges

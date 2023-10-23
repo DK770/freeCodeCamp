@@ -21,13 +21,13 @@ This task will not test for:
 
 # --hints--
 
-`deepcopy` sollte eine Funktion sein.
+`deepcopy` should be a function.
 
 ```js
 assert(typeof deepcopy === 'function');
 ```
 
-`deepcopy({test: "test"})` sollte ein Objekt zurückgeben.
+`deepcopy({test: "test"})` should return an object.
 
 ```js
 assert(typeof deepcopy(obj1) === 'object');

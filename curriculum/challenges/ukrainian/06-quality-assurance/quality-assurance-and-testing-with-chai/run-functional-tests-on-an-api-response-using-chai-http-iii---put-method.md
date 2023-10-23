@@ -1,6 +1,6 @@
 ---
 id: 587d824f367417b2b2512c5a
-title: Запустіть функціональні тести на відповіді API за допомогою методу Chai-HTTP III - PUT
+title: Запустіть функціональне тестування на відповідь API за допомогою Chai-HTTP III - PUT методу
 challengeType: 2
 forumTopicId: 301590
 dashedName: run-functional-tests-on-an-api-response-using-chai-http-iii---put-method
@@ -8,16 +8,15 @@ dashedName: run-functional-tests-on-an-api-response-using-chai-http-iii---put-me
 
 # --description--
 
-Нагадуємо, що цей проєкт створюється на основі стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
+Нагадуємо, що цей проєкт створюється на основі наступного стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
-Під час тесту запиту `PUT` ви часто будете надсилати й дані. Дані, які поміщені у вашому запиті `PUT`, називаються тілом запиту.
+Коли ви протестуєте `PUT` запит, ви часто будете посилати дані разом з ним. Дані, які ви включаєте до вашого `PUT` запиту, називаються тілом запиту.
 
-Щоб відправити запит `PUT` та об’єкт JSON до `'/travellers'`, ви можете використати методи `put` та `send` плагіну `chai-http`:
+Щоб відправити `PUT` запит і об'єкт JSON до `'/travellers'`, ви можете використовувати плагіни `chai-http`, `put` і `send` методи:
 
 ```js
 chai
   .request(server)
-  .keepOpen()
   .put('/travellers')
   .send({
     "surname": [last name of a traveller of the past]
@@ -25,7 +24,7 @@ chai
   ...
 ```
 
-Відповідь маршруту:
+І маршрут відповідає:
 
 ```json
 {
@@ -39,9 +38,9 @@ chai
 
 # --instructions--
 
-У межах `tests/2_functional-tests.js` змініть `'Send {surname: "Colombo"}'` тесту (`// #3`) і використайте методи `put` та `send`, щоб перевірити кінцеву точку `'/travellers'`.
+У межах  `tests/2_functional-tests.js` змініть `'Send {surname: "Colombo"}'`, перевірте (`// #3`) та використайте методи `put` та `send`, щоб перевірити кінцеву точку `'/travellers'`.
 
-Надішліть наступний об’єкт JSON зі своїм запитом PUT:
+Надішліть наступний об'єкт JSON з вашим PUT-запитом:
 
 ```json
 {
@@ -49,18 +48,18 @@ chai
 }
 ```
 
-Перевірте наступне у межах зворотнього виклику `request.end`:
+Перевірте наступне у межах виклику `request.end`:
 
 1.  `status` має бути `200`
 2.  `type` має бути `application/json`
 3.  `body.name` має бути `Cristoforo`
 4.  `body.surname` має бути `Colombo`
 
-Дотримуйтесь порядку тверджень вище, оскільки ми залежимо від нього. Не забудьте видалити `assert.fail()` після завершення.
+Дотримуйтесь порядку тверджень вище - ми покладаємося на нього. Також обов'язково видаліть `assert.fail()` після завершення.
 
 # --hints--
 
-Всі тести повинні бути успішно пройдені.
+Необхідно пройти усі тести.
 
 ```js
 (getUserInput) =>
@@ -74,7 +73,7 @@ chai
   );
 ```
 
-Ви повинні перевірити, чи `res.status` має значення 200.
+Ви повинні перевірити, чи значення `res.status` становить 200.
 
 ```js
 (getUserInput) =>
@@ -90,7 +89,7 @@ chai
   );
 ```
 
-Ви повинні перевірити, чи `res.type` має значення `'application/json'`.
+Перевірте значення `res.type` на `'application/json'`.
 
 ```js
 (getUserInput) =>
@@ -106,7 +105,7 @@ chai
   );
 ```
 
-Ви повинні перевірити, чи `res.body.name` має значення `'Cristoforo'`.
+Перевірте значення `res.body.name` на `'Cristoforo'`.
 
 ```js
 (getUserInput) =>
@@ -122,7 +121,7 @@ chai
   );
 ```
 
-Ви повинні перевірити, чи `res.body.surname` має значення `'Colombo'`.
+Перевірте значення `res.body.surname` на `'Colombo'`.
 
 ```js
 (getUserInput) =>

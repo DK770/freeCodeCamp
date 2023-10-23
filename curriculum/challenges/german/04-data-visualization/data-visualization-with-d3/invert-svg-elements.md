@@ -1,6 +1,6 @@
 ---
 id: 587d7fa9367417b2b2512bd0
-title: SVG-Elemente umdrehen
+title: Invert SVG Elements
 challengeType: 6
 forumTopicId: 301488
 dashedName: invert-svg-elements
@@ -8,73 +8,73 @@ dashedName: invert-svg-elements
 
 # --description--
 
-Vielleicht ist dir aufgefallen, dass das Balkendiagramm auf dem Kopf steht, oder umgedreht ist. Das liegt an der Art und Weise, wie SVG die Koordinaten (x, y) verwendet.
+You may have noticed the bar chart looked like it's upside-down, or inverted. This is because of how SVG uses (x, y) coordinates.
 
-In SVG befindet sich der Ursprungspunkt für die Koordinaten in der oberen linken Ecke. Eine `x`-Koordinate von 0 platziert eine Form am linken Rand des SVG-Bereichs. Eine `y`-Koordinate von 0 platziert eine Form am oberen Rand des SVG-Bereichs. Höhere `x`-Werte verschieben das Rechteck nach rechts. Höhere `y`-Werte verschieben das Rechteck nach unten.
+In SVG, the origin point for the coordinates is in the upper-left corner. An `x` coordinate of 0 places a shape on the left edge of the SVG area. A `y` coordinate of 0 places a shape on the top edge of the SVG area. Higher `x` values push the rectangle to the right. Higher `y` values push the rectangle down.
 
-Um die Balken richtig auszurichten, musst du die Art und Weise, wie die `y`-Koordinate berechnet wird, ändern. Es muss sowohl die Höhe des Balkens als auch die Gesamthöhe des SVG-Bereichs berücksichtigt werden.
+To make the bars right-side-up, you need to change the way the `y` coordinate is calculated. It needs to account for both the height of the bar and the total height of the SVG area.
 
-Die Höhe des SVG-Bereichs ist 100. Hast du einen Datenpunkt von 0 im Satz, wirst du wollen, dass die Balken unten im SVG-Bereich anfangen (und nicht oben). Damit dir das gelingt, benötigt die `y`-Koordinate den Wert 100. Wäre der Wert des Datenpunkts 1, würdest du mit einer `y`-Koordinate von 100 beginnen, um den Balken am unteren Rand zu setzen. Anschließend müsstest du die Höhe des Balkens (1) berücksichtigen, wodurch die endgültige `y`-Koordinate 99 wäre.
+The height of the SVG area is 100. If you have a data point of 0 in the set, you would want the bar to start at the bottom of the SVG area (not the top). To do this, the `y` coordinate needs a value of 100. If the data point value were 1, you would start with a `y` coordinate of 100 to set the bar at the bottom. Then you need to account for the height of the bar of 1, so the final `y` coordinate would be 99.
 
-Die `y`-Koordinate, d.h. `y = heightOfSVG - heightOfBar`, würde die Balken nun richtig herum ausrichten.
+The `y` coordinate that is `y = heightOfSVG - heightOfBar` would place the bars right-side-up.
 
 # --instructions--
 
-Verändere die Callback-Funktion so, dass das `y`-Attribut die Balken richtig herum ausrichtet. Beachte, dass die `height` des Balkens dreimal so hoch ist wie der Datenwert `d`.
+Change the callback function for the `y` attribute to set the bars right-side-up. Remember that the `height` of the bar is 3 times the data value `d`.
 
-**Hinweis:** Normalerweise ist das Verhältnis `y = h - m * d`, wobei `m` die Konstante ist, die die Datenpunkte skaliert.
+**Note:** In general, the relationship is `y = h - m * d`, where `m` is the constant that scales the data points.
 
 # --hints--
 
-Das erste `rect` sollte über einen `y`-Wert von `64` verfügen.
+The first `rect` should have a `y` value of `64`.
 
 ```js
 assert($('rect').eq(0).attr('y') == h - dataset[0] * 3);
 ```
 
-Das zweite `rect` sollte über einen `y`-Wert von `7` verfügen.
+The second `rect` should have a `y` value of `7`.
 
 ```js
 assert($('rect').eq(1).attr('y') == h - dataset[1] * 3);
 ```
 
-Das dritte `rect` sollte über einen `y`-Wert von `34` verfügen.
+The third `rect` should have a `y` value of `34`.
 
 ```js
 assert($('rect').eq(2).attr('y') == h - dataset[2] * 3);
 ```
 
-Das vierte `rect` sollte über einen `y`-Wert von `49` verfügen.
+The fourth `rect` should have a `y` value of `49`.
 
 ```js
 assert($('rect').eq(3).attr('y') == h - dataset[3] * 3);
 ```
 
-Das fünfte `rect` sollte über einen `y`-Wert von `25` verfügen.
+The fifth `rect` should have a `y` value of `25`.
 
 ```js
 assert($('rect').eq(4).attr('y') == h - dataset[4] * 3);
 ```
 
-Das sechste `rect` sollte über einen `y`-Wert von `46` verfügen.
+The sixth `rect` should have a `y` value of `46`.
 
 ```js
 assert($('rect').eq(5).attr('y') == h - dataset[5] * 3);
 ```
 
-Das siebte `rect` sollte über einen `y`-Wert von `13` verfügen.
+The seventh `rect` should have a `y` value of `13`.
 
 ```js
 assert($('rect').eq(6).attr('y') == h - dataset[6] * 3);
 ```
 
-Das achte `rect` sollte über einen `y`-Wert von `58` verfügen.
+The eighth `rect` should have a `y` value of `58`.
 
 ```js
 assert($('rect').eq(7).attr('y') == h - dataset[7] * 3);
 ```
 
-Das neunte `rect` sollte über einen `y`-Wert von `73` verfügen.
+The ninth `rect` should have a `y` value of `73`.
 
 ```js
 assert($('rect').eq(8).attr('y') == h - dataset[8] * 3);

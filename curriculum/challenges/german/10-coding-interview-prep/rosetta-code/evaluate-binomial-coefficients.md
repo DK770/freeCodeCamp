@@ -16,37 +16,37 @@ $\\binom{n}{k} = \\frac{n!}{(n-k)!k!} = \\frac{n(n-1)(n-2)\\ldots(n-k+1)}{k(k-1)
 
 # --hints--
 
-`binom` sollte eine Funktion sein.
+`binom` should be a function.
 
 ```js
 assert(typeof binom === 'function');
 ```
 
-`binom(5,3)` sollte 10 zurückgeben.
+`binom(5,3)` should return 10.
 
 ```js
 assert.equal(binom(5, 3), 10);
 ```
 
-`binom(7,2)` sollte 21 zurückgeben.
+`binom(7,2)` should return 21.
 
 ```js
 assert.equal(binom(7, 2), 21);
 ```
 
-`binom(10,4)` sollte 210 zurückgeben.
+`binom(10,4)` should return 210.
 
 ```js
 assert.equal(binom(10, 4), 210);
 ```
 
-`binom(6,1)` sollte 6 zurückgeben.
+`binom(6,1)` should return 6.
 
 ```js
 assert.equal(binom(6, 1), 6);
 ```
 
-`binom(12,8)` sollte 495 zurückgeben.
+`binom(12,8)` should return 495.
 
 ```js
 assert.equal(binom(12, 8), 495);

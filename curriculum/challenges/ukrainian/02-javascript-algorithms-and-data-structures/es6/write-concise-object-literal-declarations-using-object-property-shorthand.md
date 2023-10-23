@@ -1,6 +1,6 @@
 ---
 id: 587d7b8a367417b2b2512b4f
-title: Написання стислих оголошень літералів об’єктів за допомогою скороченої властивості об’єкта
+title: Давайте напишемо точні декларації об'єкта за допомогою Object Property Shorthand
 challengeType: 1
 forumTopicId: 301225
 dashedName: write-concise-object-literal-declarations-using-object-property-shorthand
@@ -8,7 +8,7 @@ dashedName: write-concise-object-literal-declarations-using-object-property-shor
 
 # --description--
 
-ES6 додає деяку хорошу підтримку для легкого визначення літералів об’єкта.
+ES6 надає гарну підтримку для легкого визначення літералів об'єкта.
 
 Розглянемо наступний код:
 
@@ -19,7 +19,7 @@ const getMousePosition = (x, y) => ({
 });
 ```
 
-`getMousePosition` є простою функцією, яка повертає об’єкт з двома властивостями. ES6 надає синтаксичний цукор, щоб не доводилось писати `x: x`. Ви можете просто написати `x` один раз, і воно автоматично перетвориться на `x: x` (або щось еквівалентне). Ось та ж сама функція, переписана під новий синтаксис:
+`getMousePosition` це проста функція, яка повертає об'єкт з двома властивостями. ES6 втілює синтаксичний цукор (синтаксичний прийом, який полегшує сприйняття тексту програми), щоб не доводилось багато писати `x: x`. Можна просто написати `x` один раз, і він конвертується у `x: x` (або еквівалент) автоматично. Ось та ж сама функція, переписана під новий синтаксис:
 
 ```js
 const getMousePosition = (x, y) => ({ x, y });
@@ -27,11 +27,11 @@ const getMousePosition = (x, y) => ({ x, y });
 
 # --instructions--
 
-Використайте скорочену властивість об’єкта з його літералами, щоб створити і повернути об’єкт з властивостями `name`, `age` та `gender`.
+Скористайтеся скороченням властивостей об'єкта з його літералами, щоб створити і звернутися до об'єкта з такими властивостями: `name`, `age` і `gender`.
 
 # --hints--
 
-`createPerson("Zodiac Hasbro", 56, "male")` має повертати `{name: "Zodiac Hasbro", age: 56, gender: "male"}`.
+`createPerson("Zodiac Hasbro", 56, "male")` має стати `{name: "Zodiac Hasbro", age: 56, gender: "male"}`.
 
 ```js
 assert.deepEqual(
@@ -40,10 +40,10 @@ assert.deepEqual(
 );
 ```
 
-Ваш код не повинен використовувати `key:value`.
+Ваш код не має містити `key:value`.
 
 ```js
-assert(!code.match(/:/g))
+(getUserInput) => assert(!getUserInput('index').match(/:/g));
 ```
 
 # --seed--
@@ -66,17 +66,10 @@ const createPerson = (name, age, gender) => {
 
 ```js
 const createPerson = (name, age, gender) => {
-  // Only change code below this line
-  /*return {
-    name: name,
-    age: age,
-    gender: gender
-  };*/
   return {
     name,
     age,
     gender
   };
-  // Only change code above this line
 };
 ```

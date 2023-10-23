@@ -1,6 +1,6 @@
 ---
 id: bd7158d8c443edefaeb5bdef
-title: Zeitstempel-Mikroservice
+title: Timestamp Microservice
 challengeType: 4
 forumTopicId: 301508
 dashedName: timestamp-microservice
@@ -8,25 +8,19 @@ dashedName: timestamp-microservice
 
 # --description--
 
-Erstelle eine vollständige JavaScript-Anwendung, die eine ähnliche Funktionalität wie <a href="https://timestamp-microservice.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://timestamp-microservice.freecodecamp.rocks</a> aufweist. Bei der Arbeit an diesem Projekt musst du deinen Code mit einer der folgenden Methoden schreiben:
+Erstelle eine vollständige JavaScript-Anwendung, die eine ähnliche Funktionalität wie <a href="https://timestamp-microservice.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://timestamp-microservice.freecodecamp.rocks</a> aufweist. Working on this project will involve you writing your code using one of the following methods:
 
 -   Klone <a href="https://github.com/freeCodeCamp/boilerplate-project-timestamp/"  target="_blank" rel="noopener noreferrer nofollow">dieses GitHub-Repo</a> und schließe dein Projekt lokal ab.
 -   Benutze <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-timestamp"  target="_blank" rel="noopener noreferrer nofollow">unser Replit-Starter-Projekt</a>, um dein Projekt fertigzustellen.
--   Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
+-   Use a site builder of your choice to complete the project. Be sure to incorporate all the files from our GitHub repo.
 
-Wenn du Replit verwendest, dann folge diesen Schritten, um das Projekt einzurichten:
+Wenn du fertig bist, stelle sicher, dass dein Projekt öffentlich zugänglich gehostet ist. Gib dann die URL in das `Solution Link`-Feld ein. Füge optional einen Link zum Quellcode deines Projekts in das `GitHub Link`-Feld ein.
 
--   Beginne, indem du das Projekt in Replit importierst.
--   Daraufhin wird ein `.replit`-Fenster angezeigt.
--   Wähle `Use run command` aus und klicke auf die `Done`-Schaltfläche.
-
-Wenn du fertig bist, stelle sicher, dass eine funktionierende Demo deines Projekts an einem öffentlichen Ort gehostet wird. Gib anschließend die URL in das Solution Link-Feld ein. Füge optional einen Link zum Quellcode deines Projekts in das GitHub Link-Feld ein.
-
-**Hinweis:** In diesem Projekt geht es nicht um die Umwandlung der Zeitzonen. Folglich kannst du davon ausgehen, dass alle gültigen Daten mit `new Date()` als GMT-Daten geparst werden.
+**Note:** Time zones conversion is not a purpose of this project, so assume all sent valid dates will be parsed with `new Date()` as GMT dates.
 
 # --hints--
 
-Du solltest dein eigenes Projekt bereitstellen, nicht die Beispiel-URL.
+You should provide your own project, not the example URL.
 
 ```js
 (getUserInput) => {
@@ -36,7 +30,7 @@ Du solltest dein eigenes Projekt bereitstellen, nicht die Beispiel-URL.
 };
 ```
 
-Eine Anfrage an `/api/:date?` mit einem gültigen Datum sollte ein JSON-Objekt mit einem `unix`-Schlüssel zurückgeben, bei dem es sich um ein Unix-Zeitstempel des Eingabedatums in Millisekunden (als Typ-Nummer) handelt
+A request to `/api/:date?` with a valid date should return a JSON object with a `unix` key that is a Unix timestamp of the input date in milliseconds (as type Number)
 
 ```js
 (getUserInput) =>
@@ -72,7 +66,7 @@ A request to `/api/:date?` with a valid date should return a JSON object with a 
   );
 ```
 
-Eine Anfrage an `/api/1451001600000` sollte `{ unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" }` zurückgeben
+A request to `/api/1451001600000` should return `{ unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" }`
 
 ```js
 (getUserInput) =>
@@ -89,7 +83,7 @@ Eine Anfrage an `/api/1451001600000` sollte `{ unix: 1451001600000, utc: "Fri, 2
   );
 ```
 
-Dein Projekt kann Daten verarbeiten, die erfolgreich von `new Date(date_string)` geparst werden können
+Your project can handle dates that can be successfully parsed by `new Date(date_string)`
 
 ```js
 (getUserInput) =>
@@ -106,7 +100,7 @@ Dein Projekt kann Daten verarbeiten, die erfolgreich von `new Date(date_string)`
   );
 ```
 
-Wenn der String des Eingabedatums ungültig ist, gibt die API ein Objekt mit der Struktur `{ error : "Invalid Date" }` zurück
+If the input date string is invalid, the api returns an object having the structure `{ error : "Invalid Date" }`
 
 ```js
 (getUserInput) =>
@@ -120,7 +114,7 @@ Wenn der String des Eingabedatums ungültig ist, gibt die API ein Objekt mit der
   );
 ```
 
-Ein leerer Datumsparameter sollte die aktuelle Uhrzeit in einem JSON-Objekt mit einem `unix`-Schlüssel zurückgeben
+An empty date parameter should return the current time in a JSON object with a `unix` key
 
 ```js
 (getUserInput) =>
@@ -135,7 +129,7 @@ Ein leerer Datumsparameter sollte die aktuelle Uhrzeit in einem JSON-Objekt mit 
   );
 ```
 
-Ein leerer Datumsparameter sollte die aktuelle Uhrzeit in einem JSON-Objekt mit einem `utc`-Schlüssel zurückgeben
+An empty date parameter should return the current time in a JSON object with a `utc` key
 
 ```js
 (getUserInput) =>

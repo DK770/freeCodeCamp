@@ -1,41 +1,33 @@
-import { Button } from '@freecodecamp/react-bootstrap';
-import type { RouteComponentProps } from '@reach/router';
+import { Grid, Panel, Button } from '@freecodecamp/react-bootstrap';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Container, Panel } from '@freecodecamp/ui';
 
-import envData from '../../config/env.json';
+import envData from '../../../config/env.json';
 import { Spacer } from '../components/helpers';
 import FullWidthRow from '../components/helpers/full-width-row';
 
 const { apiLocation } = envData;
 
-type ShowUnsubscribedProps = Pick<RouteComponentProps, 'path'> & {
-  unsubscribeId?: string;
-};
-
 function ShowUnsubscribed({
   unsubscribeId
-}: ShowUnsubscribedProps): JSX.Element {
+}: {
+  unsubscribeId: string;
+}): JSX.Element {
   const { t } = useTranslation();
   return (
     <>
       <Helmet>
         <title>{t('metaTags:youre-unsubscribed')} | freeCodeCamp.org</title>
       </Helmet>
-      <Container>
+      <Grid>
         <main>
           <FullWidthRow>
-            <Spacer size='large' />
-            <Panel variant='primary' className='text-center'>
-              <Spacer size='medium' />
-              <h2 data-playwright-test-label='main-heading'>
-                {t('misc.unsubscribed')}
-              </h2>
-              <p data-playwright-test-label='motivation-text'>
-                {t('misc.keep-coding')}
-              </p>
+            <Spacer size={2} />
+            <Panel bsStyle='primary' className='text-center'>
+              <Spacer />
+              <h2>{t('misc.unsubscribed')}</h2>
+              <p>{t('misc.keep-coding')}</p>
             </Panel>
           </FullWidthRow>
           {unsubscribeId ? (
@@ -50,9 +42,9 @@ function ShowUnsubscribed({
               </Button>
             </FullWidthRow>
           ) : null}
-          <Spacer size='large' />
+          <Spacer size={2} />
         </main>
-      </Container>
+      </Grid>
     </>
   );
 }

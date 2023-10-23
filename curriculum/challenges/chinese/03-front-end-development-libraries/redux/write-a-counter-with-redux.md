@@ -28,12 +28,6 @@ action creator `decAction` 应该返回一个 `type` 等于 `DECREMENT` 的 acti
 assert(decAction().type === DECREMENT);
 ```
 
-运行 `store.getState()` 应该返回一个数字。
-
-```js
-assert(typeof store.getState() === 'number');
-```
-
 Redux store 应该将 `state` 初始化为 0。
 
 ```js
@@ -66,7 +60,7 @@ assert(
 );
 ```
 
-`counterReducer` 应该是一个函数。
+`counterReducer` 必须是一个函数。
 
 ```js
 assert(typeof counterReducer === 'function');

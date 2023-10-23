@@ -1,13 +1,11 @@
+import { Grid } from '@freecodecamp/react-bootstrap';
 import React, { useRef } from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { Container } from '@freecodecamp/ui';
-
-import store from 'store';
-import envData from '../../config/env.json';
+import envData from '../../../config/env.json';
 import { createFlashMessage } from '../components/Flash/redux';
 import { Loader, Spacer } from '../components/helpers';
 import Certification from '../components/settings/certification';
@@ -18,7 +16,7 @@ import Honesty from '../components/settings/honesty';
 import Internet, { Socials } from '../components/settings/internet';
 import Portfolio from '../components/settings/portfolio';
 import Privacy from '../components/settings/privacy';
-import { type ThemeProps, Themes } from '../components/settings/theme';
+import { Themes } from '../components/settings/theme';
 import UserToken from '../components/settings/user-token';
 import { hardGoTo as navigate } from '../redux/actions';
 import {
@@ -39,15 +37,17 @@ import {
   updateMyKeyboardShortcuts,
   verifyCert
 } from '../redux/settings/actions';
+
 const { apiLocation } = envData;
 
 // TODO: update types for actions
-type ShowSettingsProps = Pick<ThemeProps, 'toggleNightMode'> & {
+interface ShowSettingsProps {
   createFlashMessage: typeof createFlashMessage;
   isSignedIn: boolean;
   navigate: (location: string) => void;
   showLoading: boolean;
   submitNewAbout: () => void;
+  toggleNightMode: (theme: Themes) => void;
   toggleSoundMode: (sound: boolean) => void;
   toggleKeyboardShortcuts: (keyboardShortcuts: boolean) => void;
   updateSocials: (formValues: Socials) => void;
@@ -55,10 +55,10 @@ type ShowSettingsProps = Pick<ThemeProps, 'toggleNightMode'> & {
   updatePortfolio: () => void;
   updateQuincyEmail: (isSendQuincyEmail: boolean) => void;
   user: User;
-  verifyCert: typeof verifyCert;
+  verifyCert: () => void;
   path?: string;
   userToken: string | null;
-};
+}
 
 const mapStateToProps = createSelector(
   signInLoadingSelector,
@@ -117,15 +117,15 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
       isDataAnalysisPyCertV7,
       isMachineLearningPyCertV7,
       isRelationalDatabaseCertV8,
-      isCollegeAlgebraPyCertV8,
-      isFoundationalCSharpCertV8,
       isEmailVerified,
       isHonest,
       sendQuincyEmail,
       username,
       about,
       picture,
+      points,
       theme,
+      sound,
       keyboardShortcuts,
       location,
       name,
@@ -154,18 +154,14 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
     navigate(`${apiLocation}/signin`);
     return <Loader fullScreen={true} />;
   }
-  const sound = (store.get('fcc-sound') as boolean) ?? false;
+
   return (
     <>
       <Helmet title={`${t('buttons.settings')} | freeCodeCamp.org`} />
-      <Container>
+      <Grid>
         <main>
-          <Spacer size='large' />
-          <h1
-            id='content-start'
-            className='text-center'
-            style={{ overflowWrap: 'break-word' }}
-          >
+          <Spacer size={2} />
+          <h1 className='text-center' style={{ overflowWrap: 'break-word' }}>
             {t('settings.for', { username: username })}
           </h1>
           <About
@@ -174,6 +170,7 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
             location={location}
             name={name}
             picture={picture}
+            points={points}
             sound={sound}
             keyboardShortcuts={keyboardShortcuts}
             submitNewAbout={submitNewAbout}
@@ -182,16 +179,16 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
             toggleKeyboardShortcuts={toggleKeyboardShortcuts}
             username={username}
           />
-          <Spacer size='medium' />
+          <Spacer />
           <Privacy />
-          <Spacer size='medium' />
+          <Spacer />
           <Email
             email={email}
             isEmailVerified={isEmailVerified}
             sendQuincyEmail={sendQuincyEmail}
             updateQuincyEmail={updateQuincyEmail}
           />
-          <Spacer size='medium' />
+          <Spacer />
           <Internet
             githubProfile={githubProfile}
             linkedin={linkedin}
@@ -199,11 +196,12 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
             updateSocials={updateSocials}
             website={website}
           />
-          <Spacer size='medium' />
+          <Spacer />
+          {/* @ts-expect-error Portfolio types mismatch */}
           <Portfolio portfolio={portfolio} updatePortfolio={updatePortfolio} />
-          <Spacer size='medium' />
+          <Spacer />
           <Honesty isHonest={isHonest} updateIsHonest={updateIsHonest} />
-          <Spacer size='medium' />
+          <Spacer />
           <Certification
             completedChallenges={completedChallenges}
             createFlashMessage={createFlashMessage}
@@ -212,8 +210,6 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
             isBackEndCert={isBackEndCert}
             isDataAnalysisPyCertV7={isDataAnalysisPyCertV7}
             isDataVisCert={isDataVisCert}
-            isCollegeAlgebraPyCertV8={isCollegeAlgebraPyCertV8}
-            isFoundationalCSharpCertV8={isFoundationalCSharpCertV8}
             isFrontEndCert={isFrontEndCert}
             isFrontEndLibsCert={isFrontEndLibsCert}
             isFullStackCert={isFullStackCert}
@@ -228,18 +224,17 @@ export function ShowSettings(props: ShowSettingsProps): JSX.Element {
             isSciCompPyCertV7={isSciCompPyCertV7}
             username={username}
             verifyCert={verifyCert}
-            isEmailVerified={isEmailVerified}
           />
           {userToken && (
             <>
-              <Spacer size='medium' />
+              <Spacer />
               <UserToken />
             </>
           )}
-          <Spacer size='medium' />
+          <Spacer />
           <DangerZone />
         </main>
-      </Container>
+      </Grid>
     </>
   );
 }

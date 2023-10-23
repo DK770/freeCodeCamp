@@ -1,18 +1,18 @@
-# Wie man an Übungsprojekten arbeitet
+# Wie man an Praxisprojekten arbeitet
 
-Our practice projects use a step-based approach to teach concepts to campers. Ein Projekt besteht aus mehreren Dateien, die wir als **"Schritte"** bezeichnen. Diese Dateien werden nach der Challenge-ID benannt, um Probleme mit dem Übersetzungsablauf zu vermeiden. Das macht es leider schwierig, die zu einem bestimmten Schritt gehörende Datei zu finden.
+Our practice projects use a step-based approach to teach concepts to campers. A project will consist of multiple files, which we refer to as **"steps"**. These files are named by the challenge ID, to avoid issues with the translation flow. Unfortunately, this makes it difficult to find the file associated with a specific step.
 
-Wir haben ein Editor-Tool für Aufgaben entwickelt, das hier Abhilfe schafft. Mit diesem Tool kannst du durch die verfügbaren Projekte und die Schritte für jedes Projekt (in der richtigen Reihenfolge) navigieren. Außerdem gibt es einen eingebetteten Code-Editor, mit dem du die Dateien direkt bearbeiten kannst.
+We've built a challenge editor tool that helps remedy this. This tool allows you to navigate the available projects, and the steps for each project (in order). There's also an embedded code editor you can use to work on the files directly.
 
-## Den Aufgaben-Editor verwenden
+## Using the Challenge Editor
 
-In dieser Anleitung erfährst du, wie du mit unserem Aufgaben-Editor an den Übungsprojekten arbeiten kannst.
+These instructions will tell you how to use our challenge editor tool to work on the practice projects.
 
-### Starten des Editors
+### Starting the Editor
 
-To start the editor, make sure you are in the root freeCodeCamp directory. Then, run `pnpm run challenge-editor` to start both the client and the API that powers the editor.
+To start the editor, make sure you are in the root freecodecamp directory. Then, run `npm run challenge-editor` to start both the client and the API that powers the editor.
 
-Der Client läuft auf Port `3300`, so dass du ihn unter `http://localhost:3300` erreichen kannst. Die API läuft auf Port `3200`, um Konflikte mit dem Lernclient und dem Server zu vermeiden. Dies ermöglicht es dir, die freeCodeCamp-Anwendung gleichzeitig mit dem Editor laufen zu lassen, so dass du deine Änderungen lokal testen kannst.
+The client will run on port `3300`, so you can access it at `http://localhost:3300`. The API runs on port `3200`, to avoid conflicts with the learn client and server. This will allow you to run the freeCodeCamp application at the same time as the editor, so you can test your changes locally.
 
 ### Navigating the Editor
 
@@ -58,9 +58,9 @@ If you want to work on the steps manually, in your local IDE, you can run the st
 
 The `tools/challenge-helper-scripts` folder contains tools to help facilitate the creation and maintenance of the freeCodeCamp project-based curriculum.
 
-### Create a New Project
+### Create a new project
 
-Change directory to `tools/challenge-helper-scripts` and run `pnpm run create-project`. This opens up a command line UI that guides you through the process. Once that has finished, there should be a new challenge in the English curriculum that you can use for the first step of the project. For example, if you created a project called `test-project` in the Responsive Web Design certification, it would be in `curriculum/challenges/english/01-responsive-web-design/test-project`.
+Run `npm run create-project` from the root directory. This opens up a command line ui that guides you through the process. Once that has finished, there should be a new challenge in the English curriculum that you can use for the first step of the project. For example, if you created a project called `test-project` in the Responsive Web Design certification, it would be in `curriculum/challenges/english/01-responsive-web-design/test-project`.
 
 If you want to create new steps, the following tools simplify that process.
 
@@ -68,13 +68,13 @@ If you want to create new steps, the following tools simplify that process.
 
 A one-off script that will automatically add the next step based on the last step in the project. The challenge seed code will use the previous step's challenge seed code.
 
-#### How to Run the Script
+#### How to run script:
 
 1. Wechsle in das Verzeichnis des Projekts.
-2. Run the following command:
+2. Führe den folgenden npm-Befehl aus:
 
 ```bash
-pnpm run create-next-step
+npm run create-next-step
 ```
 
 ### create-empty-steps
@@ -83,13 +83,13 @@ A one-off script that automatically adds a specified number of steps. The challe
 
 **Note:** This script also runs [update-step-titles](#update-step-titles).
 
-#### How to Run the Script
+#### How to run script:
 
 1. Wechsle in das Verzeichnis des Projekts.
-2. Run the following command:
+2. Führe den folgenden npm-Befehl aus:
 
 ```bash
-pnpm run create-empty-steps X # where X is the number of steps to create.
+npm run create-empty-steps X # wobei X die Anzahl der zu erstellenden Schritte ist.
 ```
 
 ### insert-step
@@ -98,13 +98,13 @@ A one-off script that automatically adds a new step at a specified position, inc
 
 **Note:** This script also runs [update-step-titles](#update-step-titles).
 
-#### How to Run the Script
+#### How to run script:
 
 1. Wechsle in das Verzeichnis des Projekts.
-2. Run the following command:
+2. Führe den folgenden npm-Befehl aus:
 
 ```bash
-pnpm run insert-step X # where X is the position to insert the new step.
+npm run insert-step X # wobei X die Position ist, an der der neue Schritt eingefügt werden soll.
 ```
 
 ### delete-step
@@ -113,40 +113,24 @@ A one-off script that deletes an existing step, decrementing all subsequent step
 
 **Note:** This script also runs [update-step-titles](#update-step-titles).
 
-#### How to Run the Script
+#### How to run script
 
 1. Wechsle in das Verzeichnis des Projekts.
-2. Run the following command:
+2. Führe den folgenden npm-Befehl aus:
 
 ```bash
-pnpm run delete-step X # where X is the step number to be deleted.
+npm run delete-step X # wobei X die Schrittnummer ist, die gelöscht werden soll.
 ```
 
 ### update-step-titles
 
 A one-off script that automatically updates the frontmatter in a project's markdown files so that they are consistent with the project's meta.json. It ensures that each step's title (and dashedName) match the meta's challengeOrder.
 
-#### How to Run the Script
+#### How to run script
 
 1. Wechsle in das Verzeichnis des Projekts.
-2. Run the following command:
+2. Führe den folgenden npm-Befehl aus:
 
 ```bash
-pnpm run update-step-titles
+npm run update-step-titles
 ```
-
-### repair-meta
-
-One-off script to parse the step names from the project and update the meta.json order to reflect those steps. Useful if you've accidentally lost the changes to the meta.json file when adding/removing steps.
-
-#### How to Run the Script
-
-1. Change to the directory of the project.
-2. Run the following command:
-
-```bash
-pnpm run repair-meta
-```
-## Proposing a Pull Request (PR)
-
-After you've committed your changes, check here for [how to open a Pull Request](how-to-open-a-pull-request.md).

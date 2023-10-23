@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f180b6c005b0e76f08f
-title: 'Реляційні бази даних: операції приєднання'
+title: 'Реляційні бази даних: Операції приєднання'
 challengeType: 11
 videoId: jvDw3D9GKac
 bilibiliIds:
@@ -14,7 +14,7 @@ dashedName: relational-databases-join-operation
 
 ## --text--
 
-Що робить ON під час використання умови JOIN в інструкції SQL?
+Під час використання JOIN у SQL-операторі, що робить ON?
 
 ## --answers--
 
@@ -26,7 +26,7 @@ dashedName: relational-databases-join-operation
 
 ---
 
-Воно вказує на те, як саме таблиці мають бути об’єднані.
+Воно вказує на те, як саме таблиці мають бути об'єднані.
 
 ## --video-solution--
 

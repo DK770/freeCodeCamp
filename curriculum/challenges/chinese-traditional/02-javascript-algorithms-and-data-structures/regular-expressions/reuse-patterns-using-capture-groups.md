@@ -96,20 +96,6 @@ reRegex.lastIndex = 0;
 assert(reRegex.test('10 10 10'));
 ```
 
-你的正則表達式不應匹配字符串 `42\t42\t42`。
-
-```js
-reRegex.lastIndex = 0;
-assert(!reRegex.test('42\t42\t42'));
-```
-
-你的正則表達式不應匹配字符串 `42  42  42`。
-
-```js
-reRegex.lastIndex = 0;
-assert(!reRegex.test('42  42  42'));
-```
-
 # --seed--
 
 ## --seed-contents--
@@ -124,6 +110,6 @@ let result = reRegex.test(repeatNum);
 
 ```js
 let repeatNum = "42 42 42";
-let reRegex = /^(\d+) \1 \1$/;
+let reRegex = /^(\d+)\s\1\s\1$/;
 let result = reRegex.test(repeatNum);
 ```

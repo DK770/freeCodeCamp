@@ -36,19 +36,19 @@ and turn it into a native data structure.
 
 # --hints--
 
-`parseSexpr` sollte eine Funktion sein.
+`parseSexpr` should be a function.
 
 ```js
 assert(typeof parseSexpr === 'function');
 ```
 
-`parseSexpr('(data1 data2 data3)')` sollte `['data1', 'data2', 'data3']` zurückgeben
+`parseSexpr('(data1 data2 data3)')` should return `['data1', 'data2', 'data3']`
 
 ```js
 assert.deepEqual(parseSexpr(simpleSExpr), simpleSolution);
 ```
 
-`parseSexpr('((data "quoted data" 123 4.5) (data (!@# (4.5) "(more" "data)")))')` sollte `[['data', '"quoted data"', 123, 4.5], ['data', ['!@#', [4.5], '"(more"', '"data)"']]]` zurückgeben.
+`parseSexpr('((data "quoted data" 123 4.5) (data (!@# (4.5) "(more" "data)")))')` should return `[['data', '"quoted data"', 123, 4.5], ['data', ['!@#', [4.5], '"(more"', '"data)"']]]`.
 
 ```js
 assert.deepEqual(parseSexpr(basicSExpr), basicSolution);

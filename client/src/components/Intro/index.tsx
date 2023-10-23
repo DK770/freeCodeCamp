@@ -1,12 +1,12 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { randomQuote } from '../../utils/get-words';
-import Login from '../Header/components/login';
+import Login from '../Header/components/Login';
 import { Link, Spacer, Loader } from '../helpers';
-import IntroDescription from './components/intro-description';
+import IntroDescription from './components/IntroDescription';
 
 import './intro.css';
-import LearnAlert from './learn-alert';
+import ResearchBannerx from './research-banner';
 
 interface IntroProps {
   complete?: boolean;
@@ -16,8 +16,6 @@ interface IntroProps {
   pending?: boolean;
   slug?: string;
   username?: string;
-  onDonationAlertClick: () => void;
-  isDonating: boolean;
 }
 
 const Intro = ({
@@ -26,47 +24,42 @@ const Intro = ({
   pending,
   complete,
   completedChallengeCount,
-  slug,
-  onDonationAlertClick,
-  isDonating
+  slug
 }: IntroProps): JSX.Element => {
   const { t } = useTranslation();
   if (pending && !complete) {
     return (
       <>
-        <Spacer size='medium' />
+        <Spacer />
         <Loader />
-        <Spacer size='medium' />
+        <Spacer />
       </>
     );
   } else if (isSignedIn) {
     const { quote, author } = randomQuote();
     return (
       <>
-        <Spacer size='medium' />
-        <h1 id='content-start' className='text-center'>
+        <Spacer />
+        <h1 className='text-center'>
           {name
             ? `${t('learn.welcome-1', { name: name })}`
             : `${t('learn.welcome-2')}`}
         </h1>
-        <Spacer size='medium' />
+        <Spacer />
         <div className='text-center quote-partial'>
           <blockquote className='blockquote'>
             <span>
-              <q data-playwright-test-label='random-quote'>{quote}</q>
+              <q>{quote}</q>
               <footer className='quote-author blockquote-footer'>
-                <cite data-playwright-test-label='random-author'>{author}</cite>
+                <cite>{author}</cite>
               </footer>
             </span>
           </blockquote>
         </div>
-        <LearnAlert
-          onDonationAlertClick={onDonationAlertClick}
-          isDonating={isDonating}
-        />
+        <ResearchBannerx />
         {completedChallengeCount && slug && completedChallengeCount < 15 ? (
           <div className='intro-description'>
-            <Spacer size='medium' />
+            <Spacer />
             <p>
               <Trans i18nKey='learn.start-at-beginning'>
                 <Link to={slug} />
@@ -81,19 +74,13 @@ const Intro = ({
   } else {
     return (
       <>
-        <Spacer size='medium' />
-        <h1
-          id='content-start'
-          className='text-center'
-          data-playwright-test-label='learn-heading'
-        >
-          {t('learn.heading')}
-        </h1>
-        <Spacer size='medium' />
+        <Spacer />
+        <h1>{t('learn.heading')}</h1>
+        <Spacer />
         <IntroDescription />
-        <Spacer size='medium' />
+        <Spacer />
         <Login block={true}>{t('buttons.logged-out-cta-btn')}</Login>
-        <Spacer size='medium' />
+        <Spacer />
       </>
     );
   }

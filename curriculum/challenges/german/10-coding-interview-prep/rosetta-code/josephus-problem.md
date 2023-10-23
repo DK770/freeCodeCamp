@@ -30,43 +30,43 @@ Write a function that takes the initial number of prisoners and `k` as parameter
 
 # --hints--
 
-`josephus` sollte eine Funktion sein.
+`josephus` should be a function.
 
 ```js
 assert(typeof josephus == 'function');
 ```
 
-`josephus(30,3)` sollte eine Zahl zurückgeben.
+`josephus(30,3)` should return a number.
 
 ```js
 assert(typeof josephus(30, 3) == 'number');
 ```
 
-`josephus(30,3)` sollte `28` zurückgeben.
+`josephus(30,3)` should return `28`.
 
 ```js
 assert.equal(josephus(30, 3), 28);
 ```
 
-`josephus(30,5)` sollte `2` zurückgeben.
+`josephus(30,5)` should return `2`.
 
 ```js
 assert.equal(josephus(30, 5), 2);
 ```
 
-`josephus(20,2)` sollte `8` zurückgeben.
+`josephus(20,2)` should return `8`.
 
 ```js
 assert.equal(josephus(20, 2), 8);
 ```
 
-`josephus(17,6)` sollte `1` zurückgeben.
+`josephus(17,6)` should return `1`.
 
 ```js
 assert.equal(josephus(17, 6), 1);
 ```
 
-`josephus(29,4)` sollte `1` zurückgeben.
+`josephus(29,4)` should return `1`.
 
 ```js
 assert.equal(josephus(29, 4), 1);

@@ -1,6 +1,6 @@
 ---
 id: 58966a17f9fc0f352b528e6d
-title: Registrierung neuer Nutzer
+title: Registration of New Users
 challengeType: 2
 forumTopicId: 301561
 dashedName: registration-of-new-users
@@ -8,25 +8,16 @@ dashedName: registration-of-new-users
 
 # --description--
 
-Jetzt musst du einem neuen Nutzer deiner Webseite erlauben, ein Konto zu erstellen. In the `res.render` for the home page add a new variable to the object passed along - `showRegistration: true`. Wenn du deine Seite aktualisierst, solltest du das Registrierungsformular sehen, das bereits in deiner `index.pug`-Datei erstellt wurde. This form is set up to **POST** on `/register`, so create that route and have it add the user object to the database by following the logic below.
+Now we need to allow a new user on our site to register an account. On the `res.render` for the home page add a new variable to the object passed along--`showRegistration: true`. Wenn du deine Seite aktualisierst, solltest du das Registrierungsformular sehen, das bereits in deiner `index.pug` Datei erstellt wurde! This form is set up to **POST** on `/register`, so this is where we should set up to accept the **POST** and create the user object in the database.
 
-The logic of the registration route should be as follows:
+Die Logik des Registrierungswegs sollte folgendermaßen aussehen: Registrierung des neuen Benutzers > Authentifizierung des neuen Benutzers > Weiterleitung zu /profile
 
-1. Registriere den neuen Nutzer
-2. Authentifiziere den neuen Nutzer
-3. Leite zu `/profile` weiter
-
-Die Logik von Schritt 1 sollte wie folgt lauten:
-
-1. Frage die Datenbank mit `findOne` ab
-2. Wenn ein Fehler auftritt, rufe `next` mit dem Fehler auf
-3. If a user is returned, redirect back to home
-4. Wird der Nutzer nicht gefunden und tritt kein Fehler auf, so füge den Nutzernamen sowie das Passwort der Datenbank mithilfe von `insertOne` hinzu. Tritt auch hier kein Fehler auf, so rufe `next` auf, um zu Schritt 2 überzugehen – der Authentifizierung des neuen Nutzers. Die Logik hierfür hast du bereits in deiner `POST /login`-Route geschrieben.
+The logic of step 1, registering the new user, should be as follows: Query database with a findOne command > if user is returned then it exists and redirect back to home *OR* if user is undefined and no error occurs then 'insertOne' into the database with the username and password, and, as long as no errors occur, call *next* to go to step 2, authenticating the new user, which we've already written the logic for in our POST */login* route.
 
 ```js
 app.route('/register')
   .post((req, res, next) => {
-    myDataBase.findOne({ username: req.body.username }, (err, user) => {
+    myDataBase.findOne({ username: req.body.username }, function(err, user) {
       if (err) {
         next(err);
       } else if (user) {
@@ -56,30 +47,33 @@ app.route('/register')
   );
 ```
 
-Reiche deine Seite ein, wenn du davon ausgehst, alles richtig gemacht zu haben. Wenn du auf Fehler stößt, kannst du <a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#registration-of-new-users-11" target="_blank" rel="noopener noreferrer nofollow">das bis zu diesem Punkt abgeschlossene Projekt überprüfen</a>.
+Submit your page when you think you've got it right. If you're running into errors, you can <a href="https://gist.github.com/camperbot/b230a5b3bbc89b1fa0ce32a2aa7b083e" target="_blank" rel="noopener noreferrer nofollow">check out the project completed up to this point</a>.
 
-**HINWEIS:** Ab jetzt können Probleme im Zusammenhang mit der Verwendung des *picture-in-picture*-Browsers auftreten. Wenn du eine Online-IDE verwendest, die eine Vorschau der Anwendung innerhalb des Editors bietet, wird empfohlen, diese Vorschau in einem neuen Tab zu öffnen.
+**NOTE:** From this point onwards, issues can arise relating to the use of the *picture-in-picture* browser. If you are using an online IDE which offers a preview of the app within the editor, it is recommended to open this preview in a new tab.
 
 # --hints--
 
-Du solltest eine `/register`-Route haben und ein Registrierungsformular auf der Startseite anzeigen.
+You should register route and display on home.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/server.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /showRegistration:( |)true/gi,
-    'You should be passing the variable showRegistration as true to your render function for the homepage'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/server.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /showRegistration:( |)true/gi,
+        'You should be passing the variable showRegistration as true to your render function for the homepage'
+      );
+      assert.match(
+        data,
+        /register[^]*post[^]*findOne[^]*username:( |)req.body.username/gi,
+        'You should have a route accepted a post request on register that querys the db with findone and the query being username: req.body.username'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-  assert.match(
-    data,
-    /register[^]*post[^]*findOne[^]*username:( |)req.body.username/gi,
-    'You should have a route that accepts a POST request on /register that queries the db with findOne and the query being username: req.body.username'
-  );
-}
 ```
 
 Die Registrierung sollte funktionieren.
@@ -177,7 +171,7 @@ Logout sollte funktionieren.
   );
 ```
 
-Das Profil sollte nach dem Logout nicht mehr funktionieren.
+Das Profil sollte nach dem Abmelden nicht mehr funktionieren.
 
 ```js
 (getUserInput) =>

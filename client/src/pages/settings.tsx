@@ -9,8 +9,9 @@ function Settings(): JSX.Element {
   return (
     <Router>
       <ShowSettings path={withPrefix('/settings')} />
-
-      <RedirectHome default />
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <RedirectHome default={true} />
     </Router>
   );
 }

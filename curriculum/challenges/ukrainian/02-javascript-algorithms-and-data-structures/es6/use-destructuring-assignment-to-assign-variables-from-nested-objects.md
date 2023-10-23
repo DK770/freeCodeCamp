@@ -1,6 +1,6 @@
 ---
 id: 587d7b89367417b2b2512b4a
-title: Деструктуроване присвоєння для присвоєння змінних з вкладених об’єктів
+title: Використовуйте деструктивне привласнення для визначення змінних із масивів
 challengeType: 1
 forumTopicId: 301214
 dashedName: use-destructuring-assignment-to-assign-variables-from-nested-objects
@@ -8,9 +8,9 @@ dashedName: use-destructuring-assignment-to-assign-variables-from-nested-objects
 
 # --description--
 
-Ви можете використовувати принципи з попередніх завдань, щоб деструктурувати значення з вкладених об’єктів.
+Слідуйте тим самим принципам, що і у попередніх 2 уроках, які були присвячені визначенню змінних із масивів.
 
-Використовуючи об’єкт, схожий до попередніх прикладів:
+Використовуйте змінну схожу до попередніх масивів:
 
 ```js
 const user = {
@@ -21,13 +21,13 @@ const user = {
 };
 ```
 
-Ось так ми отримуємо значення властивостей об’єкта та присвоюємо їх до змінних з однаковою назвою:
+Розглянемо приклад, як отримати значення властивостей об'єкта та призначити їх змінним із таким самим ім'ям:
 
 ```js
 const { johnDoe: { age, email }} = user;
 ```
 
-А ось так ми можемо присвоїти значення властивостей об’єкта до змінних з іншою назвою:
+Приклад того, як ви можете призначити значення з різними іменами:
 
 ```js
 const { johnDoe: { age: userAge, email: userEmail }} = user;
@@ -35,11 +35,11 @@ const { johnDoe: { age: userAge, email: userEmail }} = user;
 
 # --instructions--
 
-Замініть два присвоєння на еквівалентні деструктуровані присвоєння. Вони досі повинні присвоювати змінним `lowToday` та `highToday` значення `today.low` та `today.high` з об’єкта `LOCAL_FORECAST`.
+Замініть два визначення еквівалентами з деструктивного привласнення. Ви все ще призначаєте змінним `lowToday` та `highToday` значення `today.low` та `today.high` з об'єкту `LOCAL_FORECAST`.
 
 # --hints--
 
-Ви повинні видалити синтаксис присвоєння ES5.
+Видаліть призначення синтаксису ES5.
 
 ```js
 assert(
@@ -48,27 +48,27 @@ assert(
 );
 ```
 
-Ви повинні використати деструктуризацію, щоб створити змінну `lowToday`.
+Використовуйте деструкцію, щоб створити змінну `lowToday`.
 
 ```js
 assert(
   code.match(
-    /(var|const|let)\s*{\s*today\s*:\s*{\s*(low\s*:\s*lowToday[^}]*|[^,]*,\s*low\s*:\s*lowToday\s*)},?\s*}\s*=\s*LOCAL_FORECAST(;|\s+|\/\/)/g
+    /(var|const|let)\s*{\s*today\s*:\s*{\s*(low\s*:\s*lowToday[^}]*|[^,]*,\s*low\s*:\s*lowToday\s*)}\s*}\s*=\s*LOCAL_FORECAST(;|\s+|\/\/)/g
   )
 );
 ```
 
-Ви повинні використати деструктуризацію, щоб створити змінну `highToday`.
+Використовуйте деструкцію, щоб створити змінну `highToday`.
 
 ```js
 assert(
   code.match(
-    /(var|const|let)\s*{\s*today\s*:\s*{\s*(high\s*:\s*highToday[^}]*|[^,]*,\s*high\s*:\s*highToday,?\s*)},?\s*}\s*=\s*LOCAL_FORECAST(;|\s+|\/\/)/g
+    /(var|const|let)\s*{\s*today\s*:\s*{\s*(high\s*:\s*highToday[^}]*|[^,]*,\s*high\s*:\s*highToday\s*)}\s*}\s*=\s*LOCAL_FORECAST(;|\s+|\/\/)/g
   )
 );
 ```
 
-`lowToday` повинна дорівнювати `64`, а `highToday` повинна дорівнювати `77`.
+`lowToday` повинна дорівнювати `64` та `highToday</code має бути рівний <code>77`.
 
 ```js
 assert(lowToday === 64 && highToday === 77);

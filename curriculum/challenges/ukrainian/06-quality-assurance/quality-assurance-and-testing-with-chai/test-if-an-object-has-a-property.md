@@ -1,6 +1,6 @@
 ---
 id: 587d824e367417b2b2512c55
-title: Перевірте, чи об’єкт має властивість
+title: Перевірка об'єкта на властивість
 challengeType: 2
 forumTopicId: 301604
 dashedName: test-if-an-object-has-a-property
@@ -8,13 +8,13 @@ dashedName: test-if-an-object-has-a-property
 
 # --description--
 
-Нагадуємо, що цей проєкт створюється на основі стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
+Нагадуємо, що цей проєкт створюється на основі наступного стартового проєкту на <a href="https://replit.com/github/freeCodeCamp/boilerplate-mochachai" target="_blank" rel="noopener noreferrer nofollow">Replit</a> або клонований з <a href="https://github.com/freeCodeCamp/boilerplate-mochachai/" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>.
 
-`property` підтверджує, що об’єкт має надану властивість.
+`property` стверджує, що певний об'єкт має задану властивість.
 
 # --instructions--
 
-У межах `tests/1_unit-tests.js` під тестом з міткою `#16` у наборі `Objects` змініть кожний `assert` на `assert.property` або `assert.notProperty`, щоб пройти тест (повинен дорівнювати `true`). Не змінюйте аргументи, передані до тверджень.
+У межах `tests/1_unit-tests.js` під тестом з міткою `#16` у наборі `Objects` змініть кожний `assert` на `assert.property` або `assert.notProperty`, щоб забезпечити проходження тесту. (Має мати значення `true`). Не змінюйте аргументи, передані до тверджень.
 
 # --hints--
 
@@ -32,7 +32,7 @@ dashedName: test-if-an-object-has-a-property
   );
 ```
 
-Ви повинні обрати правильний метод для першого твердження: `property` або `notProperty`.
+Потрібно обрати правильний метод для першого твердження –`property` у порівнянні з `notProperty`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ dashedName: test-if-an-object-has-a-property
   );
 ```
 
-Ви повинні обрати правильний метод для другого твердження: `property` або `notProperty`.
+Потрібно обрати правильний метод для другого твердження –`property` у порівнянні з `notProperty`.
 
 ```js
 (getUserInput) =>
@@ -68,7 +68,7 @@ dashedName: test-if-an-object-has-a-property
   );
 ```
 
-Ви повинні обрати правильний метод для третього твердження: `property` або `notProperty`.
+Потрібно обрати правильний метод для третього твердження –`property` у порівнянні з `notProperty`.
 
 ```js
 (getUserInput) =>

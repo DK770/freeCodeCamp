@@ -3,7 +3,7 @@ const challenges = {
     '/learn/responsive-web-design/basic-html-and-html5/say-hello-to-html-elements',
   rosettaCode: '/learn/coding-interview-prep/rosetta-code/100-doors',
   projectEuler:
-    '/learn/project-euler/project-euler-problems-1-to-100/problem-1-multiples-of-3-and-5'
+    '/learn/coding-interview-prep/project-euler/problem-1-multiples-of-3-and-5'
 };
 
 const social = {
@@ -12,8 +12,6 @@ const social = {
 
 const scripts = {
   mathjax: {
-    // TODO: figure out why this is in the head in dev and in the body in prod.
-    // presumably an issue with gatsby-ssr.js vs gatsby-browser.js
     selector: 'body script[id="mathjax"]',
     src: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML'
   }
@@ -21,38 +19,46 @@ const scripts = {
 
 describe('The Document Metadata', () => {
   describe('landing page', () => {
-    it('has correct <meta> tags', () => {
+    before(() => {
       cy.visit('/');
+    });
+
+    it('has correct <meta> for description', () => {
       cy.get('head meta[name="description"]').should(
         'have.attr',
         'content',
         'Learn to Code — For Free'
       );
-
+    });
+    it('has correct <meta> for og title', () => {
       cy.get('head meta[name="og:title"]').should(
         'have.attr',
         'content',
         'freeCodeCamp.org'
       );
-
+    });
+    it('has correct <meta> for og description', () => {
       cy.get('head meta[name="og:description"]').should(
         'have.attr',
         'content',
         social.description
       );
-
+    });
+    it('has correct <meta> for twitter title', () => {
       cy.get('head meta[name="twitter:title"]').should(
         'have.attr',
         'content',
         'freeCodeCamp.org'
       );
-
+    });
+    it('has correct <meta>for twitter description', () => {
       cy.get('head meta[name="twitter:description"]').should(
         'have.attr',
         'content',
         social.description
       );
-
+    });
+    it('should not have mathjax body script', () => {
       cy.get(scripts.mathjax.selector).should('not.exist');
     });
   });

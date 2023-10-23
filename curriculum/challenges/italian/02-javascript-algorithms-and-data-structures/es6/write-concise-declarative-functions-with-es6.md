@@ -39,7 +39,7 @@ Riscrivi la funzione `setGear` all'interno dell'oggetto `bicycle` usando la scor
 La dichiarazione di funzione tradizionale non deve essere utilizzata.
 
 ```js
-assert(!code.match(/function/));
+(getUserInput) => assert(!code.match(/function/));
 ```
 
 `setGear` dovrebbe essere una funzione dichiarativa.
@@ -79,7 +79,6 @@ console.log(bicycle.gear);
 ```js
 const bicycle = {
   gear: 2,
-  // setGear: function(newGear) {
   setGear(newGear) {
     this.gear = newGear;
   }

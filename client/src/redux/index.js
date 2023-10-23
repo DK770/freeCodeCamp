@@ -17,14 +17,13 @@ import { createGaSaga } from './ga-saga';
 import hardGoToEpic from './hard-go-to-epic';
 import { createReportUserSaga } from './report-user-saga';
 import { createSaveChallengeSaga } from './save-challenge-saga';
-import { completionCountSelector, savedChallengesSelector } from './selectors';
+import { savedChallengesSelector } from './selectors';
 import { actionTypes as settingsTypes } from './settings/action-types';
 import { createShowCertSaga } from './show-cert-saga';
 import updateCompleteEpic from './update-complete-epic';
 import { createUserTokenSaga } from './user-token-saga';
-import { createMsUsernameSaga } from './ms-username-saga';
 
-const defaultFetchState = {
+export const defaultFetchState = {
   pending: true,
   complete: false,
   errored: false,
@@ -42,16 +41,12 @@ export const defaultDonationFormState = {
   }
 };
 
-const initialState = {
+export const initialState = {
   appUsername: '',
-  showMultipleProgressModals: false,
   recentlyClaimedBlock: null,
-  completionCountWhenShownProgressModal: 0,
-  progressDonationModalShown: false,
+  canRequestProgressDonation: true,
   completionCount: 0,
   currentChallengeId: store.get(CURRENT_CHALLENGE_KEY),
-  examInProgress: false,
-  isProcessing: false,
   showCert: {},
   showCertFetchState: {
     ...defaultFetchState
@@ -61,18 +56,13 @@ const initialState = {
   userFetchState: {
     ...defaultFetchState
   },
-  allChallengesInfo: {
-    challengeEdges: [],
-    certificateNodes: []
-  },
   userProfileFetchState: {
     ...defaultFetchState
   },
+  sessionMeta: { activeDonations: 0 },
   showDonationModal: false,
-  showSignoutModal: false,
   isOnline: true,
   isServerOnline: true,
-  renderStartTime: null,
   donationFormState: {
     ...defaultDonationFormState
   }
@@ -90,8 +80,7 @@ export const sagas = [
   ...createShowCertSaga(actionTypes),
   ...createReportUserSaga(actionTypes),
   ...createUserTokenSaga(actionTypes),
-  ...createSaveChallengeSaga(actionTypes),
-  ...createMsUsernameSaga(actionTypes)
+  ...createSaveChallengeSaga(actionTypes)
 ];
 
 function spreadThePayloadOnUser(state, payload) {
@@ -136,21 +125,15 @@ export const reducer = handleActions(
         recentlyClaimedBlock: payload
       };
     },
-    [actionTypes.setRenderStartTime]: (state, { payload }) => {
-      return {
-        ...state,
-        renderStartTime: payload
-      };
-    },
     [actionTypes.updateDonationFormState]: (state, { payload }) => ({
       ...state,
       donationFormState: { ...state.donationFormState, ...payload }
     }),
-    [actionTypes.postChargeProcessing]: state => ({
+    [actionTypes.addDonation]: state => ({
       ...state,
       donationFormState: { ...defaultDonationFormState, processing: true }
     }),
-    [actionTypes.postChargeComplete]: state => {
+    [actionTypes.addDonationComplete]: state => {
       const { appUsername } = state;
       return {
         ...state,
@@ -165,13 +148,55 @@ export const reducer = handleActions(
         donationFormState: { ...defaultDonationFormState, success: true }
       };
     },
-    [actionTypes.postChargeError]: (state, { payload }) => ({
+    [actionTypes.addDonationError]: (state, { payload }) => ({
       ...state,
       donationFormState: { ...defaultDonationFormState, error: payload }
     }),
-    [actionTypes.updateAllChallengesInfo]: (state, { payload }) => ({
+    [actionTypes.postChargeStripe]: state => ({
       ...state,
-      allChallengesInfo: { ...payload }
+      donationFormState: { ...defaultDonationFormState, processing: true }
+    }),
+    [actionTypes.postChargeStripeComplete]: state => {
+      const { appUsername } = state;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          [appUsername]: {
+            ...state.user[appUsername],
+            isDonating: true
+          }
+        },
+
+        donationFormState: { ...defaultDonationFormState, success: true }
+      };
+    },
+    [actionTypes.postChargeStripeError]: (state, { payload }) => ({
+      ...state,
+      donationFormState: { ...defaultDonationFormState, error: payload }
+    }),
+    [actionTypes.postChargeStripeCard]: state => ({
+      ...state,
+      donationFormState: { ...defaultDonationFormState, processing: true }
+    }),
+    [actionTypes.postChargeStripeCardComplete]: state => {
+      const { appUsername } = state;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          [appUsername]: {
+            ...state.user[appUsername],
+            isDonating: true
+          }
+        },
+
+        donationFormState: { ...defaultDonationFormState, success: true }
+      };
+    },
+    [actionTypes.postChargeStripeCardError]: (state, { payload }) => ({
+      ...state,
+      donationFormState: { ...defaultDonationFormState, error: payload }
     }),
     [actionTypes.fetchUser]: state => ({
       ...state,
@@ -183,7 +208,7 @@ export const reducer = handleActions(
     }),
     [actionTypes.fetchUserComplete]: (
       state,
-      { payload: { user, username } }
+      { payload: { user, username, sessionMeta } }
     ) => ({
       ...state,
       user: {
@@ -197,6 +222,10 @@ export const reducer = handleActions(
         complete: true,
         errored: false,
         error: null
+      },
+      sessionMeta: {
+        ...state.sessionMeta,
+        ...sessionMeta
       }
     }),
     [actionTypes.fetchUserError]: (state, { payload }) => ({
@@ -256,29 +285,14 @@ export const reducer = handleActions(
       ...state,
       recentlyClaimedBlock: null
     }),
-    [actionTypes.setCompletionCountWhenShownProgressModal]: state => ({
+    [actionTypes.preventProgressDonationRequests]: state => ({
       ...state,
-      progressDonationModalShown: true,
-      completionCountWhenShownProgressModal: completionCountSelector({
-        [MainApp]: state
-      })
-    }),
-    [actionTypes.setShowMultipleProgressModals]: (state, { payload }) => ({
-      ...state,
-      showMultipleProgressModals: payload
+      canRequestProgressDonation: false
     }),
     [actionTypes.resetUserData]: state => ({
       ...state,
       appUsername: '',
       user: {}
-    }),
-    [actionTypes.openSignoutModal]: state => ({
-      ...state,
-      showSignoutModal: true
-    }),
-    [actionTypes.closeSignoutModal]: state => ({
-      ...state,
-      showSignoutModal: false
     }),
     [actionTypes.showCert]: state => ({
       ...state,
@@ -305,11 +319,7 @@ export const reducer = handleActions(
       }
     }),
     [actionTypes.submitComplete]: (state, { payload }) => {
-      const {
-        examResults = null,
-        submittedChallenge,
-        savedChallenges
-      } = payload;
+      const { submittedChallenge, savedChallenges } = payload;
       let submittedchallenges = [
         { ...submittedChallenge, completedDate: Date.now() }
       ];
@@ -317,56 +327,24 @@ export const reducer = handleActions(
         submittedchallenges = submittedChallenge.challArray;
       }
       const { appUsername } = state;
-
-      return examResults && !examResults.passed
-        ? {
-            ...state,
-            user: {
-              ...state.user,
-              [appUsername]: {
-                ...state.user[appUsername],
-                examResults
-              }
-            }
-          }
-        : {
-            ...state,
-            completionCount: state.completionCount + 1,
-            user: {
-              ...state.user,
-              [appUsername]: {
-                ...state.user[appUsername],
-                completedChallenges: uniqBy(
-                  [
-                    ...submittedchallenges,
-                    ...state.user[appUsername].completedChallenges
-                  ],
-                  'id'
-                ),
-                savedChallenges:
-                  savedChallenges ?? savedChallengesSelector(state[MainApp]),
-                examResults
-              }
-            }
-          };
-    },
-    [actionTypes.setMsUsername]: (state, { payload }) => {
-      const { appUsername } = state;
       return {
         ...state,
+        completionCount: state.completionCount + 1,
         user: {
           ...state.user,
           [appUsername]: {
             ...state.user[appUsername],
-            msUsername: payload
+            completedChallenges: uniqBy(
+              [
+                ...submittedchallenges,
+                ...state.user[appUsername].completedChallenges
+              ],
+              'id'
+            ),
+            savedChallenges:
+              savedChallenges ?? savedChallengesSelector(state[MainApp])
           }
         }
-      };
-    },
-    [actionTypes.setIsProcessing]: (state, { payload }) => {
-      return {
-        ...state,
-        isProcessing: payload
       };
     },
     [actionTypes.updateUserToken]: (state, { payload }) => {
@@ -405,31 +383,6 @@ export const reducer = handleActions(
       return {
         ...state,
         showCodeAlly: true
-      };
-    },
-    [actionTypes.startExam]: state => {
-      return {
-        ...state,
-        examInProgress: true
-      };
-    },
-    [actionTypes.stopExam]: state => {
-      return {
-        ...state,
-        examInProgress: false
-      };
-    },
-    [actionTypes.clearExamResults]: state => {
-      const { appUsername } = state;
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          [appUsername]: {
-            ...state.user[appUsername],
-            examResults: null
-          }
-        }
       };
     },
     [challengeTypes.challengeMounted]: (state, { payload }) => ({

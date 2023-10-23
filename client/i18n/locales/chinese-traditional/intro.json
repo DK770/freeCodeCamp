@@ -1,10 +1,10 @@
 {
   "responsive-web-design": {
-    "title": "Legacy Responsive Web Design Challenges",
+    "title": "（舊版）響應式網頁設計",
     "intro": [
       "在響應式網頁設計認證中，你將學習開發者用來編寫網頁的語言：HTML（超文本標記語言）用於創建內容，CSS（級聯樣式表）用於樣式設計。",
-      "首先，你將通過創建一個展示貓咪圖片的應用，學習 HTML 和 CSS 的基本知識。 然後，通過創建企鵝學習像 CSS 變量這樣的現代技術，以及通過創建網頁表單學習無障礙的最佳實踐。",
-      "最後，你將學習使用 flexbox（彈性盒子）創建一個 Twitter 卡片，以及使用 CSS 網格創建複雜的博客佈局，以學習製作適應不同屏幕大小的網頁。"
+      "首先，你將通過編寫一個展示貓咪圖片的應用，學習 HTML 和 CSS 的基本知識。 然後，通過畫企鵝來學習像 CSS 變量這樣的現代技術，以及通過構建網頁表單來學習無障礙的最佳實踐。",
+      "最後，你將學習使用 flexbox（彈性盒子）構建一個 Twitter 卡片，以及使用 CSS 網格構建複雜的博客佈局，以此學習製作適應不同屏幕大小的網頁。"
     ],
     "note": "注意：某些瀏覽器擴展，例如廣告攔截器和深色模式擴展可能干擾測試。如果你遇到問題，我們建議你在參加學習時禁用修改頁面內容或佈局的擴展。",
     "blocks": {
@@ -47,24 +47,31 @@
         "title": "CSS 彈性盒子",
         "intro": [
           "Flexbox（彈性盒子）是最新版本的 CSS（即 CSS3）中引入的一種強大且兼容性好的佈局方法。使用 flexbox，我們可以很容易地處理好頁面上的元素佈局，並創建可以自動縮小和放大的動態用戶界面。",
-          "在這個課程中，你將通過創建一個 Twitter 卡片學習 flexbox 和動態佈局的基礎知識。"
+          "在這個課程中，你將通過構建一個 Twitter 卡片來學習 flexbox 和動態佈局的基礎知識。"
         ]
       },
       "css-grid": {
         "title": "CSS 網格",
         "intro": [
           "CSS 網格是一個較新的標準，用於構建複雜的響應佈局。它通過把 HTML 元素轉換爲具有行和列的網格容器，以便將子元素放置在所需要的位置。",
-          "在這個課程中，你將通過創建不同的複雜佈局（包括博客）學習 CSS 網格的基礎知識。"
+          "在這個課程中，你將通過構建不同的複雜佈局（包括博客）來學習 CSS 網格的基礎知識。"
+        ]
+      },
+      "responsive-web-design-projects": {
+        "title": "響應式網頁設計項目",
+        "intro": [
+          "是時候使用你新學到的技能了。通過構建這些項目，你將有機會應用之前學到的所有技巧、原則和概念：HTML、CSS、視覺設計、無障礙等等。",
+          "完成下面的五個網頁編程項目，獲得響應式網頁設計認證。"
         ]
       }
     }
   },
   "2022/responsive-web-design": {
-    "title": "響應式網頁設計",
+    "title": "（新版）響應式網頁設計",
     "intro": [
       "在響應式網頁設計的認證課程中，你將學習用於構建網頁的語言： HTML（超文本標記語言）用於創建內容，CSS（級聯樣式表）用於樣式設計。",
-      "首先，你將通過創建一個展示貓咪圖片的應用學習 HTML 和 CSS 的基本知識。 然後，通過創建一隻企鵝來學習像 CSS 變量這樣的現代技術，並通過創建網頁表單學習無障礙的最佳實踐。",
-      "最後，你將通過編寫 Twitter 卡片，學習如何使用 Flexbox 實現適應不同屏幕大小的網頁 ，以及如何用 CSS Grid 實現一個複雜的博客佈局。"
+      "首先，你將通過編寫一個展示貓咪圖片的應用來學習 HTML 和 CSS 的基本知識。 然後，通過構建一隻企鵝來學習像 CSS 變量這樣的現代技術，並通過搭建網頁表單來學習無障礙的最佳實踐。",
+      "最後，你將通過編寫一個 Twitter 卡片，學習如何使用 Flexbox 實現適應不同屏幕大小的網頁 ，以及如何用 CSS Grid 實現一個複雜的博客佈局。"
     ],
     "note": "注意：某些瀏覽器擴展程序（例如廣告攔截器和深色模式）可能干擾測試。如果遇到問題，我們建議你在學習課程時禁用那些修改網頁內容或佈局的擴展程序。",
     "blocks": {
@@ -104,14 +111,14 @@
         ]
       },
       "learn-html-by-building-a-cat-photo-app": {
-        "title": "通過創建貓咪相冊應用學習 HTML",
+        "title": "通過編寫貓咪相冊應用學習 HTML",
         "intro": [
           "HTML 標籤賦予了網頁結構。你可以使用 HTML 標籤添加照片、按鈕和其它元素到你的網頁。",
-          "在這門課程中，你將通過創建一個貓咪相冊應用，學習最常見的 HTML 標籤。"
+          "在這門課程中，你將通過編寫一個貓咪相冊應用，學習最常見的 HTML 標籤。"
         ]
       },
       "learn-basic-css-by-building-a-cafe-menu": {
-        "title": "通過創建咖啡店菜單學習基礎 CSS",
+        "title": "通過編寫咖啡店菜單學習基礎 CSS",
         "intro": [
           "CSS 負責告訴瀏覽器如何展示你的網頁。你可以使用 CSS 設置 HTML 元素的顏色、字體、大小等屬性。",
           "在這門課程中，你將通過爲一個咖啡店網站設計菜單頁來學習 CSS。"
@@ -125,41 +132,41 @@
         ]
       },
       "learn-css-variables-by-building-a-city-skyline": {
-        "title": "通過創建城市輪廓學習 CSS 變量",
+        "title": "通過建立城市輪廓學習 CSS 變量",
         "intro": [
           "CSS 變量負責幫助組織你的樣式和重複使用它們。",
-          "在這門課程中，你將創建一座城市的輪廓。你將學習如何配置 CSS 變量，以便你可以隨時重複使用它們。"
+          "在這門課程中，你將建立一座城市的輪廓。你將學習如何配置 CSS 變量，以便你可以隨時重複使用它們。"
         ]
       },
       "learn-html-forms-by-building-a-registration-form": {
-        "title": "通過創建註冊表單學習 HTML 表單",
+        "title": "通過編寫註冊表單學習 HTML 表單",
         "intro": [
           "你可以使用 HTML 表單收集訪問網頁的用戶的信息。",
-          "在這門課程中，你將通過創建一個註冊頁學習 HTML 表單。你將學習如何控制人們在表單中可以輸入的數據類型，以及使用一些新的 CSS 工具裝飾你的頁面。"
+          "在這門課程中，你將通過編寫一個註冊頁學習 HTML 表單。你將學習如何控制人們在表單中可以輸入的數據類型，以及使用一些新的 CSS 工具裝飾你的頁面。"
         ]
       },
       "learn-accessibility-by-building-a-quiz": {
-        "title": "通過創建小測驗學習無障礙",
+        "title": "通過編寫小測驗學習無障礙",
         "intro": [
           "無障礙環境正在使你的網頁便於所有人使用——甚至是殘疾人。",
           "在這個課程中，你將建立一個測驗網頁。你將學習諸如鍵盤快捷鍵、ARIA 屬性和設計最佳實踐等無障礙工具。"
         ]
       },
       "learn-intermediate-css-by-building-a-picasso-painting": {
-        "title": "通過創作畢加索繪畫學習中級 CSS",
+        "title": "創建一副畢加索繪畫來學習中級 CSS",
         "intro": [
           "在本課程中，你將通過代碼創建一幅自己的畢加索繪畫網頁來掌握中級 CSS 技術。課程涉及 SVG 圖標、CSS 定位和對已學 CSS 知識的回顧。"
         ]
       },
       "learn-responsive-web-design-by-building-a-piano": {
-        "title": "通過創建鋼琴學習響應式網頁設計",
+        "title": "通過創建一架鋼琴來學習響應式網頁設計",
         "intro": [
           "響應式設計使得你的網頁適應不同屏幕尺寸的顯示。",
           "在本課程中，你將圍繞一架鋼琴編寫代碼學習 CSS 響應式設計。你將同時學會媒體條件和僞選擇器的知識。"
         ]
       },
       "learn-css-flexbox-by-building-a-photo-gallery": {
-        "title": "通過創建照片集學習 CSS 彈性盒子",
+        "title": "通過創建照片集來學習 CSS 彈性盒子",
         "intro": [
           "通過彈性盒子你可以設計適應不同屏幕大小的網頁。",
           "在本課程中，你將使用彈性盒子創建一個響應式的照片集網頁。"
@@ -173,43 +180,39 @@
         ]
       },
       "learn-typography-by-building-a-nutrition-label": {
-        "title": "通過創建營養標籤學習排版",
+        "title": "通過建立營養標籤來學習排版",
         "intro": [
           "排版是將文本樣式設置爲易於閱讀並適合其目的的藝術。",
-          "在本課程中，你將使用排版來創建營養標籤網頁。你將學習如何使用 CSS 設置文本樣式、調整行高和定位文本。"
+          "在本課程中，你將使用排版來構建營養標籤網頁。你將學習如何使用 CSS 設置文本樣式、調整行高和定位文本。"
         ]
       },
       "learn-css-transforms-by-building-a-penguin": {
-        "title": "通過創建企鵝學習 CSS 變換",
+        "title": "通過構建企鵝來學習 CSS 變換",
         "intro": [
           "你可以轉換 HTML 元素以創建吸引讀者眼球的吸引人的設計。你可以使用變換來旋轉元素、縮放它們等等。",
-          "在本課程中，你將創建一隻企鵝。你將使用 CSS 變換來定位企鵝的各個部分並調整其大小、創建背景併爲你的作品設置動畫。"
+          "在本課程中，你將構建一隻企鵝。你將使用 CSS 變換來定位企鵝的各個部分並調整其大小、創建背景併爲你的作品設置動畫。"
         ]
       },
       "learn-css-animation-by-building-a-ferris-wheel": {
-        "title": "通過創建摩天輪學習 CSS 動畫",
+        "title": "通過構建摩天輪學習 CSS 動畫",
         "intro": [
           "你可以使用 CSS 動畫將注意力吸引到網頁的特定部分並使其更具吸引力。",
-          "在本課程中，你將創建一個摩天輪。你將學習如何使用 CSS 爲元素設置動畫、轉換它們並調整它們的速度。"
+          "在本課程中，你將建造一個摩天輪。你將學習如何使用 CSS 爲元素設置動畫、轉換它們並調整它們的速度。"
         ]
       },
       "learn-more-about-css-pseudo-selectors-by-building-a-balance-sheet": {
-        "title": "通過創建資產負債表學習有關 CSS 僞選擇器的更多信息",
+        "title": "通過構建資產負債表瞭解有關 CSS 僞選擇器的更多信息",
         "intro": [
           "你可以使用 CSS 僞選擇器來更改特定的 HTML 元素。",
-          "在本課程中，你將使用僞選擇器創建資產負債表。你將學習如何在將鼠標懸停在元素上時更改其樣式，並觸發網頁上的其他事件。"
+          "在本課程中，你將使用僞選擇器構建資產負債表。你將學習如何在將鼠標懸停在元素上時更改其樣式，並觸發網頁上的其他事件。"
         ]
       },
       "learn-css-colors-by-building-a-set-of-colored-markers": {
-        "title": "通過創建一組彩色筆學習 CSS 顏色",
+        "title": "通過構建一組彩色標記來學習 CSS 顏色",
         "intro": [
           "爲你的網頁選擇正確的顏色可以大大提高對讀者的審美吸引力。",
-          "在本課程中，你將創建一組彩色筆。你將學習設置顏色值的不同方法以及如何將顏色相互配對。"
+          "在本課程中，你將構建一組彩色標記。你將學習設置顏色值的不同方法以及如何將顏色相互配對。"
         ]
-      },
-      "learn-intermediate-css-by-building-a-cat-painting": {
-        "title": "Learn Intermediate CSS by Building a Cat Painting",
-        "intro": ["", ""]
       }
     }
   },
@@ -322,43 +325,15 @@
         "intro": ["", ""]
       },
       "learn-basic-javascript-by-building-a-role-playing-game": {
-        "title": "通過創建角色扮演遊戲學習 JavaScript",
+        "title": "通過構建角色扮演遊戲來學習 JavaScript",
         "intro": ["", ""]
       },
       "learn-form-validation-by-building-a-calorie-counter": {
-        "title": "通過創建卡路里計數器學習表單驗證",
+        "title": "通過構建卡路里計數器來學習表單驗證",
         "intro": ["", ""]
       },
       "learn-functional-programming-by-building-a-spreadsheet": {
-        "title": "通過創建電子表格學習函數式編程",
-        "intro": ["", ""]
-      },
-      "learn-modern-javascript-methods-by-building-football-team-cards": {
-        "title": "通過創建足球隊卡學習現代 JavaScript 方法",
-        "intro": ["", ""]
-      },
-      "learn-advanced-array-methods-by-building-a-statistics-calculator": {
-        "title": "通過創建統計計算器學習高級數組方法",
-        "intro": ["", ""]
-      },
-      "learn-data-structures-by-building-a-shopping-cart": {
-        "title": "通過創建購物車學習數據結構",
-        "intro": ["", ""]
-      },
-      "learn-fetch-and-promises-by-building-an-fcc-authors-page": {
-        "title": "通過創建 fCC 作者頁面學習 Fetch 和 Promises",
-        "intro": ["", ""]
-      },
-      "learn-regular-expressions-by-building-a-spam-filter": {
-        "title": "通過創建垃圾郵件過濾器學習正則表達式",
-        "intro": ["", ""]
-      },
-      "learn-basic-algorithmic-thinking-by-building-a-number-sorter": {
-        "title": "通過創建數字排序器學習基本算法思維",
-        "intro": ["", ""]
-      },
-      "learn-localstorage-by-building-a-todo-app": {
-        "title": "Learn localStorage by Building a Todo App",
+        "title": "通過構建電子表格學習函數式編程",
         "intro": ["", ""]
       }
     }
@@ -367,7 +342,7 @@
     "title": "前端開發庫",
     "intro": [
       "你已經熟悉了 HTML、CSS 和 JavaScript。現在學習行業中一些流行的前端庫來提升你的技能吧。",
-      "在前端開發庫認證中，你將學習如何使用 Bootstrap 快速設置網站樣式，以及如何在 CSS 樣式中添加邏輯，並使用 Sass 對其進行擴展。",
+      "In the Front End Development Libraries Certification, you'll learn how to style your site quickly with Bootstrap. You'll also learn how to add logic to your CSS styles and extend them with Sass.",
       "稍後，你將建立一個購物車和其他應用程序，學習如何使用 React 和 Redux 創建強大的單頁應用程序（SPAs）。"
     ],
     "note": "",
@@ -466,7 +441,7 @@
     }
   },
   "relational-database": {
-    "title": "關係數據庫",
+    "title": "關係數據庫（Beta）",
     "intro": [
       "對於這些課程，你將使用真正的開發人員工具和軟件，包括 VS Code、PostgreSQL 和 Linux/Unix 命令行來完成交互式教程和構建項目。",
       "這些課程從基本的 Bash 命令開始。使用終端，你將學習從導航和操作文件系統、在 Bash 中編寫腳本到高級用法的所有內容。",
@@ -510,62 +485,62 @@
         ]
       },
       "learn-advanced-bash-by-building-a-kitty-ipsum-translator": {
-        "title": "通過創建 Kitty Ipsum 翻譯器學習高級 Bash",
+        "title": "通過構建一個 Kitty Ipsum 翻譯器來學習高級 Bash",
         "intro": [
           "Bash 命令比你想象的更多。",
           "在第 140 課中，你會學習一些更復雜的命令以及命令如何工作的細節。"
         ]
       },
       "learn-bash-and-sql-by-building-a-bike-rental-shop": {
-        "title": "通過創建自行車出租店學習 Bash 和 SQL",
+        "title": "建造一家自行車出租店來學習 Bash 和 SQL",
         "intro": [
           "在這套 210 小節的課程中，你將建立一個交互式 Bash 程序，使用 PostgreSQL 存儲自行車租賃商店的租賃信息。"
         ]
       },
       "learn-bash-by-building-a-boilerplate": {
-        "title": "通過創建模版學習 Bash",
+        "title": "通過構建模版學習 Bash",
         "intro": [
-          "終端允許你將文本命令發送到你的計算機，可以操作文件系統、運行程序、自動化任務以及更多。",
+          "終端允許您將文本命令發送到您的計算機，可以操作文件系統、運行程序、自動化任務以及更多。",
           "在這套 170 小節的課程中，你將通過只使用命令行創建網站模板來學習終端命令。"
         ]
       },
       "learn-bash-scripting-by-building-five-programs": {
-        "title": "通過創建五個程序學習 Bash 腳本",
+        "title": "通過構建五個程序學習 Bash 腳本",
         "intro": [
           "Bash 腳本將終端命令和邏輯合併到程序的可以執行任務或自動化任務等中。",
           "在第 220 課程中，你將通過創建五個小程序來學習更多終端命令以及如何在 Bash 腳本中使用它們。"
         ]
       },
       "learn-git-by-building-an-sql-reference-object": {
-        "title": "通過創建 SQL 引用對象學習 Git",
+        "title": "通過構建 SQL 引用對象來學習 Git",
         "intro": [
-          "Git 是一個版本控制系統，用於跟蹤你對代碼片段所作的所有更改。",
+          "Git 是一個版本控制系統，用於跟蹤您對代碼片段所作的所有更改。",
           "在第 240 課中，你將通過創建一個包含常用的 SQL 命令的對象來學習 Git 如何跟蹤你的代碼。"
         ]
       },
       "learn-nano-by-building-a-castle": {
-        "title": "通過創建城堡學習 Nano",
+        "title": "通過建造城堡學習 Nano",
         "intro": [
           "Nano 是一個允許你在終端編輯文件的程序。",
           "在第 40 課中，你將學習如何在構建城堡時編輯終端中的文件。"
         ]
       },
       "learn-relational-databases-by-building-a-mario-database": {
-        "title": "通過創建 Mario 數據庫學習關係型數據庫",
+        "title": "通過構建 Mario 數據庫來學習關係型數據庫",
         "intro": [
           "一個關係數據庫將數據保存到通過關係連接起來的表格中。",
           "在第 165 課中，你將通過創建一個充滿視頻遊戲字符的 PostgreSQL 數據庫來學習關係數據庫的基礎知識。"
         ]
       },
       "learn-sql-by-building-a-student-database-part-1": {
-        "title": "通過創建學生數據庫學習 SQL：第 1 部分",
+        "title": "通過構建學生數據庫來學習 SQL：第 1 部分",
         "intro": [
           "SQL 又稱結構化查詢語言是與關聯數據庫通信的語言。",
           "在第 140 課中，你將創建一個 Bash 腳本，使用 SQL 將你的計算機科學學生信息存儲到 PostgreSQL 中。"
         ]
       },
       "learn-sql-by-building-a-student-database-part-2": {
-        "title": "通過創建學生數據庫學習 SQL：第 2 部分",
+        "title": "通過構建學生數據庫來學習 SQL：第 2 部分",
         "intro": [
           "SQL 加入命令用於將關係數據庫中多個表格中的信息合併在一起",
           "在第 140 課課程中，你將會在更深入的 SQL 命令中完成學生數據庫。"
@@ -578,7 +553,7 @@
     "intro": [
       "在這之前，你只是在前端使用 JavaScript 來給頁面添加交互、解決算法挑戰，或構建一個 SPA（單頁應用程序）。但 JavaScript 也可以用於後端或者服務器來構建整個 web 應用程序。",
       "今天，構建應用軟件的廣受歡迎的方法之一是微服務，這些微服務是一種小型模塊化的應用，能夠共同形成一個更大的整體。",
-      "在後端開發和 APIs 認證中，你將學習如何使用 Node.js 和 npm 編寫後端應用程序。你還將使用 Express 框架構建 Web 應用程序，並使用 MongoDB 和 Mongoose 庫構建一個 People Finder 微服務。"
+      "在後端開發和 APIs 認證中，你將學習如何使用 Node.js 和 npm（Node 包管理工具）來寫後端。你還將使用 Express 框架構建 web 應用程序，並使用 MongoDB 和 Mongoose 庫構建一個 People Finder 微服務。"
     ],
     "note": "",
     "blocks": {
@@ -736,7 +711,7 @@
     }
   },
   "machine-learning-with-python": {
-    "title": "Python 和機器學習",
+    "title": "Python 與機器學習",
     "intro": [
       "機器學習有許多實際應用程序，你可以在項目中或工作中使用它們。",
       "在這個認證中，你將使用 TensorFlow 框架構建多個神經網絡，同時，你將探索更先進的技術，例如自然語言處理和強化學習。",
@@ -766,143 +741,13 @@
       }
     }
   },
-  "college-algebra-with-python": {
-    "title": "Python 和大學數學",
-    "intro": [
-      "本課程設計爲一個學期的大學課程。它包含教學視頻、用於交互式跟進的 Google Colaboratory 筆記本、任務和具有挑戰性的項目。",
-      "當你按順序學習本課程的每個部分時，你將全面瞭解代數以及如何編寫 Python 代碼來解決代數問題。",
-      "在整個課程中，你還將創建自己的代數 Colab 筆記本，你將能夠用作自定義計算器。 這門課程（以及你在這裏寫的代碼）將爲你理解深度數學和數據科學打下基礎。"
-    ],
-    "note": "",
-    "blocks": {
-      "learn-ratios-and-proportions": {
-        "title": "學習比率和比例",
-        "intro": [
-          "你的旅程從學習如何創建一個可以運行 Python 代碼的 Colab 筆記本開始，然後你使用筆記本和視頻學習通過 Python 解決比率和比例問題。"
-        ]
-      },
-      "learn-how-to-solve-for-x": {
-        "title": "學習如何求解 X",
-        "intro": [
-          "這個單元將着重運用書面代數和 Python 代碼求解一個未知數（通常被稱爲 “x”）。"
-        ]
-      },
-      "learn-fractions-and-decimals": {
-        "title": "學習分數和小數",
-        "intro": ["這個學習單元將側重於將小數轉換爲分數和百分比。"]
-      },
-      "learn-functions-and-graphing": {
-        "title": "學習函數和圖像",
-        "intro": ["這個單元將會教你數學函數。"]
-      },
-      "learn-linear-functions": {
-        "title": "學習線性函數",
-        "intro": ["這個單元將向你展示如何從兩個點來構建線性方程。"]
-      },
-      "learn-common-factors-and-square-roots": {
-        "title": "學習公因數和平方根",
-        "intro": [
-          "在這個單元中，你將學習如何找到公因數和分解公因數。這將有助於簡化分數和簡化平方根式。"
-        ]
-      },
-      "build-a-multi-function-calculator-project": {
-        "title": "多功能計算器",
-        "intro": [
-          "這是你獲得認證必做的項目之一。",
-          "在這個項目中，你將創建一個多功能計算器。"
-        ]
-      },
-      "learn-how-to-graph-systems-of-equations": {
-        "title": "學習如何繪製方程組對應的圖像",
-        "intro": [
-          "這個單位將側重於繪製同一座標平面上的兩個方程式的圖像，以便你可以看到線條相交的地方。"
-        ]
-      },
-      "learn-how-to-solve-systems-of-equations": {
-        "title": "學習如何解方程組",
-        "intro": [
-          "在這個單元中，你將學習如何求解一個由兩個方程式（兩個變量）組成的方程組，而無需圖像。 你將會看到如何用 Python 分解因式和求解某個變量。 學完這個單元，你將能用一個代碼塊來求解方程組並繪製圖像。"
-        ]
-      },
-      "learn-applications-of-linear-systems": {
-        "title": "學習線性方程組的應用",
-        "intro": [
-          "在這個單元中，你將看到如何使用你目前學到的代數來解決真實世界中的問題。"
-        ]
-      },
-      "learn-quadratic-equations": {
-        "title": "學習二次方程",
-        "intro": [
-          "這個單元將在線性方程的基礎上，結合指數和拋物線圖像。 你將學習如何在拋物線中找到關鍵點，以及如何解二次方程。"
-        ]
-      },
-      "build-a-graphing-calculator-project": {
-        "title": "圖形計算器",
-        "intro": [
-          "這是你獲得認證必做的項目之一。",
-          "在這個項目中，你將創建一個圖形計算器。"
-        ]
-      },
-      "learn-parent-graphs-and-polynomials": {
-        "title": "學習父圖像和多項式",
-        "intro": [
-          "這個單元將顯示許多不同類型的“父”圖像，即構成更復雜圖像的基本模式。多項式是帶有“多件事”的數學表達式，是由基本模式構建的更復雜的方程式。你會看到這些圖像是什麼樣的、如何修改它們，以及如何使用 Python 代碼來做這一切。"
-        ]
-      },
-      "build-three-math-games-project": {
-        "title": "三個數學遊戲",
-        "intro": [
-          "這是你獲得認證必做的項目之一。",
-          "在這個項目中，你將創建三個數學遊戲。"
-        ]
-      },
-      "learn-business-applications-of-college-algebra": {
-        "title": "學習大學代數的商業應用",
-        "intro": [
-          "這個單元將向你展示如何應用你的解答和繪圖技能來求解成本、收入和利潤。你將從兩個點寫代碼來開發一個需求函數。你將看到價格如何影響利潤圖，以及所有這些方程如何相互關聯。"
-        ]
-      },
-      "learn-simple-and-compound-interest": {
-        "title": "學習單利和複利",
-        "intro": [
-          "這個單位將向你展示如何計算利息、貸款支付和投資的估值。你將看到數學公式，並將其變成代碼。由於這些公式往往很複雜，因此你只需要修改一部分值的代碼。"
-        ]
-      },
-      "learn-exponents-and-logarithms": {
-        "title": "學習指數和對數",
-        "intro": [
-          "這個單元將向你展示指數和對數是反函數，以及你如何在各種應用程序中使用這些函數。"
-        ]
-      },
-      "build-a-financial-calculator-project": {
-        "title": "金融計算器",
-        "intro": [
-          "這是你獲得認證必做的項目之一。",
-          "對於這個項目，你將創建一個財務計算器。"
-        ]
-      },
-      "college-algebra-with-python-conclusion": {
-        "title": "Python 和大學代數：總結",
-        "intro": [
-          "這將是本課程的最後一個單元。讓我們看看如何能夠將你的數學和 Python 知識與外部數據連接起來。"
-        ]
-      },
-      "build-a-data-graph-explorer-project": {
-        "title": "數據圖表瀏覽器",
-        "intro": [
-          "這是你獲得認證必做的項目之一。",
-          "對於這個項目，你將創建一個數據圖表瀏覽器。"
-        ]
-      }
-    }
-  },
   "coding-interview-prep": {
     "title": "面試攻略",
     "intro": [
       "如果你正在尋找免費的編程訓練來幫你爲下一個工作面試做準備，我們已經幫你準備好了。",
       "這一部分包含了大量編程挑戰，可以測試你的算法、數據結構和數學知識。這裏還有一些你可以在家慢慢做的項目，用於提升你的技術，或者豐富你的作品集。"
     ],
-    "note": "歐拉項目已經轉移到單獨的課程。返回課程選擇界面以查看我們提供的課程列表。",
+    "note": "",
     "blocks": {
       "algorithms": {
         "title": "算法",
@@ -932,164 +777,13 @@
           "這些挑戰可能很困難，但是它們會將進一步提升你的算法邏輯。",
           "<a href='https://rosettacode.org/wiki/Rosetta_Code' target='_blank' rel='noopener noreferrer nofollow'>屬性：Rosetta 代碼</a>"
         ]
-      }
-    }
-  },
-  "the-odin-project": {
-    "title": "Odin 項目",
-    "intro": [
-      "Odin 項目就是那種“我在學習的時候渴求擁有的”資源之一。 ",
-      "並非每個人都能獲得計算機科學專業教育，或是有資金接受編程進階教學，這兩種教育方式也並不適合所有人。",
-      "該項目旨在幫助那些試圖自行打破差距且依然希望接受高質量教育的人填補空白。"
-    ],
-    "blocks": {
-      "top-learn-html-foundations": {
-        "title": "學習 HTML 基礎",
-        "intro": ["詳細描述待確定"]
       },
-      "top-working-with-text": {
-        "title": "Working with Text",
-        "intro": ["A description is to be determined"]
-      },
-      "top-links-and-images": {
-        "title": "Links and Images",
-        "intro": ["A description is to be determined"]
-      },
-      "top-build-a-recipe-project": {
-        "title": "通過創建食譜頁面學習 HTML 基礎",
-        "intro": ["詳細描述待確定"]
-      },
-      "top-learn-css-foundations": {
-        "title": "學習 CSS 基礎",
-        "intro": ["描述待定"]
-      },
-      "top-learn-css-foundations-projects": {
-        "title": "學習 CSS 基礎項目",
-        "intro": ["描述待定"]
-      },
-      "top-learn-css-specificity": {
-        "title": "Learn CSS Specificity",
-        "intro": ["A description is to be determined"]
-      },
-      "top-the-box-model": {
-        "title": "Learn the Box Model",
-        "intro": ["A description is to be determined"]
-      }
-    }
-  },
-  "project-euler": {
-    "title": "歐拉計劃",
-    "intro": [
-      "完成下方來自歐拉計劃的編程挑戰，這將強化你的算法和數學知識。",
-      "這些問題的難度各不相同，對於許多人來說，這是一個歸納性學習的過程。也就是說，通過解決一個問題，你將接觸到一個新概念，然後你可以解決自己以前無法解決的問題。你能完成全部挑戰嗎？"
-    ],
-    "blocks": {
-      "project-euler-problems-1-to-100": {
-        "title": "歐拉計劃問題 1 - 100",
+      "project-euler": {
+        "title": "歐拉計劃",
         "intro": [
-          "在這第一組挑戰中，你將使用斐波那契數列、素數定理和離散數學這樣的數學概念編寫算法來解決這些問題。"
+          "完成下方來自歐拉計劃的編程挑戰，這將強化你的算法和數學知識。",
+          "這些問題的難度很大，對於許多人來說，這是一個歸納性學習的過程。也就是說，通過解決一個問題，你將接觸到一個新概念，然後你可以解決自己以前無法解決的問題。你能完成全部挑戰嗎？"
         ]
-      },
-      "project-euler-problems-101-to-200": {
-        "title": "歐拉計劃問題 101 - 200",
-        "intro": [
-          "在這一系列的挑戰中，你將在課程第一部分的基礎上，結合更高級的概念，如矢量計算方法、楊輝三角（帕斯卡三角）和 RSA 算法來有效地解決這些問題。"
-        ]
-      },
-      "project-euler-problems-201-to-300": {
-        "title": "歐拉計劃問題 201 - 300",
-        "intro": [
-          "在這組挑戰中，你將繼續利用你之前學到的技能，並使用二項式定理、漢明和考拉茲序列等概念來進一步提升你的數學和解決問題的技能。"
-        ]
-      },
-      "project-euler-problems-301-to-400": {
-        "title": "歐拉計劃問題 301 - 400",
-        "intro": [
-          "在這裏，你將繼續發揮你的數學和算法技能，使用組合博弈論、位運算和 Golomb 的自描述序列等概念來開發這些問題的有效解決方案。"
-        ]
-      },
-      "project-euler-problems-401-to-480": {
-        "title": "歐拉計劃問題 401 - 480",
-        "intro": [
-          "在這最後一組挑戰中，你將需要使用你目前所學到的一切，並使用像元因數、卡普雷卡爾算法等等高級概念來解決這些複雜問題。"
-        ]
-      }
-    }
-  },
-  "foundational-c-sharp-with-microsoft": {
-    "title": "(New) Foundational C# with Microsoft",
-    "intro": [
-      "This course offers a comprehensive introduction to C# programming, covering its core concepts, syntax, and practical application in software development.",
-      "Through hands-on exercises and projects, you will learn the fundamentals of C#, including variables, data types, control structures, and object-oriented programming principles.",
-      "By the end of this course, you will have gained the practical skills and knowledge needed to confidently leverage C# for building applications."
-    ],
-    "note": "Each section below has a trophy associated with it that you must earn on the Microsoft Learn platform. After earning each trophy, you need to verify them on freeCodeCamp. Once you have done those, you can qualify for the certification exam.",
-    "blocks": {
-      "write-your-first-code-using-c-sharp": {
-        "title": "Write Your First Code Using C#",
-        "intro": [
-          "Begin your journey by learning to write your first code using C#. Develop a strong foundation as you explore the fundamentals and syntax of the language, setting the stage for your programming adventures."
-        ]
-      },
-      "create-and-run-simple-c-sharp-console-applications": {
-        "title": "Create and Run Simple C# Console Applications",
-        "intro": [
-          "Master the art of creating and running simple C# console applications. Dive into the world of console-based programming, where you will gain hands-on experience executing your code and seeing it in action."
-        ]
-      },
-      "add-logic-to-c-sharp-console-applications": {
-        "title": "Add Logic to C# Console Applications",
-        "intro": [
-          "Unlock the power of logic in C# console applications. Learn how to add logic and decision-making capabilities to your code, enabling your applications to make dynamic choices and respond intelligently to different scenarios."
-        ]
-      },
-      "work-with-variable-data-in-c-sharp-console-applications": {
-        "title": "Work with Variable Data in C# Console Applications",
-        "intro": [
-          "Discover the versatility of variable data in C# console applications. Harness the ability to store and manipulate different types of data, such as numbers and text, as you delve into the essential concepts of variables and data handling."
-        ]
-      },
-      "create-methods-in-c-sharp-console-applications": {
-        "title": "Create Methods in C# Console Applications",
-        "intro": [
-          "Take your C# console applications to the next level by mastering the art of creating methods. Learn how to organize and modularize your code, making it more manageable, reusable, and efficient."
-        ]
-      },
-      "debug-c-sharp-console-applications": {
-        "title": "Debug C# Console Applications",
-        "intro": [
-          "Sharpen your troubleshooting skills as you dive into the world of debugging C# console applications. Gain the ability to identify and fix issues in your code, ensuring your applications run smoothly and deliver the desired results."
-        ]
-      },
-      "foundational-c-sharp-with-microsoft-certification-exam": {
-        "title": "Foundational C# with Microsoft Certification Exam",
-        "intro": [
-          "Use what you've learned to pass the exam to earn your Foundational C# with Microsoft Certification"
-        ]
-      }
-    }
-  },
-  "upcoming-python": {
-    "title": "Upcoming Python",
-    "intro": ["placeholder"],
-    "blocks": {
-      "learn-python-by-building-a-blackjack-game": {
-        "title": "Learn Python by Building a Blackjack Game",
-        "intro": ["Learn Python.", ""]
-      },
-      "upcoming-python-project": {
-        "title": "Upcoming Python Project",
-        "intro": ["placeholder"]
-      }
-    }
-  },
-  "example-certification": {
-    "title": "示例認證",
-    "intro": ["佔位符"],
-    "blocks": {
-      "example-certification-exam": {
-        "title": "示例認證測驗",
-        "intro": ["佔位符"]
       }
     }
   },
@@ -1103,8 +797,9 @@
     "legacy-header": "舊版課程",
     "legacy-desc": "這些課程不再是認證路徑的一部分，但仍可供你進一步學習。",
     "legacy-go-back": "進入當前版本的課程。",
-    "course-maintenance": "這些課程正在維護中。如果它們不可用，你可以學習如何在本地運行這些課程 <0>https://www.freecodecamp.org/chinese/news/how-to-run-freecodecamps-relational-databases-curriculum-using-docker-vscode-and-coderoad</0>。",
-    "progress-wont-save": "當你在本地運行它們時，你的進度不會被保存到你的 freeCodeCamp 賬戶。",
+    "new-rwd-desc": "我們更新了響應式網頁設計課程。 如果你之前正在使用該課程，你的進度仍然可以保存！你可以在舊版響應式網頁設計課程裏找到你的進度。",
+    "new-rwd-article": "我們希望你閱讀我們所作的修改，並能考慮探索新課程。",
+    "viewing-upcoming-change": "你正在查看Beta頁面。 ",
     "go-back-to-learn": "回到正式版課程",
     "read-database-cert-article": "請在繼續之前閱讀這個論壇帖子。",
     "enable-cookies": "你必須在開始之前啓用第三方 cookies。",

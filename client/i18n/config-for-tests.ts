@@ -12,8 +12,7 @@ i18n
     },
     lng: 'en',
     ns: ['translations'],
-    resources: { en: { translations: {} } },
-    returnNull: false
+    resources: { en: { translations: {} } }
   })
   .catch((error: Error) => {
     throw Error(error.message);

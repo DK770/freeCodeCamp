@@ -8,7 +8,7 @@ dashedName: fizzbuzz
 
 # --description--
 
-Write a program that generates an array of integers from 1 to 100 (inclusive). Aber:
+Write a program that generates an array of integers from 1 to 100 (inclusive). But:
 
 <ul>
     <li>for multiples of 3, add <code>"Fizz"</code> to the array instead of the number</li>
@@ -22,13 +22,13 @@ Your program should return an array containing the results based on the rules ab
 
 # --hints--
 
-`fizzBuzz` sollte eine Funktion sein.
+`fizzBuzz` should be a function.
 
 ```js
 assert(typeof fizzBuzz == 'function');
 ```
 
-`fizzBuzz()` sollte ein Array zurückgeben.
+`fizzBuzz()` should return an Array.
 
 ```js
 assert(Array.isArray(fizzBuzz()) == true);

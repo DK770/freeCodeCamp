@@ -30,31 +30,31 @@ Check that each input is correctly formed, especially with respect to valid char
 
 # --hints--
 
-`sedol` sollte eine Funktion sein.
+`sedol` should be a function.
 
 ```js
 assert(typeof sedol === 'function');
 ```
 
-`sedol('a')` sollte null zurückgeben.
+`sedol('a')` should return null.
 
 ```js
 assert(sedol('a') === null);
 ```
 
-`sedol('710889')` sollte '7108899' zurückgeben.
+`sedol('710889')` should return '7108899'.
 
 ```js
 assert(sedol('710889') === '7108899');
 ```
 
-`sedol('BOATER')` sollte null zurückgeben.
+`sedol('BOATER')` should return null.
 
 ```js
 assert(sedol('BOATER') === null);
 ```
 
-`sedol('228276')` sollte '2282765' zurückgeben.
+`sedol('228276')` should return '2282765'.
 
 ```js
 assert(sedol('228276') === '2282765');

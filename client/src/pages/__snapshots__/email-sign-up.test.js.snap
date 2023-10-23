@@ -4,89 +4,60 @@ exports[`<EmailSignUp /> Authenticated user "accepted terms and condition" it sh
 
 exports[`<EmailSignUp /> Non-Authenticated user "not accepted terms and condition" it should render correctly 1`] = `
 <div
-  className="mx-auto px-[15px] my-0 md:w-[750px] min-[992px]:w-[970px] min-[1200px]:w-[1170px] "
+  className="container"
 >
-  
   <div
-    className="mx-[-15px] "
+    className="row"
   >
     <div
-      className=" min-h-[1px] px-[15px] w-full md:w-5/6 min-[992px]:w-2/3   md:ml-[8.3%] min-[992px]:ml-[16.6%]   "
+      className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
     >
       <div
         className="spacer"
         style={
-          {
-            "padding": "5px 0",
+          Object {
+            "height": "1px",
+            "padding": "15px 0",
           }
         }
       />
       <div
         className="intro-description"
-        data-playwright-test-label="learn-read-this-section"
       >
+        <strong>
+          learn.read-this.heading
+        </strong>
         <div
           className="spacer"
           style={
-            {
+            Object {
+              "height": "1px",
               "padding": "15px 0",
             }
           }
         />
-        <p
-          className="text-center"
-          data-playwright-test-label="learn-read-this-heading"
-        >
-          <strong>
-            learn.read-this.heading
-          </strong>
-        </p>
-        <div
-          className="spacer"
-          style={
-            {
-              "padding": "15px 0",
-            }
-          }
-        />
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p1
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p2
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p3
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p4
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p5
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p6
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p7
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p8
         </p>
         <p>
@@ -97,9 +68,7 @@ exports[`<EmailSignUp /> Non-Authenticated user "not accepted terms and conditio
             target="_blank"
           />
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p10
         </p>
         <p>
@@ -110,30 +79,29 @@ exports[`<EmailSignUp /> Non-Authenticated user "not accepted terms and conditio
             target="_blank"
           />
         </p>
-        <p
-          data-playwright-test-label="learn-read-this-p"
-        >
+        <p>
           learn.read-this.p12
         </p>
-        <strong>
-          misc.quincy
-        </strong>
       </div>
       <hr />
     </div>
   </div>
   <div
-    className="mx-[-15px] email-sign-up"
+    className="email-sign-up row"
     data-cy="email-sign-up"
   >
     <div
-      className=" min-h-[1px] px-[15px] w-full md:w-5/6 min-[992px]:w-2/3   md:ml-[8.3%] min-[992px]:ml-[16.6%]   "
+      className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
     >
+      <strong>
+        misc.quincy
+      </strong>
       <div
         className="spacer"
         style={
-          {
-            "padding": "5px 0",
+          Object {
+            "height": "1px",
+            "padding": "15px 0",
           }
         }
       />
@@ -143,19 +111,20 @@ exports[`<EmailSignUp /> Non-Authenticated user "not accepted terms and conditio
       <div
         className="spacer"
         style={
-          {
-            "padding": "5px 0",
+          Object {
+            "height": "1px",
+            "padding": "15px 0",
           }
         }
       />
     </div>
     <div
-      className=" min-h-[1px] px-[15px] w-full md:w-5/6 min-[992px]:w-2/3   md:ml-[8.3%] min-[992px]:ml-[16.6%]   "
+      className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
     >
       <div
-        className="spacer"
+        className="button-spacer"
         style={
-          {
+          Object {
             "padding": "5px 0",
           }
         }
@@ -169,21 +138,22 @@ exports[`<EmailSignUp /> Non-Authenticated user "not accepted terms and conditio
         buttons.sign-up-email-list
       </a>
       <div
-        className="spacer"
+        className="button-spacer"
         style={
-          {
+          Object {
             "padding": "5px 0",
           }
         }
       />
     </div>
     <div
-      className=" min-h-[1px] px-[15px] w-full         "
+      className="col-xs-12"
     >
       <div
         className="spacer"
         style={
-          {
+          Object {
+            "height": "1px",
             "padding": "15px 0",
           }
         }

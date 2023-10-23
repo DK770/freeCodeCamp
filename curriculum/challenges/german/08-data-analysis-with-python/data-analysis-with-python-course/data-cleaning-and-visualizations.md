@@ -1,6 +1,6 @@
 ---
 id: 5e9a093a74c4063ca6f7c160
-title: Datenbereinigung und Visualisierungen
+title: Data Cleaning and Visualizations
 challengeType: 11
 videoId: mHjxzFS5_Z0
 bilibiliIds:
@@ -12,18 +12,18 @@ dashedName: data-cleaning-and-visualizations
 
 # --description--
 
-*Anstatt notebooks.ai zu verwenden, wie es im Video gezeigt wird, kannst du stattdessen Google Colab verwenden.*
+*Instead of using notebooks.ai like it shows in the video, you can use Google Colab instead.*
 
-Weitere Quellen:
+More resources:
 
--  <a href="https://github.com/ine-rmotr-curriculum/data-cleaning-rmotr-freecodecamp" target="_blank" rel="noopener noreferrer nofollow">Notebooks auf GitHub</a>
+-  <a href="https://github.com/ine-rmotr-curriculum/data-cleaning-rmotr-freecodecamp" target="_blank" rel="noopener noreferrer nofollow">Notebooks on GitHub</a>
 -  <a href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb" target="_blank" rel="noopener noreferrer nofollow">Wie man Notebooks über Github mit Google Colab öffnet.</a>
 
 # --question--
 
 ## --text--
 
-Was bedeutet hier die Reihenfolge der Zahlen, wenn man die globale API von Matplotlib verwendet?
+When using Matplotlib's global API, what does the order of numbers mean here?
 
 ```py
 plt.subplot(1, 2, 1)
@@ -31,7 +31,7 @@ plt.subplot(1, 2, 1)
 
 ## --answers--
 
-Meine Abbildung wird eine Spalte und zwei Zeilen haben, und ich beginne in dem ersten ("linken") Plot zu zeichnen.
+My figure will have one column, two rows, and I am going to start drawing in the first (left) plot.
 
 ---
 
@@ -39,7 +39,7 @@ I am going to start drawing in the first (left) plot, my figure will have two ro
 
 ---
 
-Meine Abbildung wird eine Spalte und zwei Zeilen haben, und ich beginne in dem ersten ("linken") Plot zu zeichnen.
+My figure will have one row, two columns, and I am going to start drawing in the first (left) plot.
 
 ## --video-solution--
 

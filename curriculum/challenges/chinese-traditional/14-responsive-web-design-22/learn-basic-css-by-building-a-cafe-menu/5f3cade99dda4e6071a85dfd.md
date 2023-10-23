@@ -1,6 +1,6 @@
 ---
 id: 5f3cade99dda4e6071a85dfd
-title: 步驟 46
+title: Step 46
 challengeType: 0
 dashedName: step-46
 ---

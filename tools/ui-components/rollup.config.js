@@ -12,19 +12,23 @@ const config = {
   output: [
     {
       file: 'dist/bundle.js',
-      format: 'cjs',
-      sourcemap: true
+      format: 'cjs'
     },
     {
-      file: 'dist/bundle.es.js',
-      format: 'es',
-      sourcemap: true
+      file: 'dist/bundle.esm.js',
+      format: 'es'
+    },
+    {
+      file: 'dist/bundle.iife.js',
+      format: 'iife',
+      globals: { react: 'React' },
+      name: 'uiComponents'
     }
   ],
   plugins: [
     postcss(),
     resolve(),
-    typescript({ sourceMap: false, declaration: false }),
+    typescript({ sourceMap: false }),
     babel({ babelHelpers: 'bundled' }),
     commonjs(),
     production && terser()

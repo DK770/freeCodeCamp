@@ -4,79 +4,72 @@
 
 Cypress テストもしくは「specs」の書き方については、Cypress の公式 [ドキュメント](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html) をご覧ください。
 
-## Where to Add a Test
+## テストを追加する場所
 
 - Cypress テストは `./cypress` ディレクトリにあります。
 
 - カリキュラムモジュールの Cypress テストは、対応するカリキュラムディレクトリ、すなわち `cypress/integration/learn/responsive-web-design/basic-css/index.js` にあります。
 
-## How to Run Tests
+## テストを実行する方法
 
-> [!NOTE] If using Gitpod, please see [Cypress-Gitpod Setup](how-to-add-cypress-tests.md#cypress-gitpod-setup)
+> [!NOTE] GitPod を使用している場合は、[Cypress と GitPod の設定](how-to-add-cypress-tests.md#cypress-と-gitpod-の設定) を参照してください。
 
-### 1. Ensure that MongoDB and Client Applications are Running
+### 1. MongoDB とクライアントアプリケーションが動作していることを確認する
 
 - [MongoDB を起動し、データベースをシードします。](how-to-setup-freecodecamp-locally.md#step-3-start-mongodb-and-seed-the-database)
 
 - [freeCodeCamp クライアントアプリケーションと API サーバーを起動します。](how-to-setup-freecodecamp-locally.md#step-4-start-the-freecodecamp-client-application-and-api-server)
 
-### 2. Run the Cypress Tests
+### 2. Cypress テストを実行する
 
 `dev` を `prd` に置き換えて本番ビルドに対するテストを実行します。
 
 - `./cypress` ディレクトリで、すべてのテストを実行します。
 
   ```console
-  pnpm run cypress:dev:run
+  npm run cypress:dev:run
   ```
 
 - 単一のテストを実行します。
 
   ```console
-  pnpm run cypress run --spec=cypress/<path_to_test_file>
-  ```
-
-  For example:
-
-  ```console
-  pnpm run cypress run --spec=cypress/e2e/default/landing.ts
+  npm run cypress:dev:run -- --spec=cypress/pathToYourSpec/youSpecFileName.js
   ```
 
 - 開発ビルドを作成するには、開発サーバーを起動し、既存の cypress エンドツーエンドテストをすべて実行します。
 
   ```console
-  pnpm run e2e:dev:run
+  npm run e2e:dev:run
   ```
 
-## Cypress-Gitpod Setup
+## Cypress と GitPod の設定
 
 ### 1. 開発環境が稼働していることを確認する
 
-If starting the Gitpod environment did not automatically develop the environment:
+GitPod 環境を起動しても自動的に環境が構築されない場合は、以下を実行します。
 
-- Follow the [MongoDB installation guide](https://www.mongodb.com/basics/get-started).
-- Create a config file.
+- データベースを起動します。
 
 ```console
-pnpm run create:shared
+mongod
 ```
 
 - データベースをシードします。
 
 ```console
-pnpm run seed
+npm run seed
 ```
 
 - サーバーとクライアントを構築します。
 
 ```console
-pnpm run develop
+npm run develop
 ```
 
 ### 2. Cypress ビルドツールをインストールする
 
 ```console
-pnpm run cypress:install-build-tools
+npm run cypress:install-build-tools
 ```
 
 - 端末でプロンプトが表示されたら、言語/エリアでキーボードのレイアウトを選択してください。

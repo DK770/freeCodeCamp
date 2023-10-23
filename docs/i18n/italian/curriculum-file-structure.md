@@ -51,7 +51,7 @@ Quando rinomini una certificazione, vorrai probabilmente rinominare il superbloc
 1. Facoltativamente, aggiorna il `certSlug` per il superblocco nello stesso file. **Nota** che rinominare un `certSlug` cambia l'URL della certificazione ed è da fare con attenta considerazione.
 1. Aggiorna il `title` in `client/src/resources/cert-and-project-map.ts` al nuovo valore. **Nota** che cambiare `title` qui **romperà** la pagina superBlock per la certificazione associata. Fa affidamento sul titolo del superblocco per combaciare il titolo del certificato. Vorrai probabilmente rinominare il superblocco allo stesso tempo.
 1. Se hai rinominato `certSlug` allo step 7, cambialo qui per il certificato e tutti i valori dei progetti annidati `projects`.
-1. In `shared/config/certification-settings.js`, update the value of `certTypeTitleMap` to the new name.
+1. In `config/certification-settings.js`, aggiorna il valore di `certTypeTitleMap` al nuovo nome.
 1. Se hai rinominato `certSlug` allo step 7, aggiorna la key di `certSlugTypeMap` nello stesso file.
 1. Se necessario aggiorna il nome del certificato nell'array `legacyCerts` di `client/src/client-only-routes/show-project-links.tsx`.
 1. Aggiorna il file `README.md` principale al nuovo nome.
@@ -69,10 +69,10 @@ Inoltre, probabilmente vorrai rinominare il certificato e il blocco `{superBlock
 1. Aggiorna il file `index.md` nella cartella qui sopra, cambiando i valori `title` e `superBlock` al nuovo nome.
 1. Per ogni cartella di un blocco all'interno della precedente, aggiorna `index.md` affinché usi il valore corretto di `superBlock`.
 1. Nel file `client/src/resources/cert-and-project-map.ts`, aggiorna il percorso per il certificato in cima al file, e il valore di `title` per quel superblocco. **Nota** che cambiare `title` qui **romperà** l'abilità di vedere la certificazione per questo superblocco. Fa affidamento sul titolo del superblocco per abbinare il titolo del certificato. Vorrai probabilmente rinominare la certificazione allo stesso tempo.
-1. Update the `superBlockCertTypeMap` key in `shared/config/certification-settings.js` to the new superBlock name.
+1. Aggiorna la key `superBlockCertTypeMap` in `config/certification-settings.js` al nuovo nome di superblocco.
 1. Aggiorna il valore del percorso in `client/src/assets/icons/index.tsx`.
 1. Per ogni lingua in `client/i18n/locales`, aggiorna il file `intro.json` file affinché usi il nuovo `dashedName` del superblocco. Nel file inglese aggiorna anche `title`.
-1. Check the `shared/config/i18n/all-langs.js` file to see if the superBlock is enabled in i18n builds. Aggiorna il valore dove è usato.
+1. Controlla `config/i18n/all-langs.js` per vedere se il superblocco è abilitato nelle build in altre lingue. Aggiorna il valore dove è usato.
 1. Aggiorna il file principale `README.md` con il nuovo nome.
 
 ### Rinominare un blocco
@@ -83,10 +83,11 @@ Quando rinomini un blocco del curriculum, devi:
 1. Cambiare il nome della cartella dello stesso blocco in _tutte_ le directory delle altre lingue. Queste devono tutte essere uguali alla struttura inglese o il build avrà errori.
 1. Cambia il nome della cartella del blocco nella directory `_meta`.
 1. Aggiorna le proprietà `name` e `dashedName` per il `meta.json` di quel blocco.
-1. Update the block folder in `client/src/pages/learn/{superBlock}`.
-1. In the `index.md` file of the above folder, update the `block` value in the frontmatter.
-1. In the `client/i18n/locales/{language}/intro.json` files, update the block name to the new name for all the languages. In the English `intro.json` file, update the `title` as well.
-1. Update the main `README.md` file to the new name.
+1. Aggiorna `client/utils/help-category-map.json` inmodo che usi il nuovo nome del blocco come chiave.
+1. Aggiorna la cartella del blocco in `client/src/pages/learn/{superBlock}`.
+1. Nel file `index.md` della cartella sopra, aggiorna il valore di `block` nel frontespizio.
+1. Nei file `client/i18n/locales/{language}/intro.json` aggiorna il nome del blocco con il nuovo nome per tutte le lingue. Nel file inglese `intro.json`, cambia anche `title`.
+1. Aggiorna il file `README.md` principale al nuovo nome.
 
 ### Rinominare una sfida
 

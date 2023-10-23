@@ -12,43 +12,43 @@ The task is to strip control codes and extended characters from a string. The so
 
 # --hints--
 
-`strip` sollte eine Funktion sein.
+`strip` should be a function.
 
 ```js
 assert(typeof strip == 'function');
 ```
 
-`strip("abc")` sollte einen String zurückgeben.
+`strip("abc")` should return a string.
 
 ```js
 assert(typeof strip('abc') == 'string');
 ```
 
-`strip("\ba\x00b\n\rc\fd\xc3")` sollte `"abcd"` zurückgeben.
+`strip("\ba\x00b\n\rc\fd\xc3")` should return `"abcd"`.
 
 ```js
 assert.equal(strip('\ba\x00b\n\rc\fd\xc3'), 'abcd');
 ```
 
-`strip("\u0000\n abc\u00E9def\u007F")` sollte `" abcdef"` zurückgeben.
+`strip("\u0000\n abc\u00E9def\u007F")` should return `" abcdef"`.
 
 ```js
 assert.equal(strip('\u0000\n abc\u00E9def\u007F'), ' abcdef');
 ```
 
-`strip("a\n\tb\u2102d\u2147f")` sollte `"abdf"` zurückgeben.
+`strip("a\n\tb\u2102d\u2147f")` should return `"abdf"`.
 
 ```js
 assert.equal(strip('a\n\tb\u2102d\u2147f'), 'abdf');
 ```
 
-`strip("Français.")` sollte `"Franais."` zurückgeben.
+`strip("Français.")` should return `"Franais."`.
 
 ```js
 assert.equal(strip('Français.'), 'Franais.');
 ```
 
-`strip("123\tabc\u0007DEF\u007F+-*/€æŧðłþ")` sollte `"123abcDEF+-*/"` zurückgeben.
+`strip("123\tabc\u0007DEF\u007F+-*/€æŧðłþ")` should return `"123abcDEF+-*/"`.
 
 ```js
 assert.equal(strip('123\tabc\u0007DEF\u007F+-*/€æŧðłþ'), '123abcDEF+-*/');

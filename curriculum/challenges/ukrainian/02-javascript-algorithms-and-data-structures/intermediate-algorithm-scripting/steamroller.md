@@ -1,6 +1,6 @@
 ---
 id: ab306dbdcc907c7ddfc30830
-title: Нездоланна сила
+title: Steamroller
 challengeType: 1
 forumTopicId: 16079
 dashedName: steamroller
@@ -8,29 +8,29 @@ dashedName: steamroller
 
 # --description--
 
-Вирівняйте вкладений масив. Ви повинні врахувати різні рівні вкладення.
+Стиснути вкладений масив. Необхідно враховувати різні рівні вкладення.
 
 # --hints--
 
-`steamrollArray([[["a"]], [["b"]]])` має повертати `["a", "b"]`.
+`steamrollArray([[["a"]], [["b"]]])` повинен повертатися як `["a", "b"]`.
 
 ```js
 assert.deepEqual(steamrollArray([[['a']], [['b']]]), ['a', 'b']);
 ```
 
-`steamrollArray([1, [2], [3, [[4]]]])` має повертати `[1, 2, 3, 4]`.
+`steamrollArray([1, [2], [3, [[4]]]])` повинен повертатися як `[1, 2, 3, 4]`.
 
 ```js
 assert.deepEqual(steamrollArray([1, [2], [3, [[4]]]]), [1, 2, 3, 4]);
 ```
 
-`steamrollArray([1, [], [3, [[4]]]])` має повертати `[1, 3, 4]`.
+`steamrollArray([1, [], [3, [[4]]]])` повинен повертатися як `[1, 3, 4]`.
 
 ```js
 assert.deepEqual(steamrollArray([1, [], [3, [[4]]]]), [1, 3, 4]);
 ```
 
-`steamrollArray([1, {}, [3, [[4]]]])` має повертати `[1, {}, 3, 4]`.
+`steamrollArray([1, {}, [3, [[4]]]])` повинен повертатися як `[1, {}, 3, 4]`.
 
 ```js
 assert.deepEqual(steamrollArray([1, {}, [3, [[4]]]]), [1, {}, 3, 4]);
@@ -42,7 +42,7 @@ assert.deepEqual(steamrollArray([1, {}, [3, [[4]]]]), [1, {}, 3, 4]);
 assert(!code.match(/\.\s*flat\s*\(/) && !code.match(/\.\s*flatMap\s*\(/));
 ```
 
-Не використовуйте глобальні змінні.
+Global variables should not be used.
 
 ```js
 steamrollArray([1, {}, [3, [[4]]]])

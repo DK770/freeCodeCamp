@@ -5,7 +5,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 import { createFlashMessage } from '../components/Flash/redux';
 import { isHandledError, unwrapHandledError } from '../utils/handled-error';
 import { reportClientSideError } from '../utils/report-error';
-import { reportedErrorMessage } from '../utils/error-messages';
+import reportedErrorMessage from '../utils/reported-error-message';
 
 const errorActionSelector = action => isError(action.payload);
 

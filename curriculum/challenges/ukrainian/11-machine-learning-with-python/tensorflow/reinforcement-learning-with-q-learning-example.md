@@ -1,6 +1,6 @@
 ---
 id: 5e8f2f13c4cdbe86b5c72da5
-title: 'Посилене навчання за допомогою Q-Learning: приклад'
+title: 'Навчання з підкріпленням за допомогою Q-Learning: Приклад'
 challengeType: 11
 videoId: RBBSNta234s
 bilibiliIds:

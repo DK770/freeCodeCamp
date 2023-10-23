@@ -12,43 +12,43 @@ Create a function, to compute the **dot product**, also known as the **scalar pr
 
 # --hints--
 
-`dotProduct` sollte eine Funktion zurückgeben.
+`dotProduct` should be a function.
 
 ```js
 assert(typeof dotProduct == 'function');
 ```
 
-`dotProduct([1, 3, -5], [4, -2, -1])` sollte eine Zahl zurückgeben.
+`dotProduct([1, 3, -5], [4, -2, -1])` should return a number.
 
 ```js
 assert(typeof dotProduct([1, 3, -5], [4, -2, -1]) == 'number');
 ```
 
-`dotProduct([1, 3, -5], [4, -2, -1])` sollte `3` zurückgeben.
+`dotProduct([1, 3, -5], [4, -2, -1])` should return `3`.
 
 ```js
 assert.equal(dotProduct([1, 3, -5], [4, -2, -1]), 3);
 ```
 
-`dotProduct([1, 2, 3, 4, 5], [6, 7, 8, 9, 10])` sollte `130` zurückgeben.
+`dotProduct([1, 2, 3, 4, 5], [6, 7, 8, 9, 10])` should return `130`.
 
 ```js
 assert.equal(dotProduct([1, 2, 3, 4, 5], [6, 7, 8, 9, 10]), 130);
 ```
 
-`dotProduct([5, 4, 3, 2], [7, 8, 9, 6])` sollte `106` zurückgeben.
+`dotProduct([5, 4, 3, 2], [7, 8, 9, 6])` should return `106`.
 
 ```js
 assert.equal(dotProduct([5, 4, 3, 2], [7, 8, 9, 6]), 106);
 ```
 
-`dotProduct([-5, 4, -3, 2], [-7, -8, 9, -6])` sollte `-36` zurückgeben.
+`dotProduct([-5, 4, -3, 2], [-7, -8, 9, -6])` should return `-36`.
 
 ```js
 assert.equal(dotProduct([-5, 4, -3, 2], [-7, -8, 9, -6]), -36);
 ```
 
-`dotProduct([17, 27, 34, 43, 15], [62, 73, 48, 95, 110])` sollte `10392` zurückgeben.
+`dotProduct([17, 27, 34, 43, 15], [62, 73, 48, 95, 110])` should return `10392`.
 
 ```js
 assert.equal(dotProduct([17, 27, 34, 43, 15], [62, 73, 48, 95, 110]), 10392);

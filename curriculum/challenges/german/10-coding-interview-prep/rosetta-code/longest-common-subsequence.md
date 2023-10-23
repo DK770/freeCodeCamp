@@ -24,43 +24,43 @@ Write a case-sensitive function that returns the LCS of two strings. You don't n
 
 # --hints--
 
-`lcs` sollte eine Funktion sein.
+`lcs` should be a function.
 
 ```js
 assert(typeof lcs == 'function');
 ```
 
-`lcs("thisisatest", "testing123testing")` sollte einen String zurückgeben.
+`lcs("thisisatest", "testing123testing")` should return a string.
 
 ```js
 assert(typeof lcs('thisisatest', 'testing123testing') == 'string');
 ```
 
-`lcs("thisisatest", "testing123testing")` sollte `"tsitest"` zurückgeben.
+`lcs("thisisatest", "testing123testing")` should return `"tsitest"`.
 
 ```js
 assert.equal(lcs('thisisatest', 'testing123testing'), 'tsitest');
 ```
 
-`lcs("ABCDGH", "AEDFHR")` sollte `"ADH"` zurückgeben.
+`lcs("ABCDGH", "AEDFHR")` should return `"ADH"`.
 
 ```js
 assert.equal(lcs('ABCDGH', 'AEDFHR'), 'ADH');
 ```
 
-`lcs("AGGTAB", "GXTXAYB")` sollte `"GTAB"` zurückgeben.
+`lcs("AGGTAB", "GXTXAYB")` should return `"GTAB"`.
 
 ```js
 assert.equal(lcs('AGGTAB', 'GXTXAYB'), 'GTAB');
 ```
 
-`lcs("BDACDB", "BDCB")` sollte `"BDCB"` zurückgeben.
+`lcs("BDACDB", "BDCB")` should return `"BDCB"`.
 
 ```js
 assert.equal(lcs('BDACDB', 'BDCB'), 'BDCB');
 ```
 
-`lcs("ABAZDC", "BACBAD")` sollte `"ABAD"` zurückgeben.
+`lcs("ABAZDC", "BACBAD")` should return `"ABAD"`.
 
 ```js
 assert.equal(lcs('ABAZDC', 'BACBAD'), 'ABAD');

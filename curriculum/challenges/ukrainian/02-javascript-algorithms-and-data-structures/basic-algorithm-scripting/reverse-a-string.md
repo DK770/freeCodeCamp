@@ -8,31 +8,33 @@ dashedName: reverse-a-string
 
 # --description--
 
-Переверніть наданий рядок та поверніть рядок у зворотньому порядку.
+Переверніть заданий рядок.
 
-Наприклад, `"hello"` повинен стати `"olleh"`.
+За необхідності перетворіть рядок у масив до того, як вносити зміни.
+
+У результаті ви повинні отримати рядок.
 
 # --hints--
 
-`reverseString("hello")` має повертати рядок.
+`reverseString("hello")` повинен повністю змінити рядок.
 
 ```js
 assert(typeof reverseString('hello') === 'string');
 ```
 
-`reverseString("hello")` має повертати рядок `olleh`.
+`reverseString("hello")` повинен перетворитися на рядок `olleh`.
 
 ```js
 assert(reverseString('hello') === 'olleh');
 ```
 
-`reverseString("Howdy")` має повертати рядок `ydwoH`.
+`reverseString("Howdy")` повинен перетворитися на рядок `ydwoH`.
 
 ```js
 assert(reverseString('Howdy') === 'ydwoH');
 ```
 
-`reverseString("Greetings from Earth")` має повертати рядок `htraE morf sgniteerG`.
+`reverseString("Greetings from Earth")` повинен перетворитися на рядок `htraE morf sgniteerG`.
 
 ```js
 assert(reverseString('Greetings from Earth') === 'htraE morf sgniteerG');

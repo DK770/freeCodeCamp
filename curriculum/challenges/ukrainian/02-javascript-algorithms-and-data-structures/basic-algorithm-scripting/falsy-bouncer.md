@@ -1,6 +1,6 @@
 ---
 id: adf08ec01beb4f99fc7a68f2
-title: Викидайло брехні
+title: Фільтрація помилкових значень масиву
 challengeType: 1
 forumTopicId: 16014
 dashedName: falsy-bouncer
@@ -8,21 +8,21 @@ dashedName: falsy-bouncer
 
 # --description--
 
-Видаліть всі неправильні значення з масиву. Поверніть новий масив; не змінюйте вихідний масив.
+Remove all falsy values from an array. Return a new array; do not mutate the original array.
 
-Неправильні значення в JavaScript: `false`, `null`, `0`, `""`, `undefined` та `NaN`.
+Неправильні значення в JavaScript: `false`, `null`, `0`, `""`, `undefined`, і `NaN`.
 
-Підказка: спробуйте перетворити кожне значення у булеве.
+Підказка: спробуйте перетворити кожне значення на логічне значення.
 
 # --hints--
 
-`bouncer([7, "ate", "", false, 9])` має повертати `[7, "ate", 9]`.
+`bouncer([7, "ate", "", false, 9])` має повернути `[7, "ate", 9]`.
 
 ```js
 assert.deepEqual(bouncer([7, 'ate', '', false, 9]), [7, 'ate', 9]);
 ```
 
-`bouncer(["a", "b", "c"])` має повертати `["a", "b", "c"]`.
+`bouncer(["a", "b", "c"])` має вертати `["a", "b", "c"]`.
 
 ```js
 assert.deepEqual(bouncer(['a', 'b', 'c']), ['a', 'b', 'c']);
@@ -40,7 +40,7 @@ assert.deepEqual(bouncer([false, null, 0, NaN, undefined, '']), []);
 assert.deepEqual(bouncer([null, NaN, 1, 2, undefined]), [1, 2]);
 ```
 
-Ви не повинні змінювати `arr`.
+You should not mutate `arr`.
 
 ```js
 const arr = ['a', false, 0, 'Naomi'];

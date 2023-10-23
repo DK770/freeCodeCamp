@@ -22,25 +22,25 @@ Create a function that returns the minimum possible size of the initial pile of 
 
 # --hints--
 
-`splitCoconuts` sollte eine Funktion sein.
+`splitCoconuts` should be a function.
 
 ```js
 assert(typeof splitCoconuts === 'function');
 ```
 
-`splitCoconuts(5)` sollte 3121 zurückgeben.
+`splitCoconuts(5)` should return 3121.
 
 ```js
 assert(splitCoconuts(5) === 3121);
 ```
 
-`splitCoconuts(6)` sollte 233275 zurückgeben.
+`splitCoconuts(6)` should return 233275.
 
 ```js
 assert(splitCoconuts(6) === 233275);
 ```
 
-`splitCoconuts(7)` sollte 823537 zurückgeben.
+`splitCoconuts(7)` should return 823537.
 
 ```js
 assert(splitCoconuts(7) === 823537);

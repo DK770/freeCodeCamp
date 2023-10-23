@@ -1,6 +1,6 @@
 ---
 id: 587d7db0367417b2b2512b82
-title: Ланцюг прототипів
+title: Зрозумійте використання ланцюга прототипів
 challengeType: 1
 forumTopicId: 301329
 dashedName: understand-the-prototype-chain
@@ -8,7 +8,7 @@ dashedName: understand-the-prototype-chain
 
 # --description--
 
-Усі об’єкти в JavaScript (за парою винятків) мають `prototype`. До того ж сам прототип об’єкта є об’єктом.
+Усі об'єкти JavaScript (за невеликими винятками) мають `prototype`. Також сам `prototype` є об'єктом.
 
 ```js
 function Bird(name) {
@@ -18,28 +18,28 @@ function Bird(name) {
 typeof Bird.prototype;
 ```
 
-Оскільки `prototype` є об’єктом, `prototype` може мати власний `prototype`! У цьому випадку `prototype` `Bird.prototype` є `Object.prototype`:
+Тому що `prototype` — це об'єкт, `prototype` може мати свій `prototype`! Таким чином `prototype` `Bird.prototype` це `Object.prototype`:
 
 ```js
 Object.prototype.isPrototypeOf(Bird.prototype);
 ```
 
-Чим це корисно? Згадайте метод `hasOwnProperty` із попереднього завдання:
+Чим це корисно? Ви можете викликати `hasOwnProperty` метод із попереднього завдання:
 
 ```js
 let duck = new Bird("Donald");
 duck.hasOwnProperty("name");
 ```
 
-Метод `hasOwnProperty` визначений в `Object.prototype`, до якого можна отримати доступ завдяки `Bird.prototype`, до якого можна отримати доступ завдяки `duck`. Це приклад ланцюга прототипів. `Bird` у цьому ланцюзі прототипів є супертипом для `duck`, а `duck` є підтипом. `Object` є супертипом для `Bird` та `duck`. `Object` є супертипом для всіх об’єктів у JavaScript. Отже, будь-який об’єкт може використовувати метод `hasOwnProperty`.
+Метод `hasOwnProperty` визначається `Object.prototype` й може бути доступним для `Bird.prototype`, що так само може бути доступним для `duck`. Це приклад ланцюга `prototype`. У цьому `prototype` ланцюга, `Bird` є `supertype` для `duck`, доки `duck` це `subtype`. `Object` це `supertype` водночас для `Bird` й `duck`. `Object` це `supertype` для усіх об'єктів JavaScript. Внаслідок цього будь-який об'єкт може використовувати метод `hasOwnProperty`.
 
 # --instructions--
 
-Змініть код, щоб показувати правильний ланцюг прототипів.
+Змініть код для демонстрації правильного ланцюжка прототипів.
 
 # --hints--
 
-Код має показувати, що `Object.prototype` є прототипом `Dog.prototype`
+Ваш код має відбивати, що `Object.prototype` є прототипом для `Dog.prototype`
 
 ```js
 assert(/Object\.prototype\.isPrototypeOf/.test(code));

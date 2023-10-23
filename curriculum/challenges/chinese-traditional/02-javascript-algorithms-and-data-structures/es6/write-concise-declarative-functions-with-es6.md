@@ -39,7 +39,7 @@ const person = {
 不應使用傳統的函數定義方法。
 
 ```js
-assert(!code.match(/function/));
+(getUserInput) => assert(!code.match(/function/));
 ```
 
 `setGear` 應是一個聲明函數。
@@ -79,7 +79,6 @@ console.log(bicycle.gear);
 ```js
 const bicycle = {
   gear: 2,
-  // setGear: function(newGear) {
   setGear(newGear) {
     this.gear = newGear;
   }

@@ -13,17 +13,13 @@ export const executeGA = createAction(actionTypes.executeGA);
 export const allowBlockDonationRequests = createAction(
   actionTypes.allowBlockDonationRequests
 );
-export const setRenderStartTime = createAction(actionTypes.setRenderStartTime);
 export const closeDonationModal = createAction(actionTypes.closeDonationModal);
 export const openDonationModal = createAction(actionTypes.openDonationModal);
 export const preventBlockDonationRequests = createAction(
   actionTypes.preventBlockDonationRequests
 );
-export const setCompletionCountWhenShownProgressModal = createAction(
-  actionTypes.setCompletionCountWhenShownProgressModal
-);
-export const setShowMultipleProgressModals = createAction(
-  actionTypes.setShowMultipleProgressModals
+export const preventProgressDonationRequests = createAction(
+  actionTypes.preventProgressDonationRequests
 );
 export const updateDonationFormState = createAction(
   actionTypes.updateDonationFormState
@@ -57,16 +53,28 @@ export const fetchUser = createAction(actionTypes.fetchUser);
 export const fetchUserComplete = createAction(actionTypes.fetchUserComplete);
 export const fetchUserError = createAction(actionTypes.fetchUserError);
 
-export const updateAllChallengesInfo = createAction(
-  actionTypes.updateAllChallengesInfo
+export const addDonation = createAction(actionTypes.addDonation);
+export const addDonationComplete = createAction(
+  actionTypes.addDonationComplete
 );
+export const addDonationError = createAction(actionTypes.addDonationError);
 
-export const postCharge = createAction(actionTypes.postCharge);
-export const postChargeProcessing = createAction(
-  actionTypes.postChargeProcessing
+export const postChargeStripe = createAction(actionTypes.postChargeStripe);
+export const postChargeStripeComplete = createAction(
+  actionTypes.postChargeStripeComplete
 );
-export const postChargeComplete = createAction(actionTypes.postChargeComplete);
-export const postChargeError = createAction(actionTypes.postChargeError);
+export const postChargeStripeError = createAction(
+  actionTypes.postChargeStripeError
+);
+export const postChargeStripeCard = createAction(
+  actionTypes.postChargeStripeCard
+);
+export const postChargeStripeCardComplete = createAction(
+  actionTypes.postChargeStripeCardComplete
+);
+export const postChargeStripeCardError = createAction(
+  actionTypes.postChargeStripeCardError
+);
 
 export const fetchProfileForUser = createAction(
   actionTypes.fetchProfileForUser
@@ -98,15 +106,6 @@ export const hideCodeAlly = createAction(actionTypes.hideCodeAlly);
 export const showCodeAlly = createAction(actionTypes.showCodeAlly);
 export const tryToShowCodeAlly = createAction(actionTypes.tryToShowCodeAlly);
 
-export const startExam = createAction(actionTypes.startExam);
-export const stopExam = createAction(actionTypes.stopExam);
-export const clearExamResults = createAction(actionTypes.clearExamResults);
-
-export const linkMsUsername = createAction(actionTypes.linkMsUsername);
-export const unlinkMsUsername = createAction(actionTypes.unlinkMsUsername);
-export const setMsUsername = createAction(actionTypes.setMsUsername);
-
-export const setIsProcessing = createAction(actionTypes.setIsProcessing);
-
-export const closeSignoutModal = createAction(actionTypes.closeSignoutModal);
-export const openSignoutModal = createAction(actionTypes.openSignoutModal);
+export const updateCurrentChallengeId = createAction(
+  actionTypes.updateCurrentChallengeId
+);

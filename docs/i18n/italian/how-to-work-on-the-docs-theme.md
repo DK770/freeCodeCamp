@@ -1,14 +1,12 @@
-# How to Work on Documentation
+# Come lavorare sulla documentazione
 
-## Work on the Content of the Docs
+## Lavorare sul contenuto della documentazione
 
 Per lavorare sulle linee guida per i contributori, puoi modificare o aggiungere file nella cartella `docs` [disponibile qui](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/docs). Quando i tuoi cambiamenti sono accettati, saranno resi disponibili automaticamente nel sito della documentazione.
 
-Quando aggiungi un nuovo file alla cartella `docs`, dovresti valutare se il file dovrebbe essere aggiunto anche alla barra laterale di navigazione. Generalmente creiamo un link nel file [`_sidebar.md`](_sidebar.md) per guide nuove e indipendenti. In alternativa, è possibile seguire le istruzioni qui sotto sulla creazione di un link interno per le guide di supporto.
+### Come creare un link interno
 
-### How to Create an Internal Link
-
-Se vuoi creare un link che punta a una sezione diversa delle linee guida per contribuire, segui questo formato:
+Se vuoi creare un link che punta a una sezione diversa della documentazione per contribuire, segui questo formato:
 
 ```md
 [Link text](target-file-name.md#target-section-heading-id)
@@ -23,15 +21,15 @@ Assicurati di includere l'estensione del file (`.md`). Non specificare l'URL com
 
 #### Tradurre documentazione con link interni
 
-Quando lavori per tradurre la documentazione su Crowdin, assicurati di sostituire la parte `#target-section-heading-id` con l'id del documento tradotto. [Impara di più su come tradurre la documentazione qui](how-to-translate-files.md#tradurre-la-documentazione).
+Quando lavori a tradurre la documentazione su Crowdin, assicurati di sostituire la parte `#target-section-heading-id` con l'id del documento tradotto. [Impara di più sul tradurre la documentazione qui](how-to-translate-files.md#tradurre-la-documentazione).
 
-## Work on the Docs Theme
+## Lavorare sul tema della documentazione
 
 > [!NOTE] Non devi impostare nulla per lavorare sul contenuto della documentazione.
 > 
 > Per lavorare sulle linee guida per la contribuzione, vedi [la sezione su come lavorare sul contenuto della documentazione](#work-on-the-docs-content).
 
-### Structure of the Docs Website
+### Struttura del sito di documentazione
 
 Il sito viene generato utilizzando [`docsify`](https://docsify.js.org) e servito utilizzando le pagine di GitHub.
 
@@ -41,18 +39,40 @@ In genere non è necessario modificare alcuna configurazione o costruire il sito
 - Serviamo questo file come SPA (Single Page Application) usando `docsify` e GitHub Pages.
 - Lo script `docsify` genera il contenuto del `file markdown` nella directory `docs` su richiesta.
 - La homepage è generata dal file [`_coverpage.md`](_coverpage.md).
-- La barra laterale di navigazione è generata da [`_sidebar.md`](_sidebar.md).
+- la navigazione della barra laterale è generata da [`_sidebar.md`](_sidebar.md).
 
-### Serving the Documentation Site Locally
+### Servire localmente il sito di documentazione
 
-Install freeCodeCamp locally ([see the local setup guide](how-to-setup-freecodecamp-locally)), we bundled the CLI with the development tools so you can run the command below as needed from the root of the repo:
+Clona freeCodeCamp:
 
 ```console
-pnpm run docs:serve
+git clone https://github.com/freeCodeCamp/freeCodeCamp.git
+```
+
+Installa `docsify`:
+
+```console
+npm install -g docsify
+```
+
+e servi la directory `/docs`
+
+```console
+docsify serve docs
+```
+
+In alternativa, se hai installato freeCodeCamp localmente (vedi la guida di installazione locale), impacchettiamo il CLI con gli strumenti di sviluppo in modo da poter eseguire uno qualsiasi dei comandi sottostanti dalla root del repo quando necessario:
+
+#### Servire e avviare solo il sito di documentazione
+
+```console
+npm run docs:serve
+```
+
+#### Servire il sito di documentazione accanto a freeCodeCamp localmente:
+
+```console
+npm run develop
 ```
 
 > Il sito di documentazione dovrebbe essere disponibile su <http://localhost:3400>
-
-## Proposing a Pull Request (PR)
-
-After you've committed your changes, check here for [how to open a Pull Request](how-to-open-a-pull-request.md).

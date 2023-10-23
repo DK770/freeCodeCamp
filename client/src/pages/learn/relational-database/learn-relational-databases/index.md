@@ -1,7 +1,7 @@
 ---
 title: Introduction to Relational Databases
-block: learn-relational-databases
-superBlock: relational-database
+block: Learn Relational Databases
+superBlock: Relational Database
 ---
 
 ## Placeholder

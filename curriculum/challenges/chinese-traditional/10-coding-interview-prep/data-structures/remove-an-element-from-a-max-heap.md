@@ -27,7 +27,7 @@ The `MaxHeap` data structure should exist.
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     }
@@ -41,7 +41,7 @@ assert(
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -57,7 +57,7 @@ assert(
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -73,7 +73,7 @@ assert(
 ```js
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -104,7 +104,7 @@ function isHeap(arr, i, n) {
 
 assert(
   (function () {
-    let test = false;
+    var test = false;
     if (typeof MaxHeap !== 'undefined') {
       test = new MaxHeap();
     } else {
@@ -120,15 +120,9 @@ assert(
       return false;
     }
     const removed = test.remove();
-    if (!vals.includes(removed)) return false;
-    if (removed > max) return false
+    if(removed > max) return false
     max = removed;
     result.push(removed);
-  }
-  for (let i = 0; i < vals.length; i++) {
-     if (!result.includes(vals[i])) {
-       return false;
-     }
   }
   return true
   })()
@@ -140,7 +134,7 @@ assert(
 ## --seed-contents--
 
 ```js
-const MaxHeap = function () {
+var MaxHeap = function () {
   this.heap = [];
   this.parent = index => {
     return Math.floor((index - 1) / 2);

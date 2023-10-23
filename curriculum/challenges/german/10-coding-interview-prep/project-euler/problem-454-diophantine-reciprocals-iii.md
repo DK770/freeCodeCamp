@@ -1,6 +1,6 @@
 ---
 id: 5900f5331000cf542c510045
-title: 'Problematik 454: Diophantische Kehrwerte III'
+title: 'Problem 454: Diophantine reciprocals III'
 challengeType: 1
 forumTopicId: 302127
 dashedName: problem-454-diophantine-reciprocals-iii
@@ -8,19 +8,19 @@ dashedName: problem-454-diophantine-reciprocals-iii
 
 # --description--
 
-In der folgenden Gleichung $x$, $y$, und $n$ gibt es positive Integer.
+In the following equation $x$, $y$, and $n$ are positive integers.
 
 $$\frac{1}{x} + \frac{1}{y} = \frac{1}{n}$$
 
-Für einen Grenzwert $L$ definieren wir $F(L)$ als die Anzahl der Lösungen, die $x &lt; y ≤ L$ erfüllen.
+For a limit $L$ we define $F(L)$ as the number of solutions which satisfy $x &lt; y ≤ L$.
 
-Wir können überprüfen, dass $F(15) = 4$ und $F(1000) = 1069$.
+We can verify that $F(15) = 4$ and $F(1000) = 1069$.
 
-Finde $F({10}^{12})$.
+Find $F({10}^{12})$.
 
 # --hints--
 
-`diophantineReciprocalsThree()` sollte `5435004633092` zurückgeben.
+`diophantineReciprocalsThree()` should return `5435004633092`.
 
 ```js
 assert.strictEqual(diophantineReciprocalsThree(), 5435004633092);

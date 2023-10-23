@@ -43,7 +43,7 @@ The compiling of a library in the VHDL language has the constraint that a librar
 
 The input of the function will be a multiline string, each line will consist of the name of the library, followed by its dependencies (if exist).
 
-Zum Beispiel:
+For example:
 
 ```js
 const libsSimple =
@@ -53,31 +53,31 @@ const libsSimple =
 
 # --hints--
 
-`topologicalSort` sollte eine Funktion sein.
+`topologicalSort` should be a function.
 
 ```js
 assert(typeof topologicalSort === 'function');
 ```
 
-`topologicalSort(libsSimple)` sollte ein Array zurückgeben.
+`topologicalSort(libsSimple)` should return an array.
 
 ```js
 assert(Array.isArray(topologicalSort(libsSimple)));
 ```
 
-`topologicalSort(libsSimple)` sollte `['bbb', 'aaa']` zurückgeben.
+`topologicalSort(libsSimple)` should return `['bbb', 'aaa']`.
 
 ```js
 assert.deepEqual(topologicalSort(libsSimple), ['bbb', 'aaa']);
 ```
 
-`topologicalSort(libsVHDL)` sollte `['ieee', 'std_cell_lib', 'gtech', 'dware', 'dw07', 'dw06', 'dw05', 'dw02', 'dw01', 'dw04', 'std', 'ramlib', 'synopsys', 'dw03', 'des_system_lib']` zurückgeben.
+`topologicalSort(libsVHDL)` should return `['ieee', 'std_cell_lib', 'gtech', 'dware', 'dw07', 'dw06', 'dw05', 'dw02', 'dw01', 'dw04', 'std', 'ramlib', 'synopsys', 'dw03', 'des_system_lib']`.
 
 ```js
 assert.deepEqual(topologicalSort(libsVHDL), ['ieee', 'std_cell_lib', 'gtech', 'dware', 'dw07', 'dw06', 'dw05', 'dw02', 'dw01', 'dw04', 'std', 'ramlib', 'synopsys', 'dw03', 'des_system_lib']);
 ```
 
-`topologicalSort(libsCustom)` sollte `['base', 'c', 'd', 'b', 'a']` zurückgeben.
+`topologicalSort(libsCustom)` should return `['base', 'c', 'd', 'b', 'a']`.
 
 ```js
 assert.deepEqual(topologicalSort(libsCustom), ['base', 'c', 'd', 'b', 'a']);

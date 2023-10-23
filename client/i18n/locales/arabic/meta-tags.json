@@ -8,14 +8,14 @@
     "js",
     "git",
     "github",
-    "موقع",
-    "ويب",
-    "تطوير",
-    "مجاني",
-    "كود",
-    "مخيم",
-    "درس",
-    "دروس",
+    "website",
+    "web",
+    "development",
+    "free",
+    "code",
+    "camp",
+    "course",
+    "courses",
     "html",
     "css",
     "react",
@@ -24,9 +24,9 @@
     "front",
     "back",
     "end",
-    "تعلم",
-    "منهج",
-    "برمجة"
+    "learn",
+    "tutorial",
+    "programming"
   ],
-  "youre-unsubscribed": "تم إلغاء الإشتراك"
+  "youre-unsubscribed": "You have been unsubscribed"
 }

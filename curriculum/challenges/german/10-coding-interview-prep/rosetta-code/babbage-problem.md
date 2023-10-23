@@ -25,7 +25,7 @@ Implement a function to return the lowest integer that satisfies the Babbage pro
 
 # --hints--
 
-`babbage` sollte eine Funktion sein.
+`babbage` should be a function.
 
 ```js
 assert(typeof babbage === 'function');

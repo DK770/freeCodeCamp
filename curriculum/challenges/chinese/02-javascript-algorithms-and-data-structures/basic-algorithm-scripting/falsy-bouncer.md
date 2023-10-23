@@ -8,7 +8,7 @@ dashedName: falsy-bouncer
 
 # --description--
 
-从数组中移除所有假值（falsy values）。 返回一个新数组；不要改变原始数组。
+Remove all falsy values from an array. Return a new array; do not mutate the original array.
 
 JavaScript 中的假值有 `false`、`null`、`0`、`""`、`undefined`、`NaN`。
 
@@ -40,7 +40,7 @@ assert.deepEqual(bouncer([false, null, 0, NaN, undefined, '']), []);
 assert.deepEqual(bouncer([null, NaN, 1, 2, undefined]), [1, 2]);
 ```
 
-你不应该改变 `arr`。
+You should not mutate `arr`.
 
 ```js
 const arr = ['a', false, 0, 'Naomi'];

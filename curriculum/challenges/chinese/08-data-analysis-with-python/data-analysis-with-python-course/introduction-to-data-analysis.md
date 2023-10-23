@@ -29,7 +29,7 @@ dashedName: introduction-to-data-analysis
 
 ---
 
-挑选一个期望的分析结论。
+分析数据并得出结论。
 
 ---
 

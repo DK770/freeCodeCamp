@@ -5,22 +5,17 @@ name: CI - E2E - 3rd party donation tests
 on:
   push:
     branches:
-      - 'prod-**'
+      - 'prod-*'
     paths-ignore:
       - 'docs/**'
-  # to test this ad-hoc
-  workflow_dispatch:
 
 jobs:
   do-everything:
     name: Build & Test
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [20.x]
     services:
       mongodb:
-        image: mongo:4.4
+        image: mongo:4
         ports:
           - 27017:27017
       # We need mailhog to catch any emails the api tries to send.
@@ -31,25 +26,19 @@ jobs:
 
     steps:
       - name: Checkout Source Files
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
 
       - name: Checkout client-config
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
         with:
           repository: freeCodeCamp/client-config
           path: client-config
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
         with:
-          version: 8
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          # cypress-io/github-action caches the store, so we should not cache it
-          # here.
+          node-version: 16.x
+          cache: 'npm'
 
       - name: Set freeCodeCamp Environment Variables
         run: |
@@ -61,32 +50,21 @@ jobs:
 
       - name: Install and Build
         run: |
-          pnpm install
-          pnpm run build
+          npm ci
+          npm run build
       - name: Seed Database
-        run: pnpm run seed
+        run: npm run seed
       - name: Move serve.json to Public Folder
         run: cp client-config/serve.json client/public/serve.json
 
-      # start-ci uses pm2, so it needs to be installed globally
-      - name: Install pm2
-        run: npm i -g pm2
-
-        # In our cypress config, we default to the cypress/e2e/default directory.
-        # We need to change this to cypress/e2e/ for the specific tests we are running
-        # in this workflow.
-        #
-      - name: Adjust the Cypress Config
-        run: |
-          sed -i 's#cypress/e2e/default/#cypress/e2e/#g' cypress.config.js
-
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v4
         with:
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
-          start: pnpm run start-ci
+          start: npm run start-ci
           wait-on: http://localhost:8000
           wait-on-timeout: 1200
           config: baseUrl=http://localhost:8000
           browser: chrome
-          spec: 'cypress/e2e/third-party/donate-page.ts'
+          headless: true
+          spec: cypress/e2e/third-party/*.js

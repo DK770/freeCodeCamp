@@ -1,6 +1,6 @@
 ---
 id: 5e9a0e9ef99a403d019610cc
-title: Пояснення глибинного навчання
+title: Демістифікація глибинного навчання
 challengeType: 11
 videoId: bejQ-W9BGJg
 dashedName: deep-learning-demystified

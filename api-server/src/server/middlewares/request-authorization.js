@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { jwtSecret as _jwtSecret } from '../../../config/secrets';
+import { jwtSecret as _jwtSecret } from '../../../../config/secrets';
 
 import { wrapHandledError } from '../utils/create-handled-error';
 import {
@@ -26,7 +26,6 @@ const updateHooksRE = /^\/hooks\/update-paypal$/;
 // note: this would be replaced by webhooks later
 const donateRE = /^\/donate\/charge-stripe$/;
 const submitCoderoadChallengeRE = /^\/coderoad-challenge-completed$/;
-const mobileLoginRE = /^\/mobile-login\/?$/;
 
 const _pathsAllowedREs = [
   authRE,
@@ -42,8 +41,7 @@ const _pathsAllowedREs = [
   unsubscribeRE,
   updateHooksRE,
   donateRE,
-  submitCoderoadChallengeRE,
-  mobileLoginRE
+  submitCoderoadChallengeRE
 ];
 
 export function isAllowedPath(path, pathsAllowedREs = _pathsAllowedREs) {

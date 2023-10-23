@@ -10,11 +10,9 @@ const TencentLogo = (
     viewBox='0 0 1000 190'
     width='100'
     xmlns='http://www.w3.org/2000/svg'
-    role='img'
-    aria-labelledby='tencent-logo-label'
     {...props}
   >
-    <title id='tencent-logo-label'>Tencent</title>
+    <title>Tencent_Logo</title>
     <g fill='none'>
       <g fill='var(--quaternary-color)'>
         <polygon

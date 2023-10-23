@@ -18,7 +18,7 @@ dashedName: use-the-triple-equals-to-assert-strict-equality
 
 # --hints--
 
-すべてのテストが成功する必要があります。
+すべてのテストに合格する必要があります。
 
 ```js
 (getUserInput) =>

@@ -14,7 +14,7 @@ dashedName: networking-with-python
 
 ## --text--
 
-Яка бібліотека дає доступ до сокетів TCP?
+Яка бібліотека дає доступ до TCP сокетів?
 
 ## --answers--
 

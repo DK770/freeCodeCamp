@@ -1,6 +1,6 @@
 ---
 id: 5e8f2f13c4cdbe86b5c72d93
-title: 'Redes Neurales: Funciones de Activación'
+title: 'Neural Networks: Activation Functions'
 challengeType: 11
 videoId: S45tqW6BqRs
 bilibiliIds:
@@ -14,19 +14,19 @@ dashedName: neural-networks-activation-functions
 
 ## --text--
 
-Cuál función activación recorta valores entre -1 and 1?
+Which activation function squishes values between -1 and 1?
 
 ## --answers--
 
-ReLU (Unidad Lineal Rectificada)
+ReLU (Rectified Linear Unit)
 
 ---
 
-Tanh (Tangente Hiperbólica)
+Tanh (Hyperbolic Tangent)
 
 ---
 
-Sigmoide
+Sigmoid
 
 ## --video-solution--
 

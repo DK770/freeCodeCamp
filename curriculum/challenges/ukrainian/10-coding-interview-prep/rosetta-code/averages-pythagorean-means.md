@@ -23,7 +23,7 @@ Compute all three of the <a href="https://en.wikipedia.org/wiki/Pythagorean_mean
 
 # --instructions--
 
-When writing your function, assume the input is an ordered array of all-inclusive numbers.
+При написанні функції, врахуйте, що вхідні дані — впорядкований масив всіх включених чисел.
 
 Для відповіді, будь ласка, виведіть об'єкт у наступному форматі:
 

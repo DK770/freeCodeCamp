@@ -24,9 +24,7 @@ function defaultFile(lang, id) {
 function getFilenames(lang) {
   const langToFilename = {
     js: 'script',
-    css: 'styles',
-    py: 'main',
-    python: 'main'
+    css: 'styles'
   };
   return langToFilename[lang] ?? 'index';
 }

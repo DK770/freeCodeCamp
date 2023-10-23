@@ -10,24 +10,19 @@ dashedName: mean-variance-standard-deviation-calculator
 
 Ви будете <a href="https://replit.com/github/freeCodeCamp/boilerplate-mean-variance-standard-deviation-calculator" target="_blank" rel="noopener noreferrer nofollow">працювати над цим проєктом з нашим стартовим кодом Replit</a>.
 
--   Почніть з імпорту проєкту на Replit.
--   Потім ви побачите вікно `.replit`.
--   Оберіть `Use run command` та натисніть кнопку `Done`.
+Ми все ще розробляємо інтерактивну частину навчального курсу Python. Наразі ось кілька відео на YouTube-каналі freeCodeCamp.org, які навчать вас усього необхідного, щоб виконати цей проєкт:
 
+- <a href="https://www.freecodecamp.org/news/python-for-everybody/" target="_blank" rel="noopener noreferrer nofollow">Python for Everybody Video Course</a>(14 hours)
 
-Ми досі розробляємо інтерактивну частину навчальної програми з Python. Наразі є декілька відео на ютуб-каналі freeCodeCamp.org, які навчать всього необхідного для виконання цього проєкту:
-
-- <a href="https://www.freecodecamp.org/news/python-for-everybody/" target="_blank" rel="noopener noreferrer nofollow">Python for Everybody Video Course</a> (14 годин)
-
-- <a href="https://www.freecodecamp.org/news/how-to-analyze-data-with-python-pandas/" target="_blank" rel="noopener noreferrer nofollow">How to Analyze Data with Python Pandas</a> (10 годин)
+- <a href="https://www.freecodecamp.org/news/how-to-analyze-data-with-python-pandas/" target="_blank" rel="noopener noreferrer nofollow">How to Analyze Data with Python Pandas</a> (10 hours)
 
 # --instructions--
 
-Створіть функцію під назвою `calculate()` у `mean_var_std.py`, яка використовує Numpy для виведення середнього значення, дисперсії, стандартного відхилення, максимуму, мінімуму та суми рядків, стовпчиків, і елементів в матриці 3 x 3.
+Створіть функцію `calculate()` в `mean_var_std.py`, яку використовує Numpy для виведення середнього значення, дисперсії, стандартного відхилення, максимуму, мінімуму та суми рядків, стовпців, і елементи в матриці 3 x 3.
 
 Вхідним значенням функції має бути список, що містить 9 цифр. Функція повинна перетворити список у масив Numpy 3 x 3, а потім повернути словник, що містить середнє значення, дисперсію, стандартне відхилення, максимум, мінімум і суму вздовж обох осей і для сплощеної матриці.
 
-Повернений словник повинен мати такий формат:
+The returned dictionary should follow this format:
 
 ```py
 {
@@ -40,9 +35,9 @@ dashedName: mean-variance-standard-deviation-calculator
 }
 ```
 
-Якщо у функцію передається список, що містить менше 9 елементів, вона має викликати виняток `ValueError` з повідомленням: "List must contain nine numbers." (список має містити дев’ять чисел). Значеннями у повернутому словнику мають бути списки, а не масиви Numpy.
+Якщо у функцію передається список, що містить менше 9 елементів, вона має викликати виняток `ValueError` з повідомленням: «Список має містити дев’ять чисел.» Значеннями у повернутому словнику мають бути списки, а не числові масиви Numpy.
 
-Наприклад, `calculate([0,1,2,3,4,5,6,7,8])` має повертати:
+For example, `calculate([0,1,2,3,4,5,6,7,8])` should return:
 
 ```py
 {
@@ -55,23 +50,23 @@ dashedName: mean-variance-standard-deviation-calculator
 }
 ```
 
-Модульні тести для цього проєкту знаходяться в `test_module.py`.
+The unit tests for this project are in `test_module.py`.
 
-## Розробка
+## Development
 
-Для розробки ви можете використати `main.py`, щоб протестувати свою функцію `calculate()`. Натисніть кнопку «run» і `main.py` запуститься.
+For development, you can use `main.py` to test your `calculate()` function. Натисніть кнопку «запустити» і `main.py` запуститься.
 
-## Тестування
+## Testing
 
-Ми імпортували тести з `test_module.py` до `main.py` для вашої зручності. Тести запустяться автоматично, коли ви натиснете на кнопку «run».
+We imported the tests from `test_module.py` to `main.py` for your convenience. Тести запустяться автоматично, коли ви натиснете на кнопку «запустити».
 
-## Надсилання
+## Submitting
 
-Скопіюйте URL-адресу свого проєкту та відправте її до freeCodeCamp.
+Copy your project's URL and submit it to freeCodeCamp.
 
 # --hints--
 
-Проєкт повинен пройти усі тести Python.
+Потрібно виконати всі тести Python.
 
 ```js
 

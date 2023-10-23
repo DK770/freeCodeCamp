@@ -1,6 +1,6 @@
 ---
 id: 5664820f61c48e80c9fa476c
-title: Гольф-код
+title: Golf Code
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/c9ykNUR'
 forumTopicId: 18195
@@ -9,77 +9,77 @@ dashedName: golf-code
 
 # --description--
 
-У грі в гольф кожна лунка має `par`, що відповідає середній кількості ударів (`strokes`), які повинен зробити гравець, щоб забити м’яч у лунку та завершити гру. Існують різні псевдоніми залежно від того, де знаходяться ваші удари (`strokes`) відповідно до `par`.
+In the game of Golf, each hole has a `par`, meaning, the average number of `strokes` a golfer is expected to make in order to sink the ball in the hole to complete the play. Залежно від того, на скільки вище або нижче `par` є ваші `удари`, існують різні псевдоніми.
 
-Вашій функції буде передано аргументи `par` та `strokes`. Поверніть правильний рядок відповідно до цієї таблиці, в якій перелічено удари за пріоритетом зверху (найвищий) донизу (найнижчий):
+Ваша функція проходитиме аргументи `par` та `strokes`. Поверніть правильний рядок відповідно до цієї таблиці, яка перелічує удари в порядку пріоритету; зверху (найвищий) до низу (найнижчий):
 
-<table><thead><tr><th>Удари</th><th>Повернений рядок</th></tr></thead><tbody><tr><td>1</td><td>"Hole-in-one!"</td></tr><tr><td>&#x3C;= par - 2</td><td>"Eagle"</td></tr><tr><td>par - 1</td><td>"Birdie"</td></tr><tr><td>par</td><td>"Par"</td></tr><tr><td>par + 1</td><td>"Bogey"</td></tr><tr><td>par + 2</td><td>"Double Bogey"</td></tr><tr><td>>= par + 3</td><td>"Go Home!"</td></tr></tbody></table>
+<table class='table table-striped'><thead><tr><th>Удари</th><th>Відображений результат</th></tr></thead><tbody><tr><td>1</td><td>"В лунку з першого удару"</td></tr><tr><td>&#x3C;= par - 2</td><td>"Орел"</td></tr><tr><td>par - 1</td><td>"Пташка"</td></tr><tr><td>par</td><td>"Середнячок"</td></tr><tr><td>par + 1</td><td>"Страшко"</td></tr><tr><td>par + 2</td><td>"Двічі Страшко"</td></tr><tr><td>>= par + 3</td><td>"Йди додому!"</td></tr></tbody></table>
 
-`par` та `strokes` завжди будуть додатними числами. Ми додали масив усіх імен для вашої зручності.
+`par` та `удари` завжди будуть числовими та додатніми. Ми додали масив усіх ваших імен для зручності.
 
 # --hints--
 
-`golfScore(4, 1)` має повертати рядок `Hole-in-one!`
+Рахунок `(4, 1)` має виводити стрічку `В лунку з першого удару!`
 
 ```js
 assert(golfScore(4, 1) === 'Hole-in-one!');
 ```
 
-`golfScore(4, 2)` має повертати рядок `Eagle`
+Рахунок `(4, 2)` має виводити стрічку `Орел`
 
 ```js
 assert(golfScore(4, 2) === 'Eagle');
 ```
 
-`golfScore(5, 2)` має повертати рядок `Eagle`
+Рахунок `(5, 2)` має виводити стрічку `Орел`
 
 ```js
 assert(golfScore(5, 2) === 'Eagle');
 ```
 
-`golfScore(4, 3)` має повертати рядок `Birdie`
+Рахунок `(4, 3)` має виводити стрічку `Пташка`
 
 ```js
 assert(golfScore(4, 3) === 'Birdie');
 ```
 
-`golfScore(4, 4)` має повертати рядок `Par`
+Рахунок `(4, 4)` має виводити стрічку `Середнячок`
 
 ```js
 assert(golfScore(4, 4) === 'Par');
 ```
 
-`golfScore(1, 1)` має повертати рядок `Hole-in-one!`
+Рахунок `(1, 1)` має виводити стрічку `В лунку з першого удару!`
 
 ```js
 assert(golfScore(1, 1) === 'Hole-in-one!');
 ```
 
-`golfScore(5, 5)` має повертати рядок `Par`
+Рахунок `(5, 5)` має виводити стрічку `Середнячок`
 
 ```js
 assert(golfScore(5, 5) === 'Par');
 ```
 
-`golfScore(4, 5)` має повертати рядок `Bogey`
+Рахунок `(4, 5)` має виводити стрічку `Страшко`
 
 ```js
 assert(golfScore(4, 5) === 'Bogey');
 ```
 
-`golfScore(4, 6)` має повертати рядок `Double Bogey`
+Рахунок `(4, 6)` має виводити стрічку `Двічі Страшко`
 
 ```js
 assert(golfScore(4, 6) === 'Double Bogey');
 ```
 
-`golfScore(4, 7)` має повертати рядок `Go Home!`
+Рахунок `(4, 7)` має виводити стрічку `Йди додому!`
 
 ```js
 assert(golfScore(4, 7) === 'Go Home!');
 ```
 
-`golfScore(5, 9)` має повертати рядок `Go Home!`
+Рахунок `(5, 9)` має виводити стрічку `Йди додому!`
 
 ```js
 assert(golfScore(5, 9) === 'Go Home!');

@@ -32,7 +32,7 @@ afterEach(() => {
 });
 
 describe('<HeatMap/>', () => {
-  // Removing the snapshot matching, because they are different every time
+  // Removing the snapshot matching, because they are different everytime
   /*
   it('renders correctly', () => {
     const { container } = render(<HeatMap {...props} />);

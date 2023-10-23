@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aeda08726
-title: Видаліть функції jQuery
+title: Видаліть Свої Функції jQuery
 challengeType: 6
 forumTopicId: 17561
 required:
@@ -13,35 +13,35 @@ dashedName: delete-your-jquery-functions
 
 Спершу ці анімації були чудовими, проте зараз вони трохи відволікають.
 
-Видаліть усі три функції jQuery з `document ready function`, але залиште саму функцію `document ready function` неушкодженою.
+Видаліть усі ці три функції jQuery з вашого `document ready function`, проте залишіть неушкодженим сам `document ready function`.
 
 # --hints--
 
-Усі три функції jQuery мають бути видаленими з `document ready function`.
+Усі три функції jQuery повинні бути видалені з `document ready function`.
 
 ```js
 assert(code.match(/\{\s*\}\);/g));
 ```
 
-Залиште елемент `script` неушкодженим.
+Ви повинні залишити елемент `script` неушкодженим.
 
 ```js
 assert(code.match(/<script>/g));
 ```
 
-Залиште `$(document).ready(function() {` на початку елемента `script`.
+Вам потрібно залишити `$(document).ready(function() {` на початку елементу `script`.
 
 ```js
 assert(code.match(/\$\(document\)\.ready\(function\(\)\s?\{/g));
 ```
 
-Залиште кінцеві дужки `})` функції `document.ready` неушкодженими.
+Залиште `document.ready` function's closing `})` неушкодженим.
 
 ```js
 assert(code.match(/.*\s*\}\);/g));
 ```
 
-Залиште кінцевий тег елемента `script` неушкодженим.
+Ви повинні залишити кінцевий тег елемента `script` неушкодженим.
 
 ```js
 assert(

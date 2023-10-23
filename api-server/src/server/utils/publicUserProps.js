@@ -1,10 +1,15 @@
 import { isURL } from 'validator';
 
+import {
+  prepUniqueDaysByHours,
+  calcCurrentStreak,
+  calcLongestStreak
+} from '../utils/user-stats';
+
 export const publicUserProps = [
   'about',
   'calendar',
   'completedChallenges',
-  'completedExams',
   'githubProfile',
   'isApisMicroservicesCert',
   'isBackEndCert',
@@ -25,8 +30,6 @@ export const publicUserProps = [
   'isSciCompPyCertV7',
   'isDataAnalysisPyCertV7',
   'isMachineLearningPyCertV7',
-  'isCollegeAlgebraPyCertV8',
-  'isFoundationalCSharpCertV8',
   'linkedin',
   'location',
   'name',
@@ -36,6 +39,7 @@ export const publicUserProps = [
   'profileUI',
   'projects',
   'savedChallenges',
+  'streak',
   'twitter',
   'username',
   'website',
@@ -50,9 +54,14 @@ export const userPropsForSession = [
   'id',
   'sendQuincyEmail',
   'theme',
+  'sound',
   'keyboardShortcuts',
   'completedChallengeCount',
-  'acceptedPrivacyTerms'
+  'completedProjectCount',
+  'completedCertCount',
+  'completedLegacyCertCount',
+  'acceptedPrivacyTerms',
+  'donationEmails'
 ];
 
 export function normaliseUserFields(user) {
@@ -66,12 +75,17 @@ export function normaliseUserFields(user) {
   return { about, picture, twitter };
 }
 
-export function getProgress(progressTimestamps) {
+export function getProgress(progressTimestamps, timezone = 'EST') {
   const calendar = progressTimestamps
     .filter(Boolean)
     .reduce((data, timestamp) => {
       data[Math.floor(timestamp / 1000)] = 1;
       return data;
     }, {});
-  return { calendar };
+  const uniqueHours = prepUniqueDaysByHours(progressTimestamps, timezone);
+  const streak = {
+    longest: calcLongestStreak(uniqueHours, timezone),
+    current: calcCurrentStreak(uniqueHours, timezone)
+  };
+  return { calendar, streak };
 }

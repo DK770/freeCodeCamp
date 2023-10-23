@@ -1,6 +1,10 @@
 import { withPrefix } from 'gatsby';
 import i18next from 'i18next';
+import psl from 'psl';
 import React from 'react';
+import env from '../../config/env.json';
+
+const { homeLocation } = env;
 
 export function getheadTagComponents(): JSX.Element[] {
   const socialImage =
@@ -49,7 +53,67 @@ export function getheadTagComponents(): JSX.Element[] {
       name='monetization'
     />
   ];
-  return headTags;
+  return injectConditionalTags(headTags, homeLocation);
+}
+
+// strips subpath and protocol
+
+export function injectConditionalTags(
+  tagsArray: JSX.Element[],
+  homeLocation: string
+): JSX.Element[] {
+  if (homeLocation.includes('localhost')) return tagsArray;
+
+  const parsedHomeUrl = psl.parse(
+    new URL(homeLocation).host
+  ) as psl.ParsedDomain;
+
+  // inject gap all production languages except Chinese
+  if (parsedHomeUrl.subdomain === 'www' && parsedHomeUrl.tld === 'org') {
+    tagsArray.push(
+      <script
+        // @ts-expect-error TODO: check use of href/rel on <script>
+        href={withPrefix('/misc/gap-org.js')}
+        id='gap-org'
+        key='gap-org'
+        rel='stylesheet'
+      />
+    );
+  }
+
+  // inject gap for staging
+  if (parsedHomeUrl.subdomain === 'www' && parsedHomeUrl.tld === 'dev') {
+    tagsArray.push(
+      <script
+        // @ts-expect-error See above
+        href={withPrefix('/misc/gap-dev.js')}
+        id='gap-dev'
+        key='gap-dev'
+        rel='stylesheet'
+      />
+    );
+  }
+
+  // inject cap and Chinese gap for production Chinese
+  if (parsedHomeUrl.subdomain === 'chinese' && parsedHomeUrl.tld === 'org') {
+    tagsArray.push(
+      <script
+        // @ts-expect-error See above
+        href={withPrefix('/misc/cap.js')}
+        id='cap'
+        key='cap'
+        rel='stylesheet'
+      />,
+      <script
+        // @ts-expect-error See above
+        href={withPrefix('/misc/gap-org-chinese.js')}
+        id='gap-org-chinese'
+        key='gap-org-chinese'
+        rel='stylesheet'
+      />
+    );
+  }
+  return tagsArray;
 }
 
 export function getPostBodyComponents(pathname: string): JSX.Element[] {
@@ -66,7 +130,7 @@ export function getPostBodyComponents(pathname: string): JSX.Element[] {
 
   if (
     pathname.includes('/learn/coding-interview-prep/rosetta-code') ||
-    pathname.includes('/learn/project-euler/')
+    pathname.includes('/learn/coding-interview-prep/project-euler')
   ) {
     scripts.push(mathJaxScriptElement);
   }

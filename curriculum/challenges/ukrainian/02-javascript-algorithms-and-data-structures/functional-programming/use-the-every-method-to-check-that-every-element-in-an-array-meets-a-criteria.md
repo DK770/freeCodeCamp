@@ -1,6 +1,6 @@
 ---
 id: 587d7dab367417b2b2512b6e
-title: Використання методу every для перевірки всіх елементів на відповідність критеріям
+title: Використовуйте кожен метод, щоб перевірити, чи кожний елемент у масиві відповідає критеріям
 challengeType: 1
 forumTopicId: 301312
 dashedName: use-the-every-method-to-check-that-every-element-in-an-array-meets-a-criteria
@@ -8,9 +8,9 @@ dashedName: use-the-every-method-to-check-that-every-element-in-an-array-meets-a
 
 # --description--
 
-Метод `every` працює з масивами, щоб перевірити, чи *кожен* елемент проходить певний тест. Він повертає булеве значення `true`, якщо всі значення відповідають критеріям або `false`, якщо навпаки.
+Метод `every` працює з масивами, щоб перевірити, чи проходить елемент *every* певний тест. Якщо всі значення відповідають критеріям, то він повертає булеве значення `true`, якщо ж ні, тоді - `false`.
 
-Наприклад, наступний код перевіряє, чи всі елементи в масиві `numbers` менші за 10:
+Наприклад, наступний код перевіряє чи кожен елемент в масиві `numbers` менший за 10:
 
 ```js
 const numbers = [1, 5, 8, 0, 10, 11];
@@ -20,33 +20,33 @@ numbers.every(function(currentValue) {
 });
 ```
 
-Метод `every` поверне `false`.
+В цьому випадку метод `every` поверне `false`.
 
 # --instructions--
 
-Використайте метод `every` всередині функції `checkPositive`, щоб перевірити, чи всі елементи в `arr` додатні. Функція повинна повертати булеве значення.
+Використовуйте метод `every` всередині функції `checkPositive`, щоб перевірити, чи кожний елемент у `arr` додатній. Функція має повернути булеве значення.
 
 # --hints--
 
-Ваш код повинен використовувати метод `every`.
+Використовуйте у коді метод `every`.
 
 ```js
 assert(code.match(/\.every/g));
 ```
 
-`checkPositive([1, 2, 3, -4, 5])` має повертати `false`.
+`checkPositive([1, 2, 3, -4, 5])` має повернути `false`.
 
 ```js
 assert.isFalse(checkPositive([1, 2, 3, -4, 5]));
 ```
 
-`checkPositive([1, 2, 3, 4, 5])` має повертати `true`.
+`checkPositive([1, 2, 3, 4, 5])` має повернути `true`.
 
 ```js
 assert.isTrue(checkPositive([1, 2, 3, 4, 5]));
 ```
 
-`checkPositive([1, -2, 3, -4, 5])` має повертати `false`.
+`checkPositive([1, -2, 3, -4, 5])` має повернути `false`.
 
 ```js
 assert.isFalse(checkPositive([1, -2, 3, -4, 5]));

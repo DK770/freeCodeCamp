@@ -1,23 +1,23 @@
 ---
 id: 62a8efb0e3ce826db8daf80f
-title: Passo 131
+title: Step 131
 challengeType: 0
 dashedName: step-131
 ---
 
 # --description--
 
-Termine a função `defeatMonster` chamando a função `update` com `locations[4]` como argumento.
+Finish the `defeatMonster` function by calling the `update` function with `locations[4]` as the argument.
 
 # --hints--
 
-Você deve chamar a função `update`.
+You should call the `update` function.
 
 ```js
 assert.match(defeatMonster.toString(), /update/);
 ```
 
-Você deve passar `locations[4]` como argumento.
+You should pass `locations[4]` as the argument.
 
 ```js
 assert.match(defeatMonster.toString(), /update\(locations\[4\]\)/);

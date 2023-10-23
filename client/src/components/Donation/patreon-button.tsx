@@ -1,34 +1,32 @@
 import React from 'react';
 import {
-  DonationAmount,
   donationUrls,
-  PaymentProvider
-} from '../../../../shared/config/donation-settings';
-import envData from '../../../config/env.json';
+  patreonDefaultPledgeAmount
+} from '../../../../config/donation-settings';
+import envData from '../../../../config/env.json';
 import PatreonLogo from '../../assets/images/components/patreon-logo';
-import { PostPayment } from './types';
 
 const { patreonClientId }: { patreonClientId: string | null } = envData as {
   patreonClientId: string | null;
 };
 
 interface PatreonButtonProps {
-  postPayment: (arg0: PostPayment) => void;
-  donationAmount: DonationAmount;
+  postPatreonRedirect: () => void;
 }
 
 const PatreonButton = ({
-  postPayment,
-  donationAmount
+  postPatreonRedirect
 }: PatreonButtonProps): JSX.Element | null => {
-  if (!patreonClientId || !donationAmount || !donationUrls.successUrl) {
+  if (
+    !patreonClientId ||
+    !patreonDefaultPledgeAmount ||
+    !donationUrls.successUrl
+  ) {
     return null;
   }
 
   const clientId = `&client_id=${patreonClientId}`;
-
-  // current Patreon pledge flow does not support custom amounts, it must be a tier
-  const pledgeLevel = `$&min_cents=${donationAmount}`;
+  const pledgeLevel = `$&min_cents=${patreonDefaultPledgeAmount}`;
   const v2Params = '&scope=identity%20identity[email]';
   const redirectUri = `&redirect_uri=${donationUrls.successUrl}`;
   const href = `https://www.patreon.com/oauth2/become-patron?response_type=code${pledgeLevel}${clientId}${redirectUri}${v2Params}`;
@@ -38,7 +36,7 @@ const PatreonButton = ({
       className='patreon-button link-button'
       data-patreon-widget-type='become-patron-button'
       href={href}
-      onClick={() => postPayment({ paymentProvider: PaymentProvider.Patreon })}
+      onClick={postPatreonRedirect}
       rel='noreferrer'
       target='_blank'
     >

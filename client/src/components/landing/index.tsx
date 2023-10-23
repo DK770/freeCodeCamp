@@ -1,3 +1,4 @@
+import { Grid } from '@freecodecamp/react-bootstrap';
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -6,7 +7,6 @@ import AsSeenIn from './components/as-seen-in';
 import Certifications from './components/certifications';
 import LandingTop from './components/landing-top';
 import Testimonials from './components/testimonials';
-import Faq from './components/faq';
 
 import './landing.css';
 
@@ -17,11 +17,16 @@ function Landing(): ReactElement {
     <>
       <SEO title={t('metaTags:title')} />
       <main className='landing-page'>
-        <LandingTop />
-        <AsSeenIn />
-        <Testimonials />
-        <Certifications />
-        <Faq />
+        <Grid>
+          <LandingTop pageName={'landing'} />
+        </Grid>
+        <Grid fluid={true}>
+          <AsSeenIn />
+        </Grid>
+        <Grid>
+          <Testimonials />
+          <Certifications pageName={'landing'} />
+        </Grid>
       </main>
     </>
   );

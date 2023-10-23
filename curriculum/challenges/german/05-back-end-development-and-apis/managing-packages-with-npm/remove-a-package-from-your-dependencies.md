@@ -8,21 +8,21 @@ dashedName: remove-a-package-from-your-dependencies
 
 # --description--
 
-Du hast nun einige Möglichkeiten ausprobiert, wie du Abhängigkeiten deines Projekts mithilfe des Abschnitts "dependencies" in der package.json verwalten kannst. Du hast auch externe Pakete eingebunden, indem du sie der Datei zugefügt und npm sogar mitgeteilt hast, welche Arten von Versionen du haben möchtest, indem du Sonderzeichen wie die Tilde oder das Caret verwendet hast.
+You have now tested a few ways you can manage dependencies of your project by using the package.json's dependencies section. You have also included external packages by adding them to the file and even told npm what types of versions you want, by using special characters such as the tilde or the caret.
 
-Aber was passiert, wenn du ein externes Paket entfernen möchtest, das du nicht länger benötigst? Du hast es vielleicht schon erraten, entferne einfach das entsprechende Schlüssel-Wert-Paar (key-value pair) für dieses Paket aus deinen Abhängigkeiten (dependencies).
+Aber was passiert, wenn du ein externes Paket entfernen möchtest, das du nicht länger benötigst? You might already have guessed it, just remove the corresponding key-value pair for that package from your dependencies.
 
-Dieselbe Methode gilt auch für das Entfernen anderer Felder in deiner package.json.
+This same method applies to removing other fields in your package.json as well.
 
 # --instructions--
 
-Entferne das `@freecodecamp/example`-Paket aus deinen "dependencies" (Abhängigkeiten).
+Remove the `@freecodecamp/example` package from your dependencies.
 
-**Hinweis:** Stelle sicher, dass du die richtige Menge an Kommas verwendest, nachdem du das Paket entfernt hast.
+**Note:** Make sure you have the right amount of commas after removing it.
 
 # --hints--
 
-`"dependencies"` sollte nicht `"@freecodecamp/example"` enthalten.
+`"dependencies"` should not include `"@freecodecamp/example"`.
 
 ```js
 (getUserInput) =>

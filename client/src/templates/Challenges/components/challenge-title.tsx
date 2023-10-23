@@ -22,6 +22,7 @@ function ChallengeTitle({
         <>
           <Link
             className='title-translation-cta'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             to={i18next.t('links:help-translate-link-url')}
           >
             {i18next.t('misc.translation-pending')}
@@ -29,8 +30,14 @@ function ChallengeTitle({
         </>
       )}
       <div className='challenge-title'>
-        <h1 id='content-start'>{children}</h1>
-        {isCompleted && <GreenPass />}
+        <div className='title-text'>
+          <h1>{children}</h1>
+          {isCompleted ? (
+            <GreenPass
+              style={{ height: '15px', width: '15px', marginLeft: '7px' }}
+            />
+          ) : null}
+        </div>
       </div>
     </div>
   );

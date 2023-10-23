@@ -15,7 +15,7 @@ Ein weiterer Datentyp ist <dfn>Boolean</dfn>. Booleans können nur einen von zwe
 
 # --instructions--
 
-Ändere die `welcomeToBooleans`-Funktion so, dass sie `true` statt `false` zurückgibt.
+Ändere die Funktion `welcomeToBooleans` so, dass sie `true` statt `false` zurückgibt, wenn der Ausführen-Button geklickt wird.
 
 # --hints--
 

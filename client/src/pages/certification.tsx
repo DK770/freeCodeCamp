@@ -16,8 +16,9 @@ function Certification(): JSX.Element {
         // @ts-ignore
         path={withPrefix('/certification/:username/:certSlug')}
       />
-
-      <RedirectHome default />
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <RedirectHome default={true} />
     </Router>
   );
 }

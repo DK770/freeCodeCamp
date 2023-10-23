@@ -1,18 +1,12 @@
-import { challengeTypes } from '../../../../../shared/config/challenge-types';
-import frameRunnerData from '../../../../../client/config/browser-scripts/frame-runner.json';
-import testEvaluatorData from '../../../../../client/config/browser-scripts/test-evaluator.json';
-import pythonRunnerData from '../../../../../client/config/browser-scripts/python-runner.json';
-
+import frameRunnerData from '../../../../../config/client/frame-runner.json';
+import testEvaluatorData from '../../../../../config/client/test-evaluator.json';
+import { challengeTypes } from '../../../../utils/challenge-types';
 import {
   ChallengeFile as PropTypesChallengeFile,
   ChallengeMeta
 } from '../../../redux/prop-types';
-import { concatHtml, createPythonTerminal } from '../rechallenge/builders';
-import {
-  getTransformers,
-  embedFilesInHtml,
-  getPythonTransformers
-} from '../rechallenge/transformers';
+import { concatHtml } from '../rechallenge/builders';
+import { getTransformers, embedFilesInHtml } from '../rechallenge/transformers';
 import {
   createTestFramer,
   runTestInTestFrame,
@@ -43,16 +37,18 @@ interface BuildChallengeData extends Context {
 
 interface BuildOptions {
   preview: boolean;
-  disableLoopProtectTests: boolean;
-  disableLoopProtectPreview: boolean;
-  usesTestRunner?: boolean;
+  protect: boolean;
+  usesTestRunner: boolean;
 }
 
+const { filename: runner } = frameRunnerData;
 const { filename: testEvaluator } = testEvaluatorData;
 
-const frameRunnerSrc = `/js/${frameRunnerData.filename}.js`;
-
-const pythonRunnerSrc = `/js/${pythonRunnerData.filename}.js`;
+const frameRunner = [
+  {
+    src: `/js/${runner}.js`
+  }
+];
 
 type ApplyFunctionProps = (file: ChallengeFile) => Promise<ChallengeFile>;
 
@@ -75,8 +71,6 @@ const applyFunction =
 const composeFunctions = (...fns: ApplyFunctionProps[]) =>
   fns.map(applyFunction).reduce((f, g) => x => f(x).then(g));
 
-// TODO: split this into at least two functions. One to create 'original' i.e.
-// the source and another to create the contents.
 function buildSourceMap(challengeFiles: ChallengeFiles): Source | undefined {
   // TODO: rename sources.index to sources.contents.
   const source: Source | undefined = challengeFiles?.reduce(
@@ -87,11 +81,7 @@ function buildSourceMap(challengeFiles: ChallengeFiles): Source | undefined {
       sources.editableContents += challengeFile.editableContents || '';
       return sources;
     },
-    {
-      index: '',
-      editableContents: '',
-      original: {}
-    } as Source
+    { index: '', editableContents: '', original: {} } as Source
   );
   return source;
 }
@@ -114,18 +104,14 @@ const buildFunctions = {
   [challengeTypes.backend]: buildBackendChallenge,
   [challengeTypes.backEndProject]: buildBackendChallenge,
   [challengeTypes.pythonProject]: buildBackendChallenge,
-  [challengeTypes.multifileCertProject]: buildDOMChallenge,
-  [challengeTypes.colab]: buildBackendChallenge,
-  [challengeTypes.python]: buildPythonChallenge
+  [challengeTypes.multifileCertProject]: buildDOMChallenge
 };
 
-export function canBuildChallenge(challengeData: BuildChallengeData): boolean {
+export function canBuildChallenge(challengeData: BuildChallengeData) {
   const { challengeType } = challengeData;
   return Object.prototype.hasOwnProperty.call(buildFunctions, challengeType);
 }
 
-// TODO: Figure out and (hopefully) simplify the return type.
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function buildChallenge(
   challengeData: BuildChallengeData,
   options: BuildOptions
@@ -145,8 +131,6 @@ const testRunners = {
   [challengeTypes.pythonProject]: getDOMTestRunner,
   [challengeTypes.multifileCertProject]: getDOMTestRunner
 };
-// TODO: Figure out and (hopefully) simplify the return type.
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getTestRunner(
   buildData: BuildChallengeData,
   runnerConfig: TestRunnerConfig,
@@ -201,55 +185,47 @@ async function getDOMTestRunner(
     runTestInTestFrame(document, testString, testTimeout);
 }
 
-type BuildResult = {
-  challengeType: number;
-  build: string;
-  sources: Source | undefined;
-};
-
-// TODO: All the buildXChallenge files have a similar structure, so make that
-// abstraction (function, class, whatever) and then create the various functions
-// out of it.
 export function buildDOMChallenge(
   { challengeFiles, required = [], template = '' }: BuildChallengeData,
-  options?: BuildOptions
-): Promise<BuildResult> | undefined {
+  { usesTestRunner } = { usesTestRunner: false }
+) {
+  const finalRequires = [...required];
+  if (usesTestRunner) finalRequires.push(...frameRunner);
+
   const loadEnzyme = challengeFiles?.some(
     challengeFile => challengeFile.ext === 'jsx'
   );
 
-  const pipeLine = composeFunctions(...getTransformers(options));
+  const pipeLine = composeFunctions(...getTransformers());
   const finalFiles = challengeFiles?.map(pipeLine);
-  const usesTestRunner = options?.usesTestRunner ?? false;
 
   if (finalFiles) {
     return Promise.all(finalFiles)
       .then(checkFilesErrors)
-      .then(
-        embedFilesInHtml as (
-          x: ChallengeFiles
-        ) => Promise<[ChallengeFiles, string]>
-      )
-      .then(([challengeFiles, contents]) => ({
-        // TODO: Stop overwriting challengeType with 'html'. Figure out why it's
-        // necessary at the moment.
-        challengeType: challengeTypes.html,
-        build: concatHtml({
-          required,
-          template,
-          contents,
-          ...(usesTestRunner && { testRunner: frameRunnerSrc })
-        }),
-        sources: buildSourceMap(challengeFiles),
-        loadEnzyme
-      }));
+      .then(embedFilesInHtml)
+      .then(([_challengeFiles, _contents]) => {
+        const challengeFiles = _challengeFiles as ChallengeFiles;
+        const contents = _contents as string;
+
+        return {
+          challengeType:
+            challengeTypes.html || challengeTypes.multifileCertProject,
+          build: concatHtml({
+            required: finalRequires,
+            template,
+            contents
+          }),
+          sources: buildSourceMap(challengeFiles),
+          loadEnzyme
+        };
+      });
   }
 }
 
 export function buildJSChallenge(
   { challengeFiles }: { challengeFiles: ChallengeFiles },
   options: BuildOptions
-): Promise<BuildResult> | undefined {
+) {
   const pipeLine = composeFunctions(...getTransformers(options));
 
   const finalFiles = challengeFiles?.map(pipeLine);
@@ -274,65 +250,28 @@ export function buildJSChallenge(
   }
 }
 
-function buildBackendChallenge({ url }: BuildChallengeData) {
+export function buildBackendChallenge({ url }: BuildChallengeData) {
   return {
     challengeType: challengeTypes.backend,
-    build: concatHtml({ testRunner: frameRunnerSrc }),
+    build: concatHtml({ required: frameRunner }),
     sources: { url }
   };
-}
-
-function getTransformedPython(challengeFiles: ChallengeFiles) {
-  return challengeFiles[0].contents;
-}
-
-export function buildPythonChallenge({
-  challengeFiles
-}: BuildChallengeData): Promise<BuildResult> | undefined {
-  const pipeLine = composeFunctions(...getPythonTransformers());
-  const finalFiles = challengeFiles.map(pipeLine);
-
-  if (finalFiles) {
-    return (
-      Promise.all(finalFiles)
-        .then(checkFilesErrors)
-        // Unlike the DOM challenges, there's no need to embed the files in HTML
-        .then(challengeFiles => ({
-          // TODO: Stop overwriting challengeType with 'html'. Figure out why it's
-          // necessary at the moment.
-          challengeType: challengeTypes.html,
-          // Both the terminal and pyodide are loaded into the browser, so we
-          // still need to build the HTML.
-          build: createPythonTerminal(pythonRunnerSrc),
-          sources: buildSourceMap(challengeFiles),
-          transformedPython: getTransformedPython(challengeFiles)
-        }))
-    );
-  }
 }
 
 export function updatePreview(
   buildData: BuildChallengeData,
   document: Document,
   proxyLogger: ProxyLogger
-): Promise<void> {
-  // TODO: either create a 'buildType' or use the real challengeType here
-  // (buildData.challengeType is set to 'html' for challenges that can be
-  // previewed, hence this being true for python challenges, multifile steps and
-  // so on).
-
+) {
   if (
     buildData.challengeType === challengeTypes.html ||
     buildData.challengeType === challengeTypes.multifileCertProject
   ) {
-    return new Promise<void>(resolve =>
-      createMainPreviewFramer(
-        document,
-        proxyLogger,
-        getDocumentTitle(buildData),
-        resolve
-      )(buildData)
-    );
+    createMainPreviewFramer(
+      document,
+      proxyLogger,
+      getDocumentTitle(buildData)
+    )(buildData);
   } else {
     throw new Error(
       `Cannot show preview for challenge type ${buildData.challengeType}`
@@ -354,7 +293,7 @@ function getDocumentTitle(buildData: BuildChallengeData) {
 export function updateProjectPreview(
   buildData: BuildChallengeData,
   document: Document
-): void {
+) {
   if (
     buildData.challengeType === challengeTypes.html ||
     buildData.challengeType === challengeTypes.multifileCertProject
@@ -370,20 +309,21 @@ export function updateProjectPreview(
   }
 }
 
-export function challengeHasPreview({ challengeType }: ChallengeMeta): boolean {
+export function challengeHasPreview({ challengeType }: ChallengeMeta) {
   return (
     challengeType === challengeTypes.html ||
     challengeType === challengeTypes.modern ||
-    challengeType === challengeTypes.multifileCertProject ||
-    challengeType === challengeTypes.python
+    challengeType === challengeTypes.multifileCertProject
   );
 }
 
-export function isJavaScriptChallenge({
-  challengeType
-}: ChallengeMeta): boolean {
+export function isJavaScriptChallenge({ challengeType }: ChallengeMeta) {
   return (
     challengeType === challengeTypes.js ||
     challengeType === challengeTypes.jsProject
   );
+}
+
+export function isLoopProtected(challengeMeta: ChallengeMeta) {
+  return challengeMeta.superBlock !== 'coding-interview-prep';
 }

@@ -1,35 +1,35 @@
 ---
 id: 5efae16e3cbd2bbdab94e334
-title: Schritt 31
+title: Step 31
 challengeType: 0
 dashedName: step-31
 ---
 
 # --description--
 
-Füge nach dem letzten `img`-Element ein `figcaption`-Element mit dem Text `Cats hate other cats.` hinzu
+After the last `img` element, add a `figcaption` element with the text `Cats hate other cats.`
 
 # --hints--
 
-Dein `figcaption`-Element sollte ein öffnendes Tag haben. Öffnende Tags haben die folgende Syntax: `<elementName>`.
+Your `figcaption` element should have an opening tag. Opening tags have the following syntax: `<elementName>`.
 
 ```js
 assert(document.querySelectorAll('figcaption').length === 2);
 ```
 
-Dein `figcaption`-Element sollte ein schließendes Tag haben. Schließende Tags haben ein `/` direkt nach dem `<`-Zeichen.
+Your `figcaption` element should have a closing tag. Closing tags have a `/` just after the `<` character.
 
 ```js
 assert(code.match(/<\/figcaption\>/g).length === 2);
 ```
 
-Genau über dem zweiten schließenden Tag des `section`-Elements sollte ein `figure`-Element stehen.
+There should be a `figure` element right above the second `section` element's closing tag.
 
 ```js
 assert($('main > section')[1].lastElementChild.nodeName === 'FIGURE');
 ```
 
-Das letzte `img`-Element sollte im `figure`-Element eingebettet sein.
+The last `img` element should be nested in the `figure` element.
 
 ```js
 const catsImg = document.querySelectorAll('figure > img')[1];
@@ -39,25 +39,25 @@ assert(
 );
 ```
 
-Dein `figure`-Element sollte ein öffnendes Tag haben. Öffnende Tags haben die folgende Syntax: `<elementName>`.
+Your `figure` element should have an opening tag. Opening tags have the following syntax: `<elementName>`.
 
 ```js
 assert(document.querySelectorAll('figure').length === 2);
 ```
 
-Dein `figure`-Element sollte ein schließendes Tag haben. Schließende Tags haben ein `/` direkt nach dem `<`-Zeichen.
+Your `figure` element should have a closing tag. Closing tags have a `/` just after the `<` character.
 
 ```js
 assert(code.match(/<\/figure\>/g).length === 2);
 ```
 
-Das `figcaption`-Element sollte im `figure`-Element eingebettet sein.
+The `figcaption` element should be nested in the `figure` element.
 
 ```js
 assert(document.querySelectorAll('figure > figcaption').length === 2);
 ```
 
-Das `figcaption`-Element, das im `figure`-Element eingebettet wurde, sollte über dem `img`-Element sein. Das `img`-Element und das `figcaption`-Element sind in der falschen Reihenfolge.
+The `figcaption` element nested in the `figure` element should be below the `img` element. You have the `img` element and the `figcaption` element in the wrong order.
 
 ```js
 assert(
@@ -66,7 +66,7 @@ assert(
 );
 ```
 
-Das `figcaption`-Element sollte den Text `Cats hate other cats.` enthalten Du hast entweder ein Wort weggelassen oder einen Tippfehler gemacht.
+The `figcaption` element should have the text `Cats hate other cats.` You have omitted a word or have a typo.
 
 ```js
 assert(
@@ -89,7 +89,7 @@ assert(
       <section>
         <h2>Cat Photos</h2>
         <!-- TODO: Add link to cat photos -->
-        <p>See more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a> in our gallery.</p>
+        <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
         <a href="https://freecatphotoapp.com"><img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
       </section>
       <section>
@@ -110,12 +110,11 @@ assert(
           <li>thunder</li>
           <li>other cats</li>
         </ol>
---fcc-editable-region--
         <figure>
-          <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg" alt="Five cats looking around a field.">
-
-        </figure>
 --fcc-editable-region--
+          <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg" alt="Five cats looking around a field.">
+--fcc-editable-region--
+        </figure>
       </section>
     </main>
   </body>

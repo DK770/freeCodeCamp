@@ -30,13 +30,11 @@ textarea.inputarea {
   font-size: 16px;
   margin: 0;
   padding: 10px;
-  height: var(--breadcrumbs-height);
 }
 
 .editor-upper-jaw,
 .editor-lower-jaw {
-  padding-inline: 0 15px;
-  padding-block: 15px;
+  padding: 15px 15px 15px 0px;
 }
 
 .editor-upper-jaw {
@@ -55,15 +53,15 @@ textarea.inputarea {
 
 .challenge-description-header {
   display: flex;
-  gap: 7px;
 }
 
 .description-container h1 {
   color: var(--secondary-color);
+  font-family: Hack-ZeroSlash, monospace;
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.1;
-  margin: 0.1em 0 0.6rem;
+  margin: 0 0 0.6rem;
 }
 
 .description-highlighter {
@@ -94,7 +92,8 @@ textarea.inputarea {
 .myEditableLineDecoration {
   background-color: var(--gray-45);
   width: 15px !important;
-  margin-inline: 5px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
 }
 
 .myEditableLineDecoration.tests-passed {
@@ -118,27 +117,38 @@ textarea.inputarea {
 }
 
 .test-feedback p {
-  margin: 0.45rem 0 0;
+  margin: 0.5rem 0 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.test-feedback h2 {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-right: 0.5rem;
+  /* using float instead of inline display so screen readers recognize h2 as a block element */
+  float: left;
+  margin: 0.5em 0 0;
+}
+
+.test-feedback h2:after {
+  content: ':';
 }
 
 .test-feedback svg {
   height: 1.5rem;
   width: auto;
-  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.6rem;
 }
 
-.test-feedback .test-status,
-.test-feedback .hint-status {
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: row;
+.test-feedback > div {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .test-status-description,
 .hint-description {
-  display: flex;
-  gap: 0.5rem;
   width: 100%;
 }
 
@@ -161,34 +171,20 @@ textarea.inputarea {
   }
 }
 
-.utility-bar {
-  display: grid;
-  /* 8rem is a safe default for all currently supported languages. Will need to be increased if a new language has longer words for Reset/Help. */
-  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-  gap: 0.75rem;
-}
-
-.utility-bar > * {
+.lower-jaw-icon-bar {
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  padding: 6px 0;
+  flex-direction: row;
+}
+.lower-jaw-icon-bar > button {
+  line-height: 0;
+  margin-right: 10px;
 }
 
-.progress-bar-container {
-  text-align: center;
+.lower-jaw-icon-bar > button:focus {
+  outline: 2px solid var(--blue-mid);
 }
 
-.editor-lower-jaw .progress-bar-wrap-container {
-  width: 100% !important;
-  margin: 32px 0px;
-}
-
-.editor-lower-jaw .progress-bar-background-container {
-  width: 100% !important;
-}
-
-.hint-status {
-  margin-bottom: 18px;
+.lower-jaw-icon-bar > button:last-child {
+  margin-right: 0;
 }

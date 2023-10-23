@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aec908852
-title: Створіть клас, який можна націлити селекторами jQuery
+title: Створення класу для використання із селекторами jQuery
 challengeType: 0
 forumTopicId: 16815
 dashedName: create-a-class-to-target-with-jquery-selectors
@@ -8,13 +8,13 @@ dashedName: create-a-class-to-target-with-jquery-selectors
 
 # --description--
 
-Не кожен клас повинен мати відповідний CSS. Іноді класи створюють для того, щоб обирати елементи за допомогою jQuery було простіше.
+Не кожен клас повинен мати відповідний йому CSS. Іноді класи створюють лише з метою полегшення вибору цих елементів за допомогою jQuery.
 
-Надайте кожному елементу `button` клас `target`.
+Надайте кожному з елементів `button` клас `target`.
 
 # --hints--
 
-Застосуйте клас `target` до кожного елемента `button`.
+Необхідно застосувати клас `target` до кожного з елементів `button`.
 
 ```js
 assert($('.target').length > 5);

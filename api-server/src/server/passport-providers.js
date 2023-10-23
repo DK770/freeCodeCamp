@@ -1,10 +1,11 @@
-import { auth0 } from '../../config/secrets';
+import { homeLocation, apiLocation } from '../../../config/env.json';
+import { auth0 } from '../../../config/secrets';
 
 const { clientID, clientSecret, domain } = auth0;
 
 // These don't seem to be used, can they go?
-const successRedirect = `${process.env.HOME_LOCATION}/learn`;
-const failureRedirect = `${process.env.HOME_LOCATION}/signin`;
+const successRedirect = `${homeLocation}/learn`;
+const failureRedirect = `${homeLocation}/signin`;
 
 // TODO: can we remove passport-mock-strategy entirely in prod? That would let
 // us make passport-mock-strategy a dev dep, as it should be.
@@ -32,7 +33,7 @@ const passportProviders = {
     clientSecret,
     domain,
     cookieDomain: process.env.COOKIE_DOMAIN || 'localhost',
-    callbackURL: `${process.env.API_LOCATION}/auth/auth0/callback`,
+    callbackURL: `${apiLocation}/auth/auth0/callback`,
     authPath: '/auth/auth0',
     callbackPath: '/auth/auth0/callback',
     useCustomCallback: true,

@@ -1,6 +1,6 @@
 ---
 id: 5e7b9f150b6c005b0e76f080
-title: 'Вебсервіси: обмеження частоти API і безпека'
+title: 'Веб-сервіси: Обмеження частоти API і безпека'
 challengeType: 11
 videoId: pI-g0lI8ngs
 bilibiliIds:
@@ -26,23 +26,23 @@ dashedName: web-services-api-rate-limiting-and-security
 
 ## --text--
 
-Яку інформацію необхідно завжди надсилати з запитом при створенні запиту з твіттерського API?
+При створенні запиту з Twitter API яку інформацію необхідно завжди надсилати з запитом?
 
 ## --answers--
 
-ім’я користувача
+Twitter username
 
 ---
 
-датовані межі
+date range
 
 ---
 
-пошуковий термін
+search term
 
 ---
 
-ключ
+key
 
 ## --video-solution--
 

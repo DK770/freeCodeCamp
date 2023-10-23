@@ -13,31 +13,31 @@ Sass permite aninhar as regras CSS, o que é uma maneira útil de organizar uma 
 Normalmente, cada elemento é direcionado a uma linha diferente para estilizá-lo, assim:
 
 ```scss
-article {
-  height: 200px;
+nav {
+  background-color: red;
 }
 
-article p {
-  color: white;
+nav ul {
+  list-style: none;
 }
 
-article ul {
-  color: blue;
+nav ul li {
+  display: inline-block;
 }
 ```
 
 Para um grande projeto, o arquivo CSS terá muitas linhas e regras. Aqui é onde aninhar pode ajudar a organizar seu código colocando regras de estilo filho dentro dos respectivos elementos parentais:
 
 ```scss
-article {
-  height: 200px;
-
-  p {
-    color: white;
-  }
+nav {
+  background-color: red;
 
   ul {
-    color: blue;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
   }
 }
 

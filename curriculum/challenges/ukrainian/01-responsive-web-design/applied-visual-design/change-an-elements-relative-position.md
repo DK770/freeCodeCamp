@@ -30,7 +30,7 @@ p {
 
 # --hints--
 
-Елемент `h2` повинен мати властивість `position` зі значенням `relative`.
+Елемент `h2` повинен мати властивість `position` в позиції `relative`.
 
 ```js
 assert($('h2').css('position') == 'relative');

@@ -71,7 +71,7 @@ assert(
 );
 ```
 
-不应使用全局变量来缓存数组。
+Global variables should not be used to cache the array.
 
 ```js
 countdown(1)

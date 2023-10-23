@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`add-seed plugin should have an output to match the snapshot 1`] = `
-{
-  "challengeFiles": [
-    {
+Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
   </body>
 </html>",
-      "editableRegionBoundaries": [],
+      "editableRegionBoundaries": Array [],
       "ext": "html",
       "head": "",
       "id": "",
       "name": "index",
       "tail": "",
     },
-    {
+    Object {
       "contents": "body {
   background: green;
 }",
-      "editableRegionBoundaries": [],
+      "editableRegionBoundaries": Array [],
       "ext": "css",
       "head": "",
       "id": "",
       "name": "styles",
       "tail": "",
     },
-    {
+    Object {
       "contents": "var x = 'y';",
-      "editableRegionBoundaries": [],
+      "editableRegionBoundaries": Array [],
       "ext": "js",
       "head": "",
       "id": "",

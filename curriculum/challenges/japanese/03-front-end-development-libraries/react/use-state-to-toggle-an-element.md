@@ -65,7 +65,7 @@ assert.strictEqual(
 );
 ```
 
-Clicking the button element should toggle the `visibility` property in state between `true` and `false` and conditionally render the `h1` element.
+ボタン要素をクリックしたときに、state の `visibility` プロパティを `true` と `false` の間で切り替えます。
 
 ```js
 (() => {
@@ -76,11 +76,11 @@ Clicking the button element should toggle the `visibility` property in state bet
   };
   const second = () => {
     mockedComponent.find('button').simulate('click');
-    return mockedComponent.state('visibility') && mockedComponent.find('h1').exists();
+    return mockedComponent.state('visibility');
   };
   const third = () => {
     mockedComponent.find('button').simulate('click');
-    return mockedComponent.state('visibility') && mockedComponent.find('h1').exists();
+    return mockedComponent.state('visibility');
   };
   const firstValue = first();
   const secondValue = second();

@@ -8,24 +8,25 @@ dashedName: testing-objects-for-properties
 
 # --description--
 
-要检查某个对象是否具有一个属性，你可以使用 `.hasOwnProperty()` 方法。 根据对象是否具有该属性，`someObject.hasOwnProperty(someProperty)` 返回 `true` 或 `false`。
+有时检查一个对象属性是否存在是非常有用的。 我们可以用对象的 `.hasOwnProperty(propname)` 方法来检查对象是否有指定的属性。 `.hasOwnProperty()` 找到该属性时返回 `true`，找不到该属性时返回 `false`。
 
 **示例**
 
 ```js
-function checkForProperty(object, property) {
-  return object.hasOwnProperty(property);
-}
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
 
-checkForProperty({ top: 'hat', bottom: 'pants' }, 'top'); // true
-checkForProperty({ top: 'hat', bottom: 'pants' }, 'middle'); // false
+myObj.hasOwnProperty("top");
+myObj.hasOwnProperty("middle");
 ```
 
-第一个 `checkForProperty` 函数返回 `true`，第二个返回 `false`。
+第一个 `hasOwnProperty` 返回 `true`，第二个返回 `false`。
 
 # --instructions--
 
-修改函数 `checkObj` 以检查传给函数参数的对象 `obj` 是否包含传给函数参数的属性 `checkProp`。 如果在 `obj` 中找到传给 `checkProp` 的属性，则返回该属性的值。 如果没有，则返回 `Not Found`。
+修改函数 `checkObj` 检查 `obj` 是否有 `checkProp` 属性。 如果属性存在，返回属性对应的值。 如果不存在，返回`"Not Found"`。
 
 # --hints--
 

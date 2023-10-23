@@ -19,7 +19,6 @@ suite('GET /hello?name=[name] => "hello [name]"', function () {
   test('?name=John', function (done) {
     chai
       .request(server)
-      .keepOpen()
       .get('/hello?name=John')
       .end(function (err, res) {
         assert.equal(res.status, 200, 'Response status should be 200');
@@ -36,19 +35,15 @@ Die erste `assert.equal` überprüft ob der Status gleich `200` ist. Die zweite 
 
 Beachte auch den Parameter `done` in der Callback-Funktion des Tests. Der Aufruf ohne Argument am Ende eines Tests ist notwendig, um zu signalisieren, dass der asynchrone Vorgang abgeschlossen ist.
 
-Schaue dir dann die `keepOpen`-Methode kurz nach der `request`-Methode an. Normalerweise führst du deine Tests über die Kommandozeile oder als Teil eines automatisierten Integrationsprozesses aus und du könntest `chai-http` deinen Server automatisch starten und stoppen lassen.
-
-Die Tests, die ausgeführt werden, sobald du den Link zu deinem Projekt einreichst, erfordern jedoch, dass dein Server aktiv ist, weshalb du die `keepOpen`-Methode verwenden musst, um `chai-http` daran zu hindern, deinen Server zu stoppen.
-
 # --instructions--
 
-Ändere in `tests/2_functional-tests.js` den `'Test GET /hello with no name'`-Test (`// #1`), um den `status` und den `text` der Antwort geltend zu machen, damit der Test erfolgreich abgeschlossen wird. Verändere die an die Asserts übergebenen Argumente nicht.
+Innerhalb von `tests/2_functional-tests.js`, ändere `'Test GET /hello with no name'` Test (`// #1`) um den `status` und den `text` der Antwort geltend zu machen, um en Test zu bestehen. Die an die Asserts übergebenen Argumente dürfen nicht verändert werden.
 
-Es sollte keine URL-Query existieren. Ohne eine Namens-URL-Query antwortet der Endpunkt mit `hello Guest`.
+Es sollte keine URL Query geben. Ohne eine Namens-URL-Abfrage antwortet der Endpunkt mit `hello Guest`.
 
 # --hints--
 
-Alle Tests sollten bestehen
+Alle Tests sollten bestanden werden
 
 ```js
 (getUserInput) =>
@@ -62,7 +57,7 @@ Alle Tests sollten bestehen
   );
 ```
 
-Du solltest `res.status` == 200 testen
+Du solltest auf `res.status` == 200 testen
 
 ```js
 (getUserInput) =>
@@ -78,7 +73,7 @@ Du solltest `res.status` == 200 testen
   );
 ```
 
-Du solltest `res.text` == `'hello Guest'` testen
+Du solltest auf `res.text` == `'hello Guest'` testen
 
 ```js
 (getUserInput) =>

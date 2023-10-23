@@ -1,17 +1,17 @@
+import { Form } from '@freecodecamp/react-bootstrap';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { updateMyTheme } from '../../redux/settings/actions';
 
-import ToggleButtonSetting from './toggle-button-setting';
+import ToggleSetting from './toggle-setting';
 
 export enum Themes {
   Night = 'night',
   Default = 'default'
 }
 
-export type ThemeProps = {
+type ThemeProps = {
   currentTheme: Themes;
-  toggleNightMode: typeof updateMyTheme;
+  toggleNightMode: (theme: Themes) => void;
 };
 
 export default function ThemeSettings({
@@ -21,18 +21,23 @@ export default function ThemeSettings({
   const { t } = useTranslation();
 
   return (
-    <ToggleButtonSetting
-      action={t('settings.labels.night-mode')}
-      flag={currentTheme === Themes.Night}
-      flagName='currentTheme'
-      offLabel={t('buttons.off')}
-      onLabel={t('buttons.on')}
-      toggleFlag={() => {
-        toggleNightMode(
-          currentTheme === Themes.Night ? Themes.Default : Themes.Night
-        );
-      }}
-    />
+    <Form
+      inline={true}
+      onSubmit={(e: React.FormEvent): void => e.preventDefault()}
+    >
+      <ToggleSetting
+        action={t('settings.labels.night-mode')}
+        flag={currentTheme === Themes.Night}
+        flagName='currentTheme'
+        offLabel={t('buttons.off')}
+        onLabel={t('buttons.on')}
+        toggleFlag={() => {
+          toggleNightMode(
+            currentTheme === Themes.Night ? Themes.Default : Themes.Night
+          );
+        }}
+      />
+    </Form>
   );
 }
 

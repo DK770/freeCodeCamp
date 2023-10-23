@@ -13,34 +13,18 @@ interface StandardizeRequestBodyArgs {
   challengeType: number;
 }
 
-interface File {
-  contents: string;
-  ext: string;
-  history: string[];
-  key: string;
-  name: string;
-}
-
-interface Body {
-  id: string;
-  files?: File[];
-  challengeType: number;
-}
-
 export function standardizeRequestBody({
   id,
   challengeFiles = [],
   challengeType
-}: StandardizeRequestBodyArgs): Body {
+}: StandardizeRequestBodyArgs) {
   return {
     id,
     files: challengeFiles?.map(({ fileKey, contents, ext, name, history }) => {
       return {
         contents,
         ext,
-        history, // TODO(Post-MVP): stop sending history, if possible. The client
-        // already gets it from the curriculum, so it should not be necessary to
-        // save it in the db.
+        history,
         key: fileKey,
         name
       };
@@ -49,12 +33,12 @@ export function standardizeRequestBody({
   };
 }
 
-export function getStringSizeInBytes(str = ''): number {
+export function getStringSizeInBytes(str = '') {
   const stringSizeInBytes = new Blob([JSON.stringify(str)]).size;
 
   return stringSizeInBytes;
 }
 
-export function bodySizeFits(bodySizeInBytes: number): boolean {
+export function bodySizeFits(bodySizeInBytes: number) {
   return bodySizeInBytes <= MAX_BODY_SIZE;
 }

@@ -19,7 +19,6 @@
     "one-time-url": "https://paypal.me/freecodecamp"
   },
   "nav": {
-    "contribute": "https://contribute.freecodecamp.org/#/",
     "forum": "https://forum.freecodecamp.org/",
     "news": "https://freecodecamp.org/news/"
   },
@@ -27,7 +26,6 @@
     "HTML-CSS": "HTML-CSS",
     "JavaScript": "JavaScript",
     "Python": "Python",
-    "Backend Development": "Backend Development",
-    "C-Sharp": "C-Sharp"
+    "Backend Development": "Backend Development"
   }
 }

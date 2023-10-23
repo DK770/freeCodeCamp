@@ -1,5 +1,5 @@
 import React from 'react';
-import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import EditorTabs from './editor-tabs';
@@ -50,18 +50,17 @@ const ActionRow = ({
   }
 
   return (
-    <div className='action-row' data-playwright-test-label='action-row'>
-      <div className='tabs-row' data-playwright-test-label='tabs-row'>
+    <div className='action-row'>
+      <div className='tabs-row'>
         {!isProjectBasedChallenge && (
           <button
-            data-playwright-test-label='instructions-button'
             aria-expanded={!!showInstructions}
             onClick={() => togglePane('showInstructions')}
           >
             {t('learn.editor-tabs.instructions')}
           </button>
         )}
-        <EditorTabs data-playwright-test-label='editor-tabs' />
+        <EditorTabs />
         <div className='panel-display-tabs'>
           <button
             aria-expanded={!!showConsole}
@@ -78,7 +77,6 @@ const ActionRow = ({
             </button>
           )}
           <button
-            data-playwright-test-label='preview-button'
             aria-expanded={!!showPreviewPane}
             onClick={() => togglePane('showPreviewPane')}
           >
@@ -90,7 +88,7 @@ const ActionRow = ({
             onClick={() => togglePane('showPreviewPortal')}
           >
             <span className='sr-only'>{getPreviewBtnsSrText().portal}</span>
-            <FontAwesomeIcon icon={faWindowRestore} />
+            <FontAwesomeIcon icon={faExternalLinkAlt} />
           </button>
         </div>
       </div>

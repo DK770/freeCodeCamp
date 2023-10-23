@@ -18,79 +18,79 @@ Implement a function that returns true if the number is happy, or false if not.
 
 # --hints--
 
-`happy` sollte eine Funktion sein.
+`happy` should be a function.
 
 ```js
 assert(typeof happy === 'function');
 ```
 
-`happy(1)` sollte einen Boolean zurückgeben.
+`happy(1)` should return a boolean.
 
 ```js
 assert(typeof happy(1) === 'boolean');
 ```
 
-`happy(1)` sollte `true` zurückgeben.
+`happy(1)` should return `true`.
 
 ```js
 assert(happy(1));
 ```
 
-`happy(2)` sollte `false` zurückgeben.
+`happy(2)` should return `false`.
 
 ```js
 assert(!happy(2));
 ```
 
-`happy(7)` sollte `true` zurückgeben.
+`happy(7)` should return `true`.
 
 ```js
 assert(happy(7));
 ```
 
-`happy(10)` sollte `true` zurückgeben.
+`happy(10)` should return `true`.
 
 ```js
 assert(happy(10));
 ```
 
-`happy(13)` sollte `true` zurückgeben.
+`happy(13)` should return `true`.
 
 ```js
 assert(happy(13));
 ```
 
-`happy(19)` sollte `true` zurückgeben.
+`happy(19)` should return `true`.
 
 ```js
 assert(happy(19));
 ```
 
-`happy(23)` sollte `true` zurückgeben.
+`happy(23)` should return `true`.
 
 ```js
 assert(happy(23));
 ```
 
-`happy(28)` sollte `true` zurückgeben.
+`happy(28)` should return `true`.
 
 ```js
 assert(happy(28));
 ```
 
-`happy(31)` sollte `true` zurückgeben.
+`happy(31)` should return `true`.
 
 ```js
 assert(happy(31));
 ```
 
-`happy(32)` sollte `true` zurückgeben.
+`happy(32)` should return `true`.
 
 ```js
 assert(happy(32));
 ```
 
-`happy(33)` sollte `false` zurückgeben.
+`happy(33)` should return `false`.
 
 ```js
 assert(!happy(33));

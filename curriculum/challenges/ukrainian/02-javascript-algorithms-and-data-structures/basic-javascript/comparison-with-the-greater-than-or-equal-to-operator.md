@@ -1,6 +1,6 @@
 ---
 id: 56533eb9ac21ba0edf2244d5
-title: Порівняння з оператором «більше ніж або дорівнює»
+title: Порівняння з оператором «Більше ніж дорівнює»
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/c6KBqtV'
 forumTopicId: 16785
@@ -9,11 +9,11 @@ dashedName: comparison-with-the-greater-than-or-equal-to-operator
 
 # --description--
 
-Оператор «більше ніж або дорівнює» (`>=`) порівнює значення двох чисел. Якщо число зліва більше чи дорівнює числу справа, оператор повертає `true`. В іншому випадку він повертає `false`.
+Оператор "більше ніж дорівнює" (`>=`) порівнює значення двох чисел. Якщо число зліва більше за число справа, тоді функція є `true`. В іншому випадку - вона `false`.
 
-Як і оператор «дорівнює», «більше ніж або дорівнює» перетворює типи даних під час порівняння.
+Так само, як і оператор рівності, оператор "більше ніж дорівнює" конвертує типи даних під час їх порівняння.
 
-**Приклади**
+**Наприклад**
 
 ```js
 6   >=  6  // true
@@ -24,7 +24,7 @@ dashedName: comparison-with-the-greater-than-or-equal-to-operator
 
 # --instructions--
 
-Додайте оператор «більше ніж або дорівнює» до вказаних рядків, щоб повернені інструкції мали сенс.
+Add the greater than or equal to operator to the indicated lines so that the return statements make sense.
 
 # --hints--
 
@@ -70,7 +70,7 @@ assert(testGreaterOrEqual(100) === '20 or Over');
 assert(testGreaterOrEqual(21) === '20 or Over');
 ```
 
-Ви повинні використати оператор `>=` принаймні двічі
+You should use the `>=` operator at least twice
 
 ```js
 assert(code.match(/val\s*>=\s*('|")*\d+('|")*/g).length > 1);

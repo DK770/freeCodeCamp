@@ -7,8 +7,6 @@ dashedName: step-15
 
 # --description--
 
-У попередніх кроках ви використовували елемент прив’язки, щоб перетворити текст на посилання. Інші типи вмісту також можна перетворити на посилання, загорнувши їх в теги прив’язки.
-
 Перетворіть зображення на посилання, оточивши його необхідними теґами елементів. Використайте `https://freecatphotoapp.com` як значення атрибута `href` елемента прив'язки.
 
 # --hints--
@@ -29,7 +27,7 @@ assert(
 assert(document.querySelectorAll('a').length >= 2);
 ```
 
-У вас відсутній кінцевий тег (`a`) після зображення.
+Ви повинні додати лише один початковий теґ прив'язки (`a`). Будь ласка, видаліть всі зайві.
 
 ```js
 assert(document.querySelectorAll('a').length === 2);
@@ -79,7 +77,7 @@ assert(document.querySelector('img').parentNode.nodeName === 'A');
       <h1>CatPhotoApp</h1>
       <h2>Cat Photos</h2>
       <!-- TODO: Add link to cat photos -->
-      <p>See more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a> in our gallery.</p>
+      <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
 --fcc-editable-region--
       <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
 --fcc-editable-region--

@@ -1,4 +1,5 @@
-import { allowedOrigins } from '../../../config/cors-settings';
+import { allowedOrigins } from '../../../../config/cors-settings';
+import { homeLocation } from '../../../../config/env.json';
 
 export default function constantHeaders() {
   return function (req, res, next) {
@@ -9,7 +10,7 @@ export default function constantHeaders() {
     ) {
       res.header('Access-Control-Allow-Origin', req.headers.origin);
     } else {
-      res.header('Access-Control-Allow-Origin', process.env.HOME_LOCATION);
+      res.header('Access-Control-Allow-Origin', homeLocation);
     }
     res.header('Access-Control-Allow-Credentials', true);
     res.header(

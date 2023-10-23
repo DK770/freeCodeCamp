@@ -1,6 +1,6 @@
 ---
 id: 587d7fa9367417b2b2512bcf
-title: Dynamisches Ändern der Höhe jedes Balkens
+title: Dynamically Change the Height of Each Bar
 challengeType: 6
 forumTopicId: 301486
 dashedName: dynamically-change-the-height-of-each-bar
@@ -8,7 +8,7 @@ dashedName: dynamically-change-the-height-of-each-bar
 
 # --description--
 
-Die Höhe eines jeden Balkens kann auf den Wert des Datenpunkts im Array gesetzt werden, so ähnlich wie der `x`-Wert dynamisch gesetzt wurde.
+The height of each bar can be set to the value of the data point in the array, similar to how the `x` value was set dynamically.
 
 ```js
 selection.attr("property", (d, i) => {
@@ -16,65 +16,65 @@ selection.attr("property", (d, i) => {
 })
 ```
 
-Hier wäre `d` der Datenpunktwert und `i` der Index des Datenpunkts im Array.
+Here `d` would be the data point value, and `i` would be the index of the data point in the array.
 
 # --instructions--
 
-Ändere die Callback-Funktion so, dass das `height`-Attribut den dreifachen Datenwert zurückgibt.
+Change the callback function for the `height` attribute to return the data value times 3.
 
-**Hinweis:** Denke daran, dass das Multiplizieren aller Datenpunkte mit derselben Konstante die Daten skaliert (wie beim Vergrößern). Die Unterschiede zwischen den Balkenwerten sind in diesem Beispiel gut zu erkennen.
+**Note:** Remember that multiplying all data points by the same constant scales the data (like zooming in). It helps to see the differences between bar values in this example.
 
 # --hints--
 
-Das erste `rect` sollte über eine auf `36` gesetzte `height` verfügen.
+The first `rect` should have a `height` of `36`.
 
 ```js
 assert($('rect').eq(0).attr('height') == '36');
 ```
 
-Das zweite `rect` sollte über eine auf `93` gesetzte `height` verfügen.
+The second `rect` should have a `height` of `93`.
 
 ```js
 assert($('rect').eq(1).attr('height') == '93');
 ```
 
-Das dritte `rect` sollte über eine auf `66` gesetzte `height` verfügen.
+The third `rect` should have a `height` of `66`.
 
 ```js
 assert($('rect').eq(2).attr('height') == '66');
 ```
 
-Das vierte `rect` sollte über eine auf `51` gesetzte `height` verfügen.
+The fourth `rect` should have a `height` of `51`.
 
 ```js
 assert($('rect').eq(3).attr('height') == '51');
 ```
 
-Das fünfte `rect` sollte über eine auf `75` gesetzte `height` verfügen.
+The fifth `rect` should have a `height` of `75`.
 
 ```js
 assert($('rect').eq(4).attr('height') == '75');
 ```
 
-Das sechste `rect` sollte über eine auf `54` gesetzte `height` verfügen.
+The sixth `rect` should have a `height` of `54`.
 
 ```js
 assert($('rect').eq(5).attr('height') == '54');
 ```
 
-Das siebte `rect` sollte über eine auf `87` gesetzte `height` verfügen.
+The seventh `rect` should have a `height` of `87`.
 
 ```js
 assert($('rect').eq(6).attr('height') == '87');
 ```
 
-Das achte `rect` sollte über eine auf `42` gesetzte `height` verfügen.
+The eighth `rect` should have a `height` of `42`.
 
 ```js
 assert($('rect').eq(7).attr('height') == '42');
 ```
 
-Das neunte `rect` sollte über eine auf `27` gesetzte `height` verfügen.
+The ninth `rect` should have a `height` of `27`.
 
 ```js
 assert($('rect').eq(8).attr('height') == '27');

@@ -14,8 +14,7 @@ export interface State {
   [MainApp]: {
     appUsername: string;
     recentlyClaimedBlock: null | string;
-    completionCountWhenShownProgressModal: number | null;
-    showMultipleProgressModals: boolean;
+    canRequestProgressDonation: boolean;
     completionCount: number;
     currentChallengId: string;
     showCert: Record<string, unknown>;
@@ -23,8 +22,10 @@ export interface State {
     user: Record<string, unknown>;
     userFetchState: DefaultFetchState;
     userProfileFetchState: DefaultFetchState;
+    sessionMeta: {
+      activeDonations: number;
+    };
     showDonationModal: boolean;
-    showSignoutModal: boolean;
     isOnline: boolean;
     donationFormState: DefaultDonationFormState;
   };
@@ -48,13 +49,16 @@ interface DefaultDonationFormState {
   error: null | string;
 }
 
-export interface DonateFormState {
-  processing: boolean;
-  redirecting: boolean;
-  success: boolean;
-  error: string;
-  loading: {
-    stripe: boolean;
-    paypal: boolean;
-  };
-}
+export const defaultFetchState = {
+  pending: true,
+  complete: false,
+  errored: false,
+  error: null
+};
+
+export const defaultDonationFormState = {
+  redirecting: false,
+  processing: false,
+  success: false,
+  error: ''
+};

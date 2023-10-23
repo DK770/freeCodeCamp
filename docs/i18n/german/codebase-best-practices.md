@@ -1,40 +1,20 @@
 # Best Practices für die Codebasis
 
-## Styling a component
+## JavaScript allgemein
 
-We recommend styling components using our [design style guide](https://design-style-guide.freecodecamp.org/).
+In den meisten Fällen warnt unser [Linter](how-to-setup-freecodecamp-locally.md#follow-these-steps-to-get-your-development-environment-ready) vor jeder Formatierung, die gegen die bevorzugte Vorgehensweise dieser Codebasis verstößt.
 
-The colors are defined in [`variable.css`](/client/src/components/layouts/variables.css), and the fonts are in [`fonts.css`](/client/src/components/layouts/fonts.css).
+Es wird empfohlen, funktionale Komponenten gegenüber klassenbasierten Komponenten zu verwenden.
 
-We are strongly opinionated about adding new variables/tokens to the colors. After careful research, the colors have been chosen to respect the freeCodeCamp brand identity, developer experience, and accessibility.
+## Spezifisches TypeScript
 
-The `!important` keyword may be used to override values in some cases (e.g. accessibility concerns). You should add a comment describing the issue, so it doesn't get removed in future refactoring.
-
-### RTL support
-
-We are striving to support right-to-left (RTL) layout in the codebase for languages that are read in this direction. For this you need be mindful of how to style components. Here are some quick rules of thumb to follow:
-
-- Don't use `float` properties
-  - Use Flexbox and Grid layouts instead, as they have RTL support already built-in, and those will be easier to maintain and review.
-- Don't define the direction while using `margin` and `padding`: it may seem harmless to use `padding-right` and `margin-left`, but these directions aren't mirrored when the layout changes to RTL, and adding counter values for them in the RTL file makes maintaining the codebase harder.
-  - Use logical properties for them: You can add the same spacing by using `padding-inline-end` and `margin-inline-start`, and you won't need to worry about RTL layout, as they follow where the line starts and ends, and you won't need to add any extra values in the RTL files, so people won't need to remember to change the same values in two files.
-- Don't use `!important` in `font-family`: RTL layout uses different fonts compared to the LTR layout, when you add `!important` in the `font-family` property it affects the RTL layout too.
-
-## General JavaScript
-
-In most cases, our [linter](how-to-setup-freecodecamp-locally.md#follow-these-steps-to-get-your-development-environment-ready) will warn of any formatting which goes against this codebase's preferred practice.
-
-It is encouraged to use functional components over class-based components.
-
-## Specific TypeScript
-
-### Migrating a JavaScript File to TypeScript
+### Migration einer JavaScript-Datei zu TypeScript
 
 #### Beibehalten des Git-Dateiverlaufs
 
-Sometimes changing the file from `<filename>.js` to `<filename>.ts` (or `.tsx`) causes the original file to be deleted, and a new one created, and other times the filename just changes - in terms of Git. Ideally, we want the file history to be preserved.
+Manchmal führt das Ändern der Datei von `<Dateiname>.js` zu `<Dateiname>.ts` (oder `.tsx`) dazu, dass die ursprüngliche Datei gelöscht und eine neue erstellt wird, und manchmal ändert sich nur der Dateiname - im Sinne von Git. Idealerweise möchten wir, dass der Dateiverlauf erhalten bleibt.
 
-The best bet at achieving this is to:
+Um dies zu erreichen, gehe am besten wie folgt vor:
 
 1. Umbenennen der Datei
 2. Commit mit dem Flag `--no-verify`, damit Husky sich nicht über die Lint-Fehler beschwert
@@ -42,13 +22,13 @@ The best bet at achieving this is to:
 
 > [!NOTE] Editoren wie VSCode zeigen dir wahrscheinlich trotzdem an, dass die Datei gelöscht und eine neue erstellt wurde. Wenn du die CLI für `git add .` verwendest, zeigt VSCode die Datei als umbenannt im Stage an
 
-### Naming Conventions
+### Namenskonventionen
 
 #### Schnittstellen und Typen
 
-For the most part, it is encouraged to use interface declarations over type declarations.
+In den meisten Fällen wird empfohlen, Schnittstellendeklarationen gegenüber Typdeklarationen zu verwenden.
 
-React Component Props - suffix with `Props`
+React Component Props - Suffix mit `Props`
 
 ```typescript
 interface MyComponentProps {}
@@ -56,7 +36,7 @@ interface MyComponentProps {}
 const MyComponent = (props: MyComponentProps) => {};
 ```
 
-React Stateful Components - suffix with `State`
+React Stateful Components - Suffix mit `State`
 
 ```typescript
 interface MyComponentState {}
@@ -64,7 +44,7 @@ interface MyComponentState {}
 class MyComponent extends Component<MyComponentProps, MyComponentState> {}
 ```
 
-Default - object name in PascalCase
+Standard - Objektname in PascalCase
 
 ```typescript
 interface MyObject {}
@@ -78,7 +58,7 @@ const myObject: MyObject = {};
 
 ## Redux
 
-### Action Definitions
+### Aktionsdefinitionen
 
 ```typescript
 enum AppActionTypes = {
@@ -93,7 +73,7 @@ export const actionFunction = (
 });
 ```
 
-### How to Reduce
+### Wie man Reducer verwendet
 
 ```typescript
 // Base reducer action without payload
@@ -120,9 +100,9 @@ export const reducer = (
 };
 ```
 
-### How to Dispatch
+### Wie man Dispatch verwendet
 
-Within a component, import the actions and selectors needed.
+Importiere innerhalb einer Komponente die benötigten Aktionen und Selektoren.
 
 ```tsx
 // Add type definition
@@ -148,41 +128,7 @@ export default connect(null, mapDispatchToProps)(MyComponent);
 <!-- ### Redux Types File -->
 <!-- The types associated with the Redux store state are located in `client/src/redux/types.ts`... -->
 
-## API
+## Weitere Literatur
 
-### Testing
-
-The `api/` tests are split into two parts:
-
-1. Unit tests
-2. Integration tests
-
-#### Unit Tests
-
-Unit tests isolate a single function or component. The tests do not need mocking, but will require fixtures.
-
-The unit tests are located in a new file adjacent the file exporting that being tested:
-
-```text
-api/
-├── src/
-│   ├── utils.ts
-│   ├── utils.test.ts
-```
-
-#### Integration Tests
-
-Integration tests test the API as a whole. The tests will require mocking, and should not require fixtures beyond the database seeding data, and a method to authenticate.
-
-Typically, each integration test file will be directly related to a route. The integration tests are located in the `api/tests/` directory:
-
-```text
-api/
-├── tests/
-│   ├── settings.ts
-```
-
-## Further Literature
-
-- [TypeScript Docs](https://www.typescriptlang.org/docs/)
-- [TypeScript with React CheatSheet](https://github.com/typescript-cheatsheets/react#readme)
+- [TypeScript Dokumentation](https://www.typescriptlang.org/docs/)
+- [TypeScript mit React CheatSheet](https://github.com/typescript-cheatsheets/react#readme)

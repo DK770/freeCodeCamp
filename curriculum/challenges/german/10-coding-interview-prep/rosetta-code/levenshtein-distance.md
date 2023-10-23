@@ -10,7 +10,7 @@ dashedName: levenshtein-distance
 
 In information theory and computer science, the **Levenshtein distance** is a metric for measuring the amount of difference between two sequences (i.e. an edit distance). The Levenshtein distance between two strings is defined as the minimum number of edits needed to transform one string into the other, with the allowable edit operations being insertion, deletion, or substitution of a single character.
 
-Beispiel:
+Example:
 
 The Levenshtein distance between "**kitten**" and "**sitting**" is 3, since the following three edits change one into the other, and there isn't a way to do it with fewer than three edits:
 
@@ -30,49 +30,49 @@ Write a function that returns the Levenshtein distance between two strings given
 
 # --hints--
 
-`levenshtein` sollte eine Funktion sein.
+`levenshtein` should be a function.
 
 ```js
 assert(typeof levenshtein == 'function');
 ```
 
-`levenshtein("mist", "dist")` sollte eine Zahl zurückgeben.
+`levenshtein("mist", "dist")` should return a number.
 
 ```js
 assert(typeof levenshtein('mist', 'dist') == 'number');
 ```
 
-`levenshtein("mist", "dist")` sollte `1` zurückgeben.
+`levenshtein("mist", "dist")` should return `1`.
 
 ```js
 assert.equal(levenshtein('mist', 'dist'), 1);
 ```
 
-`levenshtein("tier", "tor")` sollte `2` zurückgeben.
+`levenshtein("tier", "tor")` should return `2`.
 
 ```js
 assert.equal(levenshtein('tier', 'tor'), 2);
 ```
 
-`levenshtein("kitten", "sitting")` sollte `3` zurückgeben.
+`levenshtein("kitten", "sitting")` should return `3`.
 
 ```js
 assert.equal(levenshtein('kitten', 'sitting'), 3);
 ```
 
-`levenshtein("stop", "tops")` sollte `2` zurückgeben.
+`levenshtein("stop", "tops")` should return `2`.
 
 ```js
 assert.equal(levenshtein('stop', 'tops'), 2);
 ```
 
-`levenshtein("rosettacode", "raisethysword")` sollte `8` zurückgeben.
+`levenshtein("rosettacode", "raisethysword")` should return `8`.
 
 ```js
 assert.equal(levenshtein('rosettacode', 'raisethysword'), 8);
 ```
 
-`levenshtein("mississippi", "swiss miss")` sollte `8` zurückgeben.
+`levenshtein("mississippi", "swiss miss")` should return `8`.
 
 ```js
 assert.equal(levenshtein('mississippi', 'swiss miss'), 8);

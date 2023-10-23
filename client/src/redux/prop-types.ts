@@ -1,7 +1,77 @@
+import PropTypes from 'prop-types';
 import { HandlerProps } from 'react-reflex';
-import { SuperBlocks } from '../../../shared/config/superblocks';
+import { SuperBlocks } from '../../../config/certification-settings';
 import { Themes } from '../components/settings/theme';
-import { type CertTitle } from '../../config/cert-and-project-map';
+import { certMap } from '../resources/cert-and-project-map';
+
+export const UserPropType = PropTypes.shape({
+  about: PropTypes.string,
+  completedChallenges: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      solution: PropTypes.string,
+      githubLink: PropTypes.string,
+      challengeType: PropTypes.number,
+      completedDate: PropTypes.number,
+      challengeFiles: PropTypes.array
+    })
+  ),
+  email: PropTypes.string,
+  githubProfile: PropTypes.string,
+  is2018DataVisCert: PropTypes.bool,
+  isApisMicroservicesCert: PropTypes.bool,
+  isBackEndCert: PropTypes.bool,
+  isDataVisCert: PropTypes.bool,
+  isEmailVerified: PropTypes.bool,
+  isFrontEndCert: PropTypes.bool,
+  isFrontEndLibsCert: PropTypes.bool,
+  isFullStackCert: PropTypes.bool,
+  isHonest: PropTypes.bool,
+  isInfosecQaCert: PropTypes.bool,
+  isQaCertV7: PropTypes.bool,
+  isInfosecCertV7: PropTypes.bool,
+  isJsAlgoDataStructCert: PropTypes.bool,
+  isRelationalDatabaseCertV8: PropTypes.bool,
+  isRespWebDesignCert: PropTypes.bool,
+  isSciCompPyCertV7: PropTypes.bool,
+  isDataAnalysisPyCertV7: PropTypes.bool,
+  isMachineLearningPyCertV7: PropTypes.bool,
+  linkedin: PropTypes.string,
+  location: PropTypes.string,
+  name: PropTypes.string,
+  picture: PropTypes.string,
+  points: PropTypes.number,
+  portfolio: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      url: PropTypes.string,
+      image: PropTypes.string,
+      description: PropTypes.string
+    })
+  ),
+  savedChallenges: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      challengeFiles: PropTypes.array
+    })
+  ),
+  sendQuincyEmail: PropTypes.bool,
+  sound: PropTypes.bool,
+  theme: PropTypes.string,
+  keyboardShortcuts: PropTypes.bool,
+  twitter: PropTypes.string,
+  username: PropTypes.string,
+  website: PropTypes.string
+});
+
+export const CurrentCertsPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    show: PropTypes.bool,
+    title: PropTypes.string,
+    certSlug: PropTypes.string
+  })
+);
 
 export type Steps = {
   isHonest?: boolean;
@@ -26,7 +96,7 @@ export type MarkdownRemark = {
     superBlock: SuperBlocks;
     // TODO: make enum like superBlock
     certification: string;
-    title: CertTitle;
+    title: typeof certMap[number]['title'];
   };
   headings: [
     {
@@ -47,17 +117,8 @@ export type MarkdownRemark = {
   };
 };
 
-export type Question = {
-  text: string;
-  answers: string[];
-  solution: number;
-};
-export type Fields = {
-  slug: string;
-  blockHashSlug: string;
-  blockName: string;
-  tests: Test[];
-};
+type Question = { text: string; answers: string[]; solution: number };
+type Fields = { slug: string; blockName: string; tests: Test[] };
 type Required = {
   link: string;
   raw: boolean;
@@ -74,11 +135,6 @@ export interface VideoLocaleIds {
   espanol?: string;
   italian?: string;
   portuguese?: string;
-}
-
-export interface PrerequisiteChallenge {
-  id: string;
-  title: string;
 }
 
 export type ChallengeWithCompletedNode = {
@@ -123,15 +179,12 @@ export type ChallengeNode = {
       owner: string;
       type: string;
     };
-    msTrophyId: string;
     notes: string;
-    prerequisites: PrerequisiteChallenge[];
     removeComments: boolean;
     isLocked: boolean;
     isPrivate: boolean;
     order: number;
     question: Question;
-    assignments: string[];
     required: Required[];
     solutions: {
       [T in FileKey]: FileKeyChallenge;
@@ -152,19 +205,6 @@ export type ChallengeNode = {
     bilibiliIds?: BilibiliIds;
     videoUrl: string;
   };
-};
-
-export type CertificateNode = {
-  challenge: {
-    // TODO: use enum
-    certification: string;
-    tests: { id: string }[];
-  };
-};
-
-export type AllChallengesInfo = {
-  challengeEdges: { node: ChallengeNode }[];
-  certificateNodes: CertificateNode[];
 };
 
 export type AllChallengeNode = {
@@ -219,7 +259,7 @@ export type User = {
   name: string;
   picture: string;
   points: number;
-  portfolio: PortfolioProjectData[];
+  portfolio: Portfolio[];
   profileUI: ProfileUI;
   progressTimestamps: Array<unknown>;
   savedChallenges: SavedChallenges;
@@ -230,7 +270,8 @@ export type User = {
   twitter: string;
   username: string;
   website: string;
-  yearsTopContributor: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yearsTopContributor: any[];
 } & ClaimedCertifications;
 
 export type ProfileUI = {
@@ -246,14 +287,12 @@ export type ProfileUI = {
   showTimeLine: boolean;
 };
 
-export type ClaimedCertifications = {
+type ClaimedCertifications = {
   is2018DataVisCert: boolean;
   isApisMicroservicesCert: boolean;
   isBackEndCert: boolean;
   isDataVisCert: boolean;
   isEmailVerified: boolean;
-  isCollegeAlgebraPyCertV8: boolean;
-  isFoundationalCSharpCertV8: boolean;
   isFrontEndCert: boolean;
   isFrontEndLibsCert: boolean;
   isFullStackCert: boolean;
@@ -294,7 +333,6 @@ export type CompletedChallenge = {
   challengeFiles:
     | Pick<ChallengeFile, 'contents' | 'ext' | 'fileKey' | 'name'>[]
     | null;
-  examResults?: GeneratedExamResults;
 };
 
 export type Ext = 'js' | 'html' | 'css' | 'jsx';
@@ -304,27 +342,24 @@ export type ChallengeMeta = {
   block: string;
   id: string;
   introPath: string;
-  isFirstStep: boolean;
-  nextChallengePath: string | null;
-  prevChallengePath: string | null;
+  nextChallengePath: string;
+  prevChallengePath: string;
   removeComments: boolean;
   superBlock: SuperBlocks;
   title?: string;
   challengeType?: number;
   helpCategory: string;
-  disableLoopProtectTests: boolean;
-  disableLoopProtectPreview: boolean;
 };
 
-export type PortfolioProjectData = {
+export type Portfolio = {
   id: string;
-  title: string;
-  url: string;
-  image: string;
-  description: string;
+  title?: string;
+  url?: string;
+  image?: string;
+  description?: string;
 };
 
-export type FileKeyChallenge = {
+type FileKeyChallenge = {
   contents: string;
   ext: Ext;
   head: string;
@@ -356,54 +391,4 @@ export interface UserFetchState {
   complete: boolean;
   errored: boolean;
   error: string | null;
-}
-
-// Exam Related Types:
-interface GeneratedExamAnswer {
-  id: string;
-  answer: string;
-}
-
-// Generated Exam (from API)
-export interface GeneratedExamQuestion {
-  id: string;
-  question: string;
-  answers: GeneratedExamAnswer[];
-}
-
-export interface GenerateExamResponse {
-  error?: string;
-  generatedExam?: GeneratedExamQuestion[];
-}
-
-export interface GenerateExamResponseWithData {
-  response: Response;
-  data: GenerateExamResponse;
-}
-
-// User Exam (null until they answer the question)
-interface UserExamAnswer {
-  id: string | null;
-  answer: string | null;
-}
-
-export interface UserExamQuestion {
-  id: string;
-  question: string;
-  answer: UserExamAnswer;
-}
-
-export interface UserExam {
-  examTimeInSeconds: number;
-  userExamQuestions: UserExamQuestion[];
-}
-
-// Exam Results (from API)
-export interface GeneratedExamResults {
-  numberOfCorrectAnswers: number;
-  numberOfQuestionsInExam: number;
-  percentCorrect: number;
-  passingPercent: number;
-  passed: boolean;
-  examTimeInSeconds: number;
 }

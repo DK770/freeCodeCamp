@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aecb08826
-title: Використайте jQuery, щоб повністю змінити сторінку
+title: Використання jQuery для зміни цілої сторінки
 challengeType: 6
 forumTopicId: 18361
 required:
@@ -11,13 +11,13 @@ dashedName: use-jquery-to-modify-the-entire-page
 
 # --description--
 
-Нам надоїло гратись на ігровому майданчику jQuery. Знесемо його!
+Ми закінчили гратися із нашим jQuery Playground. Зруйнуймо його!
 
-jQuery може націлитись на елемент `body`.
+За допомогою jQuery можемо обрати елемент `body`.
 
 Ось так ми змусимо цілу фігуру зникнути: `$("body").addClass("animated fadeOut");`
 
-Зробимо щось драматичніше. Додамо класи `animated` та `hinge` до елемента `body`.
+Зробімо щось більш ефектне. Додамо класи `animated` та `hinge` до елемента `body`.
 
 # --hints--
 

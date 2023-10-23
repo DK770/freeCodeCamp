@@ -12,4 +12,4 @@ Wenn du Meldungen siehst wie
 bash: change_volumes_owner.sh: No such file or directory
 ```
 
-when you `pnpm run docker:init` this is likely the culprit.
+wenn du `npm run docker:init` ausführst, ist das wahrscheinlich der Grund dafür.

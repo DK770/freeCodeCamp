@@ -41,13 +41,13 @@ Rewrite the `myConcat` function which appends contents of `arr2` to `arr1` so th
 You should replace the `var` keyword.
 
 ```js
-assert.notMatch(code, /var/g);
+(getUserInput) => assert(!getUserInput('index').match(/var/g));
 ```
 
 `myConcat` should be a constant variable (by using `const`).
 
 ```js
-assert.match(code, /const\s+myConcat/g);
+(getUserInput) => assert(getUserInput('index').match(/const\s+myConcat/g));
 ```
 
 `myConcat` should be an arrow function with two parameters
@@ -68,7 +68,7 @@ assert.deepEqual(myConcat([1, 2], [3, 4, 5]), [1, 2, 3, 4, 5]);
 The `function` keyword should not be used.
 
 ```js
-assert.notMatch(code, /function/g);
+(getUserInput) => assert(!getUserInput('index').match(/function/g));
 ```
 
 # --seed--

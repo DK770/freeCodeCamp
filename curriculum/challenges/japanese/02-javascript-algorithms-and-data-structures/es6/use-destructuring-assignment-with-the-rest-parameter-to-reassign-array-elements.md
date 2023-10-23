@@ -1,7 +1,7 @@
 ---
 id: 587d7b8a367417b2b2512b4c
 title: >-
-  残余要素を使用した分割代入
+  分割代入で残余引数を使用して配列要素を割り当て直す
 challengeType: 1
 forumTopicId: 301218
 dashedName: >-
@@ -22,38 +22,40 @@ console.log(arr);
 
 コンソールには、値 `1, 2` と `[3, 4, 5, 7]` が表示されます。
 
-変数 `a` と `b` は配列の最初と 2 番目の値を受け取ります。 その後は残余構文になっているため、`arr` は残りの値を配列の形で受け取ります。 残余引数は、リスト内の最後の変数としてのみ正しく動作します。 したがって、残余構文を使用して元の配列の最後の要素を除いた部分配列を取得するようなことはできません。
+変数 `a` と `b` は配列の最初と 2 番目の値を受け取ります。 その後は残余引数になっているため、`arr` は残りの値を配列の形で受け取ります。 残余引数は、リスト内の最後の変数としてのみ正しく動作します。 したがって、残余引数を使用して元の配列の最後の要素を取り除いた部分配列を取得することはできません。
 
 # --instructions--
 
-分割代入と残余構文を使用して、`Array.prototype.slice()` と同様の機能を実装してください。 `removeFirstTwo()` が、元の配列 `list` から最初の 2 つの要素を取り除いた部分配列を返すようにしてください。
+分割代入と残余変数を使用して、`Array.prototype.slice()` の効果を実現してください。`arr` が、元の配列 `source` から最初の 2 つの要素を省いた部分配列となるようにします。
 
 # --hints--
 
-`removeFirstTwo([1, 2, 3, 4, 5])` の結果は `[3, 4, 5]` となるべきです。
+`arr` は `[3,4,5,6,7,8,9,10]` である必要があります。
 
 ```js
-assert.deepEqual(removeFirstTwo([1, 2, 3, 4, 5]), [3, 4, 5]);
+assert(arr.every((v, i) => v === i + 3) && arr.length === 8);
 ```
 
-`removeFirstTwo()` は `list` を変更してはいけません。
+`source` は `[1,2,3,4,5,6,7,8,9,10]` である必要があります。
 
 ```js
-const _testArr = [1, 2, 3, 4, 5];
-removeFirstTwo(_testArr);
-assert.deepEqual(_testArr, [1, 2, 3, 4, 5])
+assert(source.every((v, i) => v === i + 1) && source.length === 10);
 ```
 
 `Array.slice()` は使用しないでください。
 
 ```js
-assert(!code.match(/\.\s*slice\s*\(/));
+(getUserInput) => assert(!getUserInput('index').match(/slice/g));
 ```
 
-You should use the rest syntax.
+`list` の分割を使用する必要があります。
 
 ```js
-assert.match(code, /\.\.\./);
+assert(
+  __helpers
+    .removeWhiteSpace(code)
+    .match(/\[(([_$a-z]\w*)?,){1,}\.\.\.arr\]=list/i)
+);
 ```
 
 # --seed--
@@ -61,23 +63,23 @@ assert.match(code, /\.\.\./);
 ## --seed-contents--
 
 ```js
+const source = [1,2,3,4,5,6,7,8,9,10];
 function removeFirstTwo(list) {
-  return list;
+  // Only change code below this line
+  const arr = list; // Change this line
+  // Only change code above this line
+  return arr;
 }
-
-const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const sourceWithoutFirstTwo = removeFirstTwo(source);
+const arr = removeFirstTwo(source);
 ```
 
 # --solutions--
 
 ```js
+const source = [1,2,3,4,5,6,7,8,9,10];
 function removeFirstTwo(list) {
-  // comment with 'slice' to check comments are removed in tests
-  const [, , ...shorterList] = list;
-  return shorterList;
+  const [, , ...arr] = list;
+  return arr;
 }
-
-const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const sourceWithoutFirstTwo = removeFirstTwo(source);
+const arr = removeFirstTwo(source);
 ```

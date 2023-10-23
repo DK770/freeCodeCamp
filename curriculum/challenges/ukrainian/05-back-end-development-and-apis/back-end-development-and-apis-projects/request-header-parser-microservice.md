@@ -8,23 +8,17 @@ dashedName: request-header-parser-microservice
 
 # --description--
 
-Створіть повний пакет застосунку JavaScript, який функціонально схожий до <a href="https://request-header-parser-microservice.freecodecamp.rocks/" target="_blank" rel="noopener noreferrer nofollow">https://request-header-parser-microservice.freecodecamp.rocks/</a>. Робота над цим проєктом передбачає написання коду за допомогою одного з наступних методів:
+Створіть повний пакет додатку JavaScript, який функціонально схожий до <a href="https://request-header-parser-microservice.freecodecamp.rocks/" target="_blank" rel="noopener noreferrer nofollow">https://request-header-parser-microservice.freecodecamp.rocks/</a>. Робота над цим проектом залучатиме тебе писати свій код використовуючи один з наступних методів:
 
 -   Клонуйте <a href="https://github.com/freeCodeCamp/boilerplate-project-headerparser/" target="_blank" rel="noopener noreferrer nofollow">цей репозиторій GitHub</a> та виконайте свій проєкт локально.
 -   Використайте <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-headerparser" target="_blank" rel="noopener noreferrer nofollow">наш стартовий проєкт Replit</a> для виконання свого проєкту.
--   Для виконання проєкту використайте конструктор сайту на власний вибір. Переконайтеся, що приєднали усі файли з нашого репозиторію GitHub.
+-   Використати конструктор сайтів на свій вибір для завершення проекту. Впевніться, що ви зберегли всі файли із нашого GitHub репозиторію.
 
-Якщо ви використовуєте Replit, виконайте наступні кроки для налаштування проєкту:
-
--   Почніть з імпорту проєкту на Replit.
--   Потім ви побачите вікно `.replit`.
--   Оберіть `Use run command` та натисніть кнопку `Done`.
-
-Після завершення переконайтеся, що демоверсія проєкту розміщена у відкритому доступі. Потім введіть URL-адресу проєкту в полі «Посилання на розв’язок». За бажанням введіть посилання на початковий код проєкту в полі «Посилання на GitHub».
+По завершенню переконайтеся, що працююча демоверсія вашого проекту розміщена у відкритому доступі. Потім введіть його URL-адресу в поле `Solution Link`. За бажанням також можете ввести посилання на вихідний код вашого проекту в полі `GitHub Link`.
 
 # --hints--
 
-Ви повинні надати власний проєкт, а не URL-адресу прикладу.
+Вам необхідно вказати свій власний проект, а не приклад URL-адреси.
 
 ```js
 (getUserInput) => {
@@ -36,7 +30,7 @@ dashedName: request-header-parser-microservice
 };
 ```
 
-Запит до `/api/whoami` повинен повернути об’єкт JSON з вашою IP-адресою у ключі `ipaddress`.
+Запит на `/api/whoami` повинен повернути об'єкт JSON з вашою IP-адресою у ключі `ipaddress`.
 
 ```js
 (getUserInput) =>
@@ -48,7 +42,7 @@ dashedName: request-header-parser-microservice
   );
 ```
 
-Запит до `/api/whoami` повинен повернути об’єкт JSON з вашою бажаною мовою у ключі `language`.
+Запит на `/api/whoami` повинен повернути об’єкт JSON з вашою бажаною мовою у ключі `language`.
 
 ```js
 (getUserInput) =>
@@ -60,7 +54,7 @@ dashedName: request-header-parser-microservice
   );
 ```
 
-Запит до `/api/whoami` повинен повернути об’єкт JSON з вашим програмним забезпеченням у ключі `software`.
+Запит на `/api/whoami` повинен повернути об'єкт JSON з вашим програмним забезпеченням у ключі `software`.
 
 ```js
 (getUserInput) =>

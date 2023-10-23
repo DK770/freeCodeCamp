@@ -58,7 +58,7 @@ const JSX = (
     <p>Lets render this to the DOM</p>
   </div>
 );
-// Add your code below this line
+// Change code below this line
 ```
 
 # --solutions--
@@ -70,6 +70,6 @@ const JSX = (
   <p>Lets render this to the DOM</p>
 </div>
 );
-// Add your code below this line
+// Change code below this line
 ReactDOM.render(JSX, document.getElementById('challenge-node'));
 ```

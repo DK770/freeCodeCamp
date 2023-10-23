@@ -1,6 +1,6 @@
 ---
 id: 587d7b8b367417b2b2512b50
-title: Написання стислих декларативних функцій з ES6
+title: Напишіть стислі декларативні функції за допомогою ES6
 challengeType: 1
 forumTopicId: 301224
 dashedName: write-concise-declarative-functions-with-es6
@@ -8,7 +8,7 @@ dashedName: write-concise-declarative-functions-with-es6
 
 # --description--
 
-Ми повинні використовувати ключове слово `function`, коли визначаємо функції в межах об’єктів у ES5:
+При визначенні функцій у об’єктах у ES5 ми маємо використовувати ключове слово `function` наступним чином:
 
 ```js
 const person = {
@@ -19,7 +19,7 @@ const person = {
 };
 ```
 
-В ES6 ви можете взагалі видалити ключове слово `function` і двокрапку, коли визначаєте функції в об’єктах. Ось приклад такого синтаксису:
+За допомогою ES6 ви можете взагалі видалити ключове слово `function` і двокрапку під час визначення функцій в об’єктах. Ось приклад такого синтаксису:
 
 ```js
 const person = {
@@ -36,10 +36,10 @@ const person = {
 
 # --hints--
 
-Не використовуйте традиційні вирази функцій.
+Традиційні вираження функцій не повинні використовуватися.
 
 ```js
-assert(!code.match(/function/));
+(getUserInput) => assert(!code.match(/function/));
 ```
 
 `setGear` повинна бути декларативною функцією.
@@ -50,7 +50,7 @@ assert(
 );
 ```
 
-`bicycle.setGear(48)` має змінити значення `gear` на 48.
+`bicycle.setGear(48)` повинен змінити значення `gear` для 48.
 
 ```js
 bicycle.setGear(48);
@@ -79,7 +79,6 @@ console.log(bicycle.gear);
 ```js
 const bicycle = {
   gear: 2,
-  // setGear: function(newGear) {
   setGear(newGear) {
     this.gear = newGear;
   }

@@ -1,7 +1,7 @@
 ---
 title: Introduction to the Rosetta Code Problems
-block: rosetta-code
-superBlock: coding-interview-prep
+block: Rosetta Code
+superBlock: Coding Interview Prep
 ---
 
 ## Introduction to the Rosetta Code Problems

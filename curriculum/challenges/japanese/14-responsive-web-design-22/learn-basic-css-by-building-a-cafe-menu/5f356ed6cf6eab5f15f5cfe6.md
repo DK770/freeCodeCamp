@@ -1,6 +1,6 @@
 ---
 id: 5f356ed6cf6eab5f15f5cfe6
-title: ステップ 20
+title: Step 20
 challengeType: 0
 dashedName: step-20
 ---
@@ -9,36 +9,32 @@ dashedName: step-20
 
 `div` 要素はこれまで使用してきた他のコンテンツ要素とは異なり、主にレイアウトデザイン目的で使用されます。 `body` 要素内に `div` 要素を追加し、他のすべての要素を新しい `div` の中に移動させてください。
 
-Inside the opening `div` tag, add the `id` attribute with a value of `menu`.
-
 # --hints--
 
-Your opening `<div>` tag should have an `id` attribute set to `menu`.
+`<div>` の開始タグが 1 つ必要です。
 
 ```js
-const div = $('div')[0];
-assert(div.id === 'menu');
+assert(code.match(/<div>/i));
 ```
 
-You should have a closing `</div>` tag.
+終了タグ `</div>` が 1 つ必要です。
 
 ```js
 assert(code.match(/<\/div>/i));
 ```
 
-You should not change your existing `body` element. Make sure you did not delete the closing tag.
+既存の `body` 要素を変更しないようにしてください。 終了タグを削除していないか確認してください。
 
 ```js
 assert($('body').length === 1);
 ```
 
-Your `div` tag should be nested in the `body`.
+`div` タグは `body` の中にネストされている必要があります。
 
 ```js
 const div = $('div')[0];
 assert(div.parentElement.tagName === 'BODY');
 ```
-
 
 # --seed--
 

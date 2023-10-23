@@ -1,6 +1,6 @@
 ---
 id: cf1111c1c11feddfaeb6bdef
-title: Ділення одного числа на інше з JavaScript
+title: Ділення одного числа на інше за допомогою JavaScript
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cqkbdAr'
 forumTopicId: 17566
@@ -9,7 +9,7 @@ dashedName: divide-one-number-by-another-with-javascript
 
 # --description--
 
-Ми можемо також поділити одне число на інше.
+Також ми можемо поділити одне число на інше.
 
 JavaScript використовує символ `/` для ділення.
 
@@ -19,20 +19,20 @@ JavaScript використовує символ `/` для ділення.
 const myVar = 16 / 2;
 ```
 
-Тепер `myVar` має значення `8`.
+`myVar` тепер набуває значення `8`.
 # --instructions--
 
-Змініть `0` таким чином, щоб частка (`quotient`) дорівнювала `2`.
+Змініть `0` таким чином, щоб `quotient` дорівнювало `2`.
 
 # --hints--
 
-Змінна `quotient` (частка) повинна дорівнювати 2.
+Змінна `quotient` має дорівнювати 2.
 
 ```js
 assert(quotient === 2);
 ```
 
-Ви повинні використати оператор `/`.
+Вам слід використовувати оператор `/`.
 
 ```js
 assert(/\d+\s*\/\s*\d+/.test(code));

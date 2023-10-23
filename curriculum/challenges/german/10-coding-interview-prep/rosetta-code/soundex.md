@@ -12,13 +12,13 @@ dashedName: soundex
 
 It is used for searching <em>names</em> and <em>addresses</em>. This means that the person who filled in the <em>name</em>, can focus on how it sounds instead of correcting the spelling of <em>names</em>.
 
-Zum Beispiel:
+For example:
 
 If you are hearing the name `Quenci` for the first time, and misspelled it, you will get **Soundex** code `Q520`.
 
 When you spell the name `Quincy` correctly next time, you will still get the same code `Q520`, which means you can link multiple name pronunciations into the same <em>person</em> without the need for adding every spelling.
 
-Hier sind die Regeln: 
+Here is the rules: 
 
 <ul>
   <li>If a vowel (A, E, I, O, U) separates two consonants that have the same soundex code, the consonant to the right of the vowel is coded. Tymczak is coded as T-522 (T, 5 for the M, 2 for the C, Z ignored (see "Side-by-Side" rule above), 2 for the K). Since the vowel "A" separates the Z and K, the K is coded.</li>
@@ -31,73 +31,73 @@ Write a function that takes a string as a parameter and returns the encoded stri
 
 # --hints--
 
-`soundex` sollte eine Funktion sein.
+`soundex` should be a function.
 
 ```js
 assert(typeof soundex == 'function');
 ```
 
-`soundex("Soundex")` sollte einen String zurückgeben.
+`soundex("Soundex")` should return a string.
 
 ```js
 assert(typeof soundex('Soundex') == 'string');
 ```
 
-`soundex("Soundex")` sollte `"S532"` zurückgeben.
+`soundex("Soundex")` should return `"S532"`.
 
 ```js
 assert.equal(soundex('Soundex'), 'S532');
 ```
 
-`soundex("Example")` sollte `"E251"` zurückgeben.
+`soundex("Example")` should return `"E251"`.
 
 ```js
 assert.equal(soundex('Example'), 'E251');
 ```
 
-`soundex("Sownteks")` sollte `"S532"` zurückgeben.
+`soundex("Sownteks")` should return `"S532"`.
 
 ```js
 assert.equal(soundex('Sownteks'), 'S532');
 ```
 
-`soundex("Ekzampul")` sollte `"E251"` zurückgeben.
+`soundex("Ekzampul")` should return `"E251"`.
 
 ```js
 assert.equal(soundex('Ekzampul'), 'E251');
 ```
 
-`soundex("Euler")` sollte `"E460"` zurückgeben.
+`soundex("Euler")` should return `"E460"`.
 
 ```js
 assert.equal(soundex('Euler'), 'E460');
 ```
 
-`soundex("Gauss")` sollte `"G200"` zurückgeben.
+`soundex("Gauss")` should return `"G200"`.
 
 ```js
 assert.equal(soundex('Gauss'), 'G200');
 ```
 
-`soundex("Hilbert")` sollte `"H416"` zurückgeben.
+`soundex("Hilbert")` should return `"H416"`.
 
 ```js
 assert.equal(soundex('Hilbert'), 'H416');
 ```
 
-`soundex("Knuth")` sollte `"K530"` zurückgeben.
+`soundex("Knuth")` should return `"K530"`.
 
 ```js
 assert.equal(soundex('Knuth'), 'K530');
 ```
 
-`soundex("Lloyd")` sollte `"L300"` zurückgeben.
+`soundex("Lloyd")` should return `"L300"`.
 
 ```js
 assert.equal(soundex('Lloyd'), 'L300');
 ```
 
-`soundex("Lukasiewicz")` sollte `"L222"` zurückgeben.
+`soundex("Lukasiewicz")` should return `"L222"`.
 
 ```js
 assert.equal(soundex('Lukasiewicz'), 'L222');

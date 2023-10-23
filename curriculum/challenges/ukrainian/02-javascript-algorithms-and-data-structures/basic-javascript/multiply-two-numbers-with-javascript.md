@@ -1,6 +1,6 @@
 ---
 id: cf1231c1c11feddfaeb5bdef
-title: Множення двох чисел з JavaScript
+title: Множення двох чисел за допомогою JavaScript
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/cP3y3Aq'
 forumTopicId: 18243
@@ -33,7 +33,7 @@ const myVar = 13 * 13;
 assert(product === 80);
 ```
 
-Ви повинні використати оператор `*`.
+Ви маєте використати оператор `*`.
 
 ```js
 assert(/\*/.test(code));

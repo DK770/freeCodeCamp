@@ -1,6 +1,6 @@
 ---
 id: 5a23c84252665b21eecc8001
-title: Algoritmos de ordenação/ordenação de contas
+title: Ordenar algoritmos/ordenação de contas
 challengeType: 1
 forumTopicId: 302310
 dashedName: sorting-algorithmsbead-sort

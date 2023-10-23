@@ -4,79 +4,72 @@ Wenn du Änderungen an JavaScript, CSS oder HTML vornimmst, die die Funktionalit
 
 Wie man Cypress-Tests oder "Specs" schreibt, erfährst du in der offiziellen [Dokumentation](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html) von Cypress.
 
-## Where to Add a Test
+## Wo du einen Test hinzufügen kannst
 
 - Cypress-Tests befinden sich im Verzeichnis `./cypress`.
 
 - Cypress-Tests für ein Studienplanmodul befinden sich im entsprechenden Studienplanverzeichnis, d.h. `cypress/integration/learn/responsive-web-design/basic-css/index.js`.
 
-## How to Run Tests
+## Wie man Tests durchführt
 
-> [!NOTE] If using Gitpod, please see [Cypress-Gitpod Setup](how-to-add-cypress-tests.md#cypress-gitpod-setup)
+> [!NOTE] Wenn du GitPod verwendest, lies bitte [Cypress-GitPod Setup](how-to-add-cypress-tests.md#cypress-gitpod-setup)
 
-### 1. Ensure that MongoDB and Client Applications are Running
+### 1. Sicherstellen, dass MongoDB und Client-Anwendungen ausgeführt werden
 
 - [Starte MongoDB und erstelle die Datenbank](how-to-setup-freecodecamp-locally.md#step-3-start-mongodb-and-seed-the-database)
 
 - [Starte die freeCodeCamp Client-Anwendung und den API-Server](how-to-setup-freecodecamp-locally.md#step-4-start-the-freecodecamp-client-application-and-api-server)
 
-### 2. Run the Cypress Tests
+### 2. Führe die Cypress-Tests durch
 
 Um Tests mit Produktions-Builds durchzuführen, ersetze unten `dev` durch `prd`.
 
 - Um alle Tests im Verzeichnis `./cypress` auszuführen:
 
   ```console
-  pnpm run cypress:dev:run
+  npm run cypress:dev:run
   ```
 
 - Um einen einzelnen Test durchzuführen:
 
   ```console
-  pnpm run cypress run --spec=cypress/<path_to_test_file>
-  ```
-
-  For example:
-
-  ```console
-  pnpm run cypress run --spec=cypress/e2e/default/landing.ts
+  npm run cypress:dev:run -- --spec=cypress/pathToYourSpec/youSpecFileName.js
   ```
 
 - Um einen Entwicklungs-Build zu erstellen, starte den Entwicklungsserver und führe alle vorhandenen Cypress-End-to-End-Tests aus:
 
   ```console
-  pnpm run e2e:dev:run
+  npm run e2e:dev:run
   ```
 
-## Cypress-Gitpod Setup
+## Cypress-GitPod Setup
 
 ### 1. Sicherstellen, dass die Entwicklungsumgebung läuft
 
-If starting the Gitpod environment did not automatically develop the environment:
+Wenn das Starten der GitPod-Umgebung nicht automatisch die Umgebung aufgebaut hat:
 
-- Follow the [MongoDB installation guide](https://www.mongodb.com/basics/get-started).
-- Create a config file.
+- Starte die Datenbank
 
 ```console
-pnpm run create:shared
+mongod
 ```
 
 - Richte die Datenbank ein
 
 ```console
-pnpm run seed
+npm run seed
 ```
 
 - Entwickle den Server und den Client
 
 ```console
-pnpm run develop
+npm run develop
 ```
 
 ### 2. Cypress Build Tools installieren
 
 ```console
-pnpm run cypress:install-build-tools
+npm run cypress:install-build-tools
 ```
 
 - Wenn du im Terminal dazu aufgefordert wirst, wähle dein Tastaturlayout nach Sprache/Region aus

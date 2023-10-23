@@ -1,6 +1,6 @@
 ---
 id: 587d7fb0367417b2b2512bed
-title: Lerne Node console kennen
+title: Meet the Node console
 challengeType: 2
 forumTopicId: 301515
 dashedName: meet-the-node-console
@@ -8,33 +8,27 @@ dashedName: meet-the-node-console
 
 # --description--
 
-Bei der Arbeit an diesen Aufgaben wirst du deinen Code mithilfe folgender Methoden schreiben:
+Working on these challenges will involve you writing your code using one of the following methods:
 
-- Klone <a href="https://github.com/freeCodeCamp/boilerplate-express/" target="_blank" rel="noopener noreferrer nofollow">diese GitHub-Repo</a> und schließe dein Projekt lokal ab.
-- Benutze <a href="https://replit.com/github/freeCodeCamp/boilerplate-express" target="_blank" rel="noopener noreferrer nofollow">unser Replit-Starterprojekt</a>, um die Aufgaben abzuschließen.
-- Verwende einen Site-Builder deiner Wahl, um das Projekt abzuschließen. Achte darauf, alle Dateien von unserem GitHub-Repo zu integrieren.
+- Clone <a href="https://github.com/freeCodeCamp/boilerplate-express/" target="_blank" rel="noopener noreferrer nofollow">this GitHub repo</a> and complete these challenges locally.
+- Use <a href="https://replit.com/github/freeCodeCamp/boilerplate-express" target="_blank" rel="noopener noreferrer nofollow">our Replit starter project</a> to complete these challenges.
+- Use a site builder of your choice to complete the project. Be sure to incorporate all the files from our GitHub repo.
 
-Wenn du Replit verwendest, dann folge diesen Schritten, um das Projekt einzurichten:
+Wenn du fertig bist, stelle sicher, dass dein Projekt öffentlich zugänglich gehostet ist. Gib dann die URL in das `Solution Link`-Feld ein.
 
--   Beginne, indem du das Projekt in Replit importierst.
--   Daraufhin wird ein `.replit`-Fenster angezeigt.
--   Wähle `Use run command` aus und klicke auf die `Done`-Schaltfläche.
+During the development process, it is important to be able to check what’s going on in your code.
 
-Wenn du fertig bist, stelle sicher, dass eine funktionierende Demo deines Projekts an einem öffentlichen Ort gehostet wird. Gib anschließend die URL in das Solution Link-Feld ein.
+Node is just a JavaScript environment. Like client side JavaScript, you can use the console to display useful debug information. On your local machine, you would see console output in a terminal. On Replit, a terminal is open in the right pane by default.
 
-Während des Entwicklungsprozesses ist es wichtig, überprüfen zu können, was in deinem Code passiert.
-
-Node ist nur eine JavaScript-Umgebung. Wie bei JavaScript auf der Clientenseite kannst du die Konsole verwenden, um nützliche Debug-Informationen anzuzeigen. Auf deinem lokalen Rechner würdest du die Konsolenausgabe in einem Terminal sehen. Bei Replit ist im rechten Fensterbereich standardmäßig ein Terminal geöffnet.
-
-Wir empfehlen, das Terminal während der Arbeit an diesen Aufgaben geöffnet zu lassen. Wenn du die Ausgabe im Terminal liest, kannst du eventuell auftretende Fehler erkennen.
+We recommend to keep the terminal open while working at these challenges. By reading the output in the terminal, you can see any errors that may occur.
 
 # --instructions--
 
-Ändere die `myApp.js`-Datei, um "Hello World" auf der Konsole zu protokollieren.
+Modify the `myApp.js` file to log "Hello World" to the console.
 
 # --hints--
 
-`"Hello World"` sollte in der Konsole erscheinen
+`"Hello World"` should be in the console
 
 ```js
 (getUserInput) =>

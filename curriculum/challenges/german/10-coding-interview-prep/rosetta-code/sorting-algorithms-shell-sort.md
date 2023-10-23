@@ -22,37 +22,37 @@ Empirical studies have shown a geometric increment sequence with a ratio of abou
 
 # --hints--
 
-`shellSort` sollte eine Funktion sein.
+`shellSort` should be a function.
 
 ```js
 assert(typeof shellSort == 'function');
 ```
 
-`shellSort([25, 32, 12, 7, 20])` sollte ein Array zurückgeben.
+`shellSort([25, 32, 12, 7, 20])` should return an array.
 
 ```js
 assert(Array.isArray(shellSort([25, 32, 12, 7, 20])));
 ```
 
-`shellSort([25, 32, 12, 7, 20])` sollte `[7, 12, 20, 25, 32]` zurückgeben.
+`shellSort([25, 32, 12, 7, 20])` should return `[7, 12, 20, 25, 32]`.
 
 ```js
 assert.deepEqual(shellSort([25, 32, 12, 7, 20]), [7, 12, 20, 25, 32]);
 ```
 
-`shellSort([38, 45, 35, 8, 13])` sollte `[8, 13, 35, 38, 45]` zurückgeben.
+`shellSort([38, 45, 35, 8, 13])` should return `[8, 13, 35, 38, 45]`.
 
 ```js
 assert.deepEqual(shellSort([38, 45, 35, 8, 13]), [8, 13, 35, 38, 45]);
 ```
 
-`shellSort([43, 36, 20, 34, 24])` sollte `[20, 24, 34, 36, 43]` zurückgeben.
+`shellSort([43, 36, 20, 34, 24])` should return `[20, 24, 34, 36, 43]`.
 
 ```js
 assert.deepEqual(shellSort([43, 36, 20, 34, 24]), [20, 24, 34, 36, 43]);
 ```
 
-`shellSort([12, 33, 26, 18, 1, 16, 38])` sollte `[1, 12, 16, 18, 26, 33, 38]` zurückgeben.
+`shellSort([12, 33, 26, 18, 1, 16, 38])` should return `[1, 12, 16, 18, 26, 33, 38]`.
 
 ```js
 assert.deepEqual(shellSort([12, 33, 26, 18, 1, 16, 38]), [
@@ -66,7 +66,7 @@ assert.deepEqual(shellSort([12, 33, 26, 18, 1, 16, 38]), [
 ]);
 ```
 
-`shellSort([3, 39, 48, 16, 1, 4, 29])` sollte `[1, 3, 4, 16, 29, 39, 48]` zurückgeben.
+`shellSort([3, 39, 48, 16, 1, 4, 29])` should return `[1, 3, 4, 16, 29, 39, 48]`.
 
 ```js
 assert.deepEqual(shellSort([3, 39, 48, 16, 1, 4, 29]), [

@@ -10,11 +10,6 @@ dashedName: arithmetic-formatter
 
 You will be <a href="https://replit.com/github/freeCodeCamp/boilerplate-arithmetic-formatter" target="_blank" rel="noopener noreferrer nofollow"> working on this project with our Replit starter code</a>.
 
--   Start by importing the project on Replit. 
--   Next, you will see a `.replit` window. 
--   Select `Use run command` and click the `Done` button. 
-
-
 # --instructions--
 
 Students in primary school often arrange arithmetic problems vertically to make them easier to solve. For example, "235 + 52" becomes:
@@ -88,7 +83,7 @@ The unit tests for this project are in `test_module.py`. We are running the test
 
 ## Submitting
 
-Copy your project's URL and submit it to freeCodeCamp.
+Copy your project's URL and submit it below.
 
 # --hints--
 

@@ -1,8 +1,7 @@
 import { isEqual } from 'lodash-es';
 import React, { Component } from 'react';
 import { HotKeys, ObserveKeys } from 'react-hotkeys';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { Hit } from 'react-instantsearch-core';
 import { SearchBox } from 'react-instantsearch-dom';
 import { connect } from 'react-redux';
@@ -40,14 +39,14 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
     dispatch
   );
 
-export type SearchBarProps = {
+type SearchBarProps = {
   innerRef?: React.RefObject<HTMLDivElement>;
   toggleSearchDropdown: typeof toggleSearchDropdown;
   toggleSearchFocused: typeof toggleSearchFocused;
   updateSearchQuery: typeof updateSearchQuery;
   isDropdownEnabled?: boolean;
   isSearchFocused?: boolean;
-  t: TFunction;
+  t?: TFunction;
 };
 type SearchBarState = {
   index: number;
@@ -72,14 +71,7 @@ export class SearchBar extends Component<SearchBarProps, SearchBarState> {
   }
 
   componentDidMount(): void {
-    const { t } = this.props;
-
     document.addEventListener('click', this.handleFocus);
-
-    const searchInput = document.querySelector('.ais-SearchBox-input');
-    if (searchInput) {
-      searchInput.setAttribute('aria-label', t('search.label'));
-    }
   }
 
   componentWillUnmount(): void {
@@ -195,6 +187,7 @@ export class SearchBar extends Component<SearchBarProps, SearchBarState> {
   render(): JSX.Element {
     const { isDropdownEnabled, isSearchFocused, innerRef, t } = this.props;
     const { index } = this.state;
+    const placeholder = t ? t('search.placeholder') : '';
 
     return (
       <WithInstantSearch>
@@ -205,6 +198,9 @@ export class SearchBar extends Component<SearchBarProps, SearchBarState> {
         >
           <HotKeys handlers={this.keyHandlers} keyMap={this.keyMap}>
             <div className='fcc_search_wrapper'>
+              <label className='fcc_sr_only' htmlFor='fcc_instantsearch'>
+                {t ? t('search.label') : ''}
+              </label>
               <ObserveKeys except={['Space']}>
                 <div onFocus={this.handleFocus} role='textbox'>
                   <SearchBox
@@ -214,11 +210,7 @@ export class SearchBar extends Component<SearchBarProps, SearchBarState> {
                       this.handleSearch(e);
                     }}
                     showLoadingIndicator={false}
-                    translations={{
-                      submitTitle: t('icons.magnifier'),
-                      resetTitle: t('icons.input-reset'),
-                      placeholder: t('search.placeholder')
-                    }}
+                    translations={{ placeholder }}
                   />
                 </div>
               </ObserveKeys>

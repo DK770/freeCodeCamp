@@ -1,19 +1,18 @@
+import { Grid, Row, Col } from '@freecodecamp/react-bootstrap';
 import { WindowLocation } from '@reach/router';
 import { graphql } from 'gatsby';
 import { uniq } from 'lodash-es';
 import React, { Fragment, useEffect, memo } from 'react';
 import Helmet from 'react-helmet';
-import { useTranslation, withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { configureAnchors } from 'react-scrollable-anchor';
 import { bindActionCreators, Dispatch } from 'redux';
 import { createSelector } from 'reselect';
-import { Container, Col, Row } from '@freecodecamp/ui';
 
-import { SuperBlocks } from '../../../../shared/config/superblocks';
-import { getSuperBlockTitleForMap } from '../../utils/superblock-map-titles';
+import { SuperBlocks } from '../../../../config/certification-settings';
 import DonateModal from '../../components/Donation/donation-modal';
-import Login from '../../components/Header/components/login';
+import Login from '../../components/Header/components/Login';
 import Map from '../../components/Map';
 import { Spacer } from '../../components/helpers';
 import { tryToShowDonationModal } from '../../redux/actions';
@@ -53,6 +52,7 @@ type SuperBlockProp = {
   signInLoading: boolean;
   location: WindowLocation<{ breadcrumbBlockClick: string }>;
   resetExpansion: () => void;
+  t: TFunction;
   toggleBlock: (arg0: string) => void;
   tryToShowDonationModal: () => void;
   user: User;
@@ -94,7 +94,6 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 const SuperBlockIntroductionPage = (props: SuperBlockProp) => {
-  const { t } = useTranslation();
   useEffect(() => {
     initializeExpandedState();
     props.tryToShowDonationModal();
@@ -169,6 +168,7 @@ const SuperBlockIntroductionPage = (props: SuperBlockProp) => {
     },
     isSignedIn,
     signInLoading,
+    t,
     user
   } = props;
 
@@ -177,33 +177,33 @@ const SuperBlockIntroductionPage = (props: SuperBlockProp) => {
     nodesForSuperBlock.map(({ challenge: { block } }) => block)
   );
 
-  const i18nTitle = getSuperBlockTitleForMap(superBlock);
-  const defaultCurriculumNames = blockDashedNames;
+  const i18nSuperBlock = t(`intro:${superBlock}.title`);
+  const i18nTitle =
+    superBlock === SuperBlocks.CodingInterviewPrep
+      ? i18nSuperBlock
+      : t(`intro:misc-text.certification`, {
+          cert: i18nSuperBlock
+        });
 
-  const superblockWithoutCert = [
-    SuperBlocks.RespWebDesign,
-    SuperBlocks.CodingInterviewPrep,
-    SuperBlocks.TheOdinProject,
-    SuperBlocks.ProjectEuler
-  ];
+  const defaultCurriculumNames = blockDashedNames;
 
   return (
     <>
       <Helmet>
         <title>{i18nTitle} | freeCodeCamp.org</title>
       </Helmet>
-      <Container>
+      <Grid>
         <main>
           <Row className='super-block-intro-page'>
             <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
-              <Spacer size='large' />
+              <Spacer size={2} />
               <LegacyLinks superBlock={superBlock} />
               <SuperBlockIntro superBlock={superBlock} />
-              <Spacer size='large' />
+              <Spacer size={2} />
               <h2 className='text-center big-subheading'>
                 {t(`intro:misc-text.courses`)}
               </h2>
-              <Spacer size='medium' />
+              <Spacer />
               <div className='block-ui'>
                 {defaultCurriculumNames.map(blockDashedName => (
                   <Fragment key={blockDashedName}>
@@ -216,7 +216,7 @@ const SuperBlockIntroductionPage = (props: SuperBlockProp) => {
                     />
                   </Fragment>
                 ))}
-                {!superblockWithoutCert.includes(superBlock) && (
+                {superBlock !== SuperBlocks.CodingInterviewPrep && (
                   <div>
                     <CertChallenge
                       certification={certification}
@@ -229,24 +229,24 @@ const SuperBlockIntroductionPage = (props: SuperBlockProp) => {
               </div>
               {!isSignedIn && !signInLoading && (
                 <div>
-                  <Spacer size='large' />
+                  <Spacer size={2} />
                   <Login block={true}>{t('buttons.logged-out-cta-btn')}</Login>
                 </div>
               )}
-              <Spacer size='large' />
+              <Spacer size={2} />
               <h3
                 className='text-center big-block-title'
                 style={{ whiteSpace: 'pre-line' }}
               >
                 {t(`intro:misc-text.browse-other`)}
               </h3>
-              <Spacer size='medium' />
-              <Map />
-              <Spacer size='large' />
+              <Spacer />
+              <Map currentSuperBlock={superBlock} />
+              <Spacer size={2} />
             </Col>
           </Row>
         </main>
-      </Container>
+      </Grid>
       <DonateModal location={props.location} />
     </>
   );

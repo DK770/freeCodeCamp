@@ -7,7 +7,6 @@ export type Meta = {
   name: string;
   isUpcomingChange: boolean;
   dashedName: string;
-  helpCategory: string;
   order: number;
   time: string;
   template: string;
@@ -15,7 +14,7 @@ export type Meta = {
   superBlock: string;
   superOrder: number;
   isBeta: boolean;
-  challengeOrder: { id: string; title: string }[];
+  challengeOrder: string[][];
 };
 
 function getMetaData(): Meta {
@@ -43,14 +42,14 @@ function validateMetaData(): void {
   const { challengeOrder } = getMetaData();
 
   // each step in the challengeOrder should correspond to a file
-  challengeOrder.forEach(({ id }) => {
+  challengeOrder.forEach(([id]) => {
     fs.accessSync(`${getProjectPath()}${id}.md`);
   });
 
   // each file should have a corresponding step in the challengeOrder
   glob.sync(`${getProjectPath()}/*.md`).forEach(file => {
     const id = path.basename(file, '.md');
-    if (!challengeOrder.find(({ id: stepId }) => stepId === id))
+    if (!challengeOrder.find(([stepId]) => stepId === id))
       throw new Error(
         `File ${file} should be in the meta.json's challengeOrder`
       );

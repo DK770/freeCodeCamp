@@ -8,23 +8,23 @@ dashedName: problem-311-biclinic-integral-quadrilaterals
 
 # --description--
 
-$ABCD$ ist ein konvexes, ganzseitiges Viereck mit $1 ≤ AB &lt; BC &lt; CD &lt; AD$.
+$ABCD$ is a convex, integer sided quadrilateral with $1 ≤ AB &lt; BC &lt; CD &lt; AD$.
 
-$BD$ hat eine ganzzahlige Länge. $O$ ist der Mittelpunkt von $BD$. $AO$ hat eine ganzzahlige Länge.
+$BD$ has integer length. $O$ is the midpoint of $BD$. $AO$ has integer length.
 
-Wir nennen $ABCD$ ein biclinic integral quadrilateral, wenn $AO = CO ≤ BO = DO$.
+We'll call $ABCD$ a biclinic integral quadrilateral if $AO = CO ≤ BO = DO$.
 
-Das folgende Viereck ist zum Beispiel ein biclinic integral quadrilateral: $AB = 19$, $BC = 29$, $CD = 37$, $AD = 43$, $BD = 48$ und $AO = CO = 23$.
+For example, the following quadrilateral is a biclinic integral quadrilateral: $AB = 19$, $BC = 29$, $CD = 37$, $AD = 43$, $BD = 48$ and $AO = CO = 23$.
 
-<img class="img-responsive center-block" alt="Viereck ABCD, mit Punkt O, einem Mittelpunkt von BD" src="https://cdn.freecodecamp.org/curriculum/project-euler/biclinic-integral-quadrilaterals.gif" style="background-color: white; padding: 10px;" />
+<img class="img-responsive center-block" alt="quadrilateral ABCD, with point O, an midpoint of BD" src="https://cdn.freecodecamp.org/curriculum/project-euler/biclinic-integral-quadrilaterals.gif" style="background-color: white; padding: 10px;" />
 
-Lasse $B(N)$ die Anzahl der verschiedenen biclinic integral quadrilateral $ABCD$ sein, die ${AB}^2 + {BC}^2 + {CD}^2 + {AD}^2 ≤ N$ erfüllen. Wir können überprüfen, dass $B(10\\,000) = 49$ und $B(1\\,000\\,000) = 38239$.
+Let $B(N)$ be the number of distinct biclinic integral quadrilaterals $ABCD$ that satisfy ${AB}^2 + {BC}^2 + {CD}^2 + {AD}^2 ≤ N$. We can verify that $B(10\\,000) = 49$ and $B(1\\,000\\,000) = 38239$.
 
-Finde $B(10\\,000\\,000\\,000)$.
+Find $B(10\\,000\\,000\\,000)$.
 
 # --hints--
 
-`biclinicIntegralQuadrilaterals()` sollte `2466018557` zurückgeben.
+`biclinicIntegralQuadrilaterals()` should return `2466018557`.
 
 ```js
 assert.strictEqual(biclinicIntegralQuadrilaterals(), 2466018557);

@@ -1,6 +1,6 @@
 ---
 id: 587d7b88367417b2b2512b44
-title: Написання стрілкових функцій з параметрами
+title: Запис функції Arrow з параметрами
 challengeType: 1
 forumTopicId: 301223
 dashedName: write-arrow-functions-with-parameters
@@ -8,49 +8,49 @@ dashedName: write-arrow-functions-with-parameters
 
 # --description--
 
-До стрілкової функції так само можна передати аргументи, як і до звичайної.
+Так само, як і у звичайній функції, ви можете передавати аргументи в функцію Arrow.
 
 ```js
 const doubler = (item) => item * 2;
 doubler(4);
 ```
 
-`doubler(4)` повертатиме значення `8`.
+`doubler(4)` повинен перетворюватись на `8`.
 
-Якщо стрілкова функція має один параметр, то дужки можна опустити.
+Якщо функція arrow має один параметр, то дужки можуть бути опущені.
 
 ```js
 const doubler = item => item * 2;
 ```
 
-До стрілкової функції можна передати більше одного аргументу.
+Функція може вміщати в себе більше одного аргументу.
 
 ```js
 const multiplier = (item, multi) => item * multi;
 multiplier(4, 2);
 ```
 
-`multiplier(4, 2)` повертатиме значення `8`.
+`multiplier(4, 2)` повинен перетворюватись на `8`.
 
 # --instructions--
 
-Перепишіть функцію `myConcat`, яка додає вміст `arr2` до `arr1`, щоб функція використовувала синтаксис стрілкової функції.
+Перепишіть функцію `myConcat`, яка додає вміст `arr2` до `arr1`, щоб функція використовувала синтаксис функції arrow.
 
 # --hints--
 
-Ви повинні замінити ключове слово `var`.
+Вам слід замінити ключове слово `var`.
 
 ```js
-assert.notMatch(code, /var/g);
+(getUserInput) => assert(!getUserInput('index').match(/var/g));
 ```
 
-`myConcat` повинна бути константною змінною (використовуйте `const`).
+`myConcat` має бути постійною змінною (використовуйте `const`).
 
 ```js
-assert.match(code, /const\s+myConcat/g);
+(getUserInput) => assert(getUserInput('index').match(/const\s+myConcat/g));
 ```
 
-`myConcat` повинна бути стрілковою функцією з двома параметрами
+`myConcat` має бути функцією з 2 параметрами
 
 ```js
 assert(
@@ -59,7 +59,7 @@ assert(
 );
 ```
 
-`myConcat()` має повертати `[1, 2, 3, 4, 5]`.
+`myConcat()` перетворюється на `[1, 2, 3, 4, 5]`.
 
 ```js
 assert.deepEqual(myConcat([1, 2], [3, 4, 5]), [1, 2, 3, 4, 5]);
@@ -68,7 +68,7 @@ assert.deepEqual(myConcat([1, 2], [3, 4, 5]), [1, 2, 3, 4, 5]);
 Не використовуйте ключове слово `function`.
 
 ```js
-assert.notMatch(code, /function/g);
+(getUserInput) => assert(!getUserInput('index').match(/function/g));
 ```
 
 # --seed--

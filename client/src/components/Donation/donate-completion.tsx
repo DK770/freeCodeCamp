@@ -1,9 +1,7 @@
-import { Button } from '@freecodecamp/react-bootstrap';
+import { Alert, Button } from '@freecodecamp/react-bootstrap';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Spinner from 'react-spinkit';
-import { Alert } from '@freecodecamp/ui';
-import { Spacer } from '../helpers';
 
 type DonateCompletionProps = {
   error: string | null;
@@ -35,9 +33,14 @@ function DonateCompletion({
     : `${t('donate.error')}`;
 
   return (
-    <Alert variant={style} className='donation-completion'>
-      <b>{heading}</b>
-      <Spacer size={'medium'} />
+    <Alert
+      bsStyle={style}
+      className='donation-completion'
+      closeLabel={t('buttons.close')}
+    >
+      <h4>
+        <b>{heading}</b>
+      </h4>
       <div className='donation-completion-body'>
         {(processing || redirecting) && (
           <Spinner

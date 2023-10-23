@@ -65,7 +65,7 @@ assert.deepEqual(copyMachine(['it works'], 3), [
 A função `copyMachine` deve utilizar o operador `spread` com array `arr`
 
 ```js
-assert(code.match(/\.\.\.\s*arr/));
+assert(code.match(/\.\.\.arr/));
 ```
 
 # --seed--

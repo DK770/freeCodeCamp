@@ -45,49 +45,49 @@ Some rules to keep in mind:
 
 # --hints--
 
-`canMakeWord` sollte eine Funktion sein.
+`canMakeWord` should be a function.
 
 ```js
 assert(typeof canMakeWord === 'function');
 ```
 
-`canMakeWord` sollte einen Boolean zurückgeben.
+`canMakeWord` should return a boolean.
 
 ```js
 assert(typeof canMakeWord('hi') === 'boolean');
 ```
 
-`canMakeWord("bark")` sollte true zurückgeben.
+`canMakeWord("bark")` should return true.
 
 ```js
 assert(canMakeWord(words[0]));
 ```
 
-`canMakeWord("BooK")` sollte false zurückgeben.
+`canMakeWord("BooK")` should return false.
 
 ```js
 assert(!canMakeWord(words[1]));
 ```
 
-`canMakeWord("TReAT")` sollte true zurückgeben.
+`canMakeWord("TReAT")` should return true.
 
 ```js
 assert(canMakeWord(words[2]));
 ```
 
-`canMakeWord("COMMON")` sollte false zurückgeben.
+`canMakeWord("COMMON")` should return false.
 
 ```js
 assert(!canMakeWord(words[3]));
 ```
 
-`canMakeWord("squAD")` sollte true zurückgeben.
+`canMakeWord("squAD")` should return true.
 
 ```js
 assert(canMakeWord(words[4]));
 ```
 
-`canMakeWord("conFUSE")` sollte true zurückgeben.
+`canMakeWord("conFUSE")` should return true.
 
 ```js
 assert(canMakeWord(words[5]));

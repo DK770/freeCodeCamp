@@ -1,28 +1,31 @@
-import { Button, Modal } from '@freecodecamp/react-bootstrap';
+import { Button, Modal, Table } from '@freecodecamp/react-bootstrap';
 import Loadable from '@loadable/component';
-import { graphql, useStaticQuery } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { reverse, sortBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { Table } from '@freecodecamp/ui';
 
-import envData from '../../../../config/env.json';
-import { getLangCode } from '../../../../../shared/config/i18n';
-import { getCertIds, getPathFromID } from '../../../../utils';
-import { regeneratePathAndHistory } from '../../../../../shared/utils/polyvinyl';
-import CertificationIcon from '../../../assets/icons/certification';
+import envData from '../../../../../config/env.json';
+import { getLangCode } from '../../../../../config/i18n/all-langs';
+import {
+  getCertIds,
+  getPathFromID,
+  getTitleFromId
+} from '../../../../../utils';
+import { regeneratePathAndHistory } from '../../../../../utils/polyvinyl';
+import CertificationIcon from '../../../assets/icons/certification-icon';
 import { CompletedChallenge } from '../../../redux/prop-types';
 import ProjectPreviewModal from '../../../templates/Challenges/components/project-preview-modal';
-import ExamResultsModal from '../../SolutionViewer/exam-results-modal';
 import { openModal } from '../../../templates/Challenges/redux/actions';
-import { Link, FullWidthRow } from '../../helpers';
+import { FullWidthRow, Link } from '../../helpers';
 import { SolutionDisplayWidget } from '../../solution-display-widget';
 import TimelinePagination from './timeline-pagination';
 
+import './timeline.css';
+
 const SolutionViewer = Loadable(
-  () => import('../../SolutionViewer/solution-viewer')
+  () => import('../../SolutionViewer/SolutionViewer')
 );
 
 const mapDispatchToProps = {
@@ -51,7 +54,6 @@ interface TimelineInnerProps extends TimelineProps {
 interface NameMap {
   challengeTitle: string;
   challengePath: string;
-  certPath: string;
 }
 
 function TimelineInner({
@@ -82,14 +84,6 @@ function TimelineInner({
     openModal('projectPreview');
   }
 
-  function viewExamResults(completedChallenge: CompletedChallenge): void {
-    setCompletedChallenge(completedChallenge);
-    setProjectTitle(
-      idToNameMap.get(completedChallenge.id)?.challengeTitle ?? ''
-    );
-    openModal('examResults');
-  }
-
   function closeSolution(): void {
     setSolutionOpen(false);
     setCompletedChallenge(null);
@@ -111,39 +105,34 @@ function TimelineInner({
   function renderViewButton(
     completedChallenge: CompletedChallenge
   ): React.ReactNode {
-    const { id } = completedChallenge;
-    const projectTitle = idToNameMap.get(id)?.challengeTitle || '';
     return (
       <SolutionDisplayWidget
         completedChallenge={completedChallenge}
-        projectTitle={projectTitle}
         showUserCode={() => viewSolution(completedChallenge)}
         showProjectPreview={() => viewProject(completedChallenge)}
-        showExamResults={() => viewExamResults(completedChallenge)}
-        displayContext='timeline'
+        displayContext={'timeline'}
       ></SolutionDisplayWidget>
     );
   }
 
-  function renderCompletion(completed: CompletedChallenge) {
+  function renderCompletion(completed: CompletedChallenge): JSX.Element {
     const { id } = completed;
-    const challenge = idToNameMap.get(id);
-    if (!challenge) return;
-    const { challengeTitle, challengePath, certPath } = challenge;
     const completedDate = new Date(completed.completedDate);
+    // @ts-expect-error idToNameMap is not a <string, string> Map...
+    const { challengeTitle, challengePath, certPath } = idToNameMap.get(id);
     return (
       <tr className='timeline-row' key={id}>
         <td>
           {certPath ? (
             <Link
               className='timeline-cert-link'
-              to={`/certification/${username}/${certPath}`}
+              to={`/certification/${username}/${certPath as string}`}
             >
               {challengeTitle}
               <CertificationIcon />
             </Link>
           ) : (
-            <Link to={challengePath}>{challengeTitle}</Link>
+            <Link to={challengePath as string}>{challengeTitle}</Link>
           )}
         </td>
         <td>{renderViewButton(completed)}</td>
@@ -175,77 +164,75 @@ function TimelineInner({
   const endIndex = pageNo * ITEMS_PER_PAGE;
 
   return (
-    <FullWidthRow>
-      <h2 className='text-center'>{t('profile.timeline')}</h2>
-      {completedMap.length === 0 ? (
-        <p className='text-center'>
-          {t('profile.none-completed')}&nbsp;
-          <Link to='/learn'>{t('profile.get-started')}</Link>
-        </p>
-      ) : (
-        <Table condensed={true} striped={true}>
-          <thead>
-            <tr>
-              <th>{t('profile.challenge')}</th>
-              <th>{t('settings.labels.solution')}</th>
-              <th className='text-center'>{t('profile.completed')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedTimeline.slice(startIndex, endIndex).map(renderCompletion)}
-          </tbody>
-        </Table>
-      )}
-      {id && (
-        <Modal
-          aria-labelledby='contained-modal-title'
-          onHide={closeSolution}
-          show={solutionOpen}
-        >
-          <Modal.Header closeButton={true}>
-            <Modal.Title id='contained-modal-title' className='text-center'>
-              {`${username}'s Solution to ${
-                idToNameMap.get(id)?.challengeTitle ?? ''
-              }`}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <SolutionViewer
-              challengeFiles={challengeData.challengeFiles}
-              solution={challengeData.solution ?? ''}
-            />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={closeSolution}>{t('buttons.close')}</Button>
-          </Modal.Footer>
-        </Modal>
-      )}
-      {totalPages > 1 && (
-        <TimelinePagination
-          firstPage={firstPage}
-          lastPage={lastPage}
-          nextPage={nextPage}
-          pageNo={pageNo}
-          prevPage={prevPage}
-          totalPages={totalPages}
-        />
-      )}
+    <>
+      <FullWidthRow>
+        <h2 className='text-center'>{t('profile.timeline')}</h2>
+        {completedMap.length === 0 ? (
+          <p className='text-center'>
+            {t('profile.none-completed')}&nbsp;
+            <Link to='/learn'>{t('profile.get-started')}</Link>
+          </p>
+        ) : (
+          <Table condensed={true} striped={true}>
+            <thead>
+              <tr>
+                <th>{t('profile.challenge')}</th>
+                <th>{t('settings.labels.solution')}</th>
+                <th className='text-center'>{t('profile.completed')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedTimeline.slice(startIndex, endIndex).map(renderCompletion)}
+            </tbody>
+          </Table>
+        )}
+        {id && (
+          <Modal
+            aria-labelledby='contained-modal-title'
+            onHide={closeSolution}
+            show={solutionOpen}
+          >
+            <Modal.Header closeButton={true}>
+              <Modal.Title id='contained-modal-title' className='text-center'>
+                {`${username}'s Solution to ${
+                  idToNameMap.get(id)?.challengeTitle ?? ''
+                }`}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <SolutionViewer
+                challengeFiles={challengeData.challengeFiles}
+                solution={challengeData.solution ?? ''}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={closeSolution}>{t('buttons.close')}</Button>
+            </Modal.Footer>
+          </Modal>
+        )}
+        {totalPages > 1 && (
+          <TimelinePagination
+            firstPage={firstPage}
+            lastPage={lastPage}
+            nextPage={nextPage}
+            pageNo={pageNo}
+            prevPage={prevPage}
+            totalPages={totalPages}
+          />
+        )}
+      </FullWidthRow>
       <ProjectPreviewModal
         challengeData={challengeData}
         closeText={t('buttons.close')}
         previewTitle={projectTitle}
         showProjectPreview={true}
       />
-      <ExamResultsModal
-        projectTitle={projectTitle}
-        examResults={completedChallenge?.examResults}
-      />
-    </FullWidthRow>
+    </>
   );
 }
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call*/
-function useIdToNameMap(t: TFunction): Map<string, NameMap> {
+function useIdToNameMap(): Map<string, NameMap> {
   const {
     allChallengeNode: { edges }
   } = useStaticQuery(graphql`
@@ -259,8 +246,6 @@ function useIdToNameMap(t: TFunction): Map<string, NameMap> {
                 blockName
               }
               id
-              superBlock
-              hasEditableBoundaries
               title
             }
           }
@@ -270,11 +255,9 @@ function useIdToNameMap(t: TFunction): Map<string, NameMap> {
   `);
   const idToNameMap = new Map();
   for (const id of getCertIds()) {
-    const certPath = getPathFromID(id);
-    const certName = t(`certification.title.${certPath}`);
     idToNameMap.set(id, {
-      challengeTitle: certName,
-      certPath: certPath
+      challengeTitle: `${getTitleFromId(id)} Certification`,
+      certPath: getPathFromID(id)
     });
   }
   edges.forEach(
@@ -284,20 +267,15 @@ function useIdToNameMap(t: TFunction): Map<string, NameMap> {
           // @ts-expect-error Graphql needs typing
           id,
           // @ts-expect-error Graphql needs typing
-          superBlock,
-          // @ts-expect-error Graphql needs typing
           title,
           // @ts-expect-error Graphql needs typing
-          fields: { slug, blockName },
-          // @ts-expect-error Graphql needs typing
-          hasEditableBoundaries
+          fields: { slug, blockName }
         }
       }
     }) => {
-      const blockNameTitle = t(`intro:${superBlock}.blocks.${blockName}.title`);
       idToNameMap.set(id, {
         challengeTitle: `${
-          hasEditableBoundaries ? blockNameTitle + ' - ' : ''
+          title.includes('Step') ? `${blockName} - ` : ''
         }${title}`,
         challengePath: slug
       });
@@ -308,8 +286,8 @@ function useIdToNameMap(t: TFunction): Map<string, NameMap> {
 }
 
 const Timeline = (props: TimelineProps): JSX.Element => {
-  const { completedMap, t } = props;
-  const idToNameMap = useIdToNameMap(t);
+  const idToNameMap = useIdToNameMap();
+  const { completedMap } = props;
   // Get the sorted timeline along with total page count.
   const { sortedTimeline, totalPages } = useMemo(() => {
     const sortedTimeline = reverse(

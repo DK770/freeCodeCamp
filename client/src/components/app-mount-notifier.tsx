@@ -7,7 +7,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { appMount } from '../redux/actions';
 
 interface AppMountNotifierProps {
-  children: React.ReactNode;
+  render: () => React.ReactNode;
   appMount: () => void;
 }
 
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({ appMount }, dispatch);
 
 const AppMountNotifier = ({
-  children,
+  render,
   appMount
 }: AppMountNotifierProps): JSX.Element => {
   useEffect(() => {
@@ -28,7 +28,7 @@ const AppMountNotifier = ({
   return (
     <>
       <Helmet htmlAttributes={{ lang: i18n.language }} />
-      {children}
+      {render()}
     </>
   );
 };

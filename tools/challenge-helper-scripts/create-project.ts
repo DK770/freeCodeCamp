@@ -3,19 +3,15 @@ import fs from 'fs/promises';
 import path from 'path';
 import { prompt } from 'inquirer';
 import { format } from 'prettier';
-import ObjectID from 'bson-objectid';
 
-import { SuperBlocks } from '../../shared/config/superblocks';
+import ObjectID from 'bson-objectid';
+import { SuperBlocks } from '../../config/certification-settings';
+import { blockNameify } from '../../utils/block-nameify';
 import { createStepFile } from './utils';
 import { getSuperBlockSubPath } from './fs-utils';
 import { Meta } from './helpers/project-metadata';
 
-const helpCategories = [
-  'HTML-CSS',
-  'JavaScript',
-  'Backend Development',
-  'Python'
-] as const;
+const helpCategories = ['HTML-CSS', 'JavaScript', 'Python'] as const;
 
 type BlockInfo = {
   title: string;
@@ -44,19 +40,15 @@ async function createProject(
   title?: string
 ) {
   if (!title) {
-    title = block;
+    title = blockNameify(block);
+  } else if (title !== blockNameify(block)) {
+    void updateBlockNames(block, title);
   }
   void updateIntroJson(superBlock, block, title);
+  void updateHelpCategoryMap(block, helpCategory);
 
   const challengeId = await createFirstChallenge(superBlock, block);
-  void createMetaJson(
-    superBlock,
-    block,
-    title,
-    helpCategory,
-    order,
-    challengeId
-  );
+  void createMetaJson(superBlock, block, title, order, challengeId);
   // TODO: remove once we stop relying on markdown in the client.
   void createIntroMD(superBlock, block, title);
 }
@@ -78,7 +70,35 @@ async function updateIntroJson(
   void withTrace(
     fs.writeFile,
     introJsonPath,
-    await format(JSON.stringify(newIntro), { parser: 'json' })
+    format(JSON.stringify(newIntro), { parser: 'json' })
+  );
+}
+
+async function updateHelpCategoryMap(block: string, helpCategory: string) {
+  const helpCategoryPath = path.resolve(
+    __dirname,
+    '../../client/utils/help-category-map.json'
+  );
+  const helpMap = await parseJson<Record<string, string>>(helpCategoryPath);
+  helpMap[block] = helpCategory;
+  void withTrace(
+    fs.writeFile,
+    helpCategoryPath,
+    format(JSON.stringify(helpMap), { parser: 'json' })
+  );
+}
+
+async function updateBlockNames(block: string, title: string) {
+  const blockNamesPath = path.resolve(
+    __dirname,
+    '../../utils/preformatted-block-names.json'
+  );
+  const blockNames = await parseJson<Record<string, string>>(blockNamesPath);
+  blockNames[block] = title;
+  void withTrace(
+    fs.writeFile,
+    blockNamesPath,
+    format(JSON.stringify(blockNames), { parser: 'json' })
   );
 }
 
@@ -86,7 +106,6 @@ async function createMetaJson(
   superBlock: SuperBlocks,
   block: string,
   title: string,
-  helpCategory: string,
   order: number,
   challengeId: ObjectID
 ) {
@@ -94,11 +113,10 @@ async function createMetaJson(
   const newMeta = await parseJson<Meta>('./base-meta.json');
   newMeta.name = title;
   newMeta.dashedName = block;
-  newMeta.helpCategory = helpCategory;
   newMeta.order = order;
   newMeta.superOrder = Object.values(SuperBlocks).indexOf(superBlock) + 1;
   newMeta.superBlock = superBlock;
-  newMeta.challengeOrder = [{ id: challengeId.toString(), title: 'Step 1' }];
+  newMeta.challengeOrder = [[challengeId.toString(), 'Step 1']];
   const newMetaDir = path.resolve(metaDir, block);
   if (!existsSync(newMetaDir)) {
     await withTrace(fs.mkdir, newMetaDir);
@@ -107,7 +125,7 @@ async function createMetaJson(
   void withTrace(
     fs.writeFile,
     path.resolve(metaDir, `${block}/meta.json`),
-    await format(JSON.stringify(newMeta), { parser: 'json' })
+    format(JSON.stringify(newMeta), { parser: 'json' })
   );
 }
 
@@ -115,7 +133,7 @@ async function createIntroMD(superBlock: string, block: string, title: string) {
   const introMD = `---
 title: Introduction to the ${title}
 block: ${block}
-superBlock: ${superBlock}
+superBlock: Responsive Web Design
 isBeta: true
 ---
 
@@ -209,7 +227,7 @@ void prompt([
   },
   {
     name: 'title',
-    default: ({ block }: { block: string }) => block
+    default: ({ block }: { block: string }) => blockNameify(block)
   },
   {
     name: 'helpCategory',
@@ -244,6 +262,6 @@ void prompt([
   )
   .then(() =>
     console.log(
-      'All set.  Now use pnpm run clean:client in the root and it should be good to go.'
+      'All set.  Now use npm run clean:client in the root and it should be good to go.'
     )
   );

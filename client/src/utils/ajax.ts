@@ -1,11 +1,10 @@
 import cookies from 'browser-cookies';
-import envData from '../../config/env.json';
+import envData from '../../../config/env.json';
 
 import type {
   ChallengeFile,
   ChallengeFiles,
   CompletedChallenge,
-  GenerateExamResponseWithData,
   SavedChallenge,
   SavedChallengeFile,
   User
@@ -89,6 +88,7 @@ async function request<T>(
 
 interface SessionUser {
   user?: { [username: string]: User };
+  sessionMeta: { activeDonations: number };
 }
 
 type CompleteChallengeFromApi = {
@@ -136,8 +136,6 @@ function parseApiResponseToClientUser(data: ApiUser): UserResponse {
   };
 }
 
-// TODO: this at least needs a few aliases so it's human readable
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function mapFilesToChallengeFiles<File, Rest>(
   fileContainer: ({ files: (File & { key: string })[] } & Rest)[] = []
 ) {
@@ -163,6 +161,7 @@ export function getSessionUser(): Promise<ResponseWithData<SessionUser>> {
     return {
       response,
       data: {
+        sessionMeta: data.sessionMeta,
         result,
         user
       }
@@ -212,12 +211,6 @@ export function getUsernameExists(
   username: string
 ): Promise<ResponseWithData<boolean>> {
   return get(`/api/users/exists?username=${username}`);
-}
-
-export function getGenerateExam(
-  challengeId: string
-): Promise<GenerateExamResponseWithData> {
-  return get(`/exam/${challengeId}`);
 }
 
 /** POST **/
@@ -271,12 +264,6 @@ export function postUserToken(): Promise<ResponseWithData<void>> {
   return post('/user/user-token', {});
 }
 
-export function postMsUsername(body: {
-  msTranscriptUrl: string;
-}): Promise<ResponseWithData<void>> {
-  return post('/user/ms-username', body);
-}
-
 export function postSaveChallenge(body: {
   id: string;
   files: ChallengeFiles;
@@ -314,6 +301,12 @@ export function putUpdateMySocials(
   update: Record<string, string>
 ): Promise<ResponseWithData<void>> {
   return put('/update-my-socials', update);
+}
+
+export function putUpdateMySound(
+  update: Record<string, string>
+): Promise<ResponseWithData<void>> {
+  return put('/update-my-sound', update);
 }
 
 export function putUpdateMyTheme(
@@ -367,8 +360,4 @@ export function putVerifyCert(
 /** DELETE **/
 export function deleteUserToken(): Promise<ResponseWithData<void>> {
   return deleteRequest('/user/user-token', {});
-}
-
-export function deleteMsUsername(): Promise<ResponseWithData<void>> {
-  return deleteRequest('/user/ms-username', {});
 }

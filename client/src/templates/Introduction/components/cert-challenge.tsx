@@ -1,15 +1,14 @@
 import { Button } from '@freecodecamp/react-bootstrap';
 import { navigate } from 'gatsby-link';
 import React, { useState, useEffect, MouseEvent } from 'react';
-import { useTranslation, withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
   certSlugTypeMap,
-  superBlockCertTypeMap
-} from '../../../../../shared/config/certification-settings';
-import { SuperBlocks } from '../../../../../shared/config/superblocks';
-
+  superBlockCertTypeMap,
+  SuperBlocks
+} from '../../../../../config/certification-settings';
 import { createFlashMessage } from '../../../components/Flash/redux';
 import { FlashMessages } from '../../../components/Flash/redux/flash-messages';
 import {
@@ -19,10 +18,7 @@ import {
 } from '../../../redux/selectors';
 import { User, Steps } from '../../../redux/prop-types';
 import { verifyCert } from '../../../redux/settings/actions';
-import {
-  type CertTitle,
-  liveCerts
-} from '../../../../config/cert-and-project-map';
+import { certMap } from '../../../resources/cert-and-project-map';
 
 interface CertChallengeProps {
   // TODO: create enum/reuse SuperBlocks enum somehow
@@ -37,7 +33,8 @@ interface CertChallengeProps {
   isSignedIn: boolean;
   currentCerts: Steps['currentCerts'];
   superBlock: SuperBlocks;
-  title: CertTitle;
+  t: TFunction;
+  title: typeof certMap[number]['title'];
   user: User;
   verifyCert: typeof verifyCert;
 }
@@ -73,19 +70,18 @@ const CertChallenge = ({
   createFlashMessage,
   currentCerts,
   superBlock,
+  t,
   verifyCert,
   title,
   fetchState,
   isSignedIn,
   user: { isHonest, username }
 }: CertChallengeProps): JSX.Element => {
-  const { t } = useTranslation();
   const [isCertified, setIsCertified] = useState(false);
   const [userLoaded, setUserLoaded] = useState(false);
 
-  const cert = liveCerts.find(x => x.title === title);
-  if (!cert) throw Error(`Certification ${title} not found`);
-  const certSlug = cert.certSlug;
+  // @ts-expect-error Typescript is confused
+  const certSlug = certMap.find(x => x.title === title).certSlug;
 
   useEffect(() => {
     const { pending, complete } = fetchState;
@@ -134,8 +130,7 @@ const CertChallenge = ({
         >
           {isCertified && userLoaded
             ? t('buttons.show-cert')
-            : t('buttons.go-to-settings')}{' '}
-          <span className='sr-only'>{title}</span>
+            : t('buttons.go-to-settings')}
         </Button>
       )}
     </div>
@@ -143,6 +138,8 @@ const CertChallenge = ({
 };
 
 CertChallenge.displayName = 'CertChallenge';
+
+export { CertChallenge };
 
 export default connect(
   mapStateToProps,

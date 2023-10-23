@@ -8,27 +8,21 @@ dashedName: file-metadata-microservice
 
 # --description--
 
-Створіть повний пакет застосунку JavaScript, який функціонально схожий до <a href="https://file-metadata-microservice.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://file-metadata-microservice.freecodecamp.rocks</a>. Робота над цим проєктом передбачає написання коду за допомогою одного з наступних методів:
+Створіть повний пакет додатку JavaScript, який функціонально схожий до <a href="https://file-metadata-microservice.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://file-metadata-microservice.freecodecamp.rocks</a>. Робота над цим проектом залучатиме тебе писати свій код використовуючи один з наступних методів:
 
 -   Клонуйте <a href="https://github.com/freeCodeCamp/boilerplate-project-filemetadata/" target="_blank" rel="noopener noreferrer nofollow">цей репозиторій GitHub</a> та виконайте свій проєкт локально.
 -   Використайте <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-filemetadata" target="_blank" rel="noopener noreferrer nofollow">наш стартовий проєкт Replit</a> для виконання свого проєкту.
--   Для виконання проєкту використайте конструктор сайту на власний вибір. Переконайтеся, що приєднали усі файли з нашого репозиторію GitHub.
+-   Використати конструктор сайтів на свій вибір для завершення проекту. Впевніться, що ви зберегли всі файли із нашого GitHub репозиторію.
 
-Якщо ви використовуєте Replit, виконайте наступні кроки для налаштування проєкту:
-
--   Почніть з імпорту проєкту на Replit.
--   Потім ви побачите вікно `.replit`.
--   Оберіть `Use run command` та натисніть кнопку `Done`.
-
-Після завершення переконайтеся, що демоверсія проєкту розміщена у відкритому доступі. Потім введіть URL-адресу проєкту в полі «Посилання на розв’язок». За бажанням введіть посилання на початковий код проєкту в полі «Посилання на GitHub».
+По завершенню переконайтеся, що працююча демоверсія вашого проекту розміщена у відкритому доступі. Потім введіть його URL-адресу в поле `Solution Link`. За бажанням також можете ввести посилання на вихідний код вашого проєкту в полі `GitHub Link`.
 
 # --instructions--
 
-**ПІДКАЗКА:** ви можете використати npm-пакет `multer`, щоб опрацювати завантаження файлу.
+**ПІДКАЗКА:** Ви можете використовувати npm пакет `multer` щоб опрацювати завантаження файлу.
 
 # --hints--
 
-Ви повинні надати власний проєкт, а не URL-адресу прикладу.
+Вам необхідно вказати свій власний проект, а не приклад URL-адреси.
 
 ```js
 (getUserInput) => {
@@ -40,7 +34,7 @@ dashedName: file-metadata-microservice
 };
 ```
 
-Ви можете надіслати форму, яка містить завантаження файлу.
+Ви можете надіслати форму, що включає в себе завантаження файлу.
 
 ```js
 async (getUserInput) => {
@@ -51,7 +45,7 @@ async (getUserInput) => {
 };
 ```
 
-Поле вводу файлу форми має атрибут `name` зі значенням `upfile`.
+Поле вводу файлу форми має параметр `name` встановлений в `upfile`.
 
 ```js
 async (getUserInput) => {
@@ -62,7 +56,7 @@ async (getUserInput) => {
 };
 ```
 
-Коли ви надішлете файл, то отримаєте файл `name`, `type` та `size` у байтах у відповіді JSON.
+Коли ви надсилаєте файл, ви отримуєте `name`, `type` і `size` файлу в байтах у відповіді JSON.
 
 ```js
 async (getUserInput) => {

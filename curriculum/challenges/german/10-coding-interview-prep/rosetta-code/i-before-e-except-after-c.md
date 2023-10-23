@@ -1,6 +1,6 @@
 ---
 id: 5a23c84252665b21eecc7eb0
-title: I vor E außer nach C
+title: I before E except after C
 challengeType: 1
 forumTopicId: 302288
 dashedName: i-before-e-except-after-c
@@ -25,53 +25,53 @@ If both sub-phrases are plausible then the original phrase can be said to be pla
 
 # --instructions--
 
-Write a function that accepts a word and check if the word follows this rule. Die Funktion sollte true zurückgeben, wenn das Wort der Regel folgt und false, wenn dies nicht der Fall ist.
+Write a function that accepts a word and check if the word follows this rule. The function should return true if the word follows the rule and false if it does not.
 
 # --hints--
 
-`IBeforeExceptC` sollte eine Funktion sein.
+`IBeforeExceptC` should be a function.
 
 ```js
 assert(typeof IBeforeExceptC == 'function');
 ```
 
-`IBeforeExceptC("receive")` sollte einen Boolean zurückgeben.
+`IBeforeExceptC("receive")` should return a boolean.
 
 ```js
 assert(typeof IBeforeExceptC('receive') == 'boolean');
 ```
 
-`IBeforeExceptC("receive")` sollte `true` zurückgeben.
+`IBeforeExceptC("receive")` should return `true`.
 
 ```js
 assert.equal(IBeforeExceptC('receive'), true);
 ```
 
-`IBeforeExceptC("science")` sollte `false` zurückgeben.
+`IBeforeExceptC("science")` should return `false`.
 
 ```js
 assert.equal(IBeforeExceptC('science'), false);
 ```
 
-`IBeforeExceptC("imperceivable")` sollte `true` zurückgeben.
+`IBeforeExceptC("imperceivable")` should return `true`.
 
 ```js
 assert.equal(IBeforeExceptC('imperceivable'), true);
 ```
 
-`IBeforeExceptC("inconceivable")` sollte `true` zurückgeben.
+`IBeforeExceptC("inconceivable")` should return `true`.
 
 ```js
 assert.equal(IBeforeExceptC('inconceivable'), true);
 ```
 
-`IBeforeExceptC("insufficient")` sollte `false` zurückgeben.
+`IBeforeExceptC("insufficient")` should return `false`.
 
 ```js
 assert.equal(IBeforeExceptC('insufficient'), false);
 ```
 
-`IBeforeExceptC("omniscient")` sollte `false` zurückgeben.
+`IBeforeExceptC("omniscient")` should return `false`.
 
 ```js
 assert.equal(IBeforeExceptC('omniscient'), false);

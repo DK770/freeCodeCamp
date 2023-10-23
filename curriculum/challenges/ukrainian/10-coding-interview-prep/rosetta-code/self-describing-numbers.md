@@ -29,7 +29,7 @@ There are several so-called "self-describing" or "self-descriptive" integers.
 
 # --hints--
 
-`isSelfDescribing` має бути функцією.
+`isSelfDescribing` повинен бути функцією.
 
 ```js
 assert(typeof isSelfDescribing == 'function');

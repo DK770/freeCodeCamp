@@ -1,26 +1,26 @@
-# Налаштування freeCodeCamp на Windows Subsystem for Linux (WSL)
+# Set up freeCodeCamp on Windows Subsystem for Linux (WSL)
 
-> [!NOTE] Перш ніж виконувати ці інструкції, переконайтеся, що ваша система відповідає вимогам.
+> [!NOTE] Before you follow these instructions make sure your system meets the requirements
 > 
-> **WSL 2**: Windows 10 64-bit (Version 2004, Build 19041 чи вище) — доступно для всіх дистрибутивів, включно з Windows 10 Home.
+> **WSL 2**: Windows 10 64-bit (Version 2004, Build 19041 or higher) - available for all distributions including Windows 10 Home.
 > 
-> **Docker Desktop для Windows**: див. відповідні вимоги для [Windows 10 Pro](https://docs.docker.com/docker-for-windows/install/#system-requirements) та [Windows 10 Home](https://docs.docker.com/docker-for-windows/install-windows-home/#system-requirements)
+> **Docker Desktop for Windows**: See respective requirements for [Windows 10 Pro](https://docs.docker.com/docker-for-windows/install/#system-requirements) and [Windows 10 Home](https://docs.docker.com/docker-for-windows/install-windows-home/#system-requirements)
 
-Цей посібник охоплює деякі загальні кроки з налаштуванням WSL2. Як тільки загальні питання з WSL2 вирішено, ви зможете використовувати [цей посібник з локального налаштування](how-to-setup-freecodecamp-locally.md), щоб працювати з freeCodeCamp на Windows, запускаючи дистрибутив WSL як Ubuntu.
+This guide covers some common steps with the setup of WSL2. Once some of the common issues with WSL2 are addressed, you should be able to follow [this local setup guide](how-to-setup-freecodecamp-locally.md) to work with freeCodeCamp on Windows running a WSL distro like Ubuntu.
 
-## Активуйте WSL
+## Enable WSL
 
-Дотримуйтесь інструкцій з [офіційної документації](https://docs.microsoft.com/en-us/windows/wsl/install-win10), щоб встановити WSL1 та оновити його до WSL2.
+Follow the instructions on the [official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to install WSL1 and followed by upgrading to WSL2.
 
-## Встановіть Ubuntu
+## Install Ubuntu
 
-1. Рекомендуємо використовувати Ubuntu-18.04 або вище з WSL2.
+1. We recommended using Ubuntu-18.04 or above with WSL2.
 
    > [!NOTE]
    > 
-   > Ви можете використовувати інші дистрибутиви, основою яких не є Debian, але у них наявні певні недоліки та вони виходять за рамки цього посібника.
+   > While you may use other non-debian based distros, they all come with their own gotchas and are beyond the scope of this guide.
 
-2. Оновіть залежності ОС
+2. Update the dependencies for the OS
 
    ```console
    sudo apt update
@@ -30,9 +30,9 @@
    sudo apt autoremove -y
    ```
 
-## Налаштуйте Git
+## Set up Git
 
-Git попередньо встановлений в Ubuntu 18.04. Перевірте версію Git за допомогою команди `git --version`.
+Git comes pre-installed with Ubuntu 18.04, verify your Git version with `git --version`.
 
 ```output
 ~
@@ -40,45 +40,45 @@ Git попередньо встановлений в Ubuntu 18.04. Переві�
 git version 2.25.1
 ```
 
-(Необов’язково, але рекомендовано) Тепер ви можете перейти до [налаштування ключів ssh](https://help.github.com/articles/generating-an-ssh-key) на GitHub.
+(Optional but recommended) You can now proceed to [setting up your ssh keys](https://help.github.com/articles/generating-an-ssh-key) with GitHub.
 
-## Встановлення редактора коду
+## Installing a Code Editor
 
-Ми наполегливо рекомендуємо встановити [Visual Studio Code](https://code.visualstudio.com) на Windows 10. Цей редактор підтримує WSL та автоматично встановлює всі необхідні розширення на вашому дистрибутиві WSL.
+We highly recommend installing [Visual Studio Code](https://code.visualstudio.com) on Windows 10. It has great support for WSL and automatically installs all the necessary extensions on your WSL distro.
 
-По суті, ви змінюватимете та зберігатимете свій код на Ubuntu-18.04 із VS Code, встановленим на Windows.
+Essentially, you will edit and store your code on Ubuntu-18.04 with VS Code installed on Windows.
 
-Якщо ви використовуєте [IntelliJ Idea](https://www.jetbrains.com/idea/), можливо, вам знадобиться оновити інтерпретатор Node та керування пакунками npm до версії, налаштованої у вашому дистрибутиві WSL.
+If you use [IntelliJ Idea](https://www.jetbrains.com/idea/), you may need to update your Node interpreter and Npm package manager to what is installed on your WSL distro.
 
-Ви можете перевірити ці налаштування в розділі Settings > Languages & Frameworks > Node.js and npm.
+You can check these settings by going to Settings > Languages & Frameworks > Node.js and NPM.
 
-## Встановлення Docker Desktop
+## Installing Docker Desktop
 
-**Docker Desktop на Windows** дозволяє встановити й запускати бази даних (наприклад, MongoDB) та інші служби (наприклад, NGINX), а також багато іншого. Це важливо для того, щоб уникнути помилок при налаштуванні MongoDB чи інших служб одразу на Windows або WSL2.
+**Docker Desktop for Windows** allows you to install and run databases like MongoDB and other services like NGINX and more. This is useful to avoid common pitfalls with installing MongoDB or other services directly on Windows or WSL2.
 
-Дотримуйтесь інструкцій з [офіційної документації](https://docs.docker.com/docker-for-windows/install) та встановіть Docker Desktop на свій дистрибутив Windows.
+Follow the instructuction on the [official documentation](https://docs.docker.com/docker-for-windows/install) and install Docker Desktop for your Windows distribution.
 
-Для кращого досвіду існують деякі мінімальні вимоги до апаратного забезпечення.
+There are some minimum hardware requirements for the best experience.
 
-## Налаштуйте Docker Desktop на WSL
+## Configure Docker Desktop for WSL
 
-Як тільки Docker Desktop встановлено, [дотримуйтесь цих інструкцій](https://docs.docker.com/docker-for-windows/wsl) та налаштуйте його для роботи з Ubuntu-18.04 як бекенду.
+Once Docker Desktop is installed, [follow these instructions](https://docs.docker.com/docker-for-windows/wsl) and configure it to use the Ubuntu-18.04 installation as a backend.
 
-Завдяки цьому контейнери працюють на стороні WSL, а не Windows. Ви можете отримати доступ до служб на `http://localhost` (як на Windows, так і на Ubuntu).
+This makes it so that the containers run on the WSL side instead of running on Windows. You will be able to access the services over `http://localhost` on both Windows and Ubuntu.
 
-## Встановіть MongoDB із Docker Hub
+## Install MongoDB from Docker Hub
 
-Як тільки ви налаштували Docker Desktop для роботи з WSL2, дотримуйтесь цих кроків, щоб запустити службу MongoDB:
+Once you have configured Docker Desktop to work with WSL2, follow these steps to start a MongoDB service:
 
-1. Запустіть новий термінал Ubuntu-18.04
+1. Launch a new Ubuntu-18.04 terminal
 
-2. Витягніть `MongoDB 4.0.x` із Docker Hub
+2. Pull `MongoDB 4.0.x` from dockerhub
 
    ```console
    docker pull mongo:4.0
    ```
 
-3. Запустіть службу MongoDB на порті `27017` та налаштуйте її на автоматичний запуск після перезавантаження системи
+3. Start the MongoDB service at port `27017`, and configure it to run automatically on system restarts
 
    ```console
    docker run -it \
@@ -89,45 +89,45 @@ git version 2.25.1
      -d mongo:4.0
    ```
 
-4. Тепер ви можете отримати доступ до служби з Windows чи Ubuntu на `mongodb://localhost:27017`.
+4. You can now access the service from both Windows or Ubuntu at `mongodb://localhost:27017`.
 
-## Встановлення Node.js та pnpm
+## Installing Node.js and npm
 
-Ми рекомендуємо встановити випуск LTS для Node.js за допомогою Node Version Manager ([nvm](https://github.com/nvm-sh/nvm#installing-and-updating)).
+We recommend you install the LTS release for Node.js with a node version manager - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-Як тільки його буде встановлено, використайте ці команди, щоб встановити та використовувати версію Node.js за потреби:
+Once installed use these commands to install and use the Node.js version as needed
 
 ```console
 nvm install --lts
 
-# АБО
+# OR
 # nvm install <version>
 
 nvm install 14
 
-# Використання
+# Usage
 # nvm use <version>
 
 nvm use 12
 ```
 
-Node.js надходить разом з `npm`, який можна використати для встановлення `pnpm`:
+Node.js comes bundled with `npm`, you can update to the latest versions of `npm` with:
 
 ```console
-npm install -g pnpm
+npm install -g npm@latest
 ```
 
-## Налаштуйте freeCodeCamp локально
+## Встановити freeCodeCamp локально
 
-Ви встановили передумови, тому дотримуйтесь [нашого посібника з локального налаштування](how-to-setup-freecodecamp-locally.md), щоб клонувати, встановити та налаштувати freeCodeCamp локально на своїй машині.
+Now that you have installed the pre-requisites, follow [our local setup guide](how-to-setup-freecodecamp-locally.md) to clone, install and setup freeCodeCamp locally on your machine.
 
 > [!WARNING]
 > 
-> Зауважте, що наразі налаштування тестів Cypress (та пов’язаних потреб GUI) знаходяться в стадії розробки. Ви повинні вміти працювати над більшою частиною кодової бази.
+> Please note, at this time the set up for Cypress tests (and related GUI needs) are a work in progress. You should still be able to work on most of the codebase.
 
-## Корисні посилання
+## Useful Links
 
-- [A WSL2 Dev Setup with Ubuntu 20.04, Node.js, MongoDB, VS Code, and Docker](https://hn.mrugesh.dev/wsl2-dev-setup-with-ubuntu-nodejs-mongodb-and-docker) — стаття Мругеша Мохапатри (штатний розробник freeCodeCamp.org)
-- Часті питання:
-  - [Підсистема Windows для Linux](https://docs.microsoft.com/en-us/windows/wsl/faq)
-  - [Docker Desktop для Windows](https://docs.docker.com/docker-for-windows/faqs)
+- [A WSL2 Dev Setup with Ubuntu 20.04, Node.js, MongoDB, VS Code and Docker](https://hn.mrugesh.dev/wsl2-dev-setup-with-ubuntu-nodejs-mongodb-and-docker) - an article by Mrugesh Mohapatra (Staff Developer at freeCodeCamp.org)
+- Поширені питання щодо:
+  - [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/faq)
+  - [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/faqs)

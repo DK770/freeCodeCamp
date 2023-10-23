@@ -1,11 +1,12 @@
 import { Button } from '@freecodecamp/react-bootstrap';
 import React from 'react';
-import type { TFunction } from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import { openModal } from '../redux/actions';
+
+import './tool-panel.css';
 
 const mapStateToProps = () => ({});
 
@@ -23,13 +24,13 @@ interface ToolPanelProps {
   t: TFunction;
 }
 
-function ToolPanel({
+export function ToolPanel({
   guideUrl,
   openHelpModal,
   t
 }: ToolPanelProps): JSX.Element {
   return (
-    <>
+    <div className='tool-panel-group project-tool-panel'>
       {guideUrl && (
         <Button
           block={true}
@@ -49,7 +50,7 @@ function ToolPanel({
       >
         {t('buttons.ask-for-help')}
       </Button>
-    </>
+    </div>
   );
 }
 

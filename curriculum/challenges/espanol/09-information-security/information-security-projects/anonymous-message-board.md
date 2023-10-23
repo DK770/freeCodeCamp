@@ -16,13 +16,7 @@ Trabajar en este proyecto implicará escribir tu código utilizando uno de los s
 -   Usa <a href="https://replit.com/github/freeCodeCamp/boilerplate-project-messageboard" target="_blank" rel="noopener noreferrer nofollow">nuestra plantilla en Replit</a> para completar tu proyecto.
 -   Utiliza un constructor de sitios de tu elección para completar el proyecto. Asegúrate de incorporar todos los archivos de nuestro repositorio GitHub.
 
-Si usas Replit, sigue estos pasos para configurar el proyecto:
-
--   Empieza importando el proyecto en Replit.
--   Siguiente, verás una ventana`.replit`.
--   Selecciona `Use run command` y da click en el botón `Done`.
-
-Cuando lo hayas hecho, asegurate que haya una demo de trabajo de tu proyecto hospedada en un sitio público. Then submit the URL to it in the Solution Link field. Optionally, also submit a link to your project's source code in the GitHub Link field.
+Cuando hayas terminado, asegúrate de que un demo funcional de tu proyecto esté alojado en algún lugar público. Luego, envía la URL en el campo `Solution Link`. Opcionalmente, también envía un enlace al código fuente de tu proyecto en el campo `GitHub Link`.
 
 # --instructions--
 
@@ -32,20 +26,20 @@ Cuando lo hayas hecho, asegurate que haya una demo de trabajo de tu proyecto hos
 
 Escribe las siguientes pruebas en `tests/2_functional-tests.js`:
 
--   Creando un nuevo hilo: POST petición a `/api/threads/{board}`
--   Visualización de los 10 más recientes hilos con 3 respuestas cada: GET petición a `/api/threads/{board}`
--   Eliminar un hilo con la contraseña incorrecta: DELETE request to `/api/threads/{board}` with an invalid `delete_password`
--   Eliminar un hilo con la contraseña correcta: DELETE request to `/api/threads/{board}` with a valid `delete_password`
--   Reportando un hilo: petición PUT a `/api/threads/{board}`
--   Creando una nueva contestación: petición POST a`/api/replies/{board}`
--   Visualizando un único hilo con todas las contestaciones: GET peticiones hacia `/api/replies/{board}`
--   Eliminando una respuesta con la contraseña incorrecta: DELETE request to `/api/replies/{board}` with an invalid `delete_password`
--   Eliminando una respuesta con la contraseña correcta: DELETE request to `/api/replies/{board}` with a valid `delete_password`
--   Reporte de una respuesta: solicitud PUT a`/api/replies/{board}`
+-   Creando un nuevo hilo: solicitud de POST a `/api/threads/{board}`
+-   Viendo los 10 hilos más recientes con 3 respuestas cada una: Solicitud GET a `/api/threads/{board}`
+-   Eliminando un hilo con la contraseña incorrecta: solicitud de DELETE a `/api/threads/{board}` con una `delete_password` inválida
+-   Eliminando un hilo con la contraseña incorrecta: solicitud de DELETE a `/api/threads/{board}` con una `delete_password` inválida
+-   Creando un nuevo hilo: solicitud de PUT a `/api/threads/{board}`
+-   Creando una nueva respuesta: solicitud de POST a `/api/replies/{board}`
+-   Viendo un hilo simple con todas las respuestas: Solicitud GET a `/api/replies/{board}`
+-   Eliminando una respuesta con la contraseña incorrecta: solicitud de DELETE a `/api/replies/{board}` con un `delete_password` inválido
+-   Eliminando una respuesta con la contraseña correcta: solicitud de DELETE a `/api/replies/{board}` con un `delete_password` válido
+-   Creando una respuesta: solicitud de PUT a `/api/replies/{board}`
 
 # --hints--
 
-Puedes proporcionar tu propio proyecto, no la URL ejemplo.
+Puedes proporcionar tu propio proyecto, no la URL de ejemplo.
 
 ```js
 (getUserInput) => {
@@ -57,7 +51,7 @@ Puedes proporcionar tu propio proyecto, no la URL ejemplo.
 };
 ```
 
-Solo permitele a tu sitio ser cargado dentro de un iFrame sobre tus propias páginas.
+Solo permite que tu sitio se cargue en un iFrame en tus propias páginas.
 
 ```js
 async (getUserInput) => {
@@ -67,7 +61,7 @@ async (getUserInput) => {
 };
 ```
 
-No se permite DNS prefetching.
+No permitas la captación previa de DNS.
 
 ```js
 async (getUserInput) => {
@@ -77,7 +71,7 @@ async (getUserInput) => {
 };
 ```
 
-Solo permite a tu sitio enviar a lo concerniente para tus propias páginas.
+Solo permite que tu sitio envíe el referente hacia tus propias páginas.
 
 ```js
 async (getUserInput) => {
@@ -87,7 +81,7 @@ async (getUserInput) => {
 };
 ```
 
-Puedes enviar una petición POST a `/api/threads/{board}` con el formulario de datos incluyendo `text` and `delete_password`. El registo de base de datos tendrá al menos los campos: `_id`, `text`, `created_on`(date & time), `bumped_on`(date & time, starts same as `created_on`), `reported` (boolean), `delete_password`, & `replies` (array).
+Puedes enviar una solicitud POST a `/api/threads/{board}` con datos de formulario incluyendo `text` y `delete_password`. El registro de base de datos guardado tendrá al menos los campos `_id`, `text`, `created_on`(fecha & hora), `bumped_on`(fecha & hora, comienza igual que `created_on`), `reported` (boolean), `delete_password`, & `replies` (arreglo).
 
 ```js
 async (getUserInput) => {
@@ -119,7 +113,7 @@ async (getUserInput) => {
 };
 ```
 
-Puedes enviar una petición POST a `/api/replies/{board}` con el fomulario de datos incluyendo:`text`, `delete_password`, & `thread_id`. Esto actualizará la fecha `bumped_on` en la fecha de comentarios. En el arreglo de hilos `replies`, un Objeto será guardado con al menos las propiedades: `_id`, `text`, `created_on`, `delete_password`, & `reported`.
+Puedes enviar una solicitud POST a `/api/replies/{board}` con datos de formulario incluyendo `text`, `delete_password`, & `thread_id`. Esto actualizará la fecha de `bumped_on` a la fecha del comentario. En el arreglo de `replies` del hilo, un objeto se guardará con al menos las propiedades `_id`, `text`, `created_on`, `delete_password`, & `reported`.
 
 ```js
 async (getUserInput) => {
@@ -156,7 +150,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a GET request to `/api/threads/{board}`. Returned will be an array of the most recent 10 bumped threads on the board with only the most recent 3 replies for each. The `reported` and `delete_password` fields will not be sent to the client.
+Puedes enviar una solicitud GET a `/api/threads/{board}`. Se devolverá un arreglo de los 10 hilos más recientes en el tablero con solo las 3 respuestas más recientes para cada uno. Los campos `reported` y `delete_password` no serán enviados al cliente.
 
 ```js
 async (getUserInput) => {
@@ -187,7 +181,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a GET request to `/api/replies/{board}?thread_id={thread_id}`. Returned will be the entire thread with all its replies, also excluding the same fields from the client as the previous test.
+Puedes enviar una solicitud GET a `/api/replies/{board}?thread_id={thread_id}`. Se devolverá el hilo completo con todas sus respuestas, también excluyendo los mismos campos del cliente que la prueba anterior.
 
 ```js
 async (getUserInput) => {
@@ -219,7 +213,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a DELETE request to `/api/threads/{board}` and pass along the `thread_id` & `delete_password` to delete the thread. Devuelta será la cadena `incorrect password` o `success`.
+Puedes enviar una solicitud DELETE a `/api/threads/{board}` y pasar a lo largo del `thread_id` & `delete_password` para eliminar el hilo. Devuelto será la cadena `incorrect password` o `success`.
 
 ```js
 async (getUserInput) => {
@@ -256,7 +250,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a DELETE request to `/api/replies/{board}` and pass along the `thread_id`, `reply_id`, & `delete_password`. Returned will be the string `incorrect password` or `success`. On success, the text of the `reply_id` will be changed to `[deleted]`.
+Puedes enviar una solicitud DELETE a `/api/replies/{board}` y pasar a lo largo del `thread_id`, `reply_id`, & `delete_password`. Devuelta será la cadena `incorrect password` o `success`. En caso de éxito, el texto del `reply_id` se cambiará a `[deleted]`.
 
 ```js
 async (getUserInput) => {
@@ -311,7 +305,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a PUT request to `/api/threads/{board}` and pass along the `thread_id`. Devuelta será la cadena `reported`. The `reported` value of the `thread_id` will be changed to `true`.
+Puedes enviar una solicitud PUT a `/api/threads/{board}` y pasar a lo largo del `thread_id`. Devuelta será la cadena `reported`. El valor `reported` del `thread_id` será cambiado a `true`.
 
 ```js
 async (getUserInput) => {
@@ -319,8 +313,8 @@ async (getUserInput) => {
 
   let res = await fetch(`${url}/api/threads/fcc_test`);
   const threads = await res.json();
-  const thread_id = threads[0]._id;
-  const data = { thread_id };
+  const report_id = threads[0]._id;
+  const data = { report_id };
 
   res = await fetch(`${url}/api/threads/fcc_test`, {
     method: 'PUT',
@@ -342,7 +336,7 @@ async (getUserInput) => {
 };
 ```
 
-You can send a PUT request to `/api/replies/{board}` and pass along the `thread_id` & `reply_id`. Returned will be the string `reported`. The `reported` value of the `reply_id` will be changed to `true`.
+Puedes enviar una solicitud PUT a`/api/replies/{board}` y pasar a lo largo de `thread_id` & `reply_id`. Devuelta será la cadena `reported`. El valor `reported` del `reply_id` será cambiado a `true`.
 
 ```js
 async (getUserInput) => {
@@ -374,7 +368,7 @@ async (getUserInput) => {
 };
 ```
 
-All 10 functional tests are complete and passing.
+Las 10 pruebas funcionales están completas y pasan.
 
 ```js
 async (getUserInput) => {

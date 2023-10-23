@@ -14,9 +14,9 @@ function GreenPass(props: GreenPassProps): JSX.Element {
       <svg
         {...(hushScreenReaderText && { 'aria-hidden': true })}
         {...(!hushScreenReaderText && { 'aria-label': t('icons.passed') })}
-        height='15'
+        height='50'
         viewBox='0 0 200 200'
-        width='15'
+        width='50'
         xmlns='http://www.w3.org/2000/svg'
         {...rest}
       >

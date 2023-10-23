@@ -1,6 +1,6 @@
 ---
 id: 587d7fb5367417b2b2512c03
-title: Використайте карету, щоб використати останню мінорну версію залежності
+title: Використовуйте Caret-Character для використання останньої мінорної версії залежностей
 challengeType: 2
 forumTopicId: 301531
 dashedName: use-the-caret-character-to-use-the-latest-minor-version-of-a-dependency
@@ -8,25 +8,25 @@ dashedName: use-the-caret-character-to-use-the-latest-minor-version-of-a-depende
 
 # --description--
 
-Подібно до символу тильда, про який ми дізналися в попередньому завданні та який дозволяє npm встановити найновіший PATCH для залежності, символ карет (`^`) також дозволяє npm встановлювати майбутні оновлення. Відмінність полягає в тому, що символ карет дозволяє оновлення і MINOR, і PATCH.
+Подібно символу тильда, про який ми дізналися в останньому завданні, npm дозволяє встановити найновіший ПАТЧ для залежності, символ карет (`^`) дозволяє npm також встановлювати майбутні оновлення. Відмінність полягає в тому, що символ карет дозволяє і ДРУГОРЯДНІ оновлення, і ПАТЧІ.
 
-Поточною версією `@freecodecamp/example` повинна бути `~1.2.13`, що дозволяє npm встановлювати останню версію `1.2.x`. Якби ви використали символ (^) як префікс версії, npm було б дозволено оновлюватись до будь-якої версії `1.x.x`.
+Your current version of `@freecodecamp/example` should be "~1.2.13" which allows npm to install to the latest 1.2.x version. If you were to use the caret (^) as a version prefix instead, npm would be allowed to update to any 1.x.x version.
 
 ```json
 "package": "^1.3.8"
 ```
 
-Це дозволить оновлюватися до будь-якої `1.x.x` версії пакету.
+Це б дозволило оновлювати будь-яку версію 1.xx пакета.
 
 # --instructions--
 
-Використайте символ карет (`^`), щоб встановити префікс версії `@freecodecamp/example` у своїх залежностях і дозволити npm оновлення до будь-якої версії MINOR.
+Use the caret (`^`) to prefix the version of `@freecodecamp/example` in your dependencies and allow npm to update it to any new MINOR release.
 
-**Примітка:** не потрібно змінювати номери версій.
+**Примітка:** Номери версій не слід змінювати.
 
 # --hints--
 
-`"dependencies"` має містити `"@freecodecamp/example"`.
+`"dependencies"` should include `"@freecodecamp/example"`.
 
 ```js
 (getUserInput) =>
@@ -45,7 +45,7 @@ dashedName: use-the-caret-character-to-use-the-latest-minor-version-of-a-depende
   );
 ```
 
-Версія `"@freecodecamp/example"` має відповідати `"^1.x.x"`.
+`"@freecodecamp/example"` version should match `"^1.x.x"`.
 
 ```js
 (getUserInput) =>

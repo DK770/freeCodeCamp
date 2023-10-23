@@ -25,13 +25,13 @@ Example outputs:
 
 # --hints--
 
-`getDateFormats` sollte eine Funktion sein.
+`getDateFormats` should be a function.
 
 ```js
 assert(typeof getDateFormats === 'function');
 ```
 
-`getDateFormats` sollte ein Objekt zurückgeben.
+`getDateFormats` should return an object.
 
 ```js
 assert(typeof getDateFormats() === 'object');

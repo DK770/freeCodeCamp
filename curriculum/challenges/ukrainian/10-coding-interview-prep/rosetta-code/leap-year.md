@@ -12,7 +12,7 @@ dashedName: leap-year
 
 # --hints--
 
-`isLeapYear` має бути функцією.
+`isLeapYear` повинен бути функцією.
 
 ```js
 assert(typeof isLeapYear == 'function');

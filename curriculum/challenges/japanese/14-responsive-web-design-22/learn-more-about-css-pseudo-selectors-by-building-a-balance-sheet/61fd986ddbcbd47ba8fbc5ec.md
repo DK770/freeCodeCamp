@@ -7,61 +7,61 @@ dashedName: step-23
 
 # --description--
 
-3 つ目の `tr` 内に `th` 要素を追加して、テキストを `Credit The outstanding balance on our credit card.` に設定してください。 テキストの `Credit` 以外の文を `span` 要素で囲み、`class` 属性を `description` に設定してください。
+Within the third `tr`, add a `th` element with the text `Credit The outstanding balance on our credit card.`. Wrap that text, except for `Credit`, within a `span` element with the `class` set to `description`.
 
-その下に `td` 要素を 3 つ追加して、`$50`、`$50`、`$75` というテキストをこの順で追加してください。 そして 3 つ目の `td` 要素の `class` を `current` に設定してください。
+Add three `td` elements below that, and give them the following text, in order: `$50`, `$50`, and `$75`. Give the third `td` element a `class` set to `current`.
 
 # --hints--
 
-3 つ目の `tr` 要素内に `th` 要素が 1 つ必要です。
+Your third `tr` should have a `th` element.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelector('th'));
 ```
 
-`th` 要素のテキストは `Credit The outstanding balance on our credit card.` にする必要があります。
+Your `th` element should have the text `Credit The outstanding balance on our credit card.`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelector('th')?.innerText === 'Credit The outstanding balance on our credit card.');
 ```
 
-`The outstanding balance on our credit card.` というテキストを `span` 要素で囲む必要があります。
+You should wrap the text `The outstanding balance on our credit card.` in a `span` element.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelector('th > span')?.textContent === 'The outstanding balance on our credit card.');
 ```
 
-`span` 要素の `class` 属性を `description` に設定する必要があります。
+Your `span` element should have the `class` attribute set to `description`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelector('th > span')?.classList?.contains('description'));
 ```
 
-`td` 要素が 3 つ必要です。
+You should have three `td` elements.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelectorAll('td').length === 3);
 ```
 
-1 つ目の `td` 要素には `$50` というテキストが必要です。
+Your first `td` element should have the text `$50`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelectorAll('td')?.[0]?.textContent === '$50');
 ```
 
-2 つ目の `td` 要素には `$50` というテキストが必要です。
+Your second `td` element should have the text `$50`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelectorAll('td')?.[1]?.textContent === '$50');
 ```
 
-3 つ目の `td` 要素には `$75` というテキストが必要です。
+Your third `td` element should have the text `$75`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelectorAll('td')?.[2]?.textContent === '$75');
 ```
 
-3 つ目の `td` 要素の `class` を `current` に設定する必要があります。
+Your third `td` element should have the `class` set to `current`.
 
 ```js
 assert(document.querySelectorAll('table')?.[1]?.querySelector('tbody')?.querySelectorAll('tr')?.[2]?.querySelectorAll('td')?.[2]?.classList?.contains('current'));

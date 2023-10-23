@@ -1,13 +1,14 @@
-import { Button } from '@freecodecamp/react-bootstrap';
-import { Dropdown, MenuItem } from '@freecodecamp/ui';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  Button,
+  DropdownButton,
+  MenuItem
+} from '@freecodecamp/react-bootstrap';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { createSelector } from 'reselect';
-import { challengeTypes } from '../../../../../shared/config/challenge-types';
+import { challengeTypes } from '../../../../utils/challenge-types';
 
 import './tool-panel.css';
 import { openModal, executeChallenge } from '../redux/actions';
@@ -100,44 +101,43 @@ function ToolPanel({
           className='btn-invert'
           onClick={openResetModal}
         >
-          {isMobile ? t('buttons.reset') : t('buttons.reset-lesson')}
+          {isMobile ? t('buttons.reset') : t('buttons.reset-code')}
         </Button>
       )}
-      <Dropdown dropup>
-        <Dropdown.Toggle
-          id={'get-help-dropdown'}
-          data-playwright-test-label='get-help-dropdown'
-        >
-          {isMobile ? t('buttons.help') : t('buttons.get-help')}
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          {guideUrl ? (
-            <MenuItem
-              href={guideUrl}
-              target='_blank'
-              data-playwright-test-label='get-hint'
-            >
-              {t('buttons.get-hint')}{' '}
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-              <span className='sr-only'>, {t('aria.opens-new-window')}</span>
-            </MenuItem>
-          ) : null}
-          {videoUrl ? (
-            <MenuItem
-              onClick={openVideoModal}
-              data-playwright-test-label='watch-a-video'
-            >
-              {t('buttons.watch-video')}
-            </MenuItem>
-          ) : null}
+      <DropdownButton
+        block={true}
+        bsStyle='primary'
+        className='btn-invert'
+        id='get-help-dropdown'
+        title={isMobile ? t('buttons.help') : t('buttons.get-help')}
+      >
+        {guideUrl ? (
           <MenuItem
-            onClick={openHelpModal}
-            data-playwright-test-label='ask-for-help'
+            bsStyle='primary'
+            className='btn-invert'
+            href={guideUrl}
+            target='_blank'
           >
-            {t('buttons.ask-for-help')}
+            {t('buttons.get-hint')}
           </MenuItem>
-        </Dropdown.Menu>
-      </Dropdown>
+        ) : null}
+        {videoUrl ? (
+          <MenuItem
+            bsStyle='primary'
+            className='btn-invert'
+            onClick={openVideoModal}
+          >
+            {t('buttons.watch-video')}
+          </MenuItem>
+        ) : null}
+        <MenuItem
+          bsStyle='primary'
+          className='btn-invert'
+          onClick={openHelpModal}
+        >
+          {t('buttons.ask-for-help')}
+        </MenuItem>
+      </DropdownButton>
     </div>
   );
 }

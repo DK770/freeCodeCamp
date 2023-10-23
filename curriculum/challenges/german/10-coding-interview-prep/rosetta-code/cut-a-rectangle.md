@@ -96,43 +96,43 @@ Write a function that calculates the number of different ways to cut an *m* × *
 
 # --hints--
 
-`cutRectangle` sollte eine Funktion sein.
+`cutRectangle` should be a function.
 
 ```js
 assert(typeof cutRectangle == 'function');
 ```
 
-`cutRectangle(2, 2)` sollte eine Zahl zurückgeben.
+`cutRectangle(2, 2)` should return a number.
 
 ```js
 assert(typeof cutRectangle(2, 2) == 'number');
 ```
 
-`cutRectangle(2, 2)` sollte `2` zurückgeben.
+`cutRectangle(2, 2)` should return `2`.
 
 ```js
 assert.equal(cutRectangle(2, 2), 2);
 ```
 
-`cutRectangle(4, 3)` sollte `9` zurückgeben.
+`cutRectangle(4, 3)` should return `9`.
 
 ```js
 assert.equal(cutRectangle(4, 3), 9);
 ```
 
-`cutRectangle(4, 4)` sollte `22` zurückgeben.
+`cutRectangle(4, 4)` should return `22`.
 
 ```js
 assert.equal(cutRectangle(4, 4), 22);
 ```
 
-`cutRectangle(8, 3)` sollte `53` zurückgeben.
+`cutRectangle(8, 3)` should return `53`.
 
 ```js
 assert.equal(cutRectangle(8, 3), 53);
 ```
 
-`cutRectangle(7, 4)` sollte `151` zurückgeben.
+`cutRectangle(7, 4)` should return `151`.
 
 ```js
 assert.equal(cutRectangle(7, 4), 151);

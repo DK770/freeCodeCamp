@@ -16,7 +16,7 @@ dashedName: test-if-a-variable-or-function-is-defined
 
 # --hints--
 
-すべてのテストが成功する必要があります。
+すべてのテストに合格する必要があります。
 
 ```js
 (getUserInput) =>

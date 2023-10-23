@@ -47,33 +47,32 @@ assert(typeof farey === 'function');
 assert(Array.isArray(farey(3)));
 ```
 
-`farey(3)` should return `['0/1','1/3','1/2','2/3','1/1']`
+`farey(3)` should return `["1/3","1/2","2/3"]`
 
 ```js
-assert.deepEqual(farey(3),['0/1', '1/3', '1/2', '2/3', '1/1']);
+assert.deepEqual(farey(3), ['1/3', '1/2', '2/3']);
 ```
 
-`farey(4)` should return `['0/1','1/4','1/3','1/2','2/3','3/4','1/1']`
+`farey(4)` should return `["1/4","1/3","1/2","2/4","2/3","3/4"]`
 
 ```js
-assert.deepEqual(farey(4), ['0/1', '1/4', '1/3', '1/2', '2/3', '3/4', '1/1']);
+assert.deepEqual(farey(4), ['1/4', '1/3', '1/2', '2/4', '2/3', '3/4']);
 ```
 
-`farey(5)` should return `['0/1','1/5','1/4','1/3','2/5','1/2','3/5','2/3','3/4','4/5','1/1']`
+`farey(5)` should return `["1/5","1/4","1/3","2/5","1/2","2/4","3/5","2/3","3/4","4/5"]`
 
 ```js
 assert.deepEqual(farey(5), [
-  '0/1',
   '1/5',
   '1/4',
   '1/3',
   '2/5',
   '1/2',
+  '2/4',
   '3/5',
   '2/3',
   '3/4',
-  '4/5',
-  '1/1'
+  '4/5'
 ]);
 ```
 
@@ -90,17 +89,21 @@ function farey(n) {
 # --solutions--
 
 ```js
-function farey(n) {
-  const sequence = [{ string: "0/1", float: 0.0 }];
-  for (let i = 1; i < n; i++) {
-    for (let j = n; j >= i; j--) {
-      if (i === 1 || j % i > 0) {
-        sequence.push({ string: `${i}/${j}`, float: i / j });
-      }
+function farey(n){
+    let farSeq=[];
+    for(let den = 1; den <= n; den++){
+        for(let num = 1; num < den; num++){
+            farSeq.push({
+                str:num+"/"+den,
+                val:num/den});
+        }
     }
-  }
-  return sequence
-    .sort((a, b) => a.float - b.float)
-    .map(e => e.string)
+    farSeq.sort(function(a,b){
+        return a.val-b.val;
+    });
+    farSeq=farSeq.map(function(a){
+        return a.str;
+    });
+    return farSeq;
 }
 ```

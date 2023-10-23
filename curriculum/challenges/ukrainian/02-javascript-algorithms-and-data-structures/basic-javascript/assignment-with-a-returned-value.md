@@ -1,6 +1,6 @@
 ---
 id: 56533eb9ac21ba0edf2244c3
-title: Присвоєння з поверненим значенням
+title: Призначення з поверненим значенням
 challengeType: 1
 videoUrl: 'https://scrimba.com/c/ce2pEtB'
 forumTopicId: 16658
@@ -9,29 +9,29 @@ dashedName: assignment-with-a-returned-value
 
 # --description--
 
-Якщо пригадати з нашої розмови про <a href="/ukrainian/learn/javascript-algorithms-and-data-structures/basic-javascript/storing-values-with-the-assignment-operator" target="_blank" rel="noopener noreferrer nofollow">збереження значень за допомогою оператора присвоєння</a>, все, що знаходиться праворуч від знака рівності вирішено ще до того, як значення буде присвоєне. Це означає, що ми можемо взяти повернене значення функції та присвоїти його змінній.
+If you'll recall from our discussion about <a href="/learn/javascript-algorithms-and-data-structures/basic-javascript/storing-values-with-the-assignment-operator" target="_blank" rel="noopener noreferrer nofollow">Storing Values with the Assignment Operator</a>, everything to the right of the equal sign is resolved before the value is assigned. Це означає, що ми можемо взяти повернене значення функції та присвоїти її змінній.
 
-Припустимо, що ми визначили функцію `sum`, яка додає два числа.
+Припустимо, у нас уже є визначена функція `sum`, яка додає два числа, тоді:
 
 ```js
 ourSum = sum(5, 12);
 ```
 
-Виклик функції `sum` з аргументами `5` та `12` призведе до поверненого значення `17`. Це повернене значення присвоюється до змінної `ourSum`.
+вона називатиметься функцією `sum`, яка повертає значення `17` і призначає її змінній `ourSum`.
 
 # --instructions--
 
-Викличте функцію `processArg` з аргументом `7` та присвойте її повернене значення до змінної `processed`.
+Назвіть функцію `processArg` з аргументом `7` і присвойте її повернене значення змінній `processed`.
 
 # --hints--
 
-`processed` повинна мати значення `2`
+`processed` повинне мати значення `2`
 
 ```js
 assert(processed === 2);
 ```
 
-Ви повинні присвоїти `processArg` до `processed`
+`processArg` потрібно призначити `processed`
 
 ```js
 assert(/processed\s*=\s*processArg\(\s*7\s*\)/.test(code));

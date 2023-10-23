@@ -1,6 +1,6 @@
 ---
 id: ac6993d51946422351508a41
-title: Скорочення рядка
+title: Алгоритм Truncate a String (Скорочення рядка)
 challengeType: 1
 forumTopicId: 16089
 dashedName: truncate-a-string
@@ -8,11 +8,11 @@ dashedName: truncate-a-string
 
 # --description--
 
-Скоротіть рядок (перший аргумент), якщо він довший за максимальну довжину рядка (другий аргумент). Поверніть скорочений рядок із закінченням `...`.
+Скоротіть рядок якщо перший аргумент довший ніж задана максимальна довжина рядка (другий аргумент). Перетворіть скорочений рядок на `...`.
 
 # --hints--
 
-`truncateString("A-tisket a-tasket A green and yellow basket", 8)` має повертати рядок `A-tisket...`.
+`truncateString("A-tisket a-tasket A green and yellow basket", 8)` має повернути рядок `A-tisket...`.
 
 ```js
 assert(
@@ -21,7 +21,7 @@ assert(
 );
 ```
 
-`truncateString("Peter Piper picked a peck of pickled peppers", 11)` має повертати рядок `Peter Piper...`.
+`truncateString("Peter Piper picked a peck of pickled peppers", 11)` має повернути рядок `Peter Piper...`.
 
 ```js
 assert(
@@ -30,7 +30,7 @@ assert(
 );
 ```
 
-`truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length)` має повертати рядок `A-tisket a-tasket A green and yellow basket`.
+`truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length)` має повернути рядок `A-tisket a-tasket A green and yellow basket`.
 
 ```js
 assert(
@@ -41,7 +41,7 @@ assert(
 );
 ```
 
-`truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2)` має повертати рядок `A-tisket a-tasket A green and yellow basket`.
+`truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2)` має повернути рядок `A-tisket a-tasket A green and yellow basket`.
 
 ```js
 assert(
@@ -52,13 +52,13 @@ assert(
 );
 ```
 
-`truncateString("A-", 1)` має повертати рядок `A...`.
+`truncateString("A-", 1)` має повернути рядок `A...`.
 
 ```js
 assert(truncateString('A-', 1) === 'A...');
 ```
 
-`truncateString("Absolutely Longer", 2)` має повертати рядок `Ab...`.
+`truncateString("Absolutely Longer", 2)` має повернути рядок `Ab...`.
 
 ```js
 assert(truncateString('Absolutely Longer', 2) === 'Ab...');

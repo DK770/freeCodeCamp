@@ -1,6 +1,6 @@
 ---
 id: 587d824b367417b2b2512c4b
-title: Benutze das Dreifache Gleichheitszeichen um die strikte Gleichheit anzugeben
+title: Use the Triple Equals to Assert Strict Equality
 challengeType: 2
 forumTopicId: 301610
 dashedName: use-the-triple-equals-to-assert-strict-equality
@@ -18,7 +18,7 @@ Within `tests/1_unit-tests.js` under the test labelled `#6` in the `Equality` su
 
 # --hints--
 
-Alle Tests sollten bestanden werden.
+All tests should pass.
 
 ```js
 (getUserInput) =>
@@ -32,7 +32,7 @@ Alle Tests sollten bestanden werden.
   );
 ```
 
-Du solltest die richtige Methode für die erste Behauptung wählen - `strictEqual` vs. `notStrictEqual`.
+You should choose the correct method for the first assertion - `strictEqual` vs. `notStrictEqual`.
 
 ```js
 (getUserInput) =>
@@ -50,7 +50,7 @@ Du solltest die richtige Methode für die erste Behauptung wählen - `strictEqua
   );
 ```
 
-Du solltest die richtige Methode für die zweite Behauptung wählen - `strictEqual` vs. `notStrictEqual`.
+You should choose the correct method for the second assertion - `strictEqual` vs. `notStrictEqual`.
 
 ```js
 (getUserInput) =>
@@ -64,7 +64,7 @@ Du solltest die richtige Methode für die zweite Behauptung wählen - `strictEqu
   );
 ```
 
-Du solltest die richtige Methode für die dritte Behauptung wählen - `strictEqual` vs. `notStrictEqual`.
+You should choose the correct method for the third assertion - `strictEqual` vs. `notStrictEqual`.
 
 ```js
 (getUserInput) =>
@@ -82,7 +82,7 @@ Du solltest die richtige Methode für die dritte Behauptung wählen - `strictEqu
   );
 ```
 
-Du solltest die richtige Methode für die vierte Behauptung wählen - `strictEqual` vs. `notStrictEqual`.
+You should choose the correct method for the fourth assertion - `strictEqual` vs. `notStrictEqual`.
 
 ```js
 (getUserInput) =>

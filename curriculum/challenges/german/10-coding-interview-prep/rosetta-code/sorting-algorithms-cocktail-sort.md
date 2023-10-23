@@ -16,37 +16,37 @@ Write a function that sorts a given array using cocktail sort.
 
 # --hints--
 
-`cocktailSort` sollte eine Funktion sein.
+`cocktailSort` should be a function.
 
 ```js
 assert(typeof cocktailSort == 'function');
 ```
 
-`cocktailSort([25, 32, 12, 7, 20])` sollte ein Array zurückgeben.
+`cocktailSort([25, 32, 12, 7, 20])` should return an array.
 
 ```js
 assert(Array.isArray(cocktailSort([25, 32, 12, 7, 20])));
 ```
 
-`cocktailSort([25, 32, 12, 7, 20])` sollte `[7, 12, 20, 25, 32]` zurückgeben.
+`cocktailSort([25, 32, 12, 7, 20])` should return `[7, 12, 20, 25, 32]`.
 
 ```js
 assert.deepEqual(cocktailSort([25, 32, 12, 7, 20]), [7, 12, 20, 25, 32]);
 ```
 
-`cocktailSort([38, 45, 35, 8, 13])` sollte `[8, 13, 35, 38, 45]` zurückgeben.
+`cocktailSort([38, 45, 35, 8, 13])` should return `[8, 13, 35, 38, 45]`.
 
 ```js
 assert.deepEqual(cocktailSort([38, 45, 35, 8, 13]), [8, 13, 35, 38, 45]);
 ```
 
-`cocktailSort([43, 36, 20, 34, 24])` sollte `[20, 24, 34, 36, 43]` zurückgeben.
+`cocktailSort([43, 36, 20, 34, 24])` should return `[20, 24, 34, 36, 43]`.
 
 ```js
 assert.deepEqual(cocktailSort([43, 36, 20, 34, 24]), [20, 24, 34, 36, 43]);
 ```
 
-`cocktailSort([12, 33, 26, 18, 1, 16, 38])` sollte `[1, 12, 16, 18, 26, 33, 38]` zurückgeben.
+`cocktailSort([12, 33, 26, 18, 1, 16, 38])` should return `[1, 12, 16, 18, 26, 33, 38]`.
 
 ```js
 assert.deepEqual(cocktailSort([12, 33, 26, 18, 1, 16, 38]), [
@@ -60,7 +60,7 @@ assert.deepEqual(cocktailSort([12, 33, 26, 18, 1, 16, 38]), [
 ]);
 ```
 
-`cocktailSort([3, 39, 48, 16, 1, 4, 29])` sollte `[1, 3, 4, 16, 29, 39, 48]` zurückgeben.
+`cocktailSort([3, 39, 48, 16, 1, 4, 29])` should return `[1, 3, 4, 16, 29, 39, 48]`.
 
 ```js
 assert.deepEqual(cocktailSort([3, 39, 48, 16, 1, 4, 29]), [

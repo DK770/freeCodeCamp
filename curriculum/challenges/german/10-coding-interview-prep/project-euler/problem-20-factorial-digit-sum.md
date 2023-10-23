@@ -8,46 +8,46 @@ dashedName: problem-20-factorial-digit-sum
 
 # --description--
 
-`n`! bedeutet `n` × (`n` − 1) × ... × 3 × 2 × 1
+`n`! means `n` × (`n` − 1) × ... × 3 × 2 × 1
 
-Zum Beispiel, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,  
-und die Summe der Ziffern der Zahl 10! ist 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,  
+and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 
-Finde die Summe der Ziffern `n`!
+Find the sum of the digits `n`!
 
 # --hints--
 
-`sumFactorialDigits(10)` sollte eine Zahl zurückgeben.
+`sumFactorialDigits(10)` should return a number.
 
 ```js
 assert(typeof sumFactorialDigits(10) === 'number');
 ```
 
-`sumFactorialDigits(10)` sollte 27 zurückgeben.
+`sumFactorialDigits(10)` should return 27.
 
 ```js
 assert.strictEqual(sumFactorialDigits(10), 27);
 ```
 
-`sumFactorialDigits(25)` sollte 72 zurückgeben.
+`sumFactorialDigits(25)` should return 72.
 
 ```js
 assert.strictEqual(sumFactorialDigits(25), 72);
 ```
 
-`sumFactorialDigits(50)` sollte 216 zurückgeben.
+`sumFactorialDigits(50)` should return 216.
 
 ```js
 assert.strictEqual(sumFactorialDigits(50), 216);
 ```
 
-`sumFactorialDigits(75)` sollte 432 zurückgeben.
+`sumFactorialDigits(75)` should return 432.
 
 ```js
 assert.strictEqual(sumFactorialDigits(75), 432);
 ```
 
-`sumFactorialDigits(100)` sollte 648 zurückgeben.
+`sumFactorialDigits(100)` should return 648.
 
 ```js
 assert.strictEqual(sumFactorialDigits(100), 648);

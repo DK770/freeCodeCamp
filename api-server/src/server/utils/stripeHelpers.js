@@ -3,13 +3,13 @@ import {
   durationKeysConfig,
   donationOneTimeConfig,
   donationSubscriptionConfig
-} from '../../../../shared/config/donation-settings';
+} from '../../../../config/donation-settings';
 
 export function validStripeForm(amount, duration, email) {
   return isEmail('' + email) &&
     isNumeric('' + amount) &&
     durationKeysConfig.includes(duration) &&
-    duration === 'one-time'
+    duration === 'onetime'
     ? donationOneTimeConfig.includes(amount)
     : donationSubscriptionConfig.plans[duration];
 }

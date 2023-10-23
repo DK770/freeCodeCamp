@@ -1,17 +1,17 @@
 ---
 id: 62aa264d23cdaa45a20efada
-title: Passo 162
+title: Step 162
 challengeType: 0
 dashedName: step-162
 ---
 
 # --description--
 
-Depois do array `numbers`, crie um laço `while`. Um laço <dfn>while</dfn> aceita uma condição. Ele executará o código no bloco até que a condição não seja mais verdadeira.
+After your `numbers` array, create a `while` loop. A <dfn>while</dfn> loop accepts a condition, and will run the code in the block until the condition is no longer true.
 
-O laço `while` deve ser executado enquanto `numbers.length` é menor que `10`.
+Your `while` loop should run while `numbers.length` is less than `10`.
 
-Aqui está um exemplo de um laço `while` que é executado enquanto `i` é menor que cinco.
+Here is an example of a `while` loop that runs while `i` is less than five.
 
 ```js
 while (i < 5) {
@@ -21,13 +21,13 @@ while (i < 5) {
 
 # --hints--
 
-A função `pick` deve ter um laço `while`.
+Your `pick` function should have a `while` loop.
 
 ```js
 assert.match(pick.toString(), /while\s*\(/);
 ```
 
-O laço `while` deve ser executado enquanto `numbers.length < 10`.
+Your `while` loop should run while `numbers.length < 10`.
 
 ```js
 assert.match(pick.toString(), /while\s*\(\s*numbers.length\s*<\s*10\s*\)/);

@@ -8,11 +8,11 @@ dashedName: visualize-data-with-a-choropleth-map
 
 # --description--
 
-**Aufgabe:** Erstelle eine Anwendung, die eine ähnliche Funktionalität wie <a href="https://choropleth-map.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://choropleth-map.freecodecamp.rocks</a> aufweist.
+**Objective:** Build an app that is functionally similar to this: <a href="https://choropleth-map.freecodecamp.rocks" target="_blank" rel="noopener noreferrer nofollow">https://choropleth-map.freecodecamp.rocks</a>.
 
 Erfülle die folgenden User Stories und bestehe alle Tests. Verwende Bibliotheken und APIs deiner Wahl. Gib dem Ganzen deinen persönlichen Stil.
 
-Du kannst HTML, Javascript, CSS und die D3-SVG-basierte Visualisierungs-Bibliothek verwenden. Erforderliche DOM-Elemente werden zum Zeitpunkt eines jeden Tests abgefragt. Falls du ein Frontend-Framework (wie z.B. Vue) verwendest, kann es passieren, dass die Testergebnisse für dynamische Inhalte ungenau sind. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
+Du kannst HTML, Javascript, CSS und die D3-SVG-basierte Visualisierungs-Bibliothek verwenden. Erforderliche (nicht-virtuelle) DOM-Elemente werden zum Zeitpunkt jedes Tests abgefragt. Falls du ein Frontend-Framework (wie z.B. Vue) verwendest, kann es passieren, dass die Testergebnisse für dynamische Inhalte ungenau sind. Wir hoffen, dass wir sie irgendwann unterbringen können, aber diese Frameworks werden derzeit nicht für D3-Projekte unterstützt.
 
 **User Story #1:** Meine Choroplethkarte sollte einen Titel mit einer entsprechenden `id="title"` haben.
 

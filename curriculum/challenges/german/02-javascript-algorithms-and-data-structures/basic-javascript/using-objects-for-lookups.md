@@ -11,30 +11,32 @@ dashedName: using-objects-for-lookups
 
 Objekte kann man sich als Schlüssel/Wert-Speicher vorstellen, wie ein Wörterbuch. Wenn du tabellarische Daten hast, kannst du ein Objekt zum Nachschlagen von Werten verwenden, anstatt eine `switch`-Anweisung oder eine `if/else`-Kette. Das ist besonders nützlich, wenn du weißt, dass deine Eingabedaten auf einen bestimmten Bereich beschränkt sind.
 
-Hier ist ein Beispiel eines Artikelobjekts:
+Hier ist ein Beispiel für eine einfache Suche nach dem umgekehrten Alphabet:
 
 ```js
-const article = {
-  "title": "How to create objects in JavaScript",
-  "link": "https://www.freecodecamp.org/news/a-complete-guide-to-creating-objects-in-javascript-b0e2450655e8/",
-  "author": "Kaashan Hussain",
-  "language": "JavaScript",
-  "tags": "TECHNOLOGY",
-  "createdAt": "NOVEMBER 28, 2018"
+const alpha = {
+  1:"Z",
+  2:"Y",
+  3:"X",
+  4:"W",
+  ...
+  24:"C",
+  25:"B",
+  26:"A"
 };
 
-const articleAuthor = article["author"];
-const articleLink = article["link"];
+const thirdLetter = alpha[2];
+const lastLetter = alpha[24];
 
-const value = "title";
-const valueLookup = article[value];
+const value = 2;
+const valueLookup = alpha[value];
 ```
 
-`articleAuthor` ist `Kaashan Hussain`, `articleLink` ist `https://www.freecodecamp.org/news/a-complete-guide-to-creating-objects-in-javascript-b0e2450655e8/` und `valueLookup` ist `How to create objects in JavaScript`. Es handelt sich jeweils um Stringwerte.
+`thirdLetter` ist der String `Y`, `lastLetter` ist der String `C` und `valueLookup` ist der String `Y`.
 
 # --instructions--
 
-Wandle die switch-Anweisung in ein Objekt namens `lookup` um. Verwende sie, um `val` nachzuschlagen und den zugehörigen String der Variable `result` zuzuweisen.
+Wandle die switch-Anweisung in ein Objekt namens `lookup` um. Verwende sie, um `val` nachzuschlagen und den zugehörigen String der Variablen `result` zuzuweisen.
 
 # --hints--
 

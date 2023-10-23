@@ -8,47 +8,47 @@ dashedName: generate-lower-case-ascii-alphabet
 
 # --description--
 
-Write a function to generate an array of lower case ASCII characters for a given range. Zum Beispiel: der Bereich `['a', 'd']` sollte die Funktion `['a', 'b', 'c', 'd']` zurückgeben.
+Write a function to generate an array of lower case ASCII characters for a given range. For example, given the range `['a', 'd']`, the function should return `['a', 'b', 'c', 'd']`.
 
 # --hints--
 
-`lascii` sollte eine Funktion sein.
+`lascii` should be a function.
 
 ```js
 assert(typeof lascii == 'function');
 ```
 
-`lascii("a","d")` sollte ein Array zurückgeben.
+`lascii("a","d")` should return an array.
 
 ```js
 assert(Array.isArray(lascii('a', 'd')));
 ```
 
-`lascii('a','d')` sollte `[ 'a', 'b', 'c', 'd' ]` zurückgeben.
+`lascii('a','d')` should return `[ 'a', 'b', 'c', 'd' ]`.
 
 ```js
 assert.deepEqual(lascii('a', 'd'), results[0]);
 ```
 
-`lascii('c','i')` sollte `[ 'c', 'd', 'e', 'f', 'g', 'h', 'i' ]` zurückgeben.
+`lascii('c','i')` should return `[ 'c', 'd', 'e', 'f', 'g', 'h', 'i' ]`.
 
 ```js
 assert.deepEqual(lascii('c', 'i'), results[1]);
 ```
 
-`lascii('m','q')` sollte `[ 'm', 'n', 'o', 'p', 'q' ]` zurückgeben.
+`lascii('m','q')` should return `[ 'm', 'n', 'o', 'p', 'q' ]`.
 
 ```js
 assert.deepEqual(lascii('m', 'q'), results[2]);
 ```
 
-`lascii('k','n')` sollte `[ 'k', 'l', 'm', 'n' ]` zurückgeben.
+`lascii('k','n')` should return `[ 'k', 'l', 'm', 'n' ]`.
 
 ```js
 assert.deepEqual(lascii('k', 'n'), results[3]);
 ```
 
-`lascii('t','z')` sollte `[ 't', 'u', 'v', 'w', 'x', 'y', 'z' ]` zurückgeben.
+`lascii('t','z')` should return `[ 't', 'u', 'v', 'w', 'x', 'y', 'z' ]`.
 
 ```js
 assert.deepEqual(lascii('t', 'z'), results[4]);

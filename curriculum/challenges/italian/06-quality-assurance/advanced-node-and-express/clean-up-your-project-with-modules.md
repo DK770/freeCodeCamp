@@ -24,30 +24,33 @@ Infine, trasferisci tutte le rotte presenti nel tuo server e incollale nei nuovi
 
 Continua ad aggiungere percorsi fino a quando non ci saranno più errori e il tuo file server non avrà più neanche una rotta (**ad eccezione della rotta nel blocco catch**)!
 
-Fai la stessa cosa nel tuo file `auth.js` con tutte le cose relative all'autenticazione come la serializzazione e l'impostazione della strategia locale e cancellali dal file del server. Assicurati di aggiungere le dipendenze e invocare `auth(app, myDataBase)` nel server nello stesso punto.
+Ora fai la stessa cosa nel tuo file auth.js con tutte le cose relative all'autenticazione come la serializzazione e l'impostazione della strategia locale e cancellali dal file del server. Assicurati di aggiungere le dipendenze e invocare `auth(app, myDataBase)` nel server nello stesso punto.
 
-Invia la tua pagina quando pensi di averlo fatto correttamente. Se incontri errori, puoi <a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#clean-up-your-project-with-modules-2" target="_blank" rel="noopener noreferrer nofollow">vedere un esempio del progetto completato qui</a>.
+Invia la tua pagina quando pensi di averlo fatto correttamente. Se incontri errori, puoi <a href="https://gist.github.com/camperbot/2d06ac5c7d850d8cf073d2c2c794cc92" target="_blank" rel="noopener noreferrer nofollow">vedere un esempio del progetto completato qui</a>.
 
 # --hints--
 
 Dovrebbero essere presenti dei moduli.
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/server.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /require\s*\(('|")\.\/routes(\.js)?\1\)/gi,
-    'You should have required your new files'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/server.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /require\s*\(('|")\.\/routes(\.js)?\1\)/gi,
+        'You should have required your new files'
+      );
+      assert.match(
+        data,
+        /client\s*\.db[^]*routes/gi,
+        'Your new modules should be called after your connection to the database'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-  assert.match(
-    data,
-    /client\s*\.db[^]*routes/gi,
-    'Your new modules should be called after your connection to the database'
-  );
-}
 ```
 
 # --solutions--

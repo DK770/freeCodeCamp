@@ -10,7 +10,9 @@ dashedName: use-class-syntax-to-define-a-constructor-function
 
 ES6 proporciona una nueva sintaxis para crear objetos, usando la palabra clave <dfn>class</dfn>.
 
-En ES5, se puede crear un objeto definiendo una función `constructor` y usando la palabra clave `new` para instanciar el objeto.
+Debemos notar que la sintaxis `class` es sólo sintaxis, y no una implementación completa basada en clases de un paradigma orientado a objetos, a diferencia de lenguajes como Java, Python, Ruby, etc.
+
+En ES5, se puede crear un objeto definiendo una funcion `constructor` y usando la palabra clave `new` para instanciar el objeto.
 
 En ES6, una declaración `class` tiene un método `constructor` que se invoca con la palabra clave `new`. Si el método `constructor` no se define explícitamente, entonces se define implícitamente sin argumentos.
 
@@ -43,7 +45,7 @@ atlas.launch();
 
 Debe tenerse en cuenta que la palabra clave `class` declara una nueva función, a la cual se añade un constructor. Este constructor se invoca cuando `new` es llamado para crear un nuevo objeto.
 
-**Nota:** UpperCamelCase debe ser utilizado por convención para nombres de clase en ES6, como `SpaceShuttle` usado anteriormente.
+**Nota:** UpperCamelCase debe ser utilizado por convención para nombres de clase en ES6, como `SpaceShuttle` fue usado arriba.
 
 El método `constructor` es un método especial para crear e inicializar un objeto creado con una clase. Aprenderás más sobre ello en la sección de Programación Orientada a Objetos de la Certificación en Algoritmos de JavaScript y Estructuras de Datos.
 
@@ -55,7 +57,7 @@ La clase `Vegetable` te permite crear un objeto vegetal con una propiedad `name`
 
 # --hints--
 
-`Vegetable` debe ser una clase `class` con un método `constructor` definido.
+`Vegetable` debe ser una clase (`class`) con un método `constructor` definido.
 
 ```js
 assert(

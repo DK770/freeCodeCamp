@@ -16,21 +16,15 @@ El último desafío demostró cómo pasar información desde un componente padre
 </ParentComponent>
 ```
 
-El componente hijo entonces tiene acceso a la propiedad del arreglo `colors`. Los métodos de arreglo, como `join()` pueden ser usados al acceder a la propiedad.
-
-```jsx
-const ChildComponent = (props) => <p>{props.colors.join(', ')}</p>
-```
-
-This will join all `colors` array items into a comma separated string and produce: `<p>green, blue, red</p>`. Later, we will learn about other common methods to render arrays of data in React.
+El componente hijo entonces tiene acceso a la propiedad del arreglo `colors`. Los métodos de arreglo, como `join()` pueden ser usados al acceder a la propiedad. `const ChildComponent = (props) => <p>{props.colors.join(', ')}</p>` Esto unirá a todos elementos `colors` del arreglo en una cadena separada por comas y se convertirá en: `<p>green, blue, red</p>` Más tarde, aprenderemos sobre otros métodos comunes para representar arreglos de datos en React.
 
 # --instructions--
 
-There are `List` and `ToDo` components in the code editor. When rendering each `List` from the `ToDo` component, pass in a `tasks` property assigned to an array of to-do tasks, for example `["walk dog", "workout"]`. Then access this `tasks` array in the `List` component, showing its value within the `p` element. Use `join(", ")` to display the `props.tasks` array in the `p` element as a comma-separated list. Today's list should have at least 2 tasks and tomorrow's should have at least 3 tasks.
+Están los componentes `List` y `ToDo` en el editor de código. Al renderizar cada `List` del componente `ToDo`, pasa una propiedad `tasks` asignada a un arreglo de tareas pendientes, por ejemplo `["walk dog", "workout"]`. Luego, accede a este arreglo de `tasks` en el componente `List`, mostrando su valor dentro del elemento `p`. Usa `join(", ")` para mostrar el arreglo `props.tasks` en el elemento `p` como una lista separada por comas. La lista de hoy debe tener al menos 2 tareas y la de mañana debe tener al menos 3 tareas.
 
 # --hints--
 
-The `ToDo` component should return a single outer `div`.
+El componente `ToDo` debe devolver un solo elemento `div`.
 
 ```js
 assert(
@@ -41,7 +35,7 @@ assert(
 );
 ```
 
-The third child of the `ToDo` component should be an instance of the `List` component.
+El tercer hijo del componente `ToDo` debe ser una instancia del componente `List`.
 
 ```js
 assert(
@@ -52,7 +46,7 @@ assert(
 );
 ```
 
-The fifth child of the `ToDo` component should be an instance of the `List` component.
+El quinto hijo del componente `ToDo` debe ser una instancia del componente `List`.
 
 ```js
 assert(
@@ -63,7 +57,7 @@ assert(
 );
 ```
 
-Both instances of the `List` component should have a property called `tasks` and `tasks` should be of type array.
+Ambas instancias del componente `List` deben tener una propiedad llamada `tasks` y `tasks` debe ser de tipo arreglo.
 
 ```js
 assert(
@@ -77,7 +71,7 @@ assert(
 );
 ```
 
-The first `List` component representing the tasks for today should have 2 or more items.
+El primer componente `List` que representa las tareas de hoy debe tener 2 o más elementos.
 
 ```js
 assert(
@@ -88,7 +82,7 @@ assert(
 );
 ```
 
-The second `List` component representing the tasks for tomorrow should have 3 or more items.
+El segundo componente `List` que representa las tareas para mañana debe tener 3 o más elementos.
 
 ```js
 assert(
@@ -99,7 +93,7 @@ assert(
 );
 ```
 
-The `List` component should render the value from the `tasks` prop in the `p` tag.
+El componente `List` debe renderizar el valor del prop `tasks` en la etiqueta `p`.
 
 ```js
 assert(

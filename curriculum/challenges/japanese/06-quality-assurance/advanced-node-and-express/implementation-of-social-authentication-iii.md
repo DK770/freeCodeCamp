@@ -16,7 +16,6 @@ myDataBase.findOneAndUpdate(
   {
     $setOnInsert: {
       id: profile.id,
-      username: profile.username,
       name: profile.displayName || 'John Doe',
       photo: profile.photos[0].value || '',
       email: Array.isArray(profile.emails)
@@ -41,30 +40,33 @@ myDataBase.findOneAndUpdate(
 
 `findOneAndUpdate` では、オブジェクトを検索して更新することができます。 オブジェクトが存在しない場合は、そのオブジェクトが挿入され、コールバック関数で使用できるようになります。 この例では、`last_login` を常に設定し、`login_count` を `1` 増やして、新しいオブジェクト (新規ユーザー) が挿入された場合にのみ、フィールドの大部分を設定します。 デフォルト値の使用に注意してください。 場合によっては、返されるプロファイルに必ずしもすべての情報が設定されていなかったり、ユーザーがプロファイルを非公開にしていたりします。 そのような場合は、エラーを防ぐための処理を実行します。
 
-これでアプリにログインできるはずです。 試してみましょう！
+これでアプリにログインできるはずです。試してみてください！
 
-正しいと思ったら、ページを送信してください。 エラーが発生している場合、<a href="https://forum.freecodecamp.org/t/advanced-node-and-express/567135#implementation-of-social-authentication-iii-5" target="_blank" rel="noopener noreferrer nofollow">この時点までの完成形のコードをこちらで確認できます</a>。
+正しいと思ったら、ページを送信してください。 エラーが発生している場合は、ここまでに完了したプロジェクトを<a href="https://gist.github.com/camperbot/183e968f0e01d81dde015d45ba9d2745" target="_blank" rel="noopener noreferrer nofollow">こちら</a>で確認できます。
 
 # --hints--
 
 GitHub ストラテジーの設定を完了する必要があります。
 
 ```js
-async (getUserInput) => {
-  const url = new URL("/_api/auth.js", getUserInput("url"));
-  const res = await fetch(url);
-  const data = await res.text();
-  assert.match(
-    data,
-    /GitHubStrategy[^]*myDataBase/gi,
-    'Strategy should use now use the database to search for the user'
+(getUserInput) =>
+  $.get(getUserInput('url') + '/_api/auth.js').then(
+    (data) => {
+      assert.match(
+        data,
+        /GitHubStrategy[^]*myDataBase/gi,
+        'Strategy should use now use the database to search for the user'
+      );
+      assert.match(
+        data,
+        /GitHubStrategy[^]*return cb/gi,
+        'Strategy should return the callback function "cb"'
+      );
+    },
+    (xhr) => {
+      throw new Error(xhr.statusText);
+    }
   );
-  assert.match(
-    data,
-    /GitHubStrategy[^]*cb/gi,
-    'Strategy should return the callback function "cb"'
-  );
-}
 ```
 
 # --solutions--

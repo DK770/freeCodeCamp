@@ -1,6 +1,6 @@
 ---
 id: 5e6dd1278e6ca105cde40ea9
-title: Subsecuencia común más larga
+title: Longest common subsequence
 challengeType: 1
 forumTopicId: 385271
 dashedName: longest-common-subsequence
@@ -8,59 +8,59 @@ dashedName: longest-common-subsequence
 
 # --description--
 
-La **longest common subsequence** (or **LCS**) de grupos A y B es el grupo de elementos más largos desde A y B que son comunes entre dos grupos y en el mismo orden que cada grupo. Por ejemplo, las secuencias `1234` y `1224533324` tienen un LCS de `1234`:<u>1234</u>
+The **longest common subsequence** (or **LCS**) of groups A and B is the longest group of elements from A and B that are common between the two groups and in the same order in each group. For example, the sequences `1234` and `1224533324` have an LCS of `1234`:<u>1234</u>
 <u>12</u>245<u>3</u>332<u>4</u>
 
-Para una cadena ejemplo, considera las secuencias `thisisatest` y `testing123testing`. Un LCS sería `tsitest`:
+For a string example, consider the sequences `thisisatest` and `testing123testing`. An LCS would be `tsitest`:
 <u>t</u>hi<u>si</u>sa<u>test</u>
 
 <u>t</u>e<u>s</u>t<u>i</u>ng123<u>test</u>ing.
 
-Tu código solo necesita tratar con cadenas.
+Your code only needs to deal with strings.
 
 # --instructions--
 
-Escribe una función case-sensitive que devuelva el LCS de dos cadenas. No se necesita mostrar multiples LCS's.
+Write a case-sensitive function that returns the LCS of two strings. You don't need to show multiple LCS's.
 
 # --hints--
 
-`lcs` debe ser una función.
+`lcs` should be a function.
 
 ```js
 assert(typeof lcs == 'function');
 ```
 
-`lcs("thisisatest", "testing123testing")` debe devolver una cadena.
+`lcs("thisisatest", "testing123testing")` should return a string.
 
 ```js
 assert(typeof lcs('thisisatest', 'testing123testing') == 'string');
 ```
 
-`lcs("thisisatest", "testing123testing")` debe devolver `"tsitest"`.
+`lcs("thisisatest", "testing123testing")` should return `"tsitest"`.
 
 ```js
 assert.equal(lcs('thisisatest', 'testing123testing'), 'tsitest');
 ```
 
-`lcs("ABCDGH", "AEDFHR")` debe devolver `"ADH"`.
+`lcs("ABCDGH", "AEDFHR")` should return `"ADH"`.
 
 ```js
 assert.equal(lcs('ABCDGH', 'AEDFHR'), 'ADH');
 ```
 
-`lcs("AGGTAB", "GXTXAYB")` debe devolver `"GTAB"`.
+`lcs("AGGTAB", "GXTXAYB")` should return `"GTAB"`.
 
 ```js
 assert.equal(lcs('AGGTAB', 'GXTXAYB'), 'GTAB');
 ```
 
-`lcs("BDACDB", "BDCB")` debe devolver `"BDCB"`.
+`lcs("BDACDB", "BDCB")` should return `"BDCB"`.
 
 ```js
 assert.equal(lcs('BDACDB', 'BDCB'), 'BDCB');
 ```
 
-`lcs("ABAZDC", "BACBAD")` debe devolver `"ABAD"`.
+`lcs("ABAZDC", "BACBAD")` should return `"ABAD"`.
 
 ```js
 assert.equal(lcs('ABAZDC', 'BACBAD'), 'ABAD');

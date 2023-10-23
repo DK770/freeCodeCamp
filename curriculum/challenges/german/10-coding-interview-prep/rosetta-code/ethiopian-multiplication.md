@@ -10,7 +10,7 @@ dashedName: ethiopian-multiplication
 
 Ethiopian multiplication is a method of multiplying integers using only addition, doubling, and halving.
 
-**Methode:**
+**Method:**
 
 <ol>
   <li>Take two numbers to be multiplied and write them down at the top of two columns</li>
@@ -20,7 +20,7 @@ Ethiopian multiplication is a method of multiplying integers using only addition
   <li>Sum the values in the right-hand column that remain to produce the result of multiplying the original two numbers together</li>
 </ol>
 
-**Zum Beispiel:** `17 × 34`
+**For example:** `17 × 34`
 
 <pre>17   34
 </pre>
@@ -85,37 +85,37 @@ Use these functions to create a function that does Ethiopian multiplication.
 
 # --hints--
 
-`eth_mult` sollte eine Funktion sein.
+`eth_mult` should be a function.
 
 ```js
 assert(typeof eth_mult === 'function');
 ```
 
-`eth_mult(17,34)` sollte `578` zurückgeben.
+`eth_mult(17,34)` should return `578`.
 
 ```js
 assert.equal(eth_mult(17, 34), 578);
 ```
 
-`eth_mult(23,46)` sollte `1058` zurückgeben.
+`eth_mult(23,46)` should return `1058`.
 
 ```js
 assert.equal(eth_mult(23, 46), 1058);
 ```
 
-`eth_mult(12,27)` sollte `324` zurückgeben.
+`eth_mult(12,27)` should return `324`.
 
 ```js
 assert.equal(eth_mult(12, 27), 324);
 ```
 
-`eth_mult(56,98)` sollte `5488` zurückgeben.
+`eth_mult(56,98)` should return `5488`.
 
 ```js
 assert.equal(eth_mult(56, 98), 5488);
 ```
 
-`eth_mult(63,74)` sollte `4662` zurückgeben.
+`eth_mult(63,74)` should return `4662`.
 
 ```js
 assert.equal(eth_mult(63, 74), 4662);

@@ -1,6 +1,6 @@
 ---
 id: 5e9a0e9ef99a403d019610ca
-title: Як працюють глибинні нейронні мережі
+title: Як працюють нейронні мережі глибинного навчання
 challengeType: 11
 videoId: zvalnHWGtx4
 dashedName: how-deep-neural-networks-work
@@ -18,7 +18,7 @@ dashedName: how-deep-neural-networks-work
 
 ---
 
-Це точніше.
+Це більш точно.
 
 ---
 

@@ -8,33 +8,33 @@ dashedName: problem-15-lattice-paths
 
 # --description--
 
-Wenn man in der linken oberen Ecke eines 2×2-Rasters beginnt und sich nur nach rechts und unten bewegen kann, gibt es genau 6 Pfade zur rechten unteren Ecke.
+Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
 
-<img class="img-responsive center-block" alt="ein Diagramm mit 6 2 x 2 Gittern, das alle Pfade zur rechten unteren Ecke zeigt" src="https://cdn-media-1.freecodecamp.org/project-euler/1Atixoj.gif" style="background-color: white; padding: 10px;" />
+<img class="img-responsive center-block" alt="a diagram of 6 2 by 2 grids showing all the routes to the bottom right corner" src="https://cdn-media-1.freecodecamp.org/project-euler/1Atixoj.gif" style="background-color: white; padding: 10px;" />
 
-Wie viele solcher Pfade gibt es aufgrund einer bestimmten `gridSize`?
+How many such routes are there through a given `gridSize`?
 
 # --hints--
 
-`latticePaths(4)` sollte eine Zahl zurückgeben.
+`latticePaths(4)` should return a number.
 
 ```js
 assert(typeof latticePaths(4) === 'number');
 ```
 
-`latticePaths(4)` sollte 70 zurückgeben.
+`latticePaths(4)` should return 70.
 
 ```js
 assert.strictEqual(latticePaths(4), 70);
 ```
 
-`latticePaths(9)` sollte 48620 zurückgeben.
+`latticePaths(9)` should return 48620.
 
 ```js
 assert.strictEqual(latticePaths(9), 48620);
 ```
 
-`latticePaths(20)` sollte 137846528820 zurückgeben.
+`latticePaths(20)` should return 137846528820.
 
 ```js
 assert.strictEqual(latticePaths(20), 137846528820);

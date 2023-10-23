@@ -17,7 +17,7 @@ const createStepFile = ({
   stepNum,
   projectPath = getProjectPath(),
   challengeSeeds = {}
-}: Options): ObjectID => {
+}: Options) => {
   const challengeId = new ObjectID();
 
   const template = getStepTemplate({
@@ -31,46 +31,38 @@ const createStepFile = ({
   return challengeId;
 };
 
-const createChallengeFile = (
-  title: string,
-  template: string,
-  path = getProjectPath()
-): void => {
-  fs.writeFileSync(`${path}${title}.md`, template);
-};
-
 interface InsertOptions {
   stepNum: number;
   stepId: ObjectID;
 }
 
-function insertStepIntoMeta({ stepNum, stepId }: InsertOptions): void {
+function insertStepIntoMeta({ stepNum, stepId }: InsertOptions) {
   const existingMeta = getMetaData();
   const oldOrder = [...existingMeta.challengeOrder];
-  oldOrder.splice(stepNum - 1, 0, { id: stepId.toString(), title: '' });
+  oldOrder.splice(stepNum - 1, 0, [stepId.toString()]);
   // rename all the files in challengeOrder
-  const challengeOrder = oldOrder.map(({ id }, index) => ({
+  const challengeOrder = oldOrder.map(([id], index) => [
     id,
-    title: `Step ${index + 1}`
-  }));
+    `Step ${index + 1}`
+  ]);
 
   updateMetaData({ ...existingMeta, challengeOrder });
 }
 
-function deleteStepFromMeta({ stepNum }: { stepNum: number }): void {
+function deleteStepFromMeta({ stepNum }: { stepNum: number }) {
   const existingMeta = getMetaData();
   const oldOrder = [...existingMeta.challengeOrder];
   oldOrder.splice(stepNum - 1, 1);
   // rename all the files in challengeOrder
-  const challengeOrder = oldOrder.map(({ id }, index) => ({
+  const challengeOrder = oldOrder.map(([id], index) => [
     id,
-    title: `Step ${index + 1}`
-  }));
+    `Step ${index + 1}`
+  ]);
 
   updateMetaData({ ...existingMeta, challengeOrder });
 }
 
-const updateStepTitles = (): void => {
+const updateStepTitles = () => {
   const meta = getMetaData();
 
   const fileNames: string[] = [];
@@ -84,7 +76,8 @@ const updateStepTitles = (): void => {
     const filePath = `${getProjectPath()}${fileName}`;
     const frontMatter = matter.read(filePath);
     const newStepNum =
-      meta.challengeOrder.findIndex(({ id }) => id === frontMatter.data.id) + 1;
+      meta.challengeOrder.findIndex(elem => elem[0] === frontMatter.data.id) +
+      1;
     const title = `Step ${newStepNum}`;
     const dashedName = `step-${newStepNum}`;
     const newData = {
@@ -105,7 +98,6 @@ const getChallengeSeeds = (
 
 export {
   createStepFile,
-  createChallengeFile,
   updateStepTitles,
   getChallengeSeeds,
   insertStepIntoMeta,
